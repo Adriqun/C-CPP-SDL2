@@ -1,0 +1,3 @@
+wczytuje 
+dane 
+z pliku

@@ -1,0 +1,106 @@
+# depslib dependency file v1.0
+1462814355 source:c:\users\lenovo1\desktop\runner\core.cpp
+	"core.h"
+	<stdio.h>
+
+1462814355 c:\users\lenovo1\desktop\runner\core.h
+	<SDL.h>
+	<string>
+
+1463497282 source:c:\users\lenovo1\desktop\runner\engined.cpp
+	"engine.h"
+	<stdio.h>
+	<windows.h>
+
+1462814355 c:\users\lenovo1\desktop\runner\engine.h
+	"core.h"
+	"intro.h"
+	"menu.h"
+	"background.h"
+	"hero.h"
+
+1462738619 c:\users\lenovo1\desktop\runner\window.h
+	<SDL.h>
+	<string>
+
+1463501146 c:\users\lenovo1\desktop\runner\intro.h
+	"texture.h"
+
+1462815286 source:c:\users\lenovo1\desktop\runner\engineg.cpp
+	"engine.h"
+	"timer.h"
+	<stdio.h>
+	<SDL_image.h>
+
+1462439931 c:\users\lenovo1\desktop\runner\timer.h
+	<SDL.h>
+
+1463500984 source:c:\users\lenovo1\desktop\runner\intro.cpp
+	"intro.h"
+	<stdio.h>
+
+1462738941 source:c:\users\lenovo1\desktop\runner\main.cpp
+	"engine.h"
+	<stdio.h>
+
+1462439931 source:c:\users\lenovo1\desktop\runner\timer.cpp
+	"timer.h"
+
+1462738725 source:c:\users\lenovo1\desktop\runner\window.cpp
+	"window.h"
+	<stdio.h>
+	<ctype.h>
+
+1463500328 source:c:\users\lenovo1\desktop\runner\menu.cpp
+	"menu.h"
+	<stdio.h>
+
+1463498261 source:c:\users\lenovo1\desktop\runner\texture.cpp
+	"texture.h"
+	<SDL_image.h>
+	<stdio.h>
+	<string.h>
+
+1463497271 c:\users\lenovo1\desktop\runner\texture.h
+	<SDL.h>
+	<SDL_ttf.h>
+	<string>
+
+1463500370 c:\users\lenovo1\desktop\runner\menu.h
+	"texture.h"
+	<SDL_mixer.h>
+
+1462735022 c:\users\lenovo1\desktop\runner\bg.h
+	"texture.h"
+	<SDL_mixer.h>
+
+1462738901 source:c:\users\lenovo1\desktop\runner\bg.cpp
+	"bg.h"
+	<stdio.h>
+
+1463498285 source:c:\users\lenovo1\desktop\runner\hero.cpp
+	"hero.h"
+	<stdio.h>
+
+1462735744 c:\users\lenovo1\desktop\runner\hero.h
+	"texture.h"
+	<SDL_mixer.h>
+
+1462739056 c:\users\lenovo1\desktop\runner\background.h
+	"texture.h"
+	<SDL_mixer.h>
+
+1462815485 source:c:\users\lenovo1\desktop\runner\background.cpp
+	"background.h"
+	<stdio.h>
+
+1463310300 source:c:\users\lenovo1\desktop\runner\enemy.cpp
+	"enemy.h"
+	<stdio.h>
+	<time.h>
+	<cstdlib>
+
+1463310284 c:\users\lenovo1\desktop\runner\enemy.h
+	"texture.h"
+	<vector>
+

@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1464340110 source:c:\users\lenovo1\desktop\float.h\main.cpp
+	<iostream>
+	<float.h>
+

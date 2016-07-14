@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1464344463 source:c:\users\lenovo1\desktop\locale.h\main.cpp
+	<stdio.h>
+	<time.h>
+	<locale.h>
+

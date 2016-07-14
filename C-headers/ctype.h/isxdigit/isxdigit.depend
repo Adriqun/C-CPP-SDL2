@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1457456356 source:c:\users\lenovo1\desktop\isxdigit\main.cpp
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+
