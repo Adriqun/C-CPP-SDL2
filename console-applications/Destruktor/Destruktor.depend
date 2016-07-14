@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1443034342 source:c:\users\lenovo1\desktop\destruktor\main.cpp
+	<iostream>
+	"event.h"
+
+1443034279 c:\users\lenovo1\desktop\destruktor\event.h
+	<iostream>
+
+1443034295 source:c:\users\lenovo1\desktop\destruktor\event.cpp
+	<iostream>
+	"event.h"
+

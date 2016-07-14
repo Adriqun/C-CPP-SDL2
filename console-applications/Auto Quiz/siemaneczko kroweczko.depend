@@ -1,0 +1,41 @@
+# depslib dependency file v1.0
+1442153982 source:c:\users\lenovo1\desktop\siemaneczko kroweczko\main.cpp
+	<iostream>
+	"stworz.h"
+	<cstdlib>
+	<windows.h>
+	<conio.h>
+
+1442153853 source:c:\users\lenovo1\desktop\siemaneczko kroweczko\stworz.cpp
+	<iostream>
+	"stworz.h"
+	<fstream>
+	<windows.h>
+
+1442153340 c:\users\lenovo1\desktop\siemaneczko kroweczko\stworz.h
+	<iostream>
+	<fstream>
+
+1442150453 c:\users\lenovo1\desktop\siemaneczko kroweczko\pan.h
+	<iostream>
+	"stworz.h"
+	<cstdlib>
+	<windows.h>
+
+1442177218 source:c:\users\lenovo1\desktop\auto quiz\stworz.cpp
+	<iostream>
+	"stworz.h"
+	<fstream>
+	<windows.h>
+
+1442177218 c:\users\lenovo1\desktop\auto quiz\stworz.h
+	<iostream>
+	<fstream>
+
+1442177306 source:c:\users\lenovo1\desktop\auto quiz\main.cpp
+	<iostream>
+	"stworz.h"
+	<cstdlib>
+	<windows.h>
+	<conio.h>
+

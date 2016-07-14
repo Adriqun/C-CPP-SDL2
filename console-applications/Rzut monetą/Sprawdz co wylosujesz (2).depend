@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1438180628 source:c:\users\lenovo1\desktop\sprawdz co wylosujesz (2)\main.cpp
+	<iostream>
+	<windows.h>
+	<cstdlib>
+	<time.h>
+	<stdio.h>
+

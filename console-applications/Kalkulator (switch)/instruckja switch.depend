@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1438160017 source:c:\users\lenovo1\desktop\instruckja switch\main.cpp
+	<iostream>
+	<windows.h>
+	<windows.h>
+	<cstdlib>
+	<stdio.h>
+
+1442099336 source:c:\users\lenovo1\desktop\c++\kalkulator (switch)\instrukcja.cpp
+	"instrukcja.h"
+	<iostream>
+
+1442099128 c:\users\lenovo1\desktop\c++\kalkulator (switch)\instrukcja.h
+	<iostream>
+	<windows.h>
+	<conio.h>
+	<cstdlib>
+	<stdio.h>
+
+1442099211 source:c:\users\lenovo1\desktop\c++\kalkulator (switch)\main.cpp
+	<iostream>
+	"instrukcja.h"
+

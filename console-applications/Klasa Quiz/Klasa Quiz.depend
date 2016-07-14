@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1442147142 source:c:\users\lenovo1\desktop\klasa quiz\main.cpp
+	<iostream>
+	"Quiz.h"
+	<windows.h>
+
+1442147203 source:c:\users\lenovo1\desktop\klasa quiz\quiz.cpp
+	<iostream>
+	<fstream>
+	"Quiz.h"
+	<windows.h>
+
+1442146993 c:\users\lenovo1\desktop\klasa quiz\quiz.h
+	<iostream>
+	<fstream>
+

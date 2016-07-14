@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1465716912 source:c:\users\lenovo1\desktop\typeid\main.cpp
+	<iostream>
+	<typeinfo>
+

@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1437224203 source:c:\users\lenovo1\desktop\poprawka\main.cpp
+	<iostream>
+	<cstdlib>
+

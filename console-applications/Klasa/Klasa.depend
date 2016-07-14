@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1442258451 source:c:\users\lenovo1\desktop\klasa\bl.cpp
+	<iostream>
+	"bl.h"
+
+1442258498 source:c:\users\lenovo1\desktop\klasa\main.cpp
+	<iostream>
+	"bl.h"
+
+1442258510 c:\users\lenovo1\desktop\klasa\bl.h
+	<iostream>
+

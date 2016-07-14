@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1467989395 source:c:\users\lenovo1\desktop\test\main.cpp
+	<cstdlib>
+	<stdio.h>
+	<time.h>
+

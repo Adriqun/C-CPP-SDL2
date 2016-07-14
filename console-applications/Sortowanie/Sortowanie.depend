@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1440712452 source:c:\users\lenovo1\desktop\sortowanie\main.cpp
+	<iostream>
+	<time.h>
+	<windows.h>
+

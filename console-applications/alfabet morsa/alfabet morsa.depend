@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1466354660 source:c:\users\lenovo1\desktop\alfabet morsa\main.cpp
+	<iostream>
+	<ctype.h>
+

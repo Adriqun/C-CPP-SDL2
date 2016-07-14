@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1456309533 source:c:\users\lenovo1\desktop\fstream pe³na obs³uga\main.cpp
+	<iostream>
+	<fstream>
+

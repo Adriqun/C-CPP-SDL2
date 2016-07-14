@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1439126556 source:c:\users\lenovo1\desktop\odczyt,wlasne funkcje,przeliczanie\main.cpp
+	<iostream>
+	<fstream>
+	<cstdlib>
+	<windows.h>
+

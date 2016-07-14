@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1441641658 source:c:\users\lenovo1\desktop\stos\main.cpp
+	<iostream>
+	<stack>
+
+1441638853 source:c:\users\lenovo1\desktop\c++ dorobek\struktury danych\stos beta\main.cpp
+	<iostream>
+	<stack>
+	<windows.h>
+

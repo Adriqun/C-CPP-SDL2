@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1437777078 source:c:\users\lenovo1\desktop\pseudolosowosc\main.cpp
+	<iostream>
+	<time.h>
+	<cstdlib>
+
+1459030344 source:c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\c++ przyklady\pseudolosowosc\main.cpp
+	<iostream>
+	<time.h>
+	<cstdlib>
+

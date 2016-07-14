@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1440109897 source:c:\users\lenovo1\desktop\rekurencja vs iteracja\main.cpp
+	<iostream>
+	<time.h>
+	<cstdlib>
+
+1440438856 source:c:\users\lenovo1\desktop\c++\rekurencja vs iteracja\main.cpp
+	<iostream>
+	<time.h>
+	<cstdlib>
+
+1440439043 source:c:\users\lenovo1\desktop\c++\rekurencja vs iteracja - adr\main.cpp
+	<iostream>
+	<time.h>
+	<cstdlib>
+

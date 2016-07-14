@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1439373337 source:c:\users\lenovo1\desktop\zapis i odczyt\main.cpp
+	<iostream>
+	<fstream>
+	<conio.h>
+	<cstdlib>
+	<windows.h>
+

@@ -1,0 +1,59 @@
+# depslib dependency file v1.0
+1461874751 source:c:\users\lenovo1\desktop\noname\intro.cpp
+	"intro.h"
+	<stdio.h>
+
+1462207938 source:c:\users\lenovo1\desktop\noname\main.cpp
+	"engine.h"
+	<stdio.h>
+
+1462213217 c:\users\lenovo1\desktop\noname\engine.h
+	"intro.h"
+	"menu.h"
+	"desktop.h"
+	"hero.h"
+
+1461746702 source:c:\users\lenovo1\desktop\noname\texture.cpp
+	"texture.h"
+	<SDL_image.h>
+	<stdio.h>
+	<string.h>
+
+1461876271 c:\users\lenovo1\desktop\noname\texture.h
+	<SDL.h>
+	<SDL_ttf.h>
+	<string>
+
+1462213249 source:c:\users\lenovo1\desktop\noname\engine.cpp
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<stdio.h>
+	"engine.h"
+
+1461874337 c:\users\lenovo1\desktop\noname\intro.h
+	"texture.h"
+
+1461875363 source:c:\users\lenovo1\desktop\noname\menu.cpp
+	"menu.h"
+	<stdio.h>
+
+1461875363 c:\users\lenovo1\desktop\noname\menu.h
+	"texture.h"
+
+1461876117 source:c:\users\lenovo1\desktop\noname\desktop.cpp
+	"desktop.h"
+	<stdio.h>
+	<math.h>
+
+1461876117 c:\users\lenovo1\desktop\noname\desktop.h
+	"texture.h"
+
+1461875707 source:c:\users\lenovo1\desktop\noname\hero.cpp
+	"hero.h"
+	<stdio.h>
+	<math.h>
+
+1461875707 c:\users\lenovo1\desktop\noname\hero.h
+	"texture.h"
+

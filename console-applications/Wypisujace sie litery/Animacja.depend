@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1439069790 source:c:\users\lenovo1\desktop\c++\wypisujace sie litery\main.cpp
+	<windows.h>
+	<iostream>
+	<string>
+	<time.h>
+

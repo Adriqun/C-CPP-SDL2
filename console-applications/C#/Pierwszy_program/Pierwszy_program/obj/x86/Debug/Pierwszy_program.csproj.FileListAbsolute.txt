@@ -1,0 +1,4 @@
+C:\Users\Lenovo1\Documents\Projects\Pierwszy_program\Pierwszy_program\bin\Debug\Pierwszy_program.exe
+C:\Users\Lenovo1\Documents\Projects\Pierwszy_program\Pierwszy_program\bin\Debug\Pierwszy_program.pdb
+C:\Users\Lenovo1\Documents\Projects\Pierwszy_program\Pierwszy_program\obj\x86\Debug\Pierwszy_program.exe
+C:\Users\Lenovo1\Documents\Projects\Pierwszy_program\Pierwszy_program\obj\x86\Debug\Pierwszy_program.pdb

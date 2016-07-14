@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1439031064 source:c:\users\lenovo1\desktop\quiz rodzina\main.cpp
+	<iostream>
+	<fstream>
+	<algorithm>
+	<string>
+	<cstdlib>
+	<windows.h>
+

@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1438292072 source:c:\users\lenovo1\desktop\c++\odczyt z pliku\main.cpp
+	<iostream>
+	<fstream>
+	<cstdlib>
+

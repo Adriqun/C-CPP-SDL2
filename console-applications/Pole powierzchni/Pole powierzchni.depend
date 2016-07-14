@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1440073022 source:c:\users\lenovo1\desktop\pole powierzchni\main.cpp
+	<iostream>
+	<conio.h>
+	<cstdlib>
+

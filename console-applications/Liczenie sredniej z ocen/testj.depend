@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1438037995 source:c:\users\lenovo1\desktop\testj\main.cpp
+	<iostream>
+
+1439044803 source:c:\users\lenovo1\desktop\c++\liczenie sredniej z 5 ocen\main.cpp
+	<iostream>
+	<cstdlib>
+	<windows.h>
+

@@ -1,0 +1,171 @@
+# depslib dependency file v1.0
+1462533150 source:c:\users\lenovo1\desktop\ninja\main.cpp
+	"engine.h"
+	<stdio.h>
+	<windows.h>
+
+1462524781 c:\users\lenovo1\desktop\ninja\window.h
+	<SDL.h>
+	<string>
+
+1462533029 source:c:\users\lenovo1\desktop\ninja\window.cpp
+	"window.h"
+	<windows.h>
+	<stdio.h>
+	<fstream>
+	<ctype.h>
+
+1462443306 source:c:\users\lenovo1\desktop\ninja\core.cpp
+	"core.h"
+	<stdio.h>
+	<windows.h>
+
+1462220630 c:\users\lenovo1\desktop\ninja\core.h
+	<SDL.h>
+	<SDL_ttf.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+
+1462440351 source:c:\users\lenovo1\desktop\ninja\engine.cpp
+	"engine.h"
+	"timer.h"
+	<stdio.h>
+
+1462535398 c:\users\lenovo1\desktop\ninja\engine.h
+	"core.h"
+	"window.h"
+	"intro.h"
+	"clock.h"
+
+1462439931 c:\users\lenovo1\desktop\ninja\timer.h
+	<SDL.h>
+
+1462439931 source:c:\users\lenovo1\desktop\ninja\timer.cpp
+	"timer.h"
+
+1462528559 source:c:\users\lenovo1\desktop\ninja\engine_detailed.cpp
+	"engine.h"
+	<stdio.h>
+	<windows.h>
+
+1462528532 source:c:\users\lenovo1\desktop\ninja\engine_general.cpp
+	"engine.h"
+	"timer.h"
+	<stdio.h>
+
+1462534499 source:c:\users\lenovo1\desktop\ninja\intro.cpp
+	"intro.h"
+	<stdio.h>
+
+1462534235 c:\users\lenovo1\desktop\ninja\intro.h
+	<SDL.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<string>
+
+1462529131 c:\users\lenovo1\desktop\ninja\texture.h
+	<SDL.h>
+	<SDL_ttf.h>
+	<string>
+
+1462529131 source:c:\users\lenovo1\desktop\ninja\texture.cpp
+	"texture.h"
+	<SDL_image.h>
+	<stdio.h>
+	<string.h>
+
+1462536158 source:c:\users\lenovo1\desktop\ninja\engined.cpp
+	"engine.h"
+	<stdio.h>
+	<windows.h>
+
+1462535398 source:c:\users\lenovo1\desktop\ninja\engineg.cpp
+	"engine.h"
+	"timer.h"
+	<stdio.h>
+
+1462536149 source:c:\users\lenovo1\desktop\ninja\clock.cpp
+	"clock.h"
+	<stdio.h>
+	<time.h>
+
+1462536144 c:\users\lenovo1\desktop\ninja\clock.h
+	<SDL.h>
+	<SDL_ttf.h>
+	<string>
+
+1462443306 source:c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\my apps\elektroniczny zegar 2016-05-06\pliki do edycji\core.cpp
+	"core.h"
+	<stdio.h>
+	<windows.h>
+
+1462220630 c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\my apps\elektroniczny zegar 2016-05-06\pliki do edycji\core.h
+	<SDL.h>
+	<SDL_ttf.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+
+1462536158 source:c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\my apps\elektroniczny zegar 2016-05-06\pliki do edycji\engined.cpp
+	"engine.h"
+	<stdio.h>
+	<windows.h>
+
+1462535398 c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\my apps\elektroniczny zegar 2016-05-06\pliki do edycji\engine.h
+	"core.h"
+	"window.h"
+	"intro.h"
+	"clock.h"
+
+1462524781 c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\my apps\elektroniczny zegar 2016-05-06\pliki do edycji\window.h
+	<SDL.h>
+	<string>
+
+1462534235 c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\my apps\elektroniczny zegar 2016-05-06\pliki do edycji\intro.h
+	<SDL.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<string>
+
+1462536144 c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\my apps\elektroniczny zegar 2016-05-06\pliki do edycji\clock.h
+	<SDL.h>
+	<SDL_ttf.h>
+	<string>
+
+1462535398 source:c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\my apps\elektroniczny zegar 2016-05-06\pliki do edycji\engineg.cpp
+	"engine.h"
+	"timer.h"
+	<stdio.h>
+
+1462439931 c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\my apps\elektroniczny zegar 2016-05-06\pliki do edycji\timer.h
+	<SDL.h>
+
+1462534499 source:c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\my apps\elektroniczny zegar 2016-05-06\pliki do edycji\intro.cpp
+	"intro.h"
+	<stdio.h>
+
+1462533150 source:c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\my apps\elektroniczny zegar 2016-05-06\pliki do edycji\main.cpp
+	"engine.h"
+	<stdio.h>
+	<windows.h>
+
+1462529131 source:c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\my apps\elektroniczny zegar 2016-05-06\pliki do edycji\texture.cpp
+	"texture.h"
+	<SDL_image.h>
+	<stdio.h>
+	<string.h>
+
+1462529131 c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\my apps\elektroniczny zegar 2016-05-06\pliki do edycji\texture.h
+	<SDL.h>
+	<SDL_ttf.h>
+	<string>
+
+1462439931 source:c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\my apps\elektroniczny zegar 2016-05-06\pliki do edycji\timer.cpp
+	"timer.h"
+
+1462533029 source:c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\my apps\elektroniczny zegar 2016-05-06\pliki do edycji\window.cpp
+	"window.h"
+	<windows.h>
+	<stdio.h>
+	<fstream>
+	<ctype.h>
+

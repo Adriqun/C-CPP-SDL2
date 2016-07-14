@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<FileVersion major="1" minor="0" />
+	<ActiveTarget name="Debug" />
+	<File name="desktop.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3411" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="5" />
+			<Collapse line="22" />
+			<Collapse line="29" />
+			<Collapse line="64" />
+			<Collapse line="77" />
+			<Collapse line="112" />
+			<Collapse line="183" />
+			<Collapse line="204" />
+			<Collapse line="219" />
+			<Collapse line="243" />
+			<Collapse line="273" />
+			<Collapse line="308" />
+			<Collapse line="379" />
+		</Folding>
+	</File>
+	<File name="intro.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="224" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="menu.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="441" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="desktop.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="964" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="engine.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1684" topLine="15" />
+		</Cursor>
+		<Folding>
+			<Collapse line="9" />
+			<Collapse line="41" />
+			<Collapse line="58" />
+			<Collapse line="104" />
+			<Collapse line="115" />
+			<Collapse line="187" />
+			<Collapse line="204" />
+			<Collapse line="213" />
+			<Collapse line="223" />
+		</Folding>
+	</File>
+	<File name="hero.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3241" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="5" />
+			<Collapse line="14" />
+			<Collapse line="20" />
+			<Collapse line="59" />
+			<Collapse line="69" />
+			<Collapse line="128" />
+			<Collapse line="152" />
+		</Folding>
+	</File>
+	<File name="engine.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="260" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="intro.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3402" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="4" />
+			<Collapse line="16" />
+			<Collapse line="23" />
+			<Collapse line="57" />
+			<Collapse line="72" />
+		</Folding>
+	</File>
+	<File name="menu.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5904" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="4" />
+			<Collapse line="17" />
+			<Collapse line="24" />
+			<Collapse line="59" />
+			<Collapse line="78" />
+			<Collapse line="220" />
+			<Collapse line="263" />
+		</Folding>
+	</File>
+	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="358" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="texture.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3520" topLine="22" />
+		</Cursor>
+		<Folding>
+			<Collapse line="165" />
+			<Collapse line="194" />
+			<Collapse line="257" />
+		</Folding>
+	</File>
+	<File name="texture.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="343" topLine="30" />
+		</Cursor>
+	</File>
+	<File name="hero.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="371" topLine="0" />
+		</Cursor>
+	</File>
+</CodeBlocks_layout_file>

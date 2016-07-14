@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1431379683 source:c:\users\lenovo1\desktop\c++\jebut\main.cpp
+	<iostream>
+	<windows.h>
+	<cstdlib>
+
+1431376083 source:c:\users\lenovo1\desktop\c++ dorobek\c++\odliczanie do wybuchu\main.cpp
+	<iostream>
+	<windows.h>
+	<cstdlib>
+

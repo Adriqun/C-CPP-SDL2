@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1456863541 source:c:\users\lenovo1\desktop\wczytywanie c vs c++\main.cpp
+	<iostream>
+	<fstream>
+	<stdio.h>
+	<cstdio>
+	<ctime>
+
+1456867141 source:c:\users\lenovo1\desktop\github\console-applications\wczytywanie c vs c++\main.cpp
+	<iostream>
+	<fstream>
+	<stdio.h>
+	<cstdio>
+	<ctime>
+

@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1439678723 source:c:\users\lenovo1\desktop\char\main.cpp
+	<iostream>
+	<cstdlib>
+
+1442097159 source:c:\users\lenovo1\desktop\c++\char\main.cpp
+	<iostream>
+	<stdio.h>
+	<cstdlib>
+	<conio.h>
+

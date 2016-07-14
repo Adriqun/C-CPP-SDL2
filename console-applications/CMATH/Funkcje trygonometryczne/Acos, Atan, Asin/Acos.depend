@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1440951315 source:c:\users\lenovo1\desktop\acos\main.cpp
+	<iostream>
+	<cmath>
+
+1440951400 source:c:\users\lenovo1\desktop\c++ biblioteki\cmath\funkcje trygonometryczne\acos, atan, asin\main.cpp
+	<iostream>
+	<cmath>
+

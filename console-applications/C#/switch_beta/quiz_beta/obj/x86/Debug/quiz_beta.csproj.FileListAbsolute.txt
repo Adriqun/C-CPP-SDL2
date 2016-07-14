@@ -1,0 +1,4 @@
+C:\Users\Lenovo1\Documents\Projects\quiz_beta\quiz_beta\bin\Debug\quiz_beta.exe
+C:\Users\Lenovo1\Documents\Projects\quiz_beta\quiz_beta\bin\Debug\quiz_beta.pdb
+C:\Users\Lenovo1\Documents\Projects\quiz_beta\quiz_beta\obj\x86\Debug\quiz_beta.exe
+C:\Users\Lenovo1\Documents\Projects\quiz_beta\quiz_beta\obj\x86\Debug\quiz_beta.pdb
