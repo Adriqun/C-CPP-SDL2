@@ -1,0 +1,37 @@
+# depslib dependency file v1.0
+1455833003 source:c:\users\lenovo1\desktop\lekcja 27 (skok przez p這t)\main.cpp
+	"core.h"
+
+1455878542 source:c:\users\lenovo1\desktop\lekcja 27 (skok przez p這t)\hero.cpp
+	"hero.h"
+
+1455878323 c:\users\lenovo1\desktop\lekcja 27 (skok przez p這t)\hero.h
+	<SDL.h>
+	<SDL_image.h>
+	<string>
+	<stdio.h>
+
+1455883471 source:c:\users\lenovo1\desktop\lekcja 27 (skok przez p這t)\wall.cpp
+	"wall.h"
+	<stdio.h>
+	<iostream>
+
+1455882313 c:\users\lenovo1\desktop\lekcja 27 (skok przez p這t)\wall.h
+	<SDL.h>
+	<string>
+	<fstream>
+
+1455838078 source:c:\users\lenovo1\desktop\lekcja 27 (skok przez p這t)\detector.cpp
+	"detector.h"
+
+1455832829 c:\users\lenovo1\desktop\lekcja 27 (skok przez p這t)\detector.h
+	<SDL.h>
+
+1455883338 source:c:\users\lenovo1\desktop\lekcja 27 (skok przez p這t)\core.cpp
+	"core.h"
+
+1455832603 c:\users\lenovo1\desktop\lekcja 27 (skok przez p這t)\core.h
+	"detector.h"
+	"wall.h"
+	"hero.h"
+

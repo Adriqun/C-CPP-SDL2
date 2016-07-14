@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1449616132 source:c:\users\lenovo1\desktop\lekcja 4 (obs³uga klawiszy surface)\main.cpp
+	"SDL2/SDL.h"
+	<string>
+	<stdio.h>
+

@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1457374365 source:c:\users\lenovo1\desktop\lekcja 39 (tiling)\main.cpp
+	<fstream>
+	"texture.h"
+
+1457374396 c:\users\lenovo1\desktop\lekcja 39 (tiling)\texture.h
+	<string>
+	<SDL.h>
+	<SDL_image.h>
+	<stdio.h>
+
+1457374396 source:c:\users\lenovo1\desktop\lekcja 39 (tiling)\texture.cpp
+	"texture.h"
+

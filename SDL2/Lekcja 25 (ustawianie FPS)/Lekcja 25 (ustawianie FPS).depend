@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1452073572 source:c:\users\lenovo1\desktop\lekcja 25 (ustawianie fps)\main.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<stdio.h>
+	<string>
+	<sstream>
+
+1452614022 source:c:\users\lenovo1\desktop\sdl 2\lekcja 25 (ustawianie fps)\main.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<stdio.h>
+	<string>
+	<sstream>
+

@@ -1,0 +1,106 @@
+# depslib dependency file v1.0
+1456500746 source:c:\users\lenovo1\desktop\lekcja 39 (strzelanka - kosmos)\main.cpp
+	"hero.h"
+	"background.h"
+	<SDL_image.h>
+
+1456396258 source:c:\users\lenovo1\desktop\lekcja 39 (strzelanka - kosmos)\bg.cpp
+	"bg.h"
+
+1456396637 c:\users\lenovo1\desktop\lekcja 39 (strzelanka - kosmos)\bg.h
+	<SDL.h>
+	<SDL_image.h>
+	<string>
+	<stdio.h>
+
+1456489918 source:c:\users\lenovo1\desktop\lekcja 39 (strzelanka - kosmos)\background.cpp
+	"background.h"
+	<SDL_image.h>
+
+1456489776 c:\users\lenovo1\desktop\lekcja 39 (strzelanka - kosmos)\background.h
+	<SDL.h>
+	"debugger.h"
+
+1456531141 source:c:\users\lenovo1\desktop\lekcja 39 (strzelanka - kosmos)\hero.cpp
+	"hero.h"
+	<SDL_image.h>
+
+1454970699 c:\users\lenovo1\desktop\lekcja 39 (strzelanka - kosmos)\timer.h
+	<SDL.h>
+
+1455398341 source:c:\users\lenovo1\desktop\lekcja 39 (strzelanka - kosmos)\timer.cpp
+	"timer.h"
+
+1456489673 source:c:\users\lenovo1\desktop\lekcja 39 (strzelanka - kosmos)\debugger.cpp
+	"debugger.h"
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+	<stdio.h>
+	<windows.h>
+
+1456493357 c:\users\lenovo1\desktop\lekcja 39 (strzelanka - kosmos)\debugger.h
+	<string>
+
+1456530776 c:\users\lenovo1\desktop\lekcja 39 (strzelanka - kosmos)\hero.h
+	"debugger.h"
+	"hero_component.h"
+	"vector"
+
+1456530502 c:\users\lenovo1\desktop\lekcja 39 (strzelanka - kosmos)\hero_component.h
+	<SDL.h>
+	"debugger.h"
+
+1456530905 source:c:\users\lenovo1\desktop\lekcja 39 (strzelanka - kosmos)\hero_component.cpp
+	"hero_component.h"
+	<SDL_image.h>
+
+1456489918 source:c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 39 (warspace the game beta)\background.cpp
+	"background.h"
+	<SDL_image.h>
+
+1456489776 c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 39 (warspace the game beta)\background.h
+	<SDL.h>
+	"debugger.h"
+
+1456493357 c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 39 (warspace the game beta)\debugger.h
+	<string>
+
+1456489673 source:c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 39 (warspace the game beta)\debugger.cpp
+	"debugger.h"
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+	<stdio.h>
+	<windows.h>
+
+1456531141 source:c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 39 (warspace the game beta)\hero.cpp
+	"hero.h"
+	<SDL_image.h>
+
+1456530776 c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 39 (warspace the game beta)\hero.h
+	"debugger.h"
+	"hero_component.h"
+	"vector"
+
+1456530502 c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 39 (warspace the game beta)\hero_component.h
+	<SDL.h>
+	"debugger.h"
+
+1456530905 source:c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 39 (warspace the game beta)\hero_component.cpp
+	"hero_component.h"
+	<SDL_image.h>
+
+1456500746 source:c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 39 (warspace the game beta)\main.cpp
+	"hero.h"
+	"background.h"
+	<SDL_image.h>
+
+1455398341 source:c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 39 (warspace the game beta)\timer.cpp
+	"timer.h"
+
+1454970699 c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 39 (warspace the game beta)\timer.h
+	<SDL.h>
+

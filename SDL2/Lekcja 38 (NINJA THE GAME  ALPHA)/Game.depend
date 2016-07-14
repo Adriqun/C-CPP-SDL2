@@ -1,0 +1,272 @@
+# depslib dependency file v1.0
+1455407514 source:c:\users\lenovo1\desktop\game\main.cpp
+	"engine.h"
+
+1454762629 source:c:\users\lenovo1\desktop\game\characters.cpp
+	"characters.h"
+	<stdio.h>
+
+1454762629 c:\users\lenovo1\desktop\game\characters.h
+	<SDL.h>
+	<string>
+
+1455709927 source:c:\users\lenovo1\desktop\game\core.cpp
+	"core.h"
+
+1455489576 c:\users\lenovo1\desktop\game\core.h
+	<SDL.h>
+	<SDL_ttf.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<string>
+	<stdio.h>
+	<string>
+
+1455708522 source:c:\users\lenovo1\desktop\game\ninja.cpp
+	"ninja.h"
+
+1455708208 c:\users\lenovo1\desktop\game\ninja.h
+	<SDL.h>
+
+1455747721 source:c:\users\lenovo1\desktop\game\engine.cpp
+	"engine.h"
+
+1455706513 c:\users\lenovo1\desktop\game\engine.h
+	"core.h"
+	"timer.h"
+	"control.h"
+	"ninja.h"
+	"background.h"
+	"map_editor.h"
+	"engine_intro.h"
+
+1454970699 c:\users\lenovo1\desktop\game\timer.h
+	<SDL.h>
+
+1455398341 source:c:\users\lenovo1\desktop\game\timer.cpp
+	"timer.h"
+
+1455725006 source:c:\users\lenovo1\desktop\game\control.cpp
+	"control.h"
+
+1455725006 c:\users\lenovo1\desktop\game\control.h
+	"control_detailed.h"
+
+1455708467 source:c:\users\lenovo1\desktop\game\background.cpp
+	"background.h"
+
+1455708467 c:\users\lenovo1\desktop\game\background.h
+	<SDL.h>
+
+1455709893 source:c:\users\lenovo1\desktop\game\map_editor.cpp
+	"map_editor.h"
+	<stdio.h>
+
+1455747609 c:\users\lenovo1\desktop\game\map_editor.h
+	<SDL.h>
+	<fstream>
+
+1454967741 source:c:\users\lenovo1\desktop\game\control_global.cpp
+	"control_global.h"
+
+1454967826 c:\users\lenovo1\desktop\game\control_global.h
+	"control_detailed.h"
+
+1455724875 c:\users\lenovo1\desktop\game\control_detailed.h
+	<SDL.h>
+	<string>
+
+1455707723 source:c:\users\lenovo1\desktop\game\control_detailed.cpp
+	"control_detailed.h"
+
+1455406698 c:\users\lenovo1\desktop\game\states.h
+	<inttypes.h>
+
+1455488759 source:c:\users\lenovo1\desktop\game\states.cpp
+	"states.h"
+
+1454969643 c:\users\lenovo1\desktop\game\basic_functions.h
+	<SDL.h>
+	<SDL_ttf.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<string>
+	<stdio.h>
+
+1454969563 source:c:\users\lenovo1\desktop\game\basic_functions.cpp
+	"basic_functions.h"
+
+1455204655 source:c:\users\lenovo1\desktop\game\achievements.cpp
+	"achievements.h"
+
+1455204262 c:\users\lenovo1\desktop\game\achievements.h
+	<SDL.h>
+
+1455523860 source:c:\users\lenovo1\desktop\game\engine_intro.cpp
+	"engine_intro.h"
+
+1455523661 c:\users\lenovo1\desktop\game\engine_intro.h
+	<SDL.h>
+	<string>
+	<stdio.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+
+1455489029 c:\users\lenovo1\desktop\game\convert.h
+	<iostream>
+
+1455447722 source:c:\users\lenovo1\desktop\game\convert.cpp
+	"convert.h"
+
+1455708467 source:c:\users\lenovo1\desktop\game vol3\background.cpp
+	"background.h"
+
+1455708467 c:\users\lenovo1\desktop\game vol3\background.h
+	<SDL.h>
+
+1455725006 source:c:\users\lenovo1\desktop\game vol3\control.cpp
+	"control.h"
+
+1455725006 c:\users\lenovo1\desktop\game vol3\control.h
+	"control_detailed.h"
+
+1455724875 c:\users\lenovo1\desktop\game vol3\control_detailed.h
+	<SDL.h>
+	<string>
+
+1455707723 source:c:\users\lenovo1\desktop\game vol3\control_detailed.cpp
+	"control_detailed.h"
+
+1455709927 source:c:\users\lenovo1\desktop\game vol3\core.cpp
+	"core.h"
+
+1455489576 c:\users\lenovo1\desktop\game vol3\core.h
+	<SDL.h>
+	<SDL_ttf.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<string>
+	<stdio.h>
+	<string>
+
+1455523860 source:c:\users\lenovo1\desktop\game vol3\engine_intro.cpp
+	"engine_intro.h"
+
+1455523661 c:\users\lenovo1\desktop\game vol3\engine_intro.h
+	<SDL.h>
+	<string>
+	<stdio.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+
+1455407514 source:c:\users\lenovo1\desktop\game vol3\main.cpp
+	"engine.h"
+
+1455706513 c:\users\lenovo1\desktop\game vol3\engine.h
+	"core.h"
+	"timer.h"
+	"control.h"
+	"ninja.h"
+	"background.h"
+	"map_editor.h"
+	"engine_intro.h"
+
+1454970699 c:\users\lenovo1\desktop\game vol3\timer.h
+	<SDL.h>
+
+1455708208 c:\users\lenovo1\desktop\game vol3\ninja.h
+	<SDL.h>
+
+1455747609 c:\users\lenovo1\desktop\game vol3\map_editor.h
+	<SDL.h>
+	<fstream>
+
+1455398341 source:c:\users\lenovo1\desktop\game vol3\timer.cpp
+	"timer.h"
+
+1455724239 source:c:\users\lenovo1\desktop\game vol3\engine.cpp
+	"engine.h"
+
+1455709893 source:c:\users\lenovo1\desktop\game vol3\map_editor.cpp
+	"map_editor.h"
+	<stdio.h>
+
+1455708522 source:c:\users\lenovo1\desktop\game vol3\ninja.cpp
+	"ninja.h"
+
+1455712067 source:c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 38 (ninja the game  alpha)\background.cpp
+	"background.h"
+
+1455712067 c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 38 (ninja the game  alpha)\background.h
+	<SDL.h>
+
+1455728606 source:c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 38 (ninja the game  alpha)\control.cpp
+	"control.h"
+
+1455728606 c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 38 (ninja the game  alpha)\control.h
+	"control_detailed.h"
+
+1455728475 c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 38 (ninja the game  alpha)\control_detailed.h
+	<SDL.h>
+	<string>
+
+1455711323 source:c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 38 (ninja the game  alpha)\control_detailed.cpp
+	"control_detailed.h"
+
+1455713527 source:c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 38 (ninja the game  alpha)\core.cpp
+	"core.h"
+
+1455493176 c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 38 (ninja the game  alpha)\core.h
+	<SDL.h>
+	<SDL_ttf.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<string>
+	<stdio.h>
+	<string>
+
+1457186494 source:c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 38 (ninja the game  alpha)\engine.cpp
+	"engine.h"
+
+1455710113 c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 38 (ninja the game  alpha)\engine.h
+	"core.h"
+	"timer.h"
+	"control.h"
+	"ninja.h"
+	"background.h"
+	"map_editor.h"
+	"engine_intro.h"
+
+1455711808 c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 38 (ninja the game  alpha)\ninja.h
+	<SDL.h>
+
+1455751209 c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 38 (ninja the game  alpha)\map_editor.h
+	<SDL.h>
+	<fstream>
+
+1455527261 c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 38 (ninja the game  alpha)\engine_intro.h
+	<SDL.h>
+	<string>
+	<stdio.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+
+1455527460 source:c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 38 (ninja the game  alpha)\engine_intro.cpp
+	"engine_intro.h"
+
+1455411114 source:c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 38 (ninja the game  alpha)\main.cpp
+	"engine.h"
+
+1455713493 source:c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 38 (ninja the game  alpha)\map_editor.cpp
+	"map_editor.h"
+	<stdio.h>
+
+1455712122 source:c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 38 (ninja the game  alpha)\ninja.cpp
+	"ninja.h"
+
+1457190183 c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 38 (ninja the game  alpha)\timer.h
+	<SDL.h>
+
+1457190183 source:c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 38 (ninja the game  alpha)\timer.cpp
+	"timer.h"
+

@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1452298219 source:c:\users\lenovo1\desktop\elektryczne pianino\main.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<string>
+	<stdio.h>
+
+1452704412 source:c:\users\lenovo1\desktop\sdl 2\elektryczne pianino beta\main.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<string>
+	<stdio.h>
+

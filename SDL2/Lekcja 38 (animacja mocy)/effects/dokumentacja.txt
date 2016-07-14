@@ -1,0 +1,12 @@
+Dokumentacja zawiera liczbe klatek danej animacji 
+Stworzone 2016.02.21 przez *DETREAL ENGINE* - \\\*Adrian Micha³ek*
+blue 25
+blue2 28
+green 25
+green2 29
+orange 25
+orange2 28
+red 26
+red2 29
+violet 25
+violet2 29

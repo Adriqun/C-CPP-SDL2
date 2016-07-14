@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1452614703 source:c:\users\lenovo1\desktop\lekcja 30 (przewijanie)\main.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<stdio.h>
+	<string>
+
+1452614703 source:c:\users\lenovo1\desktop\sdl 2\lekcja 30 (przewijanie)\main.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<stdio.h>
+	<string>
+

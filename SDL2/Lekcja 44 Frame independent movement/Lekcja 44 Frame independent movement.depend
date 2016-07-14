@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1467930111 source:c:\users\lenovo1\desktop\lekcja 44 frame independent movement\main.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<stdio.h>
+	<string>
+	<string.h>
+

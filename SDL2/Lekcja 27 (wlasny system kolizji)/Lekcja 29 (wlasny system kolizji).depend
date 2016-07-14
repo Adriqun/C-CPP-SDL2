@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1455698902 source:c:\users\lenovo1\desktop\lekcja 29 (wlasny system kolizji)\main.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<stdio.h>
+	<iostream>
+
+1457276635 source:c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 27 (wlasny system kolizji)\main.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<stdio.h>
+	<iostream>
+

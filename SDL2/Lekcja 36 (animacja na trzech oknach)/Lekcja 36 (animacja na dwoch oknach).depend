@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1456055625 source:c:\users\lenovo1\desktop\lekcja 36 (animacja na dwoch oknach)\main.cpp
+	"animation.h"
+	"window.h"
+
+1456055858 source:c:\users\lenovo1\desktop\lekcja 36 (animacja na dwoch oknach)\animation.cpp
+	"animation.h"
+
+1456055542 c:\users\lenovo1\desktop\lekcja 36 (animacja na dwoch oknach)\animation.h
+	<SDL.h>
+	<SDL_image.h>
+	<string>
+	<stdio.h>
+
+1456055750 source:c:\users\lenovo1\desktop\lekcja 36 (animacja na dwoch oknach)\window.cpp
+	"window.h"
+
+1456055552 c:\users\lenovo1\desktop\lekcja 36 (animacja na dwoch oknach)\window.h
+	<SDL.h>
+	<stdio.h>
+	<string>
+	<sstream>
+

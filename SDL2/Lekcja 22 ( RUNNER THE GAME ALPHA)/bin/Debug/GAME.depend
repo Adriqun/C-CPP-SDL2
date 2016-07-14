@@ -1,0 +1,145 @@
+# depslib dependency file v1.0
+1450295854 source:c:\users\lenovo1\desktop\lekcja 22 (animacja z timerem)\main.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<stdio.h>
+	<string>
+
+1450569454 source:c:\users\lenovo1\desktop\gra\main.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<stdio.h>
+	<string>
+	"opponents.h"
+	"background.h"
+	"control.h"
+
+1450559640 c:\users\lenovo1\desktop\gra\opponents.h
+	<SDL.h>
+	<stdio.h>
+	<string>
+
+1450569454 source:c:\users\lenovo1\desktop\gra\opponents.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<stdio.h>
+	<string>
+	"opponents.h"
+
+1450569454 source:c:\users\lenovo1\desktop\gra\background.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<stdio.h>
+	<string>
+	"background.h"
+
+1450569454 c:\users\lenovo1\desktop\gra\background.h
+	<SDL.h>
+	<stdio.h>
+	<string>
+
+1450569454 source:c:\users\lenovo1\desktop\gra\control.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<stdio.h>
+	<string>
+	"control.h"
+	"background.h"
+
+1450569454 c:\users\lenovo1\desktop\gra\control.h
+	<SDL.h>
+	<stdio.h>
+	<string>
+	"background.h"
+
+1451518451 source:c:\users\lenovo1\desktop\game\background.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<stdio.h>
+	<time.h>
+	<cstdlib>
+	<iostream>
+	"background.h"
+	"universal.h"
+
+1451518323 c:\users\lenovo1\desktop\game\background.h
+	<SDL.h>
+	<SDL_mixer.h>
+	<stdio.h>
+	<string>
+	"universal.h"
+	"character.h"
+
+1451519602 source:c:\users\lenovo1\desktop\game\control.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<stdio.h>
+	<sstream>
+	"control.h"
+
+1451477850 c:\users\lenovo1\desktop\game\control.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<stdio.h>
+	<sstream>
+
+1451520320 source:c:\users\lenovo1\desktop\game\main.cpp
+	<SDL.h>
+	<stdio.h>
+	<vector>
+	"background.h"
+	"control.h"
+	"character.h"
+	"opponents.h"
+
+1451519268 c:\users\lenovo1\desktop\game\opponents.h
+	<SDL.h>
+	<SDL_mixer.h>
+	<stdio.h>
+	"universal.h"
+
+1451520641 source:c:\users\lenovo1\desktop\game\opponents.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<stdio.h>
+	<math.h>
+	<time.h>
+	<cstdlib>
+	"opponents.h"
+	"universal.h"
+
+1451312376 source:c:\users\lenovo1\desktop\game\character.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<stdio.h>
+	<string>
+	"universal.h"
+	"character.h"
+
+1451312376 c:\users\lenovo1\desktop\game\character.h
+	<SDL.h>
+	<stdio.h>
+	<string>
+	"universal.h"
+
+1451430969 source:c:\users\lenovo1\desktop\game\universal.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<stdio.h>
+	<math.h>
+	"universal.h"
+
+1451430266 c:\users\lenovo1\desktop\game\universal.h
+	<SDL.h>
+	<stdio.h>
+	<string>
+

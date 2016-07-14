@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1450200153 source:c:\users\lenovo1\desktop\sdl 2\lekcja 1,2 (wyswietlanie hello world)\main.cpp
+	<SDL.h>
+	<string>
+	<stdio.h>
+
+1462043378 source:c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 1,2 (wyswietlanie hello world)\main.cpp
+	<SDL.h>
+	<string>
+	<stdio.h>
+

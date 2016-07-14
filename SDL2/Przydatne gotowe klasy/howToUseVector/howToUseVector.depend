@@ -1,0 +1,35 @@
+# depslib dependency file v1.0
+1460298586 source:c:\users\lenovo1\desktop\howtousevector\engine.cpp
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<stdio.h>
+	"engine.h"
+
+1460298586 c:\users\lenovo1\desktop\howtousevector\engine.h
+	"texture.h"
+	<vector>
+
+1460295805 c:\users\lenovo1\desktop\howtousevector\window.h
+	<SDL.h>
+	<string>
+
+1459684268 c:\users\lenovo1\desktop\howtousevector\texture.h
+	<SDL.h>
+	<string>
+
+1460286316 source:c:\users\lenovo1\desktop\howtousevector\main.cpp
+	"engine.h"
+	<stdio.h>
+
+1459693014 source:c:\users\lenovo1\desktop\howtousevector\texture.cpp
+	"texture.h"
+	<SDL_image.h>
+	<stdio.h>
+	<string.h>
+
+1460295805 source:c:\users\lenovo1\desktop\howtousevector\window.cpp
+	"window.h"
+	<stdio.h>
+	<sstream>
+

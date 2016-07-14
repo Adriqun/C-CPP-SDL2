@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1452077167 source:c:\users\lenovo1\desktop\lekcja 26 (ruch)\main.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<stdio.h>
+	<string>
+

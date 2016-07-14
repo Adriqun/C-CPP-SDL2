@@ -1,0 +1,92 @@
+# depslib dependency file v1.0
+1453550786 source:c:\users\lenovo1\desktop\lekcja 28 (arkanoid 1vs1)\main.cpp
+	"global.h"
+	"objects.h"
+	"control.h"
+
+1453541411 source:c:\users\lenovo1\desktop\lekcja 28 (arkanoid 1vs1)\objects.cpp
+	"objects.h"
+
+1453549265 c:\users\lenovo1\desktop\lekcja 28 (arkanoid 1vs1)\objects.h
+	"global.h"
+
+1453548481 source:c:\users\lenovo1\desktop\lekcja 28 (arkanoid 1vs1)\global.cpp
+	"global.h"
+
+1453548481 c:\users\lenovo1\desktop\lekcja 28 (arkanoid 1vs1)\global.h
+	<SDL.h>
+	<SDL_image.h>
+	<stdio.h>
+	<iostream>
+
+1453551373 source:c:\users\lenovo1\desktop\lekcja 28 (arkanoid 1vs1)\control.cpp
+	"control.h"
+
+1453551189 c:\users\lenovo1\desktop\lekcja 28 (arkanoid 1vs1)\control.h
+	"global.h"
+
+1453548481 source:c:\users\lenovo1\desktop\sdl 2\lekcja 28 (arkanoid 1vs1)\global.cpp
+	"global.h"
+
+1453548481 c:\users\lenovo1\desktop\sdl 2\lekcja 28 (arkanoid 1vs1)\global.h
+	<SDL.h>
+	<SDL_image.h>
+	<stdio.h>
+	<iostream>
+
+1453636983 source:c:\users\lenovo1\desktop\sdl 2\lekcja 28 (arkanoid 1vs1)\main.cpp
+	"global.h"
+	"objects.h"
+	"control.h"
+	"intro.h"
+
+1453549265 c:\users\lenovo1\desktop\sdl 2\lekcja 28 (arkanoid 1vs1)\objects.h
+	"global.h"
+
+1453551189 c:\users\lenovo1\desktop\sdl 2\lekcja 28 (arkanoid 1vs1)\control.h
+	"global.h"
+
+1453541411 source:c:\users\lenovo1\desktop\sdl 2\lekcja 28 (arkanoid 1vs1)\objects.cpp
+	"objects.h"
+
+1453555693 source:c:\users\lenovo1\desktop\sdl 2\lekcja 28 (arkanoid 1vs1)\control.cpp
+	"control.h"
+
+1453636905 source:c:\users\lenovo1\desktop\sdl 2\lekcja 28 (arkanoid 1vs1)\intro.cpp
+	<SDL.h>
+	<iostream>
+	<stdio.h>
+	"intro.h"
+	<SDL_image.h>
+
+1453636722 c:\users\lenovo1\desktop\sdl 2\lekcja 28 (arkanoid 1vs1)\intro.h
+	<SDL.h>
+	<string>
+
+1454187735 source:c:\users\lenovo1\desktop\c++ dorobek\sdl 2\lekcja 28 (arkanoid 1vs1)\control.cpp
+	"control.h"
+
+1453551189 c:\users\lenovo1\desktop\c++ dorobek\sdl 2\lekcja 28 (arkanoid 1vs1)\control.h
+	"global.h"
+
+1453548481 c:\users\lenovo1\desktop\c++ dorobek\sdl 2\lekcja 28 (arkanoid 1vs1)\global.h
+	<SDL.h>
+	<SDL_image.h>
+	<stdio.h>
+	<iostream>
+
+1453548481 source:c:\users\lenovo1\desktop\c++ dorobek\sdl 2\lekcja 28 (arkanoid 1vs1)\global.cpp
+	"global.h"
+
+1453636983 source:c:\users\lenovo1\desktop\c++ dorobek\sdl 2\lekcja 28 (arkanoid 1vs1)\main.cpp
+	"global.h"
+	"objects.h"
+	"control.h"
+	"intro.h"
+
+1453549265 c:\users\lenovo1\desktop\c++ dorobek\sdl 2\lekcja 28 (arkanoid 1vs1)\objects.h
+	"global.h"
+
+1453541411 source:c:\users\lenovo1\desktop\c++ dorobek\sdl 2\lekcja 28 (arkanoid 1vs1)\objects.cpp
+	"objects.h"
+

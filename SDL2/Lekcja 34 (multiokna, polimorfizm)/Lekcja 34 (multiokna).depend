@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1452970502 source:c:\users\lenovo1\desktop\lekcja 34 (multiokna)\main.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<stdio.h>
+	<iostream>
+
+1452970502 source:c:\users\lenovo1\desktop\c++ dorobek\sdl 2\lekcja 34 (multiokna, polimorfizm)\main.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<stdio.h>
+	<iostream>
+
+1452970502 source:c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 34 (multiokna, polimorfizm)\main.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<stdio.h>
+	<iostream>
+

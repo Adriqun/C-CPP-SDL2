@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1450029686 source:c:\users\lenovo1\desktop\lekcja 22 (timer)\main.cpp
+	"SDL2/SDL.h"
+	"SDL2/SDL_ttf.h"
+	"SDL2/SDL_image.h"
+	<stdio.h>
+	<string>
+	<sstream>
+
+1450201123 source:c:\users\lenovo1\desktop\sdl 2\lekcja 22 (timer)\main.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<stdio.h>
+	<string>
+	<sstream>
+

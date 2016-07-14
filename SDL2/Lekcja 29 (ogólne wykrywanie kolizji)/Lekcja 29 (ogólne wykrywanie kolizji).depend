@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1452614484 source:c:\users\lenovo1\desktop\lekcja 29 (ogólne wykrywanie kolizji)\main.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<stdio.h>
+	<string>
+

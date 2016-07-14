@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1456136267 source:c:\users\lenovo1\desktop\lekcja 38 (animacja mocy)\main.cpp
+	"power.h"
+
+1456135395 source:c:\users\lenovo1\desktop\lekcja 38 (animacja mocy)\power.cpp
+	"power.h"
+
+1456134742 c:\users\lenovo1\desktop\lekcja 38 (animacja mocy)\power.h
+	<SDL.h>
+	<string>
+	<stdio.h>
+	<SDL_image.h>
+
+1456136267 source:c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 38 (animacja mocy)\main.cpp
+	"power.h"
+
+1456134742 c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 38 (animacja mocy)\power.h
+	<SDL.h>
+	<string>
+	<stdio.h>
+	<SDL_image.h>
+
+1456135395 source:c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 38 (animacja mocy)\power.cpp
+	"power.h"
+

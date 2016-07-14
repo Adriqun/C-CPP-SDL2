@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1452614312 source:c:\users\lenovo1\desktop\lekcja 28 (detektor kolizji na pixel)\main.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<stdio.h>
+	<string>
+	<vector>
+

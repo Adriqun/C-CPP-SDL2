@@ -1,0 +1,47 @@
+# depslib dependency file v1.0
+1459691295 source:c:\users\lenovo1\desktop\lekcja 41 ( bitmap czcionki )\main.cpp
+	<SDL_image.h>
+	<stdio.h>
+	<cstdlib>
+	"bitmapFont.h"
+
+1459684268 c:\users\lenovo1\desktop\lekcja 41 ( bitmap czcionki )\texture.h
+	<SDL.h>
+	<string>
+
+1459690783 source:c:\users\lenovo1\desktop\lekcja 41 ( bitmap czcionki )\texture.cpp
+	"texture.h"
+	<SDL_image.h>
+	<stdio.h>
+	<string.h>
+
+1459691225 source:c:\users\lenovo1\desktop\lekcja 41 ( bitmap czcionki )\bitmapfont.cpp
+	"bitmapFont.h"
+	<stdio.h>
+
+1459691295 c:\users\lenovo1\desktop\lekcja 41 ( bitmap czcionki )\bitmapfont.h
+	"texture.h"
+
+1459691225 source:c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 41 ( bitmap czcionki )\bitmapfont.cpp
+	"bitmapFont.h"
+	<stdio.h>
+
+1459691295 c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 41 ( bitmap czcionki )\bitmapfont.h
+	"texture.h"
+
+1459684268 c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 41 ( bitmap czcionki )\texture.h
+	<SDL.h>
+	<string>
+
+1459691295 source:c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 41 ( bitmap czcionki )\main.cpp
+	<SDL_image.h>
+	<stdio.h>
+	<cstdlib>
+	"bitmapFont.h"
+
+1459690783 source:c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\sdl 2 z c++\lekcja 41 ( bitmap czcionki )\texture.cpp
+	"texture.h"
+	<SDL_image.h>
+	<stdio.h>
+	<string.h>
+

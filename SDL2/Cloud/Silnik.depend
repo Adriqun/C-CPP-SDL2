@@ -1,0 +1,80 @@
+# depslib dependency file v1.0
+1460223479 source:c:\users\lenovo1\desktop\silnik\engine.cpp
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<stdio.h>
+	"engine.h"
+
+1460222403 c:\users\lenovo1\desktop\silnik\engine.h
+	"window.h"
+
+1460223331 c:\users\lenovo1\desktop\silnik\window.h
+	<SDL.h>
+	<string>
+
+1385320478 source:c:\users\lenovo1\desktop\silnik\main.cpp
+	<iostream>
+
+1460223345 source:c:\users\lenovo1\desktop\silnik\window.cpp
+	"window.h"
+	<stdio.h>
+	<sstream>
+
+1460223584 source:c:\users\lenovo1\desktop\przydatne gotowe klasy\silnik\main.cpp
+	"engine.h"
+	<stdio.h>
+
+1460298799 c:\users\lenovo1\desktop\przydatne gotowe klasy\silnik\engine.h
+	<SDL.h>
+
+1460298804 source:c:\users\lenovo1\desktop\przydatne gotowe klasy\silnik\engine.cpp
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<stdio.h>
+	"engine.h"
+
+1468444684 source:c:\users\lenovo1\desktop\cloud\engine.cpp
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<stdio.h>
+	"engine.h"
+
+1468444684 c:\users\lenovo1\desktop\cloud\engine.h
+	<SDL.h>
+	"storm.h"
+
+1460223584 source:c:\users\lenovo1\desktop\cloud\main.cpp
+	"engine.h"
+	<stdio.h>
+
+1468445263 source:c:\users\lenovo1\desktop\cloud\cloud.cpp
+	"cloud.h"
+	<time.h>
+	<stdio.h>
+	<cstdlib>
+
+1468444604 c:\users\lenovo1\desktop\cloud\cloud.h
+	"texture.h"
+
+1468438520 c:\users\lenovo1\desktop\cloud\texture.h
+	<SDL.h>
+	<string>
+
+1468444995 source:c:\users\lenovo1\desktop\cloud\storm.cpp
+	"storm.h"
+	<stdio.h>
+	<cstdlib>
+	<time.h>
+
+1468444427 c:\users\lenovo1\desktop\cloud\storm.h
+	"cloud.h"
+
+1468438520 source:c:\users\lenovo1\desktop\cloud\texture.cpp
+	"texture.h"
+	<SDL_image.h>
+	<stdio.h>
+	<string.h>
+
