@@ -11,7 +11,7 @@ Ok first of all the things that you see below it's not my first big project, I h
 
 **Following changes:**
 
-It's only one texture, rendering with 60 **F**rames **P**er **S**second, I try to have clean code, so first I made a simple engine whose contain window, renderer, width and height of window and event(like clicking the mouse)
+It's only one texture, rendering with 60 **F**rames **P**er **S**econd, I try to have clean code, so first I made a simple engine whose contain window, renderer, width and height of window and event(like clicking the mouse)
 ![2](https://cloud.githubusercontent.com/assets/19840443/16836879/3ab16bd4-49c0-11e6-9481-398ce69de3f1.png)
 
 
@@ -19,16 +19,15 @@ Adding the hero is trivial, you care about position, control and for example upl
 ![3](https://cloud.githubusercontent.com/assets/19840443/16836889/46aaaa36-49c0-11e6-8802-1ffe8c523e2b.png)
 
 
-Let's make some weather! Download a few images of cloud, make a drop in **gimp**, random what you can: velocity of cloud, gravitation for drop(also velocity), size of drop, a start position for drop, a diffrent gravitation for each drop, alpha for drops, alpha for clouds etc. It depend of your imagination!
+Let's make some weather! Download a few images of cloud from **google** image, make a drop in **gimp**, random what you can: velocity of cloud, gravitation for drop(also velocity), size of drop, a start position for drop, a diffrent gravitation for each drop, alpha for drops, alpha for clouds etc. **It depend of your imagination!**
 ![4](https://cloud.githubusercontent.com/assets/19840443/16836902/5486fd6c-49c0-11e6-9bff-bccf31586699.png)
 
 
-**When you are coding you will have a moment that you need to do editor map, it will accelerate your creating so much, really...**
+When you are coding you will have a moment that you need to do editor map, **it will accelerate your creating so much**, really...
 ![6](https://cloud.githubusercontent.com/assets/19840443/16881974/fc38a158-4abc-11e6-9714-7fac93560e02.png)
 
 
-**Now you see a collision detection, character is standing on the platform, it's not easy for beginner, at the moment I'm a beginner,
-In the future when game will finish, I'm going to describe you my first-hand problems**
+Now you see a collision detection, character is standing on the platform. It's not easy for beginner. I'm going to describe you my first-hand problems.
 ![5](https://cloud.githubusercontent.com/assets/19840443/16881879/7dc5573a-4abc-11e6-86de-446bde3e0d90.png)
 
 
