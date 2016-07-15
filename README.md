@@ -1,7 +1,7 @@
 # Portfolio
 My large projects
 
-
+![giphy](https://cloud.githubusercontent.com/assets/19840443/16882404/0cd3489a-4abf-11e6-9473-1637cabcb2a7.gif)
 >For example one of my projects. (started 2016.07.01)
 
 **"Ninja"**
