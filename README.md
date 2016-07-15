@@ -27,7 +27,7 @@ When you are coding you will have a moment that you need to do editor map, **it 
 ![6](https://cloud.githubusercontent.com/assets/19840443/16881974/fc38a158-4abc-11e6-9714-7fac93560e02.png)
 
 
-Now you see a collision detection, character is standing on the platform. It's not easy for beginner. I'm going to describe you my first-hand problems.
+Now you see a collision detection, character is standing on the platform. It's not easy for beginner It might be difficult when you have many objects. I will describe you my first-hand problems later.
 ![5](https://cloud.githubusercontent.com/assets/19840443/16881879/7dc5573a-4abc-11e6-86de-446bde3e0d90.png)
 
 
