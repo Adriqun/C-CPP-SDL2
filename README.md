@@ -1,10 +1,13 @@
 # Portfolio
 My large projects
 
-![giphy](https://cloud.githubusercontent.com/assets/19840443/16882404/0cd3489a-4abf-11e6-9473-1637cabcb2a7.gif)
->For example one of my projects. (started 2016.07.01)
+Let's talk about my first game. (started 2016.07.01)
+![homer-simpson](https://cloud.githubusercontent.com/assets/19840443/16882610/3ad7712a-4ac0-11e6-894c-9621051c6664.png)
 
-**"Ninja"**
+
+Ok first of all the things that you see below it's not my first big project, I had a few before but I have never finish them, so I want to show you my first **finished big project**
+
+>**"Ninja"**
 
 Following changes
 ![2](https://cloud.githubusercontent.com/assets/19840443/16836879/3ab16bd4-49c0-11e6-9481-398ce69de3f1.png)
@@ -19,4 +22,7 @@ Following changes
 In the future when game will finish, I'm going to describe you my first-hand problems**
 
 ![5](https://cloud.githubusercontent.com/assets/19840443/16881879/7dc5573a-4abc-11e6-86de-446bde3e0d90.png)
+
+When you are far, consistently you have bigger chance to have bugs.
+![bug-1](https://cloud.githubusercontent.com/assets/19840443/16882714/bb35ba98-4ac0-11e6-9ffe-fbad24f8bc08.jpg)
 
