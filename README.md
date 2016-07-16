@@ -39,6 +39,6 @@ I think now looks better, you see a **hearts** and now I can **pause** the game 
 ![1](https://cloud.githubusercontent.com/assets/19840443/16893941/6e9b74a2-4b47-11e6-97e5-e01be3609ee3.png)
 
 
-Vector for monsters it's good idea, you can easily create new and delete old.
+Vector of monsters it's good idea, you can easily create new and delete old.
 ![2](https://cloud.githubusercontent.com/assets/19840443/16897193/68b9cc38-4baa-11e6-808f-46f374bb9960.png)
 
