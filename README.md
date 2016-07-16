@@ -35,6 +35,6 @@ When you are far, consistently you have bigger chance to have bugs.
 ![bug-1](https://cloud.githubusercontent.com/assets/19840443/16882714/bb35ba98-4ac0-11e6-9ffe-fbad24f8bc08.jpg)
 
 
-I think now looks better, you see a **hearts** and now I can **pause** the game (top left corner)
+I think now looks better, you see a **hearts** and now I can **pause** the game (top left corner), otherwise I changed color of drop, **white looks like snow?**
 ![1](https://cloud.githubusercontent.com/assets/19840443/16893941/6e9b74a2-4b47-11e6-97e5-e01be3609ee3.png)
 
