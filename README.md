@@ -7,7 +7,9 @@ Let's talk about my first mini game. (written in one week)
 
 Ok first of all the things that you see below it's not my first project, I had a few before but I have never finish them, so I want to show you my first **finished mini project**
 
->**"Ninja"**
+>**"Jump and jump"**
+**you need to go as far as possible**
+**Further = harder **
 
 **Following changes:**
 
@@ -43,5 +45,5 @@ Vector of monsters it's good idea, you can easily create new and delete old.
 ![2](https://cloud.githubusercontent.com/assets/19840443/16897193/68b9cc38-4baa-11e6-808f-46f374bb9960.png)
 
 
-It's really work!!! Collision detection between hero and enemy works, but now when I'm looking at my code I'm as blind as a mole!
+It really works!!! Collision detection between hero and enemy works, but now when I'm looking at my code I'm as blind as a mole!
 ![bez nazwy](https://cloud.githubusercontent.com/assets/19840443/16897394/1c6ca610-4bb0-11e6-9bbe-9eaf4bef3725.png)
