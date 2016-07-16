@@ -42,3 +42,6 @@ I think now looks better, you see a **hearts** and now I can **pause** the game 
 Vector of monsters it's good idea, you can easily create new and delete old.
 ![2](https://cloud.githubusercontent.com/assets/19840443/16897193/68b9cc38-4baa-11e6-808f-46f374bb9960.png)
 
+
+It's really work!!! Collision detection between hero and enemy works, but now when I'm looking at my code I'm as blind as a mole!
+![bez nazwy](https://cloud.githubusercontent.com/assets/19840443/16897394/1c6ca610-4bb0-11e6-9bbe-9eaf4bef3725.png)
