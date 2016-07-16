@@ -1,11 +1,11 @@
 # Portfolio
 My large projects
 
-Let's talk about my first game. (started 2016.07.01)
+Let's talk about my first mini game. (written in one week)
 ![homer-simpson](https://cloud.githubusercontent.com/assets/19840443/16882610/3ad7712a-4ac0-11e6-894c-9621051c6664.png)
 
 
-Ok first of all the things that you see below it's not my first big project, I had a few before but I have never finish them, so I want to show you my first **finished big project**
+Ok first of all the things that you see below it's not my first project, I had a few before but I have never finish them, so I want to show you my first **finished mini project**
 
 >**"Ninja"**
 
