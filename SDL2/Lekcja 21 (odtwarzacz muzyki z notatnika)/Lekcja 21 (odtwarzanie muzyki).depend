@@ -26,3 +26,12 @@
 	<string>
 	<fstream>
 
+1450204662 source:c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 21 (odtwarzacz muzyki z notatnika)\main.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+	<stdio.h>
+	<string>
+	<fstream>
+
