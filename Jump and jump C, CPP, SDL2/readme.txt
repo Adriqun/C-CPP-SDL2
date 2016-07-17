@@ -1,3 +1,4 @@
+WORK IN PROGRESS
 Hello everyone!
 
 Ok first, game have a lot of bugs( made in one week )!
