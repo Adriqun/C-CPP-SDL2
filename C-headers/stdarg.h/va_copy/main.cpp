@@ -4,43 +4,49 @@
 #include <stdarg.h>     /* va_list, va_start, va_copy, va_arg, va_end */
 
 /* print ints until a zero is found: */
-void PrintInts (int first,...)
+
+void PrintInts ( int first, ... )
 {
     char * buffer;
     const char * format = "[%d] ";
-    int count = 0;
+
     int val = first;
-    va_list vl,vl_count;
-    va_start(vl,first);
+    va_list vl;
+    va_list vl_count;
+
+    va_start( vl, first );
 
     /* count number of arguments: */
-    va_copy(vl_count,vl);
-    while (val != 0)
+    va_copy( vl_count, vl );
+
+    int count = 0;
+    while( val != 0 )
     {
-        val=va_arg(vl_count,int);
+        val = va_arg( vl_count,int );
         ++count;
     }
-    va_end(vl_count);
+    va_end( vl_count );
 
     /* allocate storage for format string: */
-    buffer = (char*) malloc (strlen(format)*count+1);
-    buffer[0]='\0';
+    buffer = ( char* ) malloc( strlen( format ) * count+1 );
+    buffer[ 0 ] = '\0';
 
     /* generate format string: */
-    for (; count>0; --count)
+    for(; count > 0; --count )
     {
-        strcat (buffer,format);
+        strcat( buffer, format );
     }
 
     /* print integers: */
-    printf (format,first);
-    vprintf (buffer,vl);
+    printf( format, first );
+    vprintf( buffer, vl );
 
-    va_end(vl);
+    va_end( vl );
 }
 
 int main ()
 {
-    PrintInts (10,20,30,40,50,0);
+    PrintInts( 10, 20, 30, 40, 50, 0 );
+
     return 0;
 }

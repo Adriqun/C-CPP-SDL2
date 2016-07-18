@@ -1,0 +1,1 @@
+The purpose in C of this header is to add a bool type and the true and false values as macro definitions

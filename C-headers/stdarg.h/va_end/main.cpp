@@ -1,27 +1,29 @@
 #include <stdio.h>      /* puts */
 #include <stdarg.h>     /* va_list, va_start, va_arg, va_end */
 
-void PrintLines (char* first, ...)
+void PrintLines( char* first, ... )
 {
     char* str;
     va_list vl;
 
-    str=first;
+    str = first;
 
-    va_start(vl,first);
+    va_start( vl, first );
 
     do
     {
-        puts(str);
-        str=va_arg(vl,char*);
+        puts( str );
+        str = va_arg( vl, char* );
     }
-    while (str!=NULL);
+    while( str != NULL );
 
-    va_end(vl);
+    va_end( vl );
 }
 
 int main ()
 {
-    PrintLines ("First","Second","Third","Fourth",NULL);
+
+    PrintLines( "First", "Second", "Third", "Fourth", NULL );
+
     return 0;
 }
