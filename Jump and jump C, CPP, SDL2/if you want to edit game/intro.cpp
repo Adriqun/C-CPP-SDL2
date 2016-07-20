@@ -63,7 +63,7 @@ bool Intro::load( SDL_Renderer* &renderer, SDL_Window* &window )
     SDL_GetWindowSize( window, &w, &h );
 
     Font* font = new Font;
-    if( !font->load( "intro/Jaapokki-Regular.otf", 40 ) )
+    if( !font->load( "intro/MaszynaAEG.ttf", 37 ) )
     {
         success = false;
     }
@@ -136,7 +136,7 @@ bool Intro::load( SDL_Renderer* &renderer, SDL_Window* &window )
 
 
         // My name and text
-        if( !texture[ AUTHOR ].loadFromRenderedText( renderer, font->get(), "Adrian Michalek", white ) )
+        if( !texture[ AUTHOR ].loadFromRenderedText( renderer, font->get(), "Adrian Micha³ek", white ) )
         {
             success = false;
         }
@@ -149,7 +149,7 @@ bool Intro::load( SDL_Renderer* &renderer, SDL_Window* &window )
             x[ AUTHOR ] =   (w / 2) - (texture[ AUTHOR ].getWidth() / 2);
             y[ AUTHOR ] =   (h / 2) - (texture[ AUTHOR ].getHeight() / 2);
             x[ PRODUCED ] = (w / 2) - (texture[ PRODUCED ].getWidth() / 2);
-            y[ PRODUCED ] = (h / 2) - (texture[ PRODUCED ].getHeight() / 2) - texture[ AUTHOR ].getHeight();
+            y[ PRODUCED ] = (h / 2) - (texture[ PRODUCED ].getHeight() / 2) - texture[ AUTHOR ].getHeight() - 10;
         }
     }
 
