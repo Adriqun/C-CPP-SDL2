@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1469025166 source:c:\users\lenovo1\desktop\sizeof\main.cpp
+	<iostream>
+	<SDL.h>
+
