@@ -46,7 +46,10 @@ bool Music::load( const char* path, int volume )
 void Music::play()
 {
     if( Mix_PausedMusic() == 1 )
+    {
         Mix_ResumeMusic();
+    }
+
 
     if( Mix_PlayingMusic() == 0 )
     {
@@ -56,10 +59,10 @@ void Music::play()
 
 void Music::pause()
 {
-    if( Mix_PausedMusic() == 1 )
-        Mix_ResumeMusic();
-    else
+    if( Mix_PausedMusic() == 0 )
+    {
         Mix_PauseMusic();
+    }
 }
 
 void Music::halt()

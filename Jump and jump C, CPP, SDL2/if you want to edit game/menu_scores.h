@@ -1,21 +1,21 @@
 #pragma once
 
-#include "texture.h"
+#include "text.h"
+#include "image.h"
 
-class Options
+class Scores
 {
     int nr;
-
-    int* x;
-    int* y;
-    Texture* texture;
+    Text* text;
 
 public:
 
-    Options();
-    ~Options();
+    Scores();
+    ~Scores();
     void free();
 
     bool load( SDL_Renderer* &renderer, SDL_Window* &window );
     void render( SDL_Renderer* &renderer );
+
+    void fadeIO( int value );
 };

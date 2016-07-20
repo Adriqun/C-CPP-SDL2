@@ -3,8 +3,9 @@
 #include "core.h"
 #include "loading.h"
 #include "intro.h"
-#include "menu.h"
-#include "scores.h"
+#include "menu_menu.h"
+#include "menu_scores.h"
+#include "menu_options.h"
 #include "storm.h"
 #include "wall.h"
 #include "hero.h"
@@ -13,7 +14,6 @@
 #include "heart.h"
 #include "pause.h"
 #include "points.h"
-#include "options.h"
 #include "enemy.h"
 
 class Engine

@@ -208,33 +208,36 @@ void Engine::render()
 
     if( core->getFrame() == 1 )
     {
+        if( menu->getState() < 0 )
+        {
+            scores->fadeIO( -10 );
+            options->fadeIO( -10 );
+            menu->fadeIO( 2 );
+        }
+
         menu->control();
         menu->render( renderer );
+        menu->play();
 
-
-        // Start is coming!
-        if( menu->getState() == -5 )
-        {
-            Mix_FadeOutMusic( 1000 );
-        }
 
         // We start a game
         if( menu->getState() == 0 )
         {
-            menu->load( renderer, window );
+            Mix_FadeOutMusic( 1000 );
             core->setFrame( 2 );
-            Mix_HaltMusic();
         }
 
         // We click scores
         else if( menu->getState() == 1 )
         {
+            scores->fadeIO( 2 );
             scores->render( renderer );
         }
 
         // We click options
         else if( menu->getState() == 2 )
         {
+            options->fadeIO( 2 );
             options->render( renderer );
         }
 

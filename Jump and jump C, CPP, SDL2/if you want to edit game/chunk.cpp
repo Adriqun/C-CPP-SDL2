@@ -34,8 +34,7 @@ bool Chunk::load( const char* path, int volume )
         printf( "Error %s\n", Mix_GetError() );
         success = false;
     }
-
-    if( volume != 0 )
+    else if( volume != 0 )
     {
         Mix_VolumeChunk( chunk, volume );
     }
