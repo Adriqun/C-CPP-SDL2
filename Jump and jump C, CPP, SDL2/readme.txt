@@ -1,7 +1,7 @@
 WORK IN PROGRESS
 Hello everyone!
 
-Ok first, game have a lot of bugs( made in one week )!
+Ok first, game have a lot of bugs
 I used C, C++ and SDL2 library.
 
 If you want to play just go to the folder bin and find file exe.
