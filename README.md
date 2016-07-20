@@ -1,10 +1,6 @@
 # Portfolio
 My large projects
 
-Let's talk about my first mini game. (written in one week)
-![homer-simpson](https://cloud.githubusercontent.com/assets/19840443/16882610/3ad7712a-4ac0-11e6-894c-9621051c6664.png)
-
-
 >**"Jump and jump"**
 **you need to go as far as possible**
 **Further = harder **
