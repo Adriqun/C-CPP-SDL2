@@ -3,7 +3,7 @@
 namespace sorting
 {
     int max( int x, int y );
-    void merge_helper( int* input, int left, int right, int* scratch );
+    void merge_helper( int* tab, int s, int mid, int e );
 
     void max_heapify( int* a, int i, int n );
     void build_maxheap( int* a, int n );
@@ -16,7 +16,7 @@ namespace sorting
     void quick( int *tab, int left, int right );
 
     /* merge sort */
-    void merge( int* input, int size );
+    //void merge( int* tab, int s, int e );
 
     /* heap sort */
     void heap( int* a, int n );

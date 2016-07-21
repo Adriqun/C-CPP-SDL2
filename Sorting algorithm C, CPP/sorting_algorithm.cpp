@@ -8,42 +8,56 @@ int sorting::max( int x, int y )
     else        return y;
 }
 
-void sorting::merge_helper( int* input, int left, int right, int* scratch )
+/*
+void sorting::merge_helper( int* tab, int s, int mid, int e )
 {
-    if( right == left + 1 )     return;
-    else
+    int* newtab = new int [ (e - s) + 1 ];
+    int i = s;
+    int j = mid + 1;
+    int k = 0;
+
+    while( i <= mid && j <= e )
     {
-        int length = right - left;
-        int midpoint_distance = length / 2;
-
-        int l = left, r = left + midpoint_distance;
-
-
-        merge_helper( input, left, left + midpoint_distance, scratch );
-        merge_helper( input, left + midpoint_distance, right, scratch );
-
-
-        for( int i = 0; i < length; i++ )
+        if( tab[ j ] < tab[ i ] )
         {
-
-            if( l < left + midpoint_distance && ( r == right || max( input[ l ], input[ r ] ) == input[ l ] ) )
-            {
-                scratch[ i ] = input[ l ];
-                l++;
-            }
-            else
-            {
-                scratch[ i ] = input[ r ];
-                r++;
-            }
+            newtab[ k ] = tab[ j ];
+            j++;
         }
-
-        for( int i = left; i < right; i++ )
+        else
         {
-            input[ i ] = scratch[ i - left ];
+            newtab[ k ] = tab[ i ];
+            i++;
+        }
+        k++;
+    }
+
+    if( i <= mid )
+    {
+        while( i <= mid )
+        {
+            newtab[ k ] = tab[ i ];
+            i++;
+            k++;
         }
     }
+    else
+    {
+        while( j <= e )
+        {
+            newtab[ k ] = tab[ j ];
+            j++;
+            k++;
+        }
+    }
+
+    for( i = 0; i <= e-s; i ++ )
+    {
+        tab[ s + i ] = newtab[ i ];
+    }
+
+    delete [] newtab;
 }
+*/
 
 void sorting::max_heapify( int* a, int i, int n )
 {
@@ -144,15 +158,21 @@ void sorting::quick(int *tab, int left, int right)
     if( i < right ) quick( tab, i, right );
 }
 
-/* merge sort */
-void sorting::merge( int* input, int size )
+/*
+// merge sort
+void sorting::merge( int* tab, int s, int e )
 {
-    int* scratch = new int[ size ];
+    int mid;
 
-    merge_helper( input, 0, size, scratch );
-
-    delete [] scratch;
+    if( s != e )
+    {
+        mid = (s + e) / 2;
+        merge( tab, s, mid );
+        merge( tab, mid+1, e );
+        merge_helper( tab, s, mid, e );
+    }
 }
+*/
 
 /* heap sort */
 void sorting::heap( int* a, int n )
