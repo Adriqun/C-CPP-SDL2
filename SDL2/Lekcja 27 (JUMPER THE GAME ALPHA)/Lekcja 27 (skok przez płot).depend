@@ -35,3 +35,39 @@
 	"wall.h"
 	"hero.h"
 
+1455886938 source:c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 27 (jumper the game alpha)\core.cpp
+	"core.h"
+
+1455836203 c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 27 (jumper the game alpha)\core.h
+	"detector.h"
+	"wall.h"
+	"hero.h"
+
+1455836429 c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 27 (jumper the game alpha)\detector.h
+	<SDL.h>
+
+1455885913 c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 27 (jumper the game alpha)\wall.h
+	<SDL.h>
+	<string>
+	<fstream>
+
+1455881923 c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 27 (jumper the game alpha)\hero.h
+	<SDL.h>
+	<SDL_image.h>
+	<string>
+	<stdio.h>
+
+1455841678 source:c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 27 (jumper the game alpha)\detector.cpp
+	"detector.h"
+
+1455882142 source:c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 27 (jumper the game alpha)\hero.cpp
+	"hero.h"
+
+1455836603 source:c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 27 (jumper the game alpha)\main.cpp
+	"core.h"
+
+1455887071 source:c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 27 (jumper the game alpha)\wall.cpp
+	"wall.h"
+	<stdio.h>
+	<iostream>
+

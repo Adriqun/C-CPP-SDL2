@@ -114,3 +114,34 @@
 1453384209 source:c:\users\lenovo1\desktop\c++ dorobek\sdl 2\lekcja 28 (gra arkanoid)\objects.cpp
 	"objects.h"
 
+1453397608 source:c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 28 (arkanoid the game alpha)\keyboard.cpp
+	"keyboard.h"
+
+1453394045 c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 28 (arkanoid the game alpha)\keyboard.h
+	"global.h"
+
+1453390368 c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 28 (arkanoid the game alpha)\global.h
+	<SDL.h>
+	<iostream>
+	<stdio.h>
+	<fstream>
+	<cstdlib>
+	<SDL_image.h>
+
+1454191768 source:c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 28 (arkanoid the game alpha)\main.cpp
+	"objects.h"
+	"keyboard.h"
+	"map_editor.h"
+
+1453387764 c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 28 (arkanoid the game alpha)\objects.h
+	"global.h"
+
+1453398584 c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 28 (arkanoid the game alpha)\map_editor.h
+	"global.h"
+
+1453419401 source:c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 28 (arkanoid the game alpha)\map_editor.cpp
+	"map_editor.h"
+
+1453387809 source:c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 28 (arkanoid the game alpha)\objects.cpp
+	"objects.h"
+

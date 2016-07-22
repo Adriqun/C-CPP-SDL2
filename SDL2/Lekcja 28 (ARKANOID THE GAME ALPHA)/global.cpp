@@ -2,7 +2,7 @@
 
 SDL_Window* window = NULL;
 SDL_Renderer* renderer = NULL;
-const Uint16 SCREEN_WIDTH = 800;
+const Uint16 SCREEN_WIDTH = 1000;
 const Uint16 SCREEN_HEIGHT = 600;
 int FRAME = 0;
 

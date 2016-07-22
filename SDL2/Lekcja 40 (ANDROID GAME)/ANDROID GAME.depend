@@ -279,3 +279,109 @@
 1456601573 source:c:\users\lenovo1\desktop\jêzyki, biblioteki, zadania\c++\sdl2 z c++\lekcja 40 (android game)\timer.cpp
 	"timer.h"
 
+1459262000 source:c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 40 (android game)\antic.cpp
+	"antic.h"
+
+1459262000 c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 40 (android game)\antic.h
+	"life.h"
+	"texture.h"
+	"random.h"
+
+1459261695 c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 40 (android game)\life.h
+	<SDL.h>
+
+1459208098 c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 40 (android game)\texture.h
+	<SDL.h>
+	<string>
+
+1459204058 c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 40 (android game)\random.h
+
+1459256970 source:c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 40 (android game)\buble.cpp
+	"buble.h"
+
+1459256970 c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 40 (android game)\buble.h
+	"life.h"
+	"texture.h"
+	"random.h"
+
+1459357006 source:c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 40 (android game)\enemy.cpp
+	"enemy.h"
+	<algorithm>
+	<cstdlib>
+	<time.h>
+
+1459356786 c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 40 (android game)\enemy.h
+	<vector>
+	"antic.h"
+	"buble.h"
+	"flown.h"
+	"texture.h"
+
+1459260456 c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 40 (android game)\flown.h
+	"life.h"
+	"texture.h"
+	"random.h"
+
+1459288778 source:c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 40 (android game)\engine.cpp
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+	<cstdlib>
+	<time.h>
+	"engine.h"
+	"intro.h"
+	"timer.h"
+
+1459252135 c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 40 (android game)\engine.h
+	"menu.h"
+	"hero.h"
+	"enemy.h"
+
+1459206605 c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 40 (android game)\menu.h
+	<SDL.h>
+	<string>
+
+1459284930 c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 40 (android game)\hero.h
+	"texture.h"
+
+1459205916 c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 40 (android game)\intro.h
+	<SDL.h>
+	<string>
+
+1456601602 c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 40 (android game)\timer.h
+	<SDL.h>
+
+1459260456 source:c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 40 (android game)\flown.cpp
+	"flown.h"
+
+1459284930 source:c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 40 (android game)\hero.cpp
+	"hero.h"
+	<math.h>
+
+1459206261 source:c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 40 (android game)\intro.cpp
+	"intro.h"
+	<SDL_image.h>
+
+1459261695 source:c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 40 (android game)\life.cpp
+	"life.h"
+
+1458947182 source:c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 40 (android game)\main.cpp
+	"engine.h"
+
+1459206612 source:c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 40 (android game)\menu.cpp
+	"menu.h"
+	<SDL_image.h>
+
+1459203767 source:c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 40 (android game)\random.cpp
+	"random.h"
+	<cstdlib>
+	<time.h>
+
+1459208098 source:c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 40 (android game)\texture.cpp
+	"texture.h"
+	<SDL_image.h>
+	<stdio.h>
+
+1456601573 source:c:\users\lenovo1\desktop\github\c-cpp-sdl2\sdl2\lekcja 40 (android game)\timer.cpp
+	"timer.h"
+
