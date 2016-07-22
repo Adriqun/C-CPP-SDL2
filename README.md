@@ -1,4 +1,6 @@
 # Portfolio
+![port](https://cloud.githubusercontent.com/assets/19840443/17052708/eccc554c-4ffe-11e6-9655-a53828e18d56.png)
+
 My large projects
 
 Sorting algorithms
