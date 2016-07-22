@@ -1,2 +1,2 @@
 # C-CPP-SDL2
-C, C++ with Simple DirectMedia Layer
+C and CPP with Simple DirectMedia Layer
