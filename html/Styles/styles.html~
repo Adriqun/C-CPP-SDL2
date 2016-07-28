@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>"style="property:value;"</title>
+	<meta charset="UTF-8">
+</head>
+<body bgcolor="#E6E6FA">
+	
+	<h2 style="color:blue;">This is a heading</h2>
+	<p style="font-family:verdana;">This is a paragraph</p>
+	<h1 style="font-family:courier">This is a heading</h1>
+	<h1 style="font-size:400%">This is a heading</h1>
+	<p style="text-align:center;">This is a paragraph</p>
+<body>
+</html>
