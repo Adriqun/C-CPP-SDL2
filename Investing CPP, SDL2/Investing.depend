@@ -1,0 +1,51 @@
+# depslib dependency file v1.0
+1469807790 source:/home/adrian/Dokumenty/temporary/Investing/main.cpp
+	"engine.h"
+	<stdio.h>
+
+1469821445 /home/adrian/Dokumenty/temporary/Investing/engine.h
+	"title.h"
+	"goal.h"
+
+1469798126 source:/home/adrian/Dokumenty/temporary/Investing/texture.cpp
+	"texture.h"
+	<SDL2/SDL_image.h>
+	<stdio.h>
+
+1469813406 /home/adrian/Dokumenty/temporary/Investing/texture.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+	<string>
+
+1469474089 source:/home/adrian/Dokumenty/temporary/Investing/timer.cpp
+	"timer.h"
+
+1469797543 /home/adrian/Dokumenty/temporary/Investing/timer.h
+	<SDL2/SDL.h>
+
+1469821446 source:/home/adrian/Dokumenty/temporary/Investing/engine.cpp
+	"engine.h"
+	<SDL2/SDL_image.h>
+	<stdio.h>
+
+1469801205 source:/home/adrian/Dokumenty/temporary/Investing/font.cpp
+	"font.h"
+	<stdio.h>
+
+1469801205 /home/adrian/Dokumenty/temporary/Investing/font.h
+	<SDL2/SDL_ttf.h>
+
+1469820878 /home/adrian/Dokumenty/temporary/Investing/title.h
+	"texture.h"
+	"font.h"
+
+1469823169 source:/home/adrian/Dokumenty/temporary/Investing/title.cpp
+	"title.h"
+
+1469823212 source:/home/adrian/Dokumenty/temporary/Investing/goal.cpp
+	"goal.h"
+
+1469822580 /home/adrian/Dokumenty/temporary/Investing/goal.h
+	"texture.h"
+	"font.h"
+
