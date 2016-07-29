@@ -5,7 +5,7 @@ Investing makes your life safer.
 Try my application to count your money.
 You will know how many days you need to attain your goal.
 
-
+###Investing
 **Following changes**
 
 Window showing title and goal whose we want to attain.
