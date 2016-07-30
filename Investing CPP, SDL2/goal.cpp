@@ -58,9 +58,7 @@ bool Goal::load( SDL_Renderer* &renderer )
         color.g = 0x99;
         color.b = 0xFF;
 
-        font.setStyle( 2 );
-
-        if( !goal_text.loadFromRenderedText( renderer, font.get(), "Goal  ", color ) )
+        if( !goal_text.loadFromRenderedText( renderer, font.get(), "goal:  ", color ) )
         {
             success = false;
         }
@@ -72,8 +70,6 @@ bool Goal::load( SDL_Renderer* &renderer )
             color.r = 0x09;
             color.g = 0x70;
             color.b = 0x54;
-
-            font.setStyle( 0 );
 
             if( !texture.loadFromRenderedText( renderer, font.get(), "0", color ) )
             {
@@ -103,6 +99,10 @@ void Goal::render( SDL_Renderer* &renderer )
 
     goal_text.render( renderer, x, y );
     texture.render( renderer, x + goal_text.getWidth(), y );
+
+    SDL_SetRenderDrawColor( renderer, 0x65, 0x99, 0xFF, 0xFF );
+    SDL_RenderDrawLine( renderer, 0, y + goal_text.getHeight() +3, 1000, y + goal_text.getHeight() +3 );
+    SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
 }
 
 void Goal::handle( SDL_Event &event )

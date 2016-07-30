@@ -49,3 +49,71 @@
 	"texture.h"
 	"font.h"
 
+1469868714 source:/home/adrian/Portfolio/Investing CPP, SDL2/engine.cpp
+	"engine.h"
+	<SDL2/SDL_image.h>
+	<stdio.h>
+
+1469868714 /home/adrian/Portfolio/Investing CPP, SDL2/engine.h
+	"title.h"
+	"goal.h"
+	"currency.h"
+	"attain.h"
+
+1469867294 /home/adrian/Portfolio/Investing CPP, SDL2/title.h
+	"texture.h"
+	"font.h"
+
+1469813406 /home/adrian/Portfolio/Investing CPP, SDL2/texture.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+	<string>
+
+1469801205 /home/adrian/Portfolio/Investing CPP, SDL2/font.h
+	<SDL2/SDL_ttf.h>
+
+1469867294 /home/adrian/Portfolio/Investing CPP, SDL2/goal.h
+	"texture.h"
+	"font.h"
+
+1469801205 source:/home/adrian/Portfolio/Investing CPP, SDL2/font.cpp
+	"font.h"
+	<stdio.h>
+
+1469872549 source:/home/adrian/Portfolio/Investing CPP, SDL2/goal.cpp
+	"goal.h"
+
+1469807790 source:/home/adrian/Portfolio/Investing CPP, SDL2/main.cpp
+	"engine.h"
+	<stdio.h>
+
+1469798126 source:/home/adrian/Portfolio/Investing CPP, SDL2/texture.cpp
+	"texture.h"
+	<SDL2/SDL_image.h>
+	<stdio.h>
+
+1469823169 source:/home/adrian/Portfolio/Investing CPP, SDL2/title.cpp
+	"title.h"
+
+1469872877 source:/home/adrian/Portfolio/Investing CPP, SDL2/currency.cpp
+	"currency.h"
+
+1469868020 /home/adrian/Portfolio/Investing CPP, SDL2/currency.h
+	"texture.h"
+	"font.h"
+	"chunk.h"
+
+1469867466 /home/adrian/Portfolio/Investing CPP, SDL2/chunk.h
+	<SDL2/SDL_mixer.h>
+
+1469825049 source:/home/adrian/Portfolio/Investing CPP, SDL2/chunk.cpp
+	"chunk.h"
+	<stdio.h>
+
+1469872959 source:/home/adrian/Portfolio/Investing CPP, SDL2/attain.cpp
+	"attain.h"
+
+1469868641 /home/adrian/Portfolio/Investing CPP, SDL2/attain.h
+	"texture.h"
+	"font.h"
+

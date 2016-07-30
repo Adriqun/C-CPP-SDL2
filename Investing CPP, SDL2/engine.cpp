@@ -15,7 +15,17 @@ bool Engine::load()
         success = false;
     }
 
-    if( !goal.load( renderer) )
+    if( !goal.load( renderer ) )
+    {
+        success = false;
+    }
+
+    if( !currency.load( renderer, window ) )
+    {
+        success = false;
+    }
+
+    if( !attain.load( renderer ) )
     {
         success = false;
     }
@@ -26,6 +36,7 @@ bool Engine::load()
 void Engine::loop()
 {
     SDL_StartTextInput();
+
     while( !quit )
     {
         SDL_RenderClear( renderer );
@@ -40,6 +51,7 @@ void Engine::loop()
 
             title.handle( event );
             goal.handle( event );
+            currency.handle( event );
         }
 
         title_bar.render( renderer );
@@ -47,8 +59,14 @@ void Engine::loop()
 
         goal.render( renderer );
 
+        currency.render( renderer );
+
+        attain.render( renderer );
+
         SDL_RenderPresent( renderer );
     }
+
+    SDL_StopTextInput();
 }
 
 void Engine::free()
@@ -71,6 +89,11 @@ void Engine::free()
 
     goal.free();
 
+    currency.free();
+
+    attain.free();
+
+    Mix_Quit();
     TTF_Quit();
     IMG_Quit();
     SDL_Quit();
@@ -103,6 +126,12 @@ bool Engine::init()
     else if( !( IMG_Init( IMG_INIT_PNG )&IMG_INIT_PNG ) )
     {
         printf( "IMG could not initialize! Error %s\n", IMG_GetError() );
+        success = false;
+    }
+
+    else if( Mix_OpenAudio( 44100, MIX_DEFAULT_FORMAT, 2, 2048 ) < 0 )
+    {
+        printf( "Mix could not initialize! Error: %s\n", Mix_GetError() );
         success = false;
     }
 

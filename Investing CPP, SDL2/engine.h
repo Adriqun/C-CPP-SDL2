@@ -1,5 +1,8 @@
+#pragma once
 #include "title.h"
 #include "goal.h"
+#include "currency.h"
+#include "attain.h"
 
 class Engine
 {
@@ -14,6 +17,10 @@ class Engine
     Texture title_bar;
 
     Goal goal;
+
+    Currency currency;
+
+    Attain attain;
 
 public:
 
