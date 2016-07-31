@@ -14,11 +14,13 @@ class Goal
     bool renderText;
     string inputText;
 
-    int cost;
+    unsigned long long cost;
+
+    bool focus;
 
 public:
 
-    int strToInt( string s );
+    unsigned long long strToInt( string s );
 
     Goal();
     ~Goal();

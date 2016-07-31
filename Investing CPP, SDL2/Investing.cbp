@@ -51,6 +51,8 @@
 		<Unit filename="goal.cpp" />
 		<Unit filename="goal.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="profit.cpp" />
+		<Unit filename="profit.h" />
 		<Unit filename="texture.cpp" />
 		<Unit filename="texture.h" />
 		<Unit filename="title.cpp" />

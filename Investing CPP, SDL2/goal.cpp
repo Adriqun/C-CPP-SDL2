@@ -1,12 +1,16 @@
 #include "goal.h"
+//#include <iostream>
 
 // Only +numbers
-int Goal::strToInt( string s )
+unsigned long long Goal::strToInt( string s )
 {
-    int tmp = 0;
+    unsigned long long tmp = 0;
 
     for( unsigned i = 0; i < s.size(); i++ )
     {
+        if( s[ i ] == ' ' )
+            continue;
+
         tmp = 10 * tmp + s[ i ] - 48;
     }
 
@@ -21,6 +25,7 @@ Goal::Goal()
     renderText = false;
     inputText = "";
     cost = 0;
+    focus = false;
 }
 
 Goal::~Goal()
@@ -36,6 +41,7 @@ void Goal::free()
     renderText = false;
     inputText = "";
     cost = 0;
+    focus = false;
 
     texture.free();
     goal_text.free();
@@ -83,9 +89,18 @@ bool Goal::load( SDL_Renderer* &renderer )
 
 void Goal::render( SDL_Renderer* &renderer )
 {
+    if( focus )
+    {
+        SDL_SetRenderDrawColor( renderer, 0xEC, 0xEC, 0xEC, 0xFF );
+        SDL_Rect r = { x, y, 480, static_cast <int> ( goal_text.getHeight() ) };
+        SDL_RenderFillRect( renderer, &r );
+        SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
+    }
+
     if( renderText )
     {
         cost = strToInt( inputText );
+        //std::cout << cost << '\n';
 
         if( inputText.length() <= 0 )
         {
@@ -107,48 +122,82 @@ void Goal::render( SDL_Renderer* &renderer )
 
 void Goal::handle( SDL_Event &event )
 {
-    if( event.type == SDL_KEYDOWN )
+    if( event.type == SDL_MOUSEBUTTONDOWN )
     {
-        if( event.key.keysym.sym == SDLK_BACKSPACE && inputText.length() > 0 )
-        {
-            inputText.erase( inputText.length()-1 );
-            renderText = true;
-        }
+        int posX = -1;
+        int posY = -1;
+        SDL_GetMouseState( &posX, &posY );
 
-        else if( event.key.keysym.sym == SDLK_c && SDL_GetModState() & KMOD_CTRL )
-        {
-            SDL_SetClipboardText( inputText.c_str() );
-        }
+        focus = false;
 
-        else if( event.key.keysym.sym == SDLK_v && SDL_GetModState() & KMOD_CTRL )
+        if( posX > x && posY > y )
         {
-            inputText = SDL_GetClipboardText();
-            renderText = true;
+            if( posX < x + 480 && posY < y + static_cast <int> ( goal_text.getHeight() ) )
+            {
+                focus = true;
+            }
         }
     }
 
-    else if( event.type == SDL_TEXTINPUT )
+    if( focus )
     {
-        if( !( ( event.text.text[ 0 ] == 'c' || event.text.text[ 0 ] == 'C' ) && ( event.text.text[ 0 ] == 'v' || event.text.text[ 0 ] == 'V' ) && SDL_GetModState() & KMOD_CTRL ) )
+        if( event.type == SDL_KEYDOWN )
         {
-            // We need numbers
-            int nr = static_cast <int> ( event.text.text[ 0 ] );
-            if( nr >= 48 && nr <= 57 )
+            if( event.key.keysym.sym == SDLK_BACKSPACE && inputText.length() > 0 )
             {
-                inputText += event.text.text;
+                inputText.erase( inputText.length()-1 );
                 renderText = true;
             }
 
-            // We need +number
-            if( inputText[ 0 ] == '0' )
+            else if( event.key.keysym.sym == SDLK_c && SDL_GetModState() & KMOD_CTRL )
             {
-                inputText.erase( 0 );
+                SDL_SetClipboardText( inputText.c_str() );
             }
 
-            // Max number is 999 999 999
-            if( inputText.length() > 9 )
+            else if( event.key.keysym.sym == SDLK_v && SDL_GetModState() & KMOD_CTRL )
             {
-                inputText.erase( inputText.length()-1 );
+                inputText = SDL_GetClipboardText();
+                renderText = true;
+            }
+        }
+
+        else if( event.type == SDL_TEXTINPUT )
+        {
+            if( !( ( event.text.text[ 0 ] == 'c' || event.text.text[ 0 ] == 'C' ) && ( event.text.text[ 0 ] == 'v' || event.text.text[ 0 ] == 'V' ) && SDL_GetModState() & KMOD_CTRL ) )
+            {
+
+                // For better look
+                for( unsigned i = 2; i < 11; i += 4 )
+                {
+                    if( inputText.length() > i )
+                    {
+                        if( inputText[ i+1 ] != ' ' )
+                        {
+                            inputText += ' ';
+                        }
+                    }
+                }
+
+
+                // We need numbers
+                int nr = static_cast <int> ( event.text.text[ 0 ] );
+                if( nr >= 48 && nr <= 57 )
+                {
+                    inputText += event.text.text;
+                    renderText = true;
+                }
+
+                // We need +number
+                if( inputText[ 0 ] == '0' )
+                {
+                    inputText.erase( 0 );
+                }
+
+                // Max number is 999 999 999 999 + 3 space
+                if( inputText.length() > 15 )
+                {
+                    inputText.erase( inputText.length()-1 );
+                }
             }
         }
     }

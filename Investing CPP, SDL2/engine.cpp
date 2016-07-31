@@ -63,6 +63,16 @@ void Engine::loop()
 
         attain.render( renderer );
 
+        //Edges
+        SDL_SetRenderDrawColor( renderer, 0x65, 0x99, 0xFF, 0xFF );
+        SDL_RenderDrawLine( renderer, 0, 0, 0, height );
+        SDL_RenderDrawLine( renderer, 1, 0, 1, height );
+        SDL_RenderDrawLine( renderer, 0, height, width, height );
+        SDL_RenderDrawLine( renderer, 0, height-1, width, height-1 );
+        SDL_RenderDrawLine( renderer, width, 0, width, height );
+        SDL_RenderDrawLine( renderer, width-1, 0, width-1, height );
+        SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
+
         SDL_RenderPresent( renderer );
     }
 
