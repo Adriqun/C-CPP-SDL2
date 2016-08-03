@@ -7,8 +7,7 @@
 class Engine
 {
     bool quit;
-    int width;
-    int height;
+    int width, height;
     SDL_Event event;
     SDL_Window* window;
     SDL_Renderer* renderer;

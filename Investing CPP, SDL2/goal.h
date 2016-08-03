@@ -7,9 +7,8 @@ class Goal
     Font font;
     SDL_Color color;
 
-    int x, y;
-    Texture texture;
-    Texture goal_text;
+    Texture goal;
+    Texture number;
 
     bool renderText;
     string inputText;
@@ -17,19 +16,23 @@ class Goal
     unsigned long long cost;
 
     bool focus;
+    int focus_w;
 
 public:
 
+    void sortString();
     unsigned long long strToInt( string s );
 
     Goal();
     ~Goal();
     void free();
 
-    bool load( SDL_Renderer* &renderer );
-    void render( SDL_Renderer* &renderer );
+    bool load( SDL_Renderer* &renderer, int title_bar_posY );
+    void render( SDL_Renderer* &renderer, int screen_width );
     void handle( SDL_Event &event );
 
-    unsigned getWidth();
-    unsigned getHeight();
+    int getW();
+    int &getH();
+    int &getX();
+    int &getY();
 };

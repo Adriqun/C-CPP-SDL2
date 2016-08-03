@@ -57,6 +57,8 @@
 		<Unit filename="texture.h" />
 		<Unit filename="title.cpp" />
 		<Unit filename="title.h" />
+		<Unit filename="valuables.cpp" />
+		<Unit filename="valuables.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />

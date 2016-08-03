@@ -2,12 +2,14 @@
 #include <SDL2/SDL_image.h>
 #include <stdio.h>
 
-Texture::Texture()
+Texture::Texture( int x, int y )
 {
     rect.w = 0;
     rect.h = 0;
-    rect.x = 0;
-    rect.y = 0;
+
+    rect.x = x;
+    rect.y = y;
+
     texture = NULL;
 }
 
@@ -25,31 +27,28 @@ void Texture::free()
 
         rect.w = 0;
         rect.h = 0;
-        rect.x = 0;
-        rect.y = 0;
     }
 }
 
 
+int &Texture::getX()
+{
+    return rect.x;
+}
 
-unsigned Texture::getWidth()
+int&Texture::getY()
+{
+    return rect.y;
+}
+
+int &Texture::getW()
 {
     return rect.w;
 }
 
-unsigned Texture::getHeight()
+int &Texture::getH()
 {
     return rect.h;
-}
-
-void Texture::setWidth( unsigned w )
-{
-    rect.w = w;
-}
-
-void Texture::setHeight( unsigned h )
-{
-    rect.h = h;
 }
 
 
@@ -168,11 +167,8 @@ bool Texture::loadFromFile( SDL_Renderer* &renderer, SDL_Window* &window, string
 
 
 
-void Texture::render( SDL_Renderer* &renderer, int x, int y, SDL_Rect* srcRect, double angle, SDL_Point* point, SDL_RendererFlip flip )
+void Texture::render( SDL_Renderer* &renderer, SDL_Rect* srcRect, double angle, SDL_Point* point, SDL_RendererFlip flip )
 {
-    rect.x = x;
-    rect.y = y;
-
     if( srcRect != NULL )
     {
         rect.w = srcRect->w;

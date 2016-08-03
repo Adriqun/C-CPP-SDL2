@@ -6,26 +6,26 @@ bool Engine::load()
 {
     bool success = true;
 
-    if( !title.load( renderer, window ) )
+    if( !title.load( renderer, width ) )
     {
         success = false;
     }
-    else if( !title_bar.createWithColor( renderer, 0x65, 0x99, 0xFF, width, title.getHeight() ) )
-    {
-        success = false;
-    }
-
-    if( !goal.load( renderer ) )
+    else if( !title_bar.createWithColor( renderer, 0x65, 0x99, 0xFF, width, title.getH() ) )
     {
         success = false;
     }
 
-    if( !currency.load( renderer, window ) )
+    if( !goal.load( renderer, title_bar.getY() + title_bar.getH() + 5 ) )
     {
         success = false;
     }
 
-    if( !attain.load( renderer ) )
+    if( !currency.load( renderer, title_bar.getY() + title_bar.getH() + 5, width ) )
+    {
+        success = false;
+    }
+
+    if( !attain.load( renderer, goal.getY() + goal.getH() + 5 ) )
     {
         success = false;
     }
@@ -49,7 +49,6 @@ void Engine::loop()
                 quit = true;
             }
 
-            title.handle( event );
             goal.handle( event );
             currency.handle( event );
         }
@@ -57,11 +56,11 @@ void Engine::loop()
         title_bar.render( renderer );
         title.render( renderer );
 
-        goal.render( renderer );
+        goal.render( renderer, width );
 
         currency.render( renderer );
 
-        attain.render( renderer );
+        attain.render( renderer, width );
 
         //Edges
         SDL_SetRenderDrawColor( renderer, 0x65, 0x99, 0xFF, 0xFF );

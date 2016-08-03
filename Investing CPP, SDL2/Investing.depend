@@ -49,30 +49,30 @@
 	"texture.h"
 	"font.h"
 
-1469878418 source:/home/adrian/Portfolio/Investing CPP, SDL2/engine.cpp
+1470235239 source:/home/adrian/Portfolio/Investing CPP, SDL2/engine.cpp
 	"engine.h"
 	<SDL2/SDL_image.h>
 	<stdio.h>
 
-1469874032 /home/adrian/Portfolio/Investing CPP, SDL2/engine.h
+1470233071 /home/adrian/Portfolio/Investing CPP, SDL2/engine.h
 	"title.h"
 	"goal.h"
 	"currency.h"
 	"attain.h"
 
-1469874032 /home/adrian/Portfolio/Investing CPP, SDL2/title.h
+1470233854 /home/adrian/Portfolio/Investing CPP, SDL2/title.h
 	"texture.h"
 	"font.h"
 
-1469813406 /home/adrian/Portfolio/Investing CPP, SDL2/texture.h
+1470233833 /home/adrian/Portfolio/Investing CPP, SDL2/texture.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
 	<string>
 
-1469801205 /home/adrian/Portfolio/Investing CPP, SDL2/font.h
+1470233071 /home/adrian/Portfolio/Investing CPP, SDL2/font.h
 	<SDL2/SDL_ttf.h>
 
-1469961843 /home/adrian/Portfolio/Investing CPP, SDL2/goal.h
+1470240715 /home/adrian/Portfolio/Investing CPP, SDL2/goal.h
 	"texture.h"
 	"font.h"
 
@@ -80,25 +80,25 @@
 	"font.h"
 	<stdio.h>
 
-1469962357 source:/home/adrian/Portfolio/Investing CPP, SDL2/goal.cpp
+1470240541 source:/home/adrian/Portfolio/Investing CPP, SDL2/goal.cpp
 	"goal.h"
 
 1469807790 source:/home/adrian/Portfolio/Investing CPP, SDL2/main.cpp
 	"engine.h"
 	<stdio.h>
 
-1469798126 source:/home/adrian/Portfolio/Investing CPP, SDL2/texture.cpp
+1470235517 source:/home/adrian/Portfolio/Investing CPP, SDL2/texture.cpp
 	"texture.h"
 	<SDL2/SDL_image.h>
 	<stdio.h>
 
-1469878124 source:/home/adrian/Portfolio/Investing CPP, SDL2/title.cpp
+1470235192 source:/home/adrian/Portfolio/Investing CPP, SDL2/title.cpp
 	"title.h"
 
-1469962275 source:/home/adrian/Portfolio/Investing CPP, SDL2/currency.cpp
+1470234916 source:/home/adrian/Portfolio/Investing CPP, SDL2/currency.cpp
 	"currency.h"
 
-1469868020 /home/adrian/Portfolio/Investing CPP, SDL2/currency.h
+1470234672 /home/adrian/Portfolio/Investing CPP, SDL2/currency.h
 	"texture.h"
 	"font.h"
 	"chunk.h"
@@ -110,10 +110,24 @@
 	"chunk.h"
 	<stdio.h>
 
-1469872959 source:/home/adrian/Portfolio/Investing CPP, SDL2/attain.cpp
+1470234188 source:/home/adrian/Portfolio/Investing CPP, SDL2/attain.cpp
 	"attain.h"
 
-1469868641 /home/adrian/Portfolio/Investing CPP, SDL2/attain.h
+1470234178 /home/adrian/Portfolio/Investing CPP, SDL2/attain.h
+	"texture.h"
+	"font.h"
+
+1470231792 source:/home/adrian/Portfolio/Investing CPP, SDL2/profit.cpp
+	"profit.h"
+
+1470239974 source:/home/adrian/Portfolio/Investing CPP, SDL2/valuables.cpp
+	"valuables.h"
+
+1470231792 /home/adrian/Portfolio/Investing CPP, SDL2/profit.h
+	"texture.h"
+	"font.h"
+
+1470239974 /home/adrian/Portfolio/Investing CPP, SDL2/valuables.h
 	"texture.h"
 	"font.h"
 

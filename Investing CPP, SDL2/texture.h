@@ -13,14 +13,14 @@ class Texture
 
 public:
 
-    Texture();
+    Texture( int x = 0, int y = 0 );
     ~Texture();
     void free();
 
-    unsigned getWidth();
-    unsigned getHeight();
-    void setWidth( unsigned w );
-    void setHeight( unsigned h );
+    int &getX();
+    int &getY();
+    int &getW();
+    int &getH();
 
     void setAlpha( Uint8 alpha );
     void setColor( Uint8 red, Uint8 green, Uint8 blue );
@@ -30,5 +30,5 @@ public:
     bool loadFromRenderedText( SDL_Renderer* &renderer, TTF_Font* font, string text, SDL_Color color );
     bool loadFromFile( SDL_Renderer* &renderer, SDL_Window* &window, string path );
 
-    void render( SDL_Renderer* &renderer, int x = 0, int y = 0, SDL_Rect* srcRect = NULL, double angle = 0.0, SDL_Point* point = NULL, SDL_RendererFlip flip = SDL_FLIP_NONE );
+    void render( SDL_Renderer* &renderer, SDL_Rect* srcRect = NULL, double angle = 0.0, SDL_Point* point = NULL, SDL_RendererFlip flip = SDL_FLIP_NONE );
 };

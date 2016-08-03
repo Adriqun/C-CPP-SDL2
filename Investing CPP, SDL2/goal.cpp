@@ -1,5 +1,30 @@
 #include "goal.h"
-//#include <iostream>
+
+void Goal::sortString()
+{
+    for( unsigned i = 0; i < inputText.length(); i ++ )
+    {
+        if( inputText[ i ] == ' ' )
+        {
+            inputText.erase( i, 1 );
+        }
+    }
+
+    string newInputText = "";
+    int c = inputText.length()-1;
+    for( unsigned i = 0; i < inputText.length(); i ++ )
+    {
+        newInputText += inputText[ i ];
+
+        if( c%3 == 0 )
+        {
+            newInputText += ' ';
+        }
+
+        c --;
+    }
+    inputText = newInputText;
+}
 
 // Only +numbers
 unsigned long long Goal::strToInt( string s )
@@ -19,13 +44,12 @@ unsigned long long Goal::strToInt( string s )
 
 Goal::Goal()
 {
-    x = 0;
-    y = 0;
-
     renderText = false;
     inputText = "";
+
     cost = 0;
     focus = false;
+    focus_w = 0;
 }
 
 Goal::~Goal()
@@ -35,20 +59,21 @@ Goal::~Goal()
 
 void Goal::free()
 {
-    x = 0;
-    y = 0;
+    font.free();
 
     renderText = false;
     inputText = "";
-    cost = 0;
-    focus = false;
 
-    texture.free();
-    goal_text.free();
-    font.free();
+    cost = 0;
+
+    focus = false;
+    focus_w = 0;
+
+    goal.free();
+    number.free();
 }
 
-bool Goal::load( SDL_Renderer* &renderer )
+bool Goal::load( SDL_Renderer* &renderer, int title_bar_posY )
 {
     bool success = true;
 
@@ -64,22 +89,28 @@ bool Goal::load( SDL_Renderer* &renderer )
         color.g = 0x99;
         color.b = 0xFF;
 
-        if( !goal_text.loadFromRenderedText( renderer, font.get(), "goal:  ", color ) )
+        if( !goal.loadFromRenderedText( renderer, font.get(), "goal:  ", color ) )
         {
             success = false;
         }
         else
         {
-            x = 10;
-            y = 60;
+            goal.getX() = 10;
+            goal.getY() = title_bar_posY;
 
             color.r = 0x09;
             color.g = 0x70;
             color.b = 0x54;
 
-            if( !texture.loadFromRenderedText( renderer, font.get(), "0", color ) )
+            if( !number.loadFromRenderedText( renderer, font.get(), "0", color ) )
             {
                 success = false;
+            }
+            else
+            {
+                number.getX() = goal.getX() + goal.getW();
+                number.getY() = title_bar_posY;
+                focus_w = 480;
             }
         }
     }
@@ -87,36 +118,44 @@ bool Goal::load( SDL_Renderer* &renderer )
     return success;
 }
 
-void Goal::render( SDL_Renderer* &renderer )
+void Goal::render( SDL_Renderer* &renderer, int screen_width )
 {
     if( focus )
     {
         SDL_SetRenderDrawColor( renderer, 0xEC, 0xEC, 0xEC, 0xFF );
-        SDL_Rect r = { x, y, 480, static_cast <int> ( goal_text.getHeight() ) };
+
+        SDL_Rect r = { goal.getX(), goal.getY(), focus_w, goal.getH() };
+
         SDL_RenderFillRect( renderer, &r );
+
         SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
     }
 
     if( renderText )
     {
-        cost = strToInt( inputText );
-        //std::cout << cost << '\n';
-
         if( inputText.length() <= 0 )
         {
-            texture.loadFromRenderedText( renderer, font.get(), "0", color );
+            cost = 0;
+            number.loadFromRenderedText( renderer, font.get(), "0", color );
         }
         else
-            texture.loadFromRenderedText( renderer, font.get(), inputText, color );
+        {
+            cost = strToInt( inputText );
+            number.loadFromRenderedText( renderer, font.get(), inputText, color );
+        }
 
         renderText = false;
     }
 
-    goal_text.render( renderer, x, y );
-    texture.render( renderer, x + goal_text.getWidth(), y );
+    goal.render( renderer );
+    number.render( renderer );
+
+
 
     SDL_SetRenderDrawColor( renderer, 0x65, 0x99, 0xFF, 0xFF );
-    SDL_RenderDrawLine( renderer, 0, y + goal_text.getHeight() +3, 1000, y + goal_text.getHeight() +3 );
+
+    SDL_RenderDrawLine( renderer, 0, goal.getY() + goal.getH() +3, screen_width, goal.getY() + goal.getH() +3 );
+
     SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
 }
 
@@ -124,15 +163,14 @@ void Goal::handle( SDL_Event &event )
 {
     if( event.type == SDL_MOUSEBUTTONDOWN )
     {
-        int posX = -1;
-        int posY = -1;
-        SDL_GetMouseState( &posX, &posY );
-
         focus = false;
 
-        if( posX > x && posY > y )
+        int x, y;
+        SDL_GetMouseState( &x, &y );
+
+        if( x > goal.getX() && y > goal.getY() )
         {
-            if( posX < x + 480 && posY < y + static_cast <int> ( goal_text.getHeight() ) )
+            if( x < goal.getX() + focus_w && y < goal.getY() + goal.getH() )
             {
                 focus = true;
             }
@@ -146,6 +184,16 @@ void Goal::handle( SDL_Event &event )
             if( event.key.keysym.sym == SDLK_BACKSPACE && inputText.length() > 0 )
             {
                 inputText.erase( inputText.length()-1 );
+
+                if( inputText[ inputText.length()-1 ] == ' ' )
+                {
+                    inputText.erase( inputText.length()-1  );
+                }
+
+                inputText.erase( inputText.length()-1 );
+
+                sortString();
+
                 renderText = true;
             }
 
@@ -166,19 +214,6 @@ void Goal::handle( SDL_Event &event )
             if( !( ( event.text.text[ 0 ] == 'c' || event.text.text[ 0 ] == 'C' ) && ( event.text.text[ 0 ] == 'v' || event.text.text[ 0 ] == 'V' ) && SDL_GetModState() & KMOD_CTRL ) )
             {
 
-                // For better look
-                for( unsigned i = 2; i < 11; i += 4 )
-                {
-                    if( inputText.length() > i )
-                    {
-                        if( inputText[ i+1 ] != ' ' )
-                        {
-                            inputText += ' ';
-                        }
-                    }
-                }
-
-
                 // We need numbers
                 int nr = static_cast <int> ( event.text.text[ 0 ] );
                 if( nr >= 48 && nr <= 57 )
@@ -193,22 +228,38 @@ void Goal::handle( SDL_Event &event )
                     inputText.erase( 0 );
                 }
 
-                // Max number is 999 999 999 999 + 3 space
-                if( inputText.length() > 15 )
+
+                // Max number is 999 999 999 999 + 3 spaces
+                if( inputText.length() > 16 )
                 {
-                    inputText.erase( inputText.length()-1 );
+                    // printf("%d\n", inputText.length());
+                    inputText.erase( inputText.length()-1, 1 );
                 }
+
+
+                // For better look
+                sortString();
             }
         }
     }
 }
 
-unsigned Goal::getWidth()
+int Goal::getW()
 {
-    return texture.getWidth();
+    return goal.getW() + number.getW();
 }
 
-unsigned Goal::getHeight()
+int &Goal::getH()
 {
-    return texture.getHeight();
+    return goal.getH();
+}
+
+int &Goal::getX()
+{
+    return goal.getX();
+}
+
+int &Goal::getY()
+{
+    return goal.getY();
 }
