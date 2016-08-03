@@ -15,8 +15,6 @@
 					<Add option="-g" />
 				</Compiler>
 				<Linker>
-					<Add option="-lmingw32" />
-					<Add option="-lSDL2main" />
 					<Add option="-lSDL2" />
 					<Add option="-lSDL2_image" />
 				</Linker>

@@ -1,5 +1,5 @@
-#include <SDL.h>
-#include <SDL_image.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include <stdio.h>
 #include <string>
 #include <string.h>
@@ -698,7 +698,7 @@ void close()
 	SDL_Quit();
 }
 
-int main( int argc, char* args[] )
+int main()
 {
 	//Start up SDL and create window
 	if( !init() )
