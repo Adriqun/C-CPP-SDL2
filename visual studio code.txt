@@ -1,0 +1,18 @@
+You can use Ubuntu Make to download and install Visual Studio Code:
+
+sudo add-apt-repository ppa:ubuntu-desktop/ubuntu-make
+sudo apt-get update
+sudo apt-get install ubuntu-make
+Then install Visual Studio Code:
+
+umake ide visual-studio-code
+Then click on the Visual studio icon that it automatically places on your launcher.
+
+To remove it, delete the installation folder and right click on the launcher to unpin the icon. The installation folder defaults to ~/tools/web/visual-studio-code
+
+References
+
+http://blog.didrocks.fr/post/Ubuntu-Make-0.7-released-with-Visual-Studio-Code-support
+https://wiki.ubuntu.com/ubuntu-make
+
+by mikembley - stackoverflow
