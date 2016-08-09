@@ -1,19 +1,18 @@
 #pragma once
 #include "texture.h"
-#include "font.h"
 
 class Valuables
 {
-    Texture plus;
-    Texture minus;
-
+    Texture a;
+    Texture b;
+	
 public:
 
     Valuables();
     ~Valuables();
     void free();
 
-    bool load( SDL_Renderer* &renderer, int title_bar_posY );
-    void render( SDL_Renderer* &renderer, int screen_width );
+    bool load( SDL_Renderer* &renderer, int goal_bar_posY, int screen_width );
+    void render( SDL_Renderer* &renderer );
     void handle( SDL_Event &event );
 };

@@ -13,6 +13,7 @@ Texture::Texture( int x, int y )
     texture = NULL;
 }
 
+
 Texture::~Texture()
 {
     free();

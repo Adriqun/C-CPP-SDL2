@@ -1,14 +1,13 @@
 #pragma once
 #include "texture.h"
-#include "font.h"
 
 class Title
 {
-    Font font;
-    Texture texture;
+    Texture* texture;
 
 public:
-
+	
+	Title();
     ~Title();
     void free();
 

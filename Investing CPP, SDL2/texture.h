@@ -12,7 +12,7 @@ class Texture
     SDL_Texture* texture;
 
 public:
-
+	
     Texture( int x = 0, int y = 0 );
     ~Texture();
     void free();

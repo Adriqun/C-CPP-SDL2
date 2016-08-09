@@ -6,7 +6,7 @@ class Attain
 {
     Font font;
 
-    Texture attain;
+    Texture texture;
     Texture result;
 
     string once;

@@ -6,21 +6,21 @@ bool Engine::load()
 {
     bool success = true;
 
-    if( !title.load( renderer, width ) )
+    if( !title->load( renderer, width ) )
     {
         success = false;
     }
-    else if( !title_bar.createWithColor( renderer, 0x65, 0x99, 0xFF, width, title.getH() ) )
-    {
-        success = false;
-    }
-
-    if( !goal.load( renderer, title_bar.getY() + title_bar.getH() + 5 ) )
+    else if( !title_bar->createWithColor( renderer, 0x65, 0x99, 0xFF, width, title->getH() ) )
     {
         success = false;
     }
 
-    if( !currency.load( renderer, title_bar.getY() + title_bar.getH() + 5, width ) )
+    if( !goal.load( renderer, title_bar->getY() + title_bar->getH() + 5 ) )
+    {
+        success = false;
+    }
+
+    if( !currency.load( renderer, title_bar->getY() + title_bar->getH() + 5, width ) )
     {
         success = false;
     }
@@ -29,6 +29,11 @@ bool Engine::load()
     {
         success = false;
     }
+	
+	//if( !valuables.load( renderer, goal.getY() + goal.getH() + 5, width ) )
+    //{
+	//   success = false;
+    //}
 
     return success;
 }
@@ -53,14 +58,16 @@ void Engine::loop()
             currency.handle( event );
         }
 
-        title_bar.render( renderer );
-        title.render( renderer );
+        title_bar->render( renderer );
+        title->render( renderer );
 
         goal.render( renderer, width );
 
         currency.render( renderer );
 
         attain.render( renderer, width );
+		
+		//valuables.render( renderer );
 
         //Edges
         SDL_SetRenderDrawColor( renderer, 0x65, 0x99, 0xFF, 0xFF );
@@ -93,14 +100,16 @@ void Engine::free()
         renderer = NULL;
     }
 
-    title_bar.free();
-    title.free();
+    delete title;
+	delete title_bar;
 
     goal.free();
 
     currency.free();
 
     attain.free();
+	
+	//valuables.free();
 
     Mix_Quit();
     TTF_Quit();
@@ -115,6 +124,9 @@ Engine::Engine()
     height = 600;
     window = NULL;
     renderer = NULL;
+	
+	title = new Title;
+	title_bar = new Texture;
 }
 
 Engine::~Engine()
