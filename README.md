@@ -1,2 +1,2 @@
-# git-command
-To remember the commands!
+# commands
+Git, ubuntu, to install IDE's etc.
