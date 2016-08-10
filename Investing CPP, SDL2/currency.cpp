@@ -1,4 +1,5 @@
 #include "currency.h"
+#include "font.h"
 
 Currency::Currency()
 {
@@ -15,8 +16,6 @@ Currency::~Currency()
 
 void Currency::free()
 {
-    font.free();
-
     if( texture != NULL )
     {
         for( int i = 0; i < nr; i++ )
@@ -39,7 +38,8 @@ bool Currency::load( SDL_Renderer* &renderer, int title_bar_posY, int screen_wid
     bool success = true;
 
     free();
-
+	
+	Font font;
     if( !font.load( "data/Chunkfive Ex.ttf", 30 ) )
     {
         success = false;
@@ -105,6 +105,8 @@ bool Currency::load( SDL_Renderer* &renderer, int title_bar_posY, int screen_wid
             }
         }
     }
+	
+	font.free();
 
     if( !click.load( "data/click.wav", 40 ) )
     {

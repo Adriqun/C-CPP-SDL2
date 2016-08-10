@@ -15,7 +15,7 @@ bool Engine::load()
         success = false;
     }
 
-    if( !goal.load( renderer, title_bar->getY() + title_bar->getH() + 5 ) )
+    if( !goal->load( renderer, title_bar->getY() + title_bar->getH() + 5 ) )
     {
         success = false;
     }
@@ -25,15 +25,15 @@ bool Engine::load()
         success = false;
     }
 
-    if( !attain.load( renderer, goal.getY() + goal.getH() + 5 ) )
+    if( !attain.load( renderer, goal->getY() + goal->getH() + 5 ) )
     {
         success = false;
     }
 	
-	//if( !valuables.load( renderer, goal.getY() + goal.getH() + 5, width ) )
-    //{
-	//   success = false;
-    //}
+	if( !valuables.load( renderer, goal->getY() + goal->getH() + 5, width ) )
+    {
+	   success = false;
+    }
 
     return success;
 }
@@ -54,20 +54,20 @@ void Engine::loop()
                 quit = true;
             }
 
-            goal.handle( event );
+            goal->handle( event );
             currency.handle( event );
         }
 
         title_bar->render( renderer );
         title->render( renderer );
 
-        goal.render( renderer, width );
+        goal->render( renderer, width );
 
         currency.render( renderer );
 
         attain.render( renderer, width );
 		
-		//valuables.render( renderer );
+		valuables.render( renderer );
 
         //Edges
         SDL_SetRenderDrawColor( renderer, 0x65, 0x99, 0xFF, 0xFF );
@@ -102,14 +102,13 @@ void Engine::free()
 
     delete title;
 	delete title_bar;
-
-    goal.free();
+    delete goal;
 
     currency.free();
 
     attain.free();
 	
-	//valuables.free();
+	valuables.free();
 
     Mix_Quit();
     TTF_Quit();
@@ -127,6 +126,8 @@ Engine::Engine()
 	
 	title = new Title;
 	title_bar = new Texture;
+	
+	goal = new Goal;
 }
 
 Engine::~Engine()

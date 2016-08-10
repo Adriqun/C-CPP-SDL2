@@ -16,13 +16,13 @@ class Engine
     Title* title;
     Texture* title_bar;
 
-    Goal goal;
+    Goal* goal;
 
     Currency currency;
 
     Attain attain;
 	
-	//Valuables valuables;
+	Valuables valuables;
 
 public:
 

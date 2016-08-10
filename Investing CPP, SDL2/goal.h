@@ -4,11 +4,11 @@
 
 class Goal
 {
-    Font font;
+    Font* font;
     SDL_Color color;
 
-    Texture goal;
-    Texture number;
+    Texture* goal;
+    Texture* number;
 
     bool renderText;
     string inputText;
@@ -31,8 +31,10 @@ public:
     void render( SDL_Renderer* &renderer, int screen_width );
     void handle( SDL_Event &event );
 
-    int getW();
+    int getW();	// without & - we have to add some widths
     int &getH();
     int &getX();
     int &getY();
+	unsigned long long getCost();
+	
 };

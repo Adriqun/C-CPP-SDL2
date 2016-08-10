@@ -1,15 +1,12 @@
 #pragma once
 
 #include "texture.h"
-#include "font.h"
 #include "chunk.h"
 
 class Currency
 {
 
 protected:
-
-    Font font;
 
     int nr;
     Texture* texture;
