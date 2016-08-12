@@ -41,3 +41,72 @@ long long Profit::strToInt( string s )
 
     return tmp;
 }
+
+Profit::Profit( char c )
+{
+	texture = NULL;
+	name = "";
+	renderText = false;
+	cost = 0;
+	inputText = "";
+	
+	focus = false;
+	focus_w = 0;
+	
+	this->c = c;
+	nr = 0;
+}
+
+Profit::~Profit()
+{
+	free();
+}
+
+void Profit::free()
+{
+	font.free();
+	
+	if( texture != NULL )
+	{
+		for( int i = 0; i < nr; i ++ )
+		{
+			texture[ i ].free();
+		}
+		
+		delete [] texture;
+		texture = NULL;
+		nr = 0;
+	}
+	
+	name = "";
+	renderText = false;
+	cost = 0;
+	inputText = "";
+	
+	focus = false;
+	focus_w = 0;
+	
+	c = 'c';
+	nr = 0;
+}
+
+	
+bool Profit::load( SDL_Renderer* &renderer, int attain_pos_y )
+{
+	register bool success = true;
+	
+	if( !font.load( "data/Chunkfive Ex.ttf", 20 ) )
+	{
+		success = false;
+	}
+	
+	nr = 
+	texture = new Texture [ nr ];
+	
+	return success;
+}
+
+void Profit::render( SDL_Renderer* &renderer )
+{
+	
+}

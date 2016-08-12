@@ -119,9 +119,10 @@ bool Goal::load( SDL_Renderer* &renderer, int title_bar_posY )
             color.g = 0x70;
             color.b = 0x54;
 			
+			SDL_Color gray = { 0xA4, 0xA4, 0xA4 };
 			number = new Texture;
 			if( number == NULL )	success = NULL;
-            if( !number->loadFromRenderedText( renderer, font->get(), "0", color ) )
+            if( !number->loadFromRenderedText( renderer, font->get(), "value", gray ) )
             {
                 success = false;
             }
@@ -155,7 +156,8 @@ void Goal::render( SDL_Renderer* &renderer, int screen_width )
         if( inputText.length() <= 0 )
         {
             cost = 0;
-            number->loadFromRenderedText( renderer, font->get(), "0", color );
+			SDL_Color gray = { 0xA4, 0xA4, 0xA4 };
+            number->loadFromRenderedText( renderer, font->get(), "value", gray );
         }
         else
         {
