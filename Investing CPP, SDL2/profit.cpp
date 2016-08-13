@@ -100,8 +100,16 @@ bool Profit::load( SDL_Renderer* &renderer, int attain_pos_y )
 		success = false;
 	}
 	
-	nr = 
+	nr = 7;
 	texture = new Texture [ nr ];
+	if( texture != NULL )
+	{
+		if( c == 'c' )
+		{
+			if( !texture[ 0 ].createWithColor( renderer, 0xFF, ))
+		}
+		
+	}
 	
 	return success;
 }
