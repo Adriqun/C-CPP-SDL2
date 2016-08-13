@@ -102,13 +102,16 @@ bool Profit::load( SDL_Renderer* &renderer, int attain_pos_y )
 	
 	nr = 7;
 	texture = new Texture [ nr ];
-	if( texture != NULL )
+	if( texture != NULL && success )
 	{
-		if( c == 'c' )
+		color.r = 0xFF;
+		color.r = 0x00;
+		color.r = 0x00;
+		if( !texture[ 0 ].loadFromRenderedText( renderer, font.get(), "delete", color ) )
 		{
-			if( !texture[ 0 ].createWithColor( renderer, 0xFF, ))
+			
 		}
-		
+
 	}
 	
 	return success;

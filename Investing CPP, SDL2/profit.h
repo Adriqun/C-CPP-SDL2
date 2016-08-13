@@ -21,6 +21,8 @@ class Profit
 	
 	char c;
 	
+	int x, y;
+	
 public:
 	
 	void sortString();
