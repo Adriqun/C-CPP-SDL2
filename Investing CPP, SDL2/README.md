@@ -9,7 +9,7 @@ You will know how many days you need to attain your goal.
 **Following changes**
 
 Window showing title and goal whose we want to attain.
-We can write number beetween 1 - 999 999 999 999 ( maybe you are **Bill Gates** ).
+We can write number beetween 1 - 999 999 999 999 (maybe you are **Bill Gates**).
 ![0](https://cloud.githubusercontent.com/assets/19840443/17263132/9d2b9782-55df-11e6-8195-f607bac23859.png)
 
 
@@ -19,5 +19,6 @@ Now you can choose which currency you want to operate. I also put **attain** wha
 
 
 Set colors more readable according to this page -> http://www.colorcombos.com/color-schemes/27/ColorCombo27.html
+I add '+' and '-' what mean that you can put your profits and expenses. What do you think about design?
 ![1](https://cloud.githubusercontent.com/assets/19840443/17648898/ce782cfe-6225-11e6-9079-a41fbed42c66.png)
 
