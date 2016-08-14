@@ -33,7 +33,7 @@ bool Title::load( SDL_Renderer* &renderer, int screen_width )
     }
     else
     {
-        SDL_Color color = { 0xFF, 0xFF, 0xFF };
+        SDL_Color color = { 0xA4, 0xA4, 0xA4 };
 		texture = new Texture;
 		if( texture != NULL )
 		{
@@ -45,8 +45,6 @@ bool Title::load( SDL_Renderer* &renderer, int screen_width )
 			{
 				texture->getX() = ( screen_width/2 ) - ( texture->getW()/2 );
 				texture->getY() = 0;
-
-				texture->setColor( 0x09, 0x70, 0x54 );
 			}
 		}
     }

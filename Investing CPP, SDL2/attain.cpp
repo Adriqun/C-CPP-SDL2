@@ -35,9 +35,9 @@ bool Attain::load( SDL_Renderer* &renderer, int goal_posY )
     else
     {
         SDL_Color color;
-        color.r = 0x65;
-        color.g = 0x99;
-        color.b = 0xFF;
+        color.r = 0x58;
+        color.g = 0x74;
+        color.b = 0x98;
 
         if( !texture.loadFromRenderedText( renderer, font.get(), "attain:  ", color ) )
         {
@@ -49,9 +49,9 @@ bool Attain::load( SDL_Renderer* &renderer, int goal_posY )
             texture.getY() = goal_posY;
 
             never = "never";
-            color.r = 0xFF;
-            color.g = 0x99;
-            color.b = 0x00;
+            color.r = 0xe8;
+            color.g = 0x68;
+            color.b = 0x50;
 
             if( !result.loadFromRenderedText( renderer, font.get(), never, color ) )
             {
@@ -73,7 +73,7 @@ void Attain::render( SDL_Renderer* &renderer, int screen_width )
     texture.render( renderer );
     result.render( renderer );
 
-    SDL_SetRenderDrawColor( renderer, 0x65, 0x99, 0xFF, 0xFF );
+    SDL_SetRenderDrawColor( renderer, 0x58, 0x74, 0x98, 0xFF );
 
     SDL_RenderDrawLine( renderer, 0, texture.getY() + texture.getH(), screen_width, texture.getY() + texture.getH() );
 

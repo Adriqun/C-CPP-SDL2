@@ -28,10 +28,10 @@ public:
 	void sortString();
 	long long strToInt( string s );
 	
-	Profit( char c = 'c' );
+	Profit( char c = 'c', int x = 0, int y = 0 );
 	~Profit();
 	void free();
 	
-	bool load( SDL_Renderer* &renderer, int attain_pos_y );
+	bool load( SDL_Renderer* &renderer, SDL_Window* &window );
 	void render( SDL_Renderer* &renderer );
 };

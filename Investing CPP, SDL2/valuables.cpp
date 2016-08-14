@@ -34,9 +34,9 @@ bool Valuables::load( SDL_Renderer* &renderer, int goal_bar_posY, int screen_wid
         SDL_Color color;
 
 		// green
-        color.r = 0x8B;
-        color.g = 0xC3;
-        color.b = 0x4A;
+        color.r = 0x58;
+        color.g = 0x70;
+        color.b = 0x58;
         if( !a.loadFromRenderedText( renderer, font->get(), "+", color ) )
         {
             success = false;
@@ -49,9 +49,9 @@ bool Valuables::load( SDL_Renderer* &renderer, int goal_bar_posY, int screen_wid
 		
 		font->setStyle( 1 );
         // red
-        color.r = 0xF4;
-        color.g = 0x43;
-        color.b = 0x36;
+        color.r = 0xE8;
+        color.g = 0x68;
+        color.b = 0x50;
         if( !b.loadFromRenderedText( renderer, font->get(), "-", color ) )
         {
             success = false;
@@ -73,7 +73,7 @@ void Valuables::render( SDL_Renderer* &renderer )
 	a.render( renderer );
 	b.render( renderer );
 	
-	SDL_SetRenderDrawColor( renderer, 0x65, 0x99, 0xFF, 0xFF );
+	SDL_SetRenderDrawColor( renderer, 0x58, 0x74, 0x98, 0xFF );
 	
 	SDL_RenderDrawLine( renderer, a.getX()-5, a.getY()-2, a.getX()-5, a.getY() + a.getH()-10 );
 	SDL_RenderDrawLine( renderer, a.getX() + a.getW() +5, a.getY()-2, a.getX() + a.getW() +5, a.getY() + a.getH()-10 );

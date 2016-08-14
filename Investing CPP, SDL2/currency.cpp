@@ -56,7 +56,7 @@ bool Currency::load( SDL_Renderer* &renderer, int title_bar_posY, int screen_wid
         }
         else
         {
-            SDL_Color color = { 0x65, 0x99, 0xFF };
+            SDL_Color color = { 0x58, 0x74, 0x98 };
 
             if( !texture[ 0 ].loadFromRenderedText( renderer, font.get(), "GBP", color ) )
             {
@@ -123,7 +123,7 @@ bool Currency::load( SDL_Renderer* &renderer, int title_bar_posY, int screen_wid
 
 void Currency::render( SDL_Renderer* &renderer )
 {
-    SDL_SetRenderDrawColor( renderer, 0x65, 0x99, 0xFF, 0xFF );
+    SDL_SetRenderDrawColor( renderer, 0x58, 0x74, 0x98, 0xFF );
 
     for( int i = 0; i < nr; i ++ )
     {

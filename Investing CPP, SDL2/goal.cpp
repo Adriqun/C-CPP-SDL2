@@ -100,9 +100,9 @@ bool Goal::load( SDL_Renderer* &renderer, int title_bar_posY )
     }
     else
     {
-        color.r = 0x65;
-        color.g = 0x99;
-        color.b = 0xFF;
+        color.r = 0x58;
+        color.g = 0x74;
+        color.b = 0x98;
 		
 		goal = new Texture;
 		if( goal == NULL )	success = NULL;
@@ -115,9 +115,9 @@ bool Goal::load( SDL_Renderer* &renderer, int title_bar_posY )
             goal->getX() = 10;
             goal->getY() = title_bar_posY;
 
-            color.r = 0x09;
+            color.r = 0x58;
             color.g = 0x70;
-            color.b = 0x54;
+            color.b = 0x58;
 			
 			SDL_Color gray = { 0xA4, 0xA4, 0xA4 };
 			number = new Texture;
@@ -173,7 +173,7 @@ void Goal::render( SDL_Renderer* &renderer, int screen_width )
 
 
 
-    SDL_SetRenderDrawColor( renderer, 0x65, 0x99, 0xFF, 0xFF );
+    SDL_SetRenderDrawColor( renderer, 0x58, 0x74, 0x98, 0xFF );
 
     SDL_RenderDrawLine( renderer, 0, goal->getY() + goal->getH() +3, screen_width, goal->getY() + goal->getH() +3 );
 
