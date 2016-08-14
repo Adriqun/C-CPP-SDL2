@@ -1,4 +1,5 @@
 #include "profit.h"
+#include <stdio.h>
 
 void Profit::sortString()
 {
@@ -89,7 +90,6 @@ void Profit::free()
 	focus = false;
 	focus_w = 0;
 	
-	c = 'c';
 	nr = 0;
 }
 
@@ -100,7 +100,7 @@ bool Profit::load( SDL_Renderer* &renderer, SDL_Window* &window )
 	
 	free();
 	
-	if( !font.load( "data/Chunkfive Ex.ttf", 20 ) )
+	if( !font.load( "data/ShadedLarch_PERSONAL_USE.ttf", 25 ) )
 	{
 		success = false;
 	}
@@ -117,38 +117,43 @@ bool Profit::load( SDL_Renderer* &renderer, SDL_Window* &window )
 			color.r = 0xE8;
 			color.g = 0x68;
 			color.b = 0x50;
+			printf( "2222cps" );
 		}
 		else
 		{
 			color.r = 0x58;
 			color.g = 0x70;
 			color.b = 0x58;
+			printf( "cps" );
 		}
 		
-		int bar_width = 20;
-		if( !texture[ 0 ].createWithColor( renderer, color.r, color.g, color.b, sw, bar_width ) )
-		{
-			success = false;
-		}
-		
-		color.r = 0xE8;
-		color.g = 0x68;
-		color.b = 0x50;
-		if( !texture[ 1 ].loadFromRenderedText( renderer, font.get(), "delete", color ) )
+		int bar_h = 20;
+		if( !texture[ 0 ].createWithColor( renderer, color.r, color.g, color.b, sw, bar_h ) )
 		{
 			success = false;
 		}
 		else
 		{
-			texture[ 1 ].setAlpha( 100 );
-			texture[ 1 ].getX() = sw - texture[ 1 ].getW();
-			texture[ 1 ].getY() = y + bar_width - texture[ 1 ].getH();
+			texture[ 0 ].getX() = x;
+			texture[ 0 ].getY() = y;
 		}
 		
-		
-		color.r = 0xA4;
-		color.g = 0xA4;
-		color.b = 0xA4;
+		color.r = 0xFF;
+		color.g = 0xFF;
+		color.b = 0xFF;
+		if( !texture[ 1 ].loadFromFile( renderer, window, "data/thrash.png" ) )
+		{
+			success = false;
+		}
+		else
+		{
+			texture[ 1 ].getH() = texture[ 1 ].getH()/2.7;
+			texture[ 1 ].getW() = texture[ 1 ].getW()/2.5;
+			
+			texture[ 1 ].getX() = sw - texture[ 1 ].getW()-5;
+			texture[ 1 ].getY() = y + bar_h - texture[ 1 ].getH()-1;
+		}
+
 		if( !texture[ 2 ].loadFromRenderedText( renderer, font.get(), "value: ", color ) )
 		{
 			success = false;
@@ -156,7 +161,7 @@ bool Profit::load( SDL_Renderer* &renderer, SDL_Window* &window )
 		else
 		{
 			texture[ 2 ].getX() = x + 5;
-			texture[ 2 ].getY() = y + 5;
+			texture[ 2 ].getY() = y;
 		}
 		
 		

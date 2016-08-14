@@ -4,6 +4,7 @@
 #include "currency.h"
 #include "attain.h"
 #include "valuables.h"
+#include "profit.h"
 
 class Engine
 {
@@ -23,6 +24,8 @@ class Engine
     Attain attain;
 	
 	Valuables valuables;
+	
+	Profit* profit;
 
 public:
 

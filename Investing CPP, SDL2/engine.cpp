@@ -34,6 +34,11 @@ bool Engine::load()
     {
 	   success = false;
     }
+	
+	if( !profit->load( renderer, window ) )
+    {
+	   success = false;
+    }
 
     return success;
 }
@@ -68,6 +73,8 @@ void Engine::loop()
         attain.render( renderer, width );
 		
 		valuables.render( renderer );
+		
+		profit->render( renderer );
 
         //Edges
         SDL_SetRenderDrawColor( renderer, 0x58, 0x74, 0x98, 0xFF );
@@ -115,6 +122,8 @@ void Engine::free()
     attain.free();
 	
 	valuables.free();
+	
+	delete profit;
 
     Mix_Quit();
     TTF_Quit();
@@ -134,6 +143,8 @@ Engine::Engine()
 	title_bar = new Texture;
 	
 	goal = new Goal;
+	
+	profit = new Profit( 'z', 0, 300 );
 }
 
 Engine::~Engine()
