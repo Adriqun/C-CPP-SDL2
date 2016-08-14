@@ -21,5 +21,7 @@ I add '+' and '-' what mean that you can put your profits and expenses. What do 
 
 Profit bar #1
 ![bar1](https://cloud.githubusercontent.com/assets/19840443/17649118/4199482a-622c-11e6-87fc-012209a09c53.png)
+Profit bar #2
+![bar2](https://cloud.githubusercontent.com/assets/19840443/17649255/3c67d020-6230-11e6-9652-0876bfa62e5f.png)
 
 
