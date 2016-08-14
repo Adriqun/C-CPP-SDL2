@@ -16,3 +16,8 @@ We can write number beetween 1 - 999 999 999.
 I put 4 **currency**, PLN - mean Polish currency, EUR - Euro, USD, American dollar, GBP - British note.
 Now you can choose which currency you want to operate. I also put **attain** what mean "when you will have expect amount of money. See below how it looks like.
 ![1](https://cloud.githubusercontent.com/assets/19840443/17269666/0c03d2b8-564f-11e6-923f-4e0bf654ebb6.png)
+
+
+Set colors more readable according to this page -> http://www.colorcombos.com/color-schemes/27/ColorCombo27.html
+![1](https://cloud.githubusercontent.com/assets/19840443/17648898/ce782cfe-6225-11e6-9079-a41fbed42c66.png)
+
