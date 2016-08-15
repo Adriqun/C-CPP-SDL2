@@ -52,6 +52,16 @@ int &Texture::getH()
     return rect.h;
 }
 
+int Texture::getR()
+{
+	return rect.x + rect.w;
+}
+
+int Texture::getB()
+{
+	return rect.y + rect.h;
+}
+
 
 
 void Texture::setAlpha( Uint8 alpha )

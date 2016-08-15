@@ -15,7 +15,6 @@ class Engine
     SDL_Renderer* renderer;
 
     Title* title;
-    Texture* title_bar;
 
     Goal* goal;
 

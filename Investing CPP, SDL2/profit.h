@@ -16,12 +16,14 @@ class Profit
 	
 	long long cost;
 	
-	bool focus;
-	int focus_w;
+	bool focus_v, focus_n;
+	int focus_w_v, focus_w_n;
 	
 	char c;
 	
 	int x, y;
+	
+	bool thrash;
 	
 public:
 	
@@ -34,4 +36,7 @@ public:
 	
 	bool load( SDL_Renderer* &renderer, SDL_Window* &window );
 	void render( SDL_Renderer* &renderer );
+	void handle( SDL_Event &event ); 
+	
+	bool isThrash();
 };

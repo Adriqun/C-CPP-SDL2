@@ -51,14 +51,16 @@ Profit::Profit( char c, int x, int y )
 	cost = 0;
 	inputText = "";
 	
-	focus = false;
-	focus_w = 0;
+	focus_n = focus_v = false;
+	focus_w_v = focus_w_n = 0;
 	
 	this->c = c;
 	nr = 0;
 	
 	this->x = x;
 	this->y = y;
+	
+	thrash = false;
 }
 
 Profit::~Profit()
@@ -86,9 +88,6 @@ void Profit::free()
 	renderText = false;
 	cost = 0;
 	inputText = "";
-	
-	focus = false;
-	focus_w = 0;
 	
 	nr = 0;
 }
@@ -138,9 +137,7 @@ bool Profit::load( SDL_Renderer* &renderer, SDL_Window* &window )
 			texture[ 0 ].getY() = y;
 		}
 		
-		color.r = 0xFF;
-		color.g = 0xFF;
-		color.b = 0xFF;
+		
 		if( !texture[ 1 ].loadFromFile( renderer, window, "data/thrash.png" ) )
 		{
 			success = false;
@@ -153,18 +150,58 @@ bool Profit::load( SDL_Renderer* &renderer, SDL_Window* &window )
 			texture[ 1 ].getX() = sw - texture[ 1 ].getW()-5;
 			texture[ 1 ].getY() = y + bar_h - texture[ 1 ].getH()-1;
 		}
-
-		if( !texture[ 2 ].loadFromRenderedText( renderer, font.get(), "value: ", color ) )
+		
+		if( !texture[ 2 ].loadFromFile( renderer, window, "data/money.png" ) )
 		{
 			success = false;
 		}
 		else
 		{
-			texture[ 2 ].getX() = x + 5;
-			texture[ 2 ].getY() = y;
+			texture[ 2 ].getH() = texture[ 2 ].getH()/2.7;
+			texture[ 2 ].getW() = texture[ 2 ].getW()/2.5;
+			
+			texture[ 2 ].getX() = texture[ 1 ].getX() - 8 - texture[ 2 ].getW();
+			texture[ 2 ].getY() = texture[ 1 ].getY() + 2;
 		}
 		
+		if( !texture[ 3 ].loadFromFile( renderer, window, "data/calendar.png" ) )
+		{
+			success = false;
+		}
+		else
+		{
+			texture[ 3 ].getH() = texture[ 3 ].getH()/2.7;
+			texture[ 3 ].getW() = texture[ 3 ].getW()/2.5;
+			
+			texture[ 3 ].getX() = texture[ 2 ].getX() - 8 - texture[ 3 ].getW();
+			texture[ 3 ].getY() = texture[ 1 ].getY();
+		}
 		
+		int focus_width = 100;
+		color.r = 0xFF;
+		color.g = 0xFF;
+		color.b = 0xFF;
+		if( !texture[ 4 ].loadFromRenderedText( renderer, font.get(), "value: ", color ) )
+		{
+			success = false;
+		}
+		else
+		{
+			texture[ 4 ].getX() = x + 5;
+			texture[ 4 ].getY() = y-2;
+			focus_w_v = texture[ 4 ].getW() + focus_width;
+		}
+		
+		if( !texture[ 5 ].loadFromRenderedText( renderer, font.get(), "name: ", color ) )
+		{
+			success = false;
+		}
+		else
+		{
+			texture[ 5 ].getX() = sw/2 - texture[ 5 ].getW()/2-15;
+			texture[ 5 ].getY() = y-2;
+			focus_w_n = texture[ 5 ].getW() + focus_width;
+		}
 	}
 	
 	return success;
@@ -177,3 +214,9 @@ void Profit::render( SDL_Renderer* &renderer )
 		texture[ i ].render( renderer );
 	}
 }
+
+bool Profit::isThrash()
+{
+	return thrash;
+}
+

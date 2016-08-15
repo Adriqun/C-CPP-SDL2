@@ -3,7 +3,8 @@
 
 Title::Title()
 {
-	texture = NULL;
+	label = NULL;
+	wallpaper = NULL;
 }
 
 Title::~Title()
@@ -13,9 +14,14 @@ Title::~Title()
 
 void Title::free()
 {
-    if( texture != NULL )
+    if( label != NULL )
 	{
-		delete texture;
+		delete label;
+	}
+	
+	if( wallpaper != NULL )
+	{
+		delete wallpaper;
 	}
 }
 
@@ -25,45 +31,66 @@ bool Title::load( SDL_Renderer* &renderer, int screen_width )
 	
     free();
 	
-	Font* font = new Font;
-
-    if( !font->load( "data/ShadedLarch_PERSONAL_USE.ttf", 50 ) )
+	Font font;
+    if( !font.load( "data/ShadedLarch_PERSONAL_USE.ttf", 50 ) )
     {
         success = false;
     }
     else
     {
-        SDL_Color color = { 0xA4, 0xA4, 0xA4 };
-		texture = new Texture;
-		if( texture != NULL )
+		label = new Texture;
+		if( label != NULL )
 		{
-			if( !texture->loadFromRenderedText( renderer, font->get(), "investing", color ) )
+			SDL_Color color = { 0xA4, 0xA4, 0xA4 };
+			if( !label->loadFromRenderedText( renderer, font.get(), "investing", color ) )
 			{
 				success = false;
 			}
 			else
 			{
-				texture->getX() = ( screen_width/2 ) - ( texture->getW()/2 );
-				texture->getY() = 0;
+				label->getX() = ( screen_width/2 ) - ( label->getW()/2 );
+				label->getY() = 0;
 			}
 		}
     }
-
+	font.free();
+	
+	wallpaper = new Texture;
+	if( wallpaper != NULL )
+	{
+		if( !wallpaper->createWithColor( renderer, 0x58, 0x74, 0x98, screen_width, label->getH() ) )
+		{
+			success = false;
+		}
+	}
 
     return success;
 }
 
-void Title::render( SDL_Renderer* &renderer )
+void Title::render( SDL_Renderer* &renderer, int screen_width, int screen_height )
 {
-    texture->render( renderer );
-}
-
-int &Title::getW()
-{
-    return texture->getW();
+	wallpaper->render( renderer );
+    label->render( renderer );
+	
+	//Edges
+	SDL_SetRenderDrawColor( renderer, 0x58, 0x74, 0x98, 0xFF );
+		
+	SDL_RenderDrawLine( renderer, 0, 0, 0, screen_height );
+	SDL_RenderDrawLine( renderer, 1, 0, 1, screen_height );
+	SDL_RenderDrawLine( renderer, 2, 0, 2, screen_height );
+		
+	SDL_RenderDrawLine( renderer, screen_width-1, 0, screen_width-1, screen_height );
+	SDL_RenderDrawLine( renderer, screen_width-2, 0, screen_width-2, screen_height );
+	SDL_RenderDrawLine( renderer, screen_width-3, 0, screen_width-3, screen_height );
+		
+	SDL_RenderDrawLine( renderer, 0, screen_height-1, screen_width, screen_height-1 );
+	SDL_RenderDrawLine( renderer, 0, screen_height-2, screen_width, screen_height-2 );
+	SDL_RenderDrawLine( renderer, 0, screen_height-3, screen_width, screen_height-3 );
+		
+	SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
 }
 
 int &Title::getH()
 {
-    return texture->getH();
+    return label->getH();
 }

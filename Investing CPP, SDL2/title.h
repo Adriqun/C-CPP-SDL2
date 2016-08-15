@@ -3,7 +3,8 @@
 
 class Title
 {
-    Texture* texture;
+    Texture* label;
+	Texture* wallpaper;
 
 public:
 	
@@ -12,8 +13,7 @@ public:
     void free();
 
     bool load( SDL_Renderer* &renderer, int screen_width );
-    void render( SDL_Renderer* &renderer );
+    void render( SDL_Renderer* &renderer, int screen_width, int screen_height );
 
-    int &getW();
     int &getH();
 };

@@ -21,6 +21,9 @@ public:
     int &getY();
     int &getW();
     int &getH();
+	
+	int getR();	// right
+	int getB();	// bottom
 
     void setAlpha( Uint8 alpha );
     void setColor( Uint8 red, Uint8 green, Uint8 blue );

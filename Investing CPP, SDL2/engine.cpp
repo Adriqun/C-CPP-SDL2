@@ -10,27 +10,23 @@ bool Engine::load()
     {
         success = false;
     }
-    else if( !title_bar->createWithColor( renderer, 0x58, 0x74, 0x98, width, title->getH() ) )
+
+    if( !goal->load( renderer, title->getH() + 5 ) )
     {
         success = false;
     }
 
-    if( !goal->load( renderer, title_bar->getY() + title_bar->getH() + 5 ) )
+    if( !currency.load( renderer, title->getH() + 5, width ) )
     {
         success = false;
     }
 
-    if( !currency.load( renderer, title_bar->getY() + title_bar->getH() + 5, width ) )
-    {
-        success = false;
-    }
-
-    if( !attain.load( renderer, goal->getY() + goal->getH() + 5 ) )
+    if( !attain.load( renderer, goal->getB() + 5 ) )
     {
         success = false;
     }
 	
-	if( !valuables.load( renderer, goal->getY() + goal->getH() + 5, width ) )
+	if( !valuables.load( renderer, goal->getB() + 5, width ) )
     {
 	   success = false;
     }
@@ -63,8 +59,7 @@ void Engine::loop()
             currency.handle( event );
         }
 
-        title_bar->render( renderer );
-        title->render( renderer );
+        title->render( renderer, width, height );
 
         goal->render( renderer, width );
 
@@ -76,22 +71,6 @@ void Engine::loop()
 		
 		profit->render( renderer );
 
-        //Edges
-        SDL_SetRenderDrawColor( renderer, 0x58, 0x74, 0x98, 0xFF );
-		
-        SDL_RenderDrawLine( renderer, 0, 0, 0, height );
-        SDL_RenderDrawLine( renderer, 1, 0, 1, height );
-		SDL_RenderDrawLine( renderer, 2, 0, 2, height );
-		
-		SDL_RenderDrawLine( renderer, width-1, 0, width-1, height );
-        SDL_RenderDrawLine( renderer, width-2, 0, width-2, height );
-		SDL_RenderDrawLine( renderer, width-3, 0, width-3, height );
-		
-        SDL_RenderDrawLine( renderer, 0, height-1, width, height-1 );
-        SDL_RenderDrawLine( renderer, 0, height-2, width, height-2 );
-		SDL_RenderDrawLine( renderer, 0, height-3, width, height-3 );
-		
-        SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
         SDL_RenderPresent( renderer );
     }
 
@@ -114,7 +93,6 @@ void Engine::free()
     }
 
     delete title;
-	delete title_bar;
     delete goal;
 
     currency.free();
@@ -140,7 +118,6 @@ Engine::Engine()
     renderer = NULL;
 	
 	title = new Title;
-	title_bar = new Texture;
 	
 	goal = new Goal;
 	

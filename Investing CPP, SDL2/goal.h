@@ -7,7 +7,7 @@ class Goal
     Font* font;
     SDL_Color color;
 
-    Texture* goal;
+    Texture* label;
     Texture* number;
 
     bool renderText;
@@ -16,25 +16,22 @@ class Goal
     unsigned long long cost;
 
     bool focus;
-    int focus_w;
+	SDL_Rect focusRect;
 
 public:
 
-    void sortString();
+    void sortString();	// delete spaces and sort
     unsigned long long strToInt( string s );
 
     Goal();
     ~Goal();
     void free();
 
-    bool load( SDL_Renderer* &renderer, int title_bar_posY );
+    bool load( SDL_Renderer* &renderer, int title_bar_height );
     void render( SDL_Renderer* &renderer, int screen_width );
     void handle( SDL_Event &event );
 
-    int getW();	// without & - we have to add some widths
-    int &getH();
-    int &getX();
-    int &getY();
-	unsigned long long getCost();
+    int getB();
 	
+	unsigned long long getCost();
 };
