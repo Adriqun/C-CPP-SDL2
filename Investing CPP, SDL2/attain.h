@@ -4,12 +4,11 @@
 
 class Attain
 {
-    Font font;
+    Font* font;
 
-    Texture texture;
-    Texture result;
+    Texture* label;
+    Texture* result;
 
-    string once;
     string never;
 
 public:
@@ -18,6 +17,6 @@ public:
     ~Attain();
     void free();
 
-    bool load( SDL_Renderer* &renderer, int goal_posY );
+    bool load( SDL_Renderer* &renderer, int goal_height );
     void render( SDL_Renderer* &renderer, int screen_width );
 };

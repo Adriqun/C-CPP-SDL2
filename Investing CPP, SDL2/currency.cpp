@@ -105,7 +105,6 @@ bool Currency::load( SDL_Renderer* &renderer, int title_bar_posY, int screen_wid
             }
         }
     }
-	
 	font.free();
 
     if( !click.load( "data/click.wav", 40 ) )
