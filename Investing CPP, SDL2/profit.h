@@ -1,42 +1,46 @@
 #pragma once
-#include "texture.h"
-#include "font.h"
+#include "goal.h"
+
+class AddCost :public Goal
+{
+	public:
+	bool load( SDL_Renderer* &renderer, int x, int y );
+};
+
+class AddName :public Goal
+{
+	
+public:
+
+	bool load( SDL_Renderer* &renderer, int x, int y );
+	void handle( SDL_Event &event );
+	void render( SDL_Renderer* &renderer );
+
+};
 
 class Profit
 {
-	Font font;
 	SDL_Color color;
+	AddCost* addCost;
+	AddName addName;
 	
 	int nr;
 	Texture* texture;
-	string name;
-	
-	bool renderText;
-    string inputText;
-	
-	long long cost;
-	
-	bool focus_v, focus_n;
-	int focus_w_v, focus_w_n;
-	
-	char c;
-	
+
+	int ch;
 	int x, y;
 	
 	bool thrash;
 	
 public:
 	
-	void sortString();
-	long long strToInt( string s );
-	
-	Profit( char c = 'c', int x = 0, int y = 0 );
+	Profit( int ch = 0, int x = 0, int y = 0 );
 	~Profit();
 	void free();
 	
 	bool load( SDL_Renderer* &renderer, SDL_Window* &window );
 	void render( SDL_Renderer* &renderer );
-	void handle( SDL_Event &event ); 
+	void handle( SDL_Event &event );
 	
 	bool isThrash();
 };

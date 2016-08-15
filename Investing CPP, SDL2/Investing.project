@@ -4,8 +4,6 @@
   <Dependencies/>
   <VirtualDirectory Name="src">
     <File Name="main.cpp"/>
-    <File Name="valuables.h"/>
-    <File Name="valuables.cpp"/>
     <File Name="title.h"/>
     <File Name="title.cpp"/>
     <File Name="texture.h"/>

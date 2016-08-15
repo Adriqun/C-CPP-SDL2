@@ -13,7 +13,7 @@ Font::~Font()
 
 void Font::free()
 {
-    if( font != NULL );
+    if( font != NULL )
     {
         TTF_CloseFont( font );
         font = NULL;

@@ -60,8 +60,8 @@ AS       := llvm-as
 ## User defined environment variables
 ##
 CodeLiteDir:=/usr/share/codelite
-Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/valuables.cpp$(ObjectSuffix) $(IntermediateDirectory)/title.cpp$(ObjectSuffix) $(IntermediateDirectory)/texture.cpp$(ObjectSuffix) $(IntermediateDirectory)/profit.cpp$(ObjectSuffix) $(IntermediateDirectory)/goal.cpp$(ObjectSuffix) $(IntermediateDirectory)/font.cpp$(ObjectSuffix) $(IntermediateDirectory)/engine.cpp$(ObjectSuffix) $(IntermediateDirectory)/currency.cpp$(ObjectSuffix) $(IntermediateDirectory)/chunk.cpp$(ObjectSuffix) \
-	$(IntermediateDirectory)/attain.cpp$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/title.cpp$(ObjectSuffix) $(IntermediateDirectory)/texture.cpp$(ObjectSuffix) $(IntermediateDirectory)/profit.cpp$(ObjectSuffix) $(IntermediateDirectory)/goal.cpp$(ObjectSuffix) $(IntermediateDirectory)/font.cpp$(ObjectSuffix) $(IntermediateDirectory)/engine.cpp$(ObjectSuffix) $(IntermediateDirectory)/currency.cpp$(ObjectSuffix) $(IntermediateDirectory)/chunk.cpp$(ObjectSuffix) $(IntermediateDirectory)/attain.cpp$(ObjectSuffix) \
+	
 
 
 
@@ -96,11 +96,6 @@ $(IntermediateDirectory)/main.cpp$(ObjectSuffix): main.cpp
 	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/adrian/.codelite/Workspace_one/Investing/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/main.cpp$(PreprocessSuffix): main.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/main.cpp$(PreprocessSuffix) "main.cpp"
-
-$(IntermediateDirectory)/valuables.cpp$(ObjectSuffix): valuables.cpp 
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/adrian/.codelite/Workspace_one/Investing/valuables.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/valuables.cpp$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/valuables.cpp$(PreprocessSuffix): valuables.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/valuables.cpp$(PreprocessSuffix) "valuables.cpp"
 
 $(IntermediateDirectory)/title.cpp$(ObjectSuffix): title.cpp 
 	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/adrian/.codelite/Workspace_one/Investing/title.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/title.cpp$(ObjectSuffix) $(IncludePath)

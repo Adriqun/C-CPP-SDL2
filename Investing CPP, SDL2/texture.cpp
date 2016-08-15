@@ -62,8 +62,6 @@ int Texture::getB()
 	return rect.y + rect.h;
 }
 
-
-
 void Texture::setAlpha( Uint8 alpha )
 {
     SDL_SetTextureAlphaMod( texture, alpha );

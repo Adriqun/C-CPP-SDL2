@@ -3,7 +3,6 @@
 #include "goal.h"
 #include "currency.h"
 #include "attain.h"
-#include "valuables.h"
 #include "profit.h"
 
 class Engine
@@ -14,15 +13,11 @@ class Engine
     SDL_Window* window;
     SDL_Renderer* renderer;
 
-    Title* title;
-
-    Goal* goal;
-
+    Title title;
+	Goal goal;
     Currency currency;
-
-    Attain attain;
-	
-	Valuables valuables;
+	Attain attain;
+	Value* value;
 	
 	Profit* profit;
 

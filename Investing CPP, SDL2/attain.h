@@ -4,10 +4,10 @@
 
 class Attain
 {
-    Font* font;
+    Font font;
 
-    Texture* label;
-    Texture* result;
+    Texture label;
+    Texture result;
 
     string never;
 
@@ -19,4 +19,6 @@ public:
 
     bool load( SDL_Renderer* &renderer, int goal_height );
     void render( SDL_Renderer* &renderer, int screen_width );
+	
+	int getB();
 };

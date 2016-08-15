@@ -6,36 +6,37 @@ bool Engine::load()
 {
     bool success = true;
 
-    if( !title->load( renderer, width ) )
+    if( !title.load( renderer, width ) )
     {
         success = false;
     }
 
-    if( !goal->load( renderer, title->getH() + 5 ) )
-    {
-        success = false;
-    }
-
-    if( !currency.load( renderer, title->getH() + 5, width ) )
-    {
-        success = false;
-    }
-
-    if( !attain.load( renderer, goal->getB() + 5 ) )
+    if( !goal.load( renderer, title.getH() + 5 ) )
     {
         success = false;
     }
 	
-	if( !valuables.load( renderer, goal->getB() + 5, width ) )
+    if( !currency.load( renderer, title.getH() + 5, width ) )
     {
-	   success = false;
+        success = false;
+    }
+	
+    if( !attain.load( renderer, goal.getB() + 5 ) )
+    {
+        success = false;
+    }
+	
+
+	if( !value->load( renderer, goal.getB() + 5, width ) )
+    {
+		success = false;
     }
 	
 	if( !profit->load( renderer, window ) )
     {
 	   success = false;
     }
-
+	
     return success;
 }
 
@@ -55,19 +56,21 @@ void Engine::loop()
                 quit = true;
             }
 
-            goal->handle( event );
+            goal.handle( event );
             currency.handle( event );
+			value->handle( event );
+			profit->handle( event );
         }
 
-        title->render( renderer, width, height );
-
-        goal->render( renderer, width );
-
-        currency.render( renderer );
-
-        attain.render( renderer, width );
+        title.render( renderer, width, height );
 		
-		valuables.render( renderer );
+        goal.render( renderer );
+		goal.renderEdges( renderer, width );
+		
+        currency.render( renderer );
+		attain.render( renderer, width );
+		
+		value->render( renderer );
 		
 		profit->render( renderer );
 
@@ -92,15 +95,12 @@ void Engine::free()
         renderer = NULL;
     }
 
-    delete title;
-    delete goal;
-
-    currency.free();
-
-    attain.free();
+    title.free();
+    goal.free();
+	currency.free();
+	attain.free();
 	
-	valuables.free();
-	
+	delete value;
 	delete profit;
 
     Mix_Quit();
@@ -117,10 +117,7 @@ Engine::Engine()
     window = NULL;
     renderer = NULL;
 	
-	title = new Title;
-	
-	goal = new Goal;
-	
+	value = new Value;
 	profit = new Profit( 'z', 0, 300 );
 }
 

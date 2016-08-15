@@ -44,11 +44,6 @@ unsigned long long Goal::strToInt( string s )
 
 Goal::Goal()
 {
-	font = NULL;
-	
-	label = NULL;
-	number = NULL;
-	
     renderText = false;
     inputText = "";
 
@@ -60,6 +55,8 @@ Goal::Goal()
 	focusRect.y = 0;
 	focusRect.w = 0;
 	focusRect.h = 0;
+	
+	value = "";
 }
 
 Goal::~Goal()
@@ -69,20 +66,10 @@ Goal::~Goal()
 
 void Goal::free()
 {
-	if( font != NULL )
-	{
-		delete font;
-	}
+	font.free();
 	
-	if( label != NULL )
-	{
-		delete label;
-	}
-	
-	if( number != NULL )
-	{
-		delete number;
-	}
+	label.free();
+	number.free();
 
     renderText = false;
     inputText = "";
@@ -95,61 +82,55 @@ void Goal::free()
 	focusRect.y = 0;
 	focusRect.w = 0;
 	focusRect.h = 0;
+	
+	value = "";
 }
 
 bool Goal::load( SDL_Renderer* &renderer, int title_bar_height )
 {
-    register bool success = true;
+    bool success = true;
 
     free();
 	
-	font = new Font;
-    if( !font->load( "data/Chunkfive Ex.ttf", 30 ) )
+    if( !font.load( "data/Chunkfive Ex.ttf", 30 ) )
     {
         success = false;
     }
     else
     {
-		label = new Texture;
-		if( label != NULL )
+		color.r = 0x58;
+		color.g = 0x74;
+		color.b = 0x98;
+		if( !label.loadFromRenderedText( renderer, font.get(), "goal:  ", color ) )
 		{
-			color.r = 0x58;
-			color.g = 0x74;
-			color.b = 0x98;
-			if( !label->loadFromRenderedText( renderer, font->get(), "goal:  ", color ) )
+			success = false;
+		}
+		else
+		{
+			label.getX() = 10;
+			label.getY() = title_bar_height;
+
+			value = "value";
+			color.r = 0xA4;
+			color.g = 0xA4;
+			color.b = 0xA4;
+			if( !number.loadFromRenderedText( renderer, font.get(), value, color ) )
 			{
 				success = false;
 			}
 			else
 			{
-				label->getX() = 10;
-				label->getY() = title_bar_height;
-
-				number = new Texture;
-				if( number != NULL )
-				{
-					color.r = 0xA4;
-					color.g = 0xA4;
-					color.b = 0xA4;
-					if( !number->loadFromRenderedText( renderer, font->get(), "value", color ) )
-					{
-						success = false;
-					}
-					else
-					{
-						number->getX() = label->getR();
-						number->getY() = title_bar_height;
+				number.getX() = label.getR();
+				number.getY() = title_bar_height;
 						
-						focusRect.x = label->getX();
-						focusRect.y = label->getY();
-						focusRect.w = 480;
-						focusRect.h = label->getH();
+				focusRect.x = label.getX();
+				focusRect.y = label.getY();
+				focusRect.w = 480;
+				focusRect.h = label.getH();
 						
-						color.r = 0x58;
-						color.g = 0x70;
-						color.b = 0x58;
-					}
-				}
+				color.r = 0x58;
+				color.g = 0x70;
+				color.b = 0x58;
 			}
 		}
     }
@@ -157,7 +138,7 @@ bool Goal::load( SDL_Renderer* &renderer, int title_bar_height )
     return success;
 }
 
-void Goal::render( SDL_Renderer* &renderer, int screen_width )
+void Goal::render( SDL_Renderer* &renderer )
 {
     if( focus )
     {
@@ -172,23 +153,25 @@ void Goal::render( SDL_Renderer* &renderer, int screen_width )
         {
             cost = 0;
 			SDL_Color gray = { 0xA4, 0xA4, 0xA4 };
-            number->loadFromRenderedText( renderer, font->get(), "value", gray );
+            number.loadFromRenderedText( renderer, font.get(), value, gray );
         }
         else
         {
             cost = strToInt( inputText );
-            number->loadFromRenderedText( renderer, font->get(), inputText, color );
+            number.loadFromRenderedText( renderer, font.get(), inputText, color );
         }
 
         renderText = false;
     }
 
-    label->render( renderer );
-    number->render( renderer );
+    label.render( renderer );
+    number.render( renderer );
+}
 
-
-    SDL_SetRenderDrawColor( renderer, 0x58, 0x74, 0x98, 0xFF );
-    SDL_RenderDrawLine( renderer, 0, label->getB() +3, screen_width, label->getB() +3 );
+void Goal::renderEdges( SDL_Renderer* &renderer, int screen_width )
+{
+	SDL_SetRenderDrawColor( renderer, 0x58, 0x74, 0x98, 0xFF );
+    SDL_RenderDrawLine( renderer, 0, label.getB() +3, screen_width, label.getB() +3 );
     SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
 }
 
@@ -201,9 +184,9 @@ void Goal::handle( SDL_Event &event )
         int x, y;
         SDL_GetMouseState( &x, &y );
 
-        if( y > label->getY() && y < label->getB() )
+        if( y > label.getY() && y < label.getB() )
         {
-            if( x < label->getX() + focusRect.w && x > label->getX() )
+            if( x < label.getX() + focusRect.w && x > label.getX() )
             {
                 focus = true;
             }
@@ -279,7 +262,7 @@ void Goal::handle( SDL_Event &event )
 
 int Goal::getB()
 {
-	return label->getB();
+	return label.getB();
 }
 
 unsigned long long Goal::getCost()
