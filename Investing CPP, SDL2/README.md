@@ -26,3 +26,5 @@ Profit bar #2
 
 Adding profits and expenses now works.
 ![2](https://cloud.githubusercontent.com/assets/19840443/17663662/7369b7dc-62ee-11e6-80db-db26cb878790.png)
+
+Application looks really powerful! The red bar is your expense, now you can add default type of bar, delete, choose type of period (hour, week, mounth, year) and finally choose the currency. For example you have Grandmother from USA and sometimes( once per mounth) she give you 1000 dollars (because she is rich :smirk:), add profit by green char, choose mounth in calendar and choose USD in currency. Ok but I'm from United Kingdom - it's no problem man!, set attain as GBP. I'm going to add more currency in the future just wait for it - 2016.08.16 ![4](https://cloud.githubusercontent.com/assets/19840443/17689292/dba11d3e-6386-11e6-803b-f67caa8e83ce.png)
