@@ -21,4 +21,6 @@ public:
     void render( SDL_Renderer* &renderer, int screen_width );
 	
 	int getB();
+	
+	void setAttain( int** mother );
 };

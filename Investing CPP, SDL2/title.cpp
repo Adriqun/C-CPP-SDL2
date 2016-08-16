@@ -86,7 +86,7 @@ void Value::free()
 {
 	label.free();
 	wallpaper.free();
-	type = 0;
+
 	click.free();
 }
 
@@ -95,7 +95,6 @@ bool Value::load( SDL_Renderer* &renderer, SDL_Window* &window, int goal_height 
     bool success = true;
 	
     free();
-	type = 0;
 	
 	int w, h;
 	SDL_GetWindowSize( window, &w, &h );
@@ -141,6 +140,7 @@ bool Value::load( SDL_Renderer* &renderer, SDL_Window* &window, int goal_height 
     }
 	
 	startY = label.getB();
+	old_nr = 0;
 
     return success;
 }
@@ -232,7 +232,28 @@ void Value::handle( SDL_Event &event, SDL_Renderer* &renderer, SDL_Window* &wind
 	}
 }
 
-int Value::get()
+int** Value::get()
 {
-	return type;
+	int** mother = NULL;
+	if( old_nr != profitVec.size() )
+	{
+		old_nr = profitVec.size();
+		
+		mother = new int* [ old_nr ];
+		for( int i = 0; i < old_nr; i ++ )
+		{
+			mother[ i ] = new int [ 2 ]; // calendar, currency
+		}
+		
+		for( int i = 0; i < old_nr; i ++ )
+		{
+			mother[ i ][ 0 ] = profitVec[ i ]->getCalendar();
+			mother[ i ][ 1 ] = profitVec[ i ]->getCurrency();
+		}
+		
+		return mother;
+	}
+	
+	return NULL;
 }
+

@@ -25,9 +25,9 @@ public:
 class Value :public Title
 {
 	Chunk click;
-	int type;
 	int startY;
 	
+	int old_nr;
 	vector <Profit*> profitVec;
 	
 public:
@@ -37,5 +37,6 @@ public:
 	bool load( SDL_Renderer* &renderer, SDL_Window* &window, int goal_height );
 	void render( SDL_Renderer* &renderer );
 	void handle( SDL_Event &event, SDL_Renderer* &renderer, SDL_Window* &window );
-	int get();
+	
+	int** get();
 };

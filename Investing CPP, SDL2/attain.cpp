@@ -76,3 +76,11 @@ int Attain::getB()
 {
 	return label.getB();
 }
+
+void Attain::setAttain( int** mother )
+{
+	if( mother != NULL )
+	{
+		
+	}
+}
