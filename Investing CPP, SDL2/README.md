@@ -8,7 +8,7 @@ You will know how many days you need to attain your goal.
 
 **Following changes**
 Window showing title and goal whose we want to attain.
-We can write number beetween 1 - 999 999 999 999 (maybe you are **Bill Gates**).
+We can write number beetween 1 - 999 999 999 999 (maybe you want to be more rich than **Bill Gates**).
 ![0](https://cloud.githubusercontent.com/assets/19840443/17263132/9d2b9782-55df-11e6-8195-f607bac23859.png)
 
 I put 4 **currency**, PLN - mean Polish currency, EUR - Euro, USD, American dollar, GBP - British note.
@@ -24,7 +24,6 @@ Profit bar #1
 Profit bar #2
 ![bar2](https://cloud.githubusercontent.com/assets/19840443/17649255/3c67d020-6230-11e6-9652-0876bfa62e5f.png)
 
-
 Adding profits and expenses now works.
 ![2](https://cloud.githubusercontent.com/assets/19840443/17663662/7369b7dc-62ee-11e6-80db-db26cb878790.png)
 
@@ -34,4 +33,4 @@ I'm waiting for any comment
 ...and now choose the currency from your profit maybe USD?
 ![4](https://cloud.githubusercontent.com/assets/19840443/17674607/94534034-6326-11e6-96ef-6b35b5dfb86b.png)
 
-
+Application looks really powerful! The red bar is your expense, now you can add default type of bar, delete, choose type of period (hour, week, mounth, year) and finally choose the currency. For example you have Grandmother from USA and sometimes( once per mounth) she give you 1000 dollars (because she is rich :smirk:), add profit by green char, choose mounth in calendar and choose USD in currency. Ok but I'm from United Kingdom - it's no problem man!, set attain as GBP. I'm going to add more currency in the future just wait for it - 2016.08.16 ![4](https://cloud.githubusercontent.com/assets/19840443/17689292/dba11d3e-6386-11e6-803b-f67caa8e83ce.png)
