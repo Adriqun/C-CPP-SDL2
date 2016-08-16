@@ -1,6 +1,8 @@
 #pragma once
 #include "texture.h"
 #include "chunk.h"
+#include "profit.h"
+#include <vector>
 
 class Title
 {
@@ -24,13 +26,16 @@ class Value :public Title
 {
 	Chunk click;
 	int type;
+	int startY;
+	
+	vector <Profit*> profitVec;
 	
 public:
 
 	void free();
 
-	bool load( SDL_Renderer* &renderer, int goal_height, int screen_width );
+	bool load( SDL_Renderer* &renderer, SDL_Window* &window, int goal_height );
 	void render( SDL_Renderer* &renderer );
-	void handle( SDL_Event &event );
+	void handle( SDL_Event &event, SDL_Renderer* &renderer, SDL_Window* &window );
 	int get();
 };

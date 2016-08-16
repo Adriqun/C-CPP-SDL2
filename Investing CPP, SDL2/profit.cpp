@@ -7,7 +7,7 @@ bool AddCost::load( SDL_Renderer* &renderer, int x, int y )
 
     free();
 	
-    if( !font.load( "data/Chunkfive Ex.ttf", 20 ) )
+    if( !font.load( "data/Chunkfive Ex.ttf", 18 ) )
     {
         success = false;
     }
@@ -23,7 +23,7 @@ bool AddCost::load( SDL_Renderer* &renderer, int x, int y )
 		else
 		{
 			label.getX() = x;
-			label.getY() = y+4;
+			label.getY() = y+3;
 		}
 
 		value = "0";
@@ -38,13 +38,19 @@ bool AddCost::load( SDL_Renderer* &renderer, int x, int y )
 			number.getY() = y+4;
 						
 			focusRect.x = label.getX();
-			focusRect.y = label.getY()+4;
+			focusRect.y = label.getY()+1;
 			focusRect.w = 200;
-			focusRect.h = label.getH()-10;
+			focusRect.h = label.getH()-3;
 		}
     }
 
     return success;
+}
+
+void AddCost::setY( int y )
+{
+	label.getY() = y+3;
+	number.getY() = y+4;
 }
 
 void AddName::handle( SDL_Event &event )
@@ -91,13 +97,10 @@ void AddName::handle( SDL_Event &event )
         {
             if( !( ( event.text.text[ 0 ] == 'c' || event.text.text[ 0 ] == 'C' ) && ( event.text.text[ 0 ] == 'v' || event.text.text[ 0 ] == 'V' ) && SDL_GetModState() & KMOD_CTRL ) )
             {
-				// We need alphabet
-                int nr = static_cast <int> ( event.text.text[ 0 ] );
-                if( ( nr >= 65 && nr <= 90 ) || ( nr >= 97 && nr <= 122 ) || nr == 32 )
-                {
+
                     inputText += event.text.text;
                     renderText = true;
-                }
+
 				
                 if( focusRect.w > 300 )
                 {
@@ -184,6 +187,41 @@ void AddName::render( SDL_Renderer* &renderer )
     number.render( renderer );
 }
 
+void AddCost::render( SDL_Renderer* &renderer )
+{
+    if( focus )
+    {
+		focusRect.w = label.getW() + number.getW();
+        SDL_SetRenderDrawColor( renderer, 0xB5, 0xB5, 0xB5, 0xFF );
+        SDL_RenderFillRect( renderer, &focusRect );
+        SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
+    }
+
+    if( renderText )
+    {
+        if( inputText.length() <= 0 )
+        {
+			SDL_Color gray = { 0xA4, 0xA4, 0xA4 };
+            number.loadFromRenderedText( renderer, font.get(), " ", gray );
+        }
+        else
+        {
+            number.loadFromRenderedText( renderer, font.get(), inputText, color );
+        }
+
+        renderText = false;
+    }
+
+    label.render( renderer );
+    number.render( renderer );
+}
+
+void AddName::setY( int y )
+{
+	label.getY() = y+3;
+	number.getY() = y+4;
+}
+
 
 
 
@@ -231,6 +269,8 @@ void Profit::free()
 	}
 	
 	thrash = false;
+	calendar.free();
+	currency.free();
 }
 
 	
@@ -318,6 +358,9 @@ bool Profit::load( SDL_Renderer* &renderer, SDL_Window* &window )
 	addCost->load( renderer, 10, y -2 );
 	addName.load( renderer, sw/2 - 50, y -2 );
 	
+	calendar.load( renderer, sw );
+	currency.load( renderer, sw );
+	
 	return success;
 }
 
@@ -330,16 +373,97 @@ void Profit::render( SDL_Renderer* &renderer )
 	
 	addCost->render( renderer );
 	addName.render( renderer );
+	
+	if( calendar.setFocus() )
+	{
+		calendar.render( renderer, y );
+	}
+	
+	if( currency.setFocus() )
+	{
+		currency.render( renderer, y );
+	}
 }
 
 void Profit::handle( SDL_Event &event )
 {
 	addName.handle( event );
 	addCost->handle( event );
+	
+	if( event.type == SDL_MOUSEBUTTONDOWN )
+	{
+		calendar.setFocus() = false;
+		currency.setFocus() = false;
+		
+		int mx, my;
+		SDL_GetMouseState( &mx, &my );
+		
+		if( mx > texture[ 1 ].getX() && mx < texture[ 1 ].getR() )
+		{
+			if( my > texture[ 1 ].getY() && my < texture[ 1 ].getB() )
+			{
+				thrash = true;
+			}
+		}
+		
+		if( mx > texture[ 2 ].getX() && mx < texture[ 2 ].getR() )
+		{
+			if( my > texture[ 2 ].getY() && my < texture[ 2 ].getB() )
+			{
+				currency.setFocus() ? currency.setFocus() = false: currency.setFocus() = true;
+			}
+		}
+		
+		if( mx > texture[ 3 ].getX() && mx < texture[ 3 ].getR() )
+		{
+			if( my > texture[ 3 ].getY() && my < texture[ 3 ].getB() )
+			{
+				calendar.setFocus() ? calendar.setFocus() = false: calendar.setFocus() = true;
+			}
+		}
+	}
+	
+	currency.handle( event );
+	calendar.handle( event );
 }
 
 bool Profit::isThrash()
 {
 	return thrash;
+}
+
+unsigned long long Profit::getCost()
+{
+	if( ch == 1 )
+		return -addCost->getCost();
+	
+	return addCost->getCost();
+}
+
+int Profit::getCalendar()
+{
+	return calendar.getPeriod();
+}
+
+int Profit::getCurrency()
+{
+	return currency.getPeriod();
+}
+
+int Profit::getH()
+{
+	return texture[ 0 ].getH();
+}
+
+void Profit::setY( int y )
+{
+	this->y = y;
+	texture[ 0 ].getY() = y;
+	texture[ 1 ].getY() = y + 20 - texture[ 1 ].getH()-1;
+	texture[ 2 ].getY() = texture[ 1 ].getY() + 2;
+	texture[ 3 ].getY() = texture[ 1 ].getY();
+	
+	addCost->setY( y );
+	addName.setY( y );
 }
 

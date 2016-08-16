@@ -1,5 +1,6 @@
 #include "title.h"
 #include "font.h"
+#include <stdio.h>
 
 Title::Title()
 {
@@ -89,12 +90,15 @@ void Value::free()
 	click.free();
 }
 
-bool Value::load( SDL_Renderer* &renderer, int goal_height, int screen_width )
+bool Value::load( SDL_Renderer* &renderer, SDL_Window* &window, int goal_height )
 {
     bool success = true;
 	
     free();
 	type = 0;
+	
+	int w, h;
+	SDL_GetWindowSize( window, &w, &h );
 	
 	Font font;
     if( !font.load( "data/Chunkfive Ex.ttf", 35 ) )
@@ -111,7 +115,7 @@ bool Value::load( SDL_Renderer* &renderer, int goal_height, int screen_width )
 		else
 		{
 			label.setAlpha( 100 );
-			label.getX() = ( screen_width/2 ) - ( label.getW()/2 ) - 5;
+			label.getX() = ( w/2 ) - ( label.getW()/2 ) - 5;
 			label.getY() = goal_height;
 		}
 		
@@ -125,7 +129,7 @@ bool Value::load( SDL_Renderer* &renderer, int goal_height, int screen_width )
 		else
 		{
 			wallpaper.setAlpha( 100 );
-			wallpaper.getX() = ( screen_width/2 ) + ( wallpaper.getW()/2 ) + 5;
+			wallpaper.getX() = ( w/2 ) + ( wallpaper.getW()/2 ) + 5;
 			wallpaper.getY() = goal_height - 3;
 		}
     }
@@ -135,6 +139,8 @@ bool Value::load( SDL_Renderer* &renderer, int goal_height, int screen_width )
     {
         success = false;
     }
+	
+	startY = label.getB();
 
     return success;
 }
@@ -144,6 +150,11 @@ void Value::render( SDL_Renderer* &renderer )
 	wallpaper.render( renderer );
     label.render( renderer );
 	
+	for( int i = 0; i < profitVec.size(); i++ )
+	{
+		profitVec[ i ]->render( renderer );
+	}
+	
 	SDL_SetRenderDrawColor( renderer, 0x58, 0x74, 0x98, 0xFF );
 	
     SDL_RenderDrawLine( renderer, label.getX() -5, label.getY()-1, label.getX() -5, label.getB()-5 );
@@ -152,7 +163,7 @@ void Value::render( SDL_Renderer* &renderer )
     SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
 }
 
-void Value::handle( SDL_Event &event )
+void Value::handle( SDL_Event &event, SDL_Renderer* &renderer, SDL_Window* &window )
 {
 	int x = -1, y = -1;
 	label.setAlpha( 100 );
@@ -160,17 +171,32 @@ void Value::handle( SDL_Event &event )
 	
 	if( event.type == SDL_MOUSEBUTTONDOWN )
     {
-        SDL_GetMouseState( &x, &y );
-
-		if( x > wallpaper.getX() && x < wallpaper.getR() && y > wallpaper.getY() && y < wallpaper.getB() )
+		int bot = label.getB()-4;
+		for( int i = 0; i < profitVec.size(); i++ )
 		{
-			wallpaper.setAlpha( 255 );
-			click.play();
+			bot += profitVec[ i ]->getH();
 		}
-		else if( x > label.getX() && x < label.getR() && y > label.getY() && y < label.getB() )
+			
+        SDL_GetMouseState( &x, &y );
+		
+		if( profitVec.size() < 24 )
 		{
-			label.setAlpha( 255 );
-			click.play();
+			if( x > wallpaper.getX() && x < wallpaper.getR() && y > wallpaper.getY() && y < wallpaper.getB() )
+			{
+				wallpaper.setAlpha( 255 );
+				click.play();
+				
+				profitVec.push_back( new Profit( 0, 0, bot ) );
+				profitVec[ profitVec.size()-1 ]->load( renderer, window );
+			}
+			else if( x > label.getX() && x < label.getR() && y > label.getY() && y < label.getB() )
+			{
+				label.setAlpha( 255 );
+				click.play();
+
+				profitVec.push_back( new Profit( 1, 0, bot ) );
+				profitVec[ profitVec.size()-1 ]->load( renderer, window );
+			}
 		}
     }
 
@@ -187,6 +213,23 @@ void Value::handle( SDL_Event &event )
 			label.setAlpha( 255 );
 		}
     }
+	
+	for( int i = 0; i < profitVec.size(); i++ )
+	{
+		profitVec[ i ]->handle( event );
+		
+		if( profitVec[ i ]->isThrash() )
+		{
+			profitVec.erase( profitVec.begin() + i );
+			int bot2 = label.getB()-4;
+			for( int i = 0; i < profitVec.size(); i++ )
+			{
+				profitVec[ i ]->setY( bot2 );
+				bot2 += profitVec[ i ]->getH();
+			}
+			break;
+		}
+	}
 }
 
 int Value::get()

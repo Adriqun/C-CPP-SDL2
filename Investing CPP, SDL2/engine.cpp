@@ -27,14 +27,9 @@ bool Engine::load()
     }
 	
 
-	if( !value->load( renderer, goal.getB() + 5, width ) )
+	if( !value->load( renderer, window, goal.getB() + 5 ) )
     {
 		success = false;
-    }
-	
-	if( !profit->load( renderer, window ) )
-    {
-	   success = false;
     }
 	
     return success;
@@ -58,11 +53,9 @@ void Engine::loop()
 
             goal.handle( event );
             currency.handle( event );
-			value->handle( event );
-			profit->handle( event );
+			value->handle( event, renderer, window );
         }
-
-        title.render( renderer, width, height );
+		
 		
         goal.render( renderer );
 		goal.renderEdges( renderer, width );
@@ -71,8 +64,7 @@ void Engine::loop()
 		attain.render( renderer, width );
 		
 		value->render( renderer );
-		
-		profit->render( renderer );
+        title.render( renderer, width, height );
 
         SDL_RenderPresent( renderer );
     }
@@ -101,7 +93,6 @@ void Engine::free()
 	attain.free();
 	
 	delete value;
-	delete profit;
 
     Mix_Quit();
     TTF_Quit();
@@ -118,7 +109,6 @@ Engine::Engine()
     renderer = NULL;
 	
 	value = new Value;
-	profit = new Profit( 'z', 0, 300 );
 }
 
 Engine::~Engine()

@@ -3,7 +3,6 @@
 #include "goal.h"
 #include "currency.h"
 #include "attain.h"
-#include "profit.h"
 
 class Engine
 {
@@ -18,8 +17,6 @@ class Engine
     Currency currency;
 	Attain attain;
 	Value* value;
-	
-	Profit* profit;
 
 public:
 
