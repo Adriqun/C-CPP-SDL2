@@ -1,5 +1,10 @@
 WARNING! WORK IN PROGRESS! - I need to add currency, you can work with this app without diffrent currency ~ Adrian :tired_face:
 
+TO DO:
+- diffrent currency
+- sfml edit folder
+- more clean code
+
 
 ##Introduction.
 I'M SO PROUD OF YOURSELF! :joy:- I'm not crazy :trollface:, try to write application like this, you need to set up all BUTTONS! It's not hard it's time-consuming, later you realize that your code is piece of :hankey: something... Yeah SDL2:floppy_disk: is a really fast, great library but not for things like this. Thank you for reading this mini-article 
