@@ -1,4 +1,4 @@
-WARNING! WORK IN PROGRESS! - I need to add currency, you can work with this app without diffrent currency ~ Adrian
+WARNING! WORK IN PROGRESS! - I need to add currency, you can work with this app without diffrent currency ~ Adrian :tired_face:
 
 
 ##Introduction.
@@ -11,6 +11,9 @@ Assume that you want to buy a new car whose cost 1 000 000 - new Ferrari.
 Write amount of money in goal row then add your profits, for example you earn 2000 USD, write 2000 and set name as "Job".
 You can also add expenses, maybe you need to eat something per day, try to write cost of your food per day, set as per day and set cost.
 Now you see day :date: with your new Ferrari 
+
+Thanks for this site (they help me with **time** :wink:)
+![11](https://cloud.githubusercontent.com/assets/19840443/17742157/2d09d846-649f-11e6-9406-06dc2ba32999.png)
 
 
 
