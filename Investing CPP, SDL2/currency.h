@@ -1,13 +1,17 @@
 #pragma once
-
 #include "texture.h"
 #include "chunk.h"
 
 class Currency
 {
-
-protected:
-
+	enum
+	{
+		GBP = 0,
+		USD,
+		EUR,
+		PLN
+	};
+	
     int nr;
     Texture* texture;
 

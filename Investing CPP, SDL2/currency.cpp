@@ -57,48 +57,47 @@ bool Currency::load( SDL_Renderer* &renderer, int title_bar_posY, int screen_wid
         else
         {
             SDL_Color color = { 0x58, 0x74, 0x98 };
-
-            if( !texture[ 0 ].loadFromRenderedText( renderer, font.get(), "GBP", color ) )
+            if( !texture[ GBP ].loadFromRenderedText( renderer, font.get(), "GBP", color ) )
             {
                 success = false;
             }
             else
             {
-                texture[ 0 ].getX() = screen_width - texture[ 0 ].getW() -5;
-                texture[ 0 ].getY() = title_bar_posY;
+                texture[ GBP ].getX() = screen_width - texture[ GBP ].getW() -5;
+                texture[ GBP ].getY() = title_bar_posY;
             }
 
 
-            if( !texture[ 1 ].loadFromRenderedText( renderer, font.get(), "USD", color ) )
+            if( !texture[ USD ].loadFromRenderedText( renderer, font.get(), "USD", color ) )
             {
                 success = false;
             }
             else
             {
-                texture[ 1 ].getX() = texture[ 0 ].getX() - texture[ 1 ].getW() -10;
-                texture[ 1 ].getY() = title_bar_posY;
+                texture[ USD ].getX() = texture[ GBP ].getX() - texture[ USD ].getW() -10;
+                texture[ USD ].getY() = title_bar_posY;
             }
 
 
-            if( !texture[ 2 ].loadFromRenderedText( renderer, font.get(), "EUR", color ) )
+            if( !texture[ EUR ].loadFromRenderedText( renderer, font.get(), "EUR", color ) )
             {
                 success = false;
             }
             else
             {
-                texture[ 2 ].getX() = texture[ 1 ].getX() - texture[ 2 ].getW() -10;
-                texture[ 2 ].getY() = title_bar_posY;
+                texture[ EUR ].getX() = texture[ USD ].getX() - texture[ EUR ].getW() -10;
+                texture[ EUR ].getY() = title_bar_posY;
             }
 
 
-            if( !texture[ 3 ].loadFromRenderedText( renderer, font.get(), "PLN", color ) )
+            if( !texture[ PLN ].loadFromRenderedText( renderer, font.get(), "PLN", color ) )
             {
                 success = false;
             }
             else
             {
-                texture[ 3 ].getX() = texture[ 2 ].getX() - texture[ 3 ].getW() -10;
-                texture[ 3 ].getY() = title_bar_posY;
+                texture[ PLN ].getX() = texture[ EUR ].getX() - texture[ PLN ].getW() -10;
+                texture[ PLN ].getY() = title_bar_posY;
 
                 picked = 3;
                 texture[ picked ].setColor( 200, 200, 200 );
@@ -140,16 +139,14 @@ void Currency::render( SDL_Renderer* &renderer )
 
 void Currency::handle( SDL_Event &event )
 {
-    static int buf = -1;
-    int x = -1;
-    int y = -1;
-
     for( int i = 0; i < nr; i++ )
     {
         if( i != picked )
             texture[ i ].setColor( 255, 255, 255 );
     }
-
+	
+	int x = -1;
+    int y = -1;
     if( event.type == SDL_MOUSEBUTTONDOWN )
     {
         SDL_GetMouseState( &x, &y );
@@ -170,6 +167,7 @@ void Currency::handle( SDL_Event &event )
 
     else if( event.type == SDL_MOUSEMOTION )
     {
+		static int buf = -1;
         SDL_GetMouseState( &x, &y );
 
         for( int i = 0; i < nr; i++ )
@@ -189,7 +187,9 @@ void Currency::handle( SDL_Event &event )
                         }
                     }
                     else
-                        buf = -1;
+					{
+						buf = -1;
+					}
                 }
             }
         }

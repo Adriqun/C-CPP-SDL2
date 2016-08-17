@@ -1,31 +1,29 @@
 #pragma once
+
+#include "core.h"
 #include "title.h"
 #include "goal.h"
 #include "currency.h"
 #include "attain.h"
+#include "value.h"
 
 class Engine
 {
-    bool quit;
-    int width, height;
-    SDL_Event event;
-    SDL_Window* window;
-    SDL_Renderer* renderer;
-
-    Title title;
-	Goal goal;
-    Currency currency;
-	Attain attain;
+	Core* core;
+	Title* title;
+	Goal* goal;
+	Currency* currency;
+	Attain* attain;
 	Value* value;
-
+	
 public:
-
-    Engine();
-    ~Engine();
-    void free();
-
-    bool load();
-    bool init();
-    void loop();
-    void close();
+	
+	Engine();
+	~Engine();
+	void free();
+	
+	bool load();
+	void handle();
+	void draw();
+	void loop();
 };

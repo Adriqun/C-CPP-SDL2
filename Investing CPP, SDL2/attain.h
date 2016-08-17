@@ -1,17 +1,19 @@
 #pragma once
-#include "texture.h"
+#include "tax.h"
 #include "font.h"
+#include "texture.h"
+#include <vector>
 
 class Attain
 {
     Font font;
 
-    Texture label;
+    Texture name;
     Texture result;
-
-    string never;
-
+	
 public:
+	
+	string intToStr( unsigned long long n );
 
     Attain();
     ~Attain();
@@ -21,6 +23,5 @@ public:
     void render( SDL_Renderer* &renderer, int screen_width );
 	
 	int getB();
-	
-	void setAttain( int** mother );
+	void setAttain( vector <Tax*> mother, unsigned long long target, SDL_Renderer* &renderer );
 };

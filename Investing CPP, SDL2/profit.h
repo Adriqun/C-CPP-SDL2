@@ -1,20 +1,21 @@
 #pragma once
 #include "goal.h"
-#include "calendar.h"
+#include "period.h"
 
-class AddCost :public Goal
+class Cost :public Goal
 {
-	public:
+public:
+	using Goal::Goal;
 	bool load( SDL_Renderer* &renderer, int x, int y );
 	void render( SDL_Renderer* &renderer );
 	void setY( int y );
 };
 
-class AddName :public Goal
+class Name :public Goal
 {
 	
 public:
-
+	using Goal::Goal;
 	bool load( SDL_Renderer* &renderer, int x, int y );
 	void handle( SDL_Event &event );
 	void render( SDL_Renderer* &renderer );
@@ -23,23 +24,20 @@ public:
 
 class Profit
 {
-	SDL_Color color;
-	AddCost* addCost;
-	AddName addName;
-	Calendar calendar;
+	Cost* cost;
+	Name* name;
+	Period period;
 	ProfitCurrency currency;
 	
 	int nr;
 	Texture* texture;
 
-	int ch;
-	int x, y;
-	
+	int type, y;
 	bool thrash;
 	
 public:
 	
-	Profit( int ch = 0, int x = 0, int y = 0 );
+	Profit( int type = 0, int y = 0 );
 	~Profit();
 	void free();
 	
@@ -48,7 +46,7 @@ public:
 	void handle( SDL_Event &event );
 	
 	bool isThrash();
-	unsigned long long getCost();
+	unsigned long long getCost( int &a );
 	int getCalendar();
 	int getCurrency();
 	int getH();

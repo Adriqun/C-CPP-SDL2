@@ -5,6 +5,7 @@
 class Goal
 {
 	
+	
 protected:
 	
     Font font;
@@ -18,13 +19,13 @@ protected:
     bool renderText;
     string inputText;
 
-    unsigned long long cost;
-
     bool focus;
 	SDL_Rect focusRect;
 	
 	int bot_scope;
 	int top_scope;
+	
+	unsigned long long cost;
 	
 	bool renderEdges;
 	bool space;

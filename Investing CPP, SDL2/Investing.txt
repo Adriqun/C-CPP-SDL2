@@ -1,1 +1,0 @@
-./Debug/main.cpp.o ./Debug/title.cpp.o ./Debug/texture.cpp.o ./Debug/profit.cpp.o ./Debug/goal.cpp.o ./Debug/font.cpp.o ./Debug/engine.cpp.o ./Debug/currency.cpp.o ./Debug/chunk.cpp.o ./Debug/attain.cpp.o ./Debug/calendar.cpp.o

@@ -178,6 +178,8 @@ void Goal::render( SDL_Renderer* &renderer, int screen_width )
 		SDL_RenderDrawLine( renderer, 0, name.getB() +3, screen_width, name.getB() +3 );
 		SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
 	}
+	
+	//printf( "%d, %d\n", name.getX(), name.getY() );
 }
 
 void Goal::handle( SDL_Event &event )

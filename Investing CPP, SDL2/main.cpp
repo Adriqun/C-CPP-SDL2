@@ -3,23 +3,16 @@
 
 int main( int argc, char** argv )
 {
-    Engine* engine = new Engine;
+    Engine engine;
 
-    if( !engine->init() )
+    if( !engine.load() )
     {
         printf( "Engine could not initialize!\n" );
     }
-    else if( !engine->load() )
-    {
-        printf( "Wrong load engine!\n" );
-    }
     else
     {
-        engine->loop();
+        engine.loop();
     }
-
-    delete engine;
-    engine = NULL;
 
     return 0;
 }
