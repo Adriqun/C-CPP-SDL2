@@ -15,7 +15,8 @@ Assume that you want to buy a new car whose cost 1 000 000 - new Ferrari.
 ![111](https://cloud.githubusercontent.com/assets/19840443/17741624/2b2bfa56-649d-11e6-9fb4-9b543db06bf7.jpg)
 Write amount of money in goal row then add your profits, for example you earn 2000 USD, write 2000 and set name as "Job".
 You can also add expenses, maybe you need to eat something per day, try to write cost of your food per day, set as per day and set cost.
-Now you see day :date: with your new Ferrari 
+Now you see day :date: with your new Ferrari
+![23](https://cloud.githubusercontent.com/assets/19840443/17742638/29d2cdca-64a1-11e6-84dd-6c5e376f102c.png)
 
 Thanks for this site (they help me with **time** :wink:)
 ![11](https://cloud.githubusercontent.com/assets/19840443/17742157/2d09d846-649f-11e6-9406-06dc2ba32999.png)
