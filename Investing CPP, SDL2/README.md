@@ -1,4 +1,17 @@
-WARNING! WORK IN PROGRESS!
+WARNING! WORK IN PROGRESS! - I need to add currency, you can work with this app without diffrent currency ~ Adrian
+
+
+##Introduction.
+I'M SO PROUD OF YOURSELF! :joy:- I'm not crazy :trollface:, try to write application like this, you need to set up all BUTTONS! It's not hard it's time-consuming, later you realize that your code is piece of :hankey: something... Yeah SDL2:floppy_disk: is a really fast, great library but not for things like this. Thank you for reading this mini-article 
+
+
+##How it works.
+Assume that you want to buy a new car whose cost 1 000 000 - new Ferrari.
+![111](https://cloud.githubusercontent.com/assets/19840443/17741624/2b2bfa56-649d-11e6-9fb4-9b543db06bf7.jpg)
+Write amount of money in goal row then add your profits, for example you earn 2000 USD, write 2000 and set name as "Job".
+You can also add expenses, maybe you need to eat something per day, try to write cost of your food per day, set as per day and set cost.
+Now you see day :date: with your new Ferrari 
+
 
 ###Investing
 Hi everyone!
