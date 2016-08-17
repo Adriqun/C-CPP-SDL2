@@ -4,13 +4,16 @@
 
 class Goal
 {
+	
 protected:
 	
     Font font;
-    SDL_Color color;
+	
+	string name_s;
+	string line_s;
 
-    Texture label;
-    Texture number;
+    Texture name;
+    Texture line;
 
     bool renderText;
     string inputText;
@@ -20,20 +23,25 @@ protected:
     bool focus;
 	SDL_Rect focusRect;
 	
-	string value;
+	int bot_scope;
+	int top_scope;
+	
+	bool renderEdges;
+	bool space;
+	int letters;
 
 public:
 
-    void sortString();	// delete spaces and sort
-    unsigned long long strToInt( string s );
+    void sortString();	// delete spaces then add
+    unsigned long long strToInt( string s );	// Only positive numbers
 
-    Goal();
+    Goal( int letters = 16, bool space = true, bool renderEdges = true, string name_s = "", string line_s = "", int bot_scope = 48, int top_scope = 57 );
     ~Goal();
     void free();
 
     bool load( SDL_Renderer* &renderer, int title_bar_height );
-    void render( SDL_Renderer* &renderer );
-	void renderEdges( SDL_Renderer* &renderer, int screen_width );
+    void render( SDL_Renderer* &renderer, int screen_width );
+
     void handle( SDL_Event &event );
 
     int getB();
