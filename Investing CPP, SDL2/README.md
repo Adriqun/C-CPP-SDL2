@@ -55,9 +55,9 @@ Adding profits and expenses now works.
 ![2](https://cloud.githubusercontent.com/assets/19840443/17767336/de852dce-652f-11e6-8091-3ea047f19e2e.png)
 
 I'm waiting for any comment
-![3](https://cloud.githubusercontent.com/assets/19840443/17673189/508d4242-6320-11e6-840b-fd089e699c70.png)
+![1](https://cloud.githubusercontent.com/assets/19840443/17767573/c6076d4c-6530-11e6-8dcc-78e904f5aaf5.png)
 
 ...and now choose the currency from your profit maybe USD?
-![4](https://cloud.githubusercontent.com/assets/19840443/17674607/94534034-6326-11e6-96ef-6b35b5dfb86b.png)
+![2](https://cloud.githubusercontent.com/assets/19840443/17767580/c873eb46-6530-11e6-8fba-84a8cc3fd2d7.png)
 
 Application looks really powerful! The red bar is your expense, now you can add default type of bar, delete, choose type of period (hour, week, mounth, year) and finally choose the currency. For example you have Grandmother from USA and sometimes( once per mounth) she give you 1000 dollars (because she is rich :smirk:), add profit by green char, choose mounth in calendar and choose USD in currency. Ok but I'm from United Kingdom - it's no problem man!, set attain as GBP. I'm going to add more currency in the future just wait for it - 2016.08.16 ![3](https://cloud.githubusercontent.com/assets/19840443/17767449/50ee2078-6530-11e6-959e-67215ce19565.png)
