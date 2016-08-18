@@ -1,7 +1,0 @@
-4.27
-3.79
-4.99
-Only 3 first lines will be loaded!
-it's a ratio to polish currency
-for example 1 dollar cost 3.79 polish zloty.
-Adrian 2016.07.29
