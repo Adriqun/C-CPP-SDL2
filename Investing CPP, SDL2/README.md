@@ -1,25 +1,23 @@
-WARNING! WORK IN PROGRESS! - I need to add currency, you can work with this app without diffrent currency ~ Adrian :tired_face:
-
-TO DO:
-- diffrent currency
-- sfml edit folder
-- more clean code
-
-
-##Introduction.
+##Introduction
 I'M SO PROUD OF YOURSELF! :joy:- I'm not crazy :trollface:, try to write application like this, you need to set up all BUTTONS! It's not hard it's time-consuming, later you realize that your code is piece of :hankey: something... Yeah SDL2:floppy_disk: is a really fast, great library but not for things like this. Thank you for reading this mini-article 
 
 
-##How it works.
-Assume that you want to buy a new car whose cost 1 000 000 - new Ferrari.
-![111](https://cloud.githubusercontent.com/assets/19840443/17741624/2b2bfa56-649d-11e6-9fb4-9b543db06bf7.jpg)
+##How it works
+Assume that you want to buy a new car whose cost milion - new Ferrari.
+![ferrari](https://cloud.githubusercontent.com/assets/19840443/17766747/ed999fdc-652c-11e6-9b83-04cf7953f669.png)
+
 Write amount of money in goal row then add your profits, for example you earn 2000 USD, write 2000 and set name as "Job".
 You can also add expenses, maybe you need to eat something per day, try to write cost of your food per day, set as per day and set cost.
-Now you see day :date: with your new Ferrari
-![23](https://cloud.githubusercontent.com/assets/19840443/17742638/29d2cdca-64a1-11e6-84dd-6c5e376f102c.png)
+Now you see the date :date: when you will get new Car - it's really that simple.
+![0](https://cloud.githubusercontent.com/assets/19840443/17766809/325232ba-652d-11e6-965f-a78282ab34fc.png)
 
-Thanks for this site (they help me with **time** :wink:)
-![11](https://cloud.githubusercontent.com/assets/19840443/17742157/2d09d846-649f-11e6-9406-06dc2ba32999.png)
+##Acknowledgements
+
+Lazy Foo' Productions
+![10516871_700815729973201_2739593138531627515_n](https://cloud.githubusercontent.com/assets/19840443/17766941/f8c10d54-652d-11e6-9eee-77534fff2720.png)
+
+Tutorials Point
+![logo](https://cloud.githubusercontent.com/assets/19840443/17766922/d41e2b76-652d-11e6-8f9f-e6aa0b6138bd.png)
 
 
 
@@ -34,11 +32,11 @@ You will know how many days you need to attain your goal.
 
 Window showing title and goal whose we want to attain.
 We can write number beetween 1 - 999 999 999 999 (maybe you want to be more rich than **Bill Gates**).
-![1](https://cloud.githubusercontent.com/assets/19840443/17766565/07e5da82-652c-11e6-8a7b-84cadfcaff8c.png)
+![1](https://cloud.githubusercontent.com/assets/19840443/17766949/09d87442-652e-11e6-8f81-74e106e7194f.png)
 
 I put 4 **currency**, PLN - mean Polish currency, EUR - Euro, USD, American dollar, GBP - British note.
 Now you can choose which currency you want to operate. I also put **attain** what mean "when you will have expect amount of money. See below how it looks like.
-![2](https://cloud.githubusercontent.com/assets/19840443/17766576/12682f1e-652c-11e6-8a87-0461b7311a6b.png)
+![2](https://cloud.githubusercontent.com/assets/19840443/17766952/12b8dca0-652e-11e6-82e4-fbca1880b731.png)
 
 Set colors more readable according to this page -> http://www.colorcombos.com/color-schemes/27/ColorCombo27.html
 I add '+' and '-' what mean that you can put your profits and expenses. What do you think about design?
