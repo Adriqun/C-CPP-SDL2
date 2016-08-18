@@ -19,6 +19,9 @@ Lazy Foo' Productions
 Tutorials Point                                     
 ![logo](https://cloud.githubusercontent.com/assets/19840443/17766922/d41e2b76-652d-11e6-8f9f-e6aa0b6138bd.png)
 
+CodeLite                                            
+![codelitelogo](https://cloud.githubusercontent.com/assets/19840443/17767484/729f7398-6530-11e6-8639-a744e3be463f.png)
+
 
 
 
@@ -57,4 +60,4 @@ I'm waiting for any comment
 ...and now choose the currency from your profit maybe USD?
 ![4](https://cloud.githubusercontent.com/assets/19840443/17674607/94534034-6326-11e6-96ef-6b35b5dfb86b.png)
 
-Application looks really powerful! The red bar is your expense, now you can add default type of bar, delete, choose type of period (hour, week, mounth, year) and finally choose the currency. For example you have Grandmother from USA and sometimes( once per mounth) she give you 1000 dollars (because she is rich :smirk:), add profit by green char, choose mounth in calendar and choose USD in currency. Ok but I'm from United Kingdom - it's no problem man!, set attain as GBP. I'm going to add more currency in the future just wait for it - 2016.08.16 ![3](https://cloud.githubusercontent.com/assets/19840443/17767344/e6915a1a-652f-11e6-8813-1ec7e0eaa4a6.png)
+Application looks really powerful! The red bar is your expense, now you can add default type of bar, delete, choose type of period (hour, week, mounth, year) and finally choose the currency. For example you have Grandmother from USA and sometimes( once per mounth) she give you 1000 dollars (because she is rich :smirk:), add profit by green char, choose mounth in calendar and choose USD in currency. Ok but I'm from United Kingdom - it's no problem man!, set attain as GBP. I'm going to add more currency in the future just wait for it - 2016.08.16 ![3](https://cloud.githubusercontent.com/assets/19840443/17767449/50ee2078-6530-11e6-959e-67215ce19565.png)
