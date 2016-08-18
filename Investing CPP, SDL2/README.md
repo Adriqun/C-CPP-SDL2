@@ -9,7 +9,7 @@ Assume that you want to buy a new car whose cost milion - new Ferrari.
 Write amount of money in goal row then add your profits, for example you earn 2000 USD, write 2000 and set name as "Job".
 You can also add expenses, maybe you need to eat something per day, try to write cost of your food per day, set as per day and set cost.
 Now you see the date :date: when you will get new Car - it's really that simple.
-![0](https://cloud.githubusercontent.com/assets/19840443/17766809/325232ba-652d-11e6-965f-a78282ab34fc.png)
+![1](https://cloud.githubusercontent.com/assets/19840443/17767801/c1dff738-6531-11e6-878f-10ffb3c8314b.png)
 
 ##Acknowledgements
 
@@ -36,11 +36,11 @@ You will know how many days you need to attain your goal.
 
 Window showing title and goal whose we want to attain.
 We can write number beetween 1 - 999 999 999 999 (maybe you want to be more rich than **Bill Gates**).
-![1](https://cloud.githubusercontent.com/assets/19840443/17766949/09d87442-652e-11e6-8f81-74e106e7194f.png)
+![2](https://cloud.githubusercontent.com/assets/19840443/17767814/cb820a42-6531-11e6-862b-cd72b8586b09.png)
 
 I put 4 **currency**, PLN - mean Polish currency, EUR - Euro, USD, American dollar, GBP - British note.
 Now you can choose which currency you want to operate. I also put **attain** what mean "when you will have expect amount of money. See below how it looks like.
-![2](https://cloud.githubusercontent.com/assets/19840443/17766952/12b8dca0-652e-11e6-82e4-fbca1880b731.png)
+![3](https://cloud.githubusercontent.com/assets/19840443/17767813/cb2d5b14-6531-11e6-963b-63af784eba4d.png)
 
 Set colors more readable according to this page -> http://www.colorcombos.com/color-schemes/27/ColorCombo27.html
 I add '+' and '-' what mean that you can put your profits and expenses. What do you think about design?
