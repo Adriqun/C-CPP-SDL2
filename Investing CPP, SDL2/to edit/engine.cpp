@@ -8,6 +8,7 @@ Engine::Engine()
 	currency = new Currency;
 	attain = new Attain;
 	value = new Value;
+	file = new File;
 }
 
 Engine::~Engine()
@@ -22,7 +23,7 @@ void Engine::free()
 	delete currency;
 	delete attain;
 	delete value;
-	
+	delete file;
 	delete core;
 }
 
@@ -49,6 +50,16 @@ bool Engine::load()
 	if( !attain->load( core->getRenderer(), goal->getB()+5 ) )
 	{
 		return false;
+	}
+	
+	if( !file->load() )
+	{
+		return false;
+	}
+	else
+	{
+		attain->setCurrency( file->get( "eur" ), file->get( "usd" ), file->get( "gbp" ) );
+		attain->setMainCurrency( currency->get() );
 	}
 	
 	if( !value->load( core->getRenderer(), core->getWindow(), goal->getB()+5 ) )
@@ -79,7 +90,10 @@ void Engine::draw()
 	title->render( core->getRenderer(), core->getWidth(), core->getHeight() );
 	goal->render( core->getRenderer(), core->getWidth() );
 	currency->render( core->getRenderer() );
+	
 	attain->render( core->getRenderer(), core->getWidth() );
+	attain->setMainCurrency( currency->get() );
+	
 	value->render( core->getRenderer() );
 	
 	attain->setAttain( value->get(), goal->getCost(), core->getRenderer() );

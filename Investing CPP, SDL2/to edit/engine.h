@@ -6,6 +6,7 @@
 #include "currency.h"
 #include "attain.h"
 #include "value.h"
+#include "file.h"
 
 class Engine
 {
@@ -15,6 +16,7 @@ class Engine
 	Currency* currency;
 	Attain* attain;
 	Value* value;
+	File* file;
 	
 public:
 	

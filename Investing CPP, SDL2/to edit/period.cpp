@@ -74,6 +74,11 @@ bool Period::load( SDL_Renderer* &renderer, int screen_width )
 			{
 				success = false;
 			}
+			else
+			{
+				whose = 1;
+				texture[ 1 ].setColor( 100, 100, 100 );
+			}
 			
 			if( !texture[ 2 ].loadFromRenderedText( renderer, font.get(), "week", color ) )
 			{
@@ -181,6 +186,11 @@ bool ProfitCurrency::load( SDL_Renderer* &renderer, int screen_width )
 			if( !texture[ 1 ].loadFromRenderedText( renderer, font.get(), "PLN", color ) )
 			{
 				success = false;
+			}
+			else
+			{
+				whose = 1;
+				texture[ 1 ].setColor( 100, 100, 100 );
 			}
 			
 			if( !texture[ 2 ].loadFromRenderedText( renderer, font.get(), "EUR", color ) )
