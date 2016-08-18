@@ -10,10 +10,10 @@ Write amount of money in goal row then add your profits, for example you earn 20
 You can also add expenses, maybe you need to eat something per day, try to write cost of your food per day, set as per day and set cost maybe in **GBP**?
 Now you see the date :date: when you will get new Car - it's really that simple.                                          
 
-Linux
+Linux                                         
 ![1](https://cloud.githubusercontent.com/assets/19840443/17767801/c1dff738-6531-11e6-878f-10ffb3c8314b.png)
                                                                                                                           
-Windows                                                                 
+Windows                                                                                
 ![1](https://cloud.githubusercontent.com/assets/19840443/17781023/dc692cdc-656d-11e6-940b-7e36425199e7.png)
                                                                                                                           
 ##Download
