@@ -8,15 +8,21 @@ Assume that you want to buy a new car whose cost milion - new Ferrari.
 
 Write amount of money in goal row then add your profits, for example you earn 2000 **USD**, write 2000 and set name as "Job".
 You can also add expenses, maybe you need to eat something per day, try to write cost of your food per day, set as per day and set cost maybe in **GBP**?
-Now you see the date :date: when you will get new Car - it's really that simple.
-![1](https://cloud.githubusercontent.com/assets/19840443/17767801/c1dff738-6531-11e6-878f-10ffb3c8314b.png)
+Now you see the date :date: when you will get new Car - it's really that simple.                                          
 
+Linux
+![1](https://cloud.githubusercontent.com/assets/19840443/17767801/c1dff738-6531-11e6-878f-10ffb3c8314b.png)
+                                                                                                                          
+Windows                                                                 
+![1](https://cloud.githubusercontent.com/assets/19840443/17781023/dc692cdc-656d-11e6-940b-7e36425199e7.png)
+                                                                                                                          
 ##Download
 
 Download files from google drive
 ![logo-drive](https://cloud.githubusercontent.com/assets/19840443/17779441/eeaa3cac-6567-11e6-8f7f-748fe66f9b06.png)
 
-linux - https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-T2FCOF8xTGdVMlU&export=download                             
+linux - https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-T2FCOF8xTGdVMlU&export=download
+windows - https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-aFBjdnR6cGxZWUk&export=download
 to edit - https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-NFVfckFEY1ZnbU0&export=download
 
 ##Acknowledgements
