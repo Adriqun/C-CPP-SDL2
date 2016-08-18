@@ -1,12 +1,37 @@
-WARNING! WORK IN PROGRESS!
+WARNING! WORK IN PROGRESS! - I need to add currency, you can work with this app without diffrent currency ~ Adrian :tired_face:
 
-###Investing
+TO DO:
+- diffrent currency
+- sfml edit folder
+- more clean code
+
+
+##Introduction.
+I'M SO PROUD OF YOURSELF! :joy:- I'm not crazy :trollface:, try to write application like this, you need to set up all BUTTONS! It's not hard it's time-consuming, later you realize that your code is piece of :hankey: something... Yeah SDL2:floppy_disk: is a really fast, great library but not for things like this. Thank you for reading this mini-article 
+
+
+##How it works.
+Assume that you want to buy a new car whose cost 1 000 000 - new Ferrari.
+![111](https://cloud.githubusercontent.com/assets/19840443/17741624/2b2bfa56-649d-11e6-9fb4-9b543db06bf7.jpg)
+Write amount of money in goal row then add your profits, for example you earn 2000 USD, write 2000 and set name as "Job".
+You can also add expenses, maybe you need to eat something per day, try to write cost of your food per day, set as per day and set cost.
+Now you see day :date: with your new Ferrari
+![23](https://cloud.githubusercontent.com/assets/19840443/17742638/29d2cdca-64a1-11e6-84dd-6c5e376f102c.png)
+
+Thanks for this site (they help me with **time** :wink:)
+![11](https://cloud.githubusercontent.com/assets/19840443/17742157/2d09d846-649f-11e6-9406-06dc2ba32999.png)
+
+
+
+
+
+
+###Following changes
 Hi everyone!
 Investing makes your life safer.
 Try my application to count your money.
 You will know how many days you need to attain your goal.
 
-**Following changes**
 Window showing title and goal whose we want to attain.
 We can write number beetween 1 - 999 999 999 999 (maybe you want to be more rich than **Bill Gates**).
 ![0](https://cloud.githubusercontent.com/assets/19840443/17263132/9d2b9782-55df-11e6-8195-f607bac23859.png)
