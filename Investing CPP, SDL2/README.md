@@ -1,10 +1,10 @@
 ##Introduction
-I'M SO PROUD OF YOURSELF! :joy:- I'm not crazy :trollface:, try to write application like this, you need to set up all BUTTONS! It's not hard it's time-consuming, later you realize that your code is piece of :hankey: something... Yeah SDL2:floppy_disk: is a really fast, great library but not for things like this. Thank you for reading this mini-article 
+I'm so proud of yourself! :joy:- I'm not crazy :trollface:, try to write application like this, you need to set up all buttons! It's not hard it's time-consuming, later you realize that your code is piece of :hankey: something... Yeah SDL2:floppy_disk: is a really fast, great library but not for things like this. Thank you for reading this mini-article 
 
 
 ##How it works
 Assume that you want to buy a new car whose cost milion - new Ferrari.
-![ferrari](https://cloud.githubusercontent.com/assets/19840443/17766747/ed999fdc-652c-11e6-9b83-04cf7953f669.png)
+![ferrari](https://cloud.githubusercontent.com/assets/19840443/17767063/9dcd934e-652e-11e6-8908-cf5d0499f07e.png)
 
 Write amount of money in goal row then add your profits, for example you earn 2000 USD, write 2000 and set name as "Job".
 You can also add expenses, maybe you need to eat something per day, try to write cost of your food per day, set as per day and set cost.
@@ -13,10 +13,10 @@ Now you see the date :date: when you will get new Car - it's really that simple.
 
 ##Acknowledgements
 
-Lazy Foo' Productions
-![10516871_700815729973201_2739593138531627515_n](https://cloud.githubusercontent.com/assets/19840443/17766941/f8c10d54-652d-11e6-9eee-77534fff2720.png)
+Lazy Foo' Productions                               
+![lazyfoo](https://cloud.githubusercontent.com/assets/19840443/17767077/a5a911ec-652e-11e6-9679-7015c9d9aaef.png)
 
-Tutorials Point
+Tutorials Point                                     
 ![logo](https://cloud.githubusercontent.com/assets/19840443/17766922/d41e2b76-652d-11e6-8f9f-e6aa0b6138bd.png)
 
 
