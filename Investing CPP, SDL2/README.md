@@ -21,9 +21,9 @@ Windows
 Download files from google drive
 ![logo-drive](https://cloud.githubusercontent.com/assets/19840443/17779441/eeaa3cac-6567-11e6-8f7f-748fe66f9b06.png)
 
-linux - https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-T2FCOF8xTGdVMlU&export=download
-windows - https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-aFBjdnR6cGxZWUk&export=download
-to edit - https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-NFVfckFEY1ZnbU0&export=download
+linux - https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-T2FCOF8xTGdVMlU&export=download                             
+windows - https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-aFBjdnR6cGxZWUk&export=download                           
+to edit - https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-NFVfckFEY1ZnbU0&export=download                   
 
 ##Acknowledgements
 
