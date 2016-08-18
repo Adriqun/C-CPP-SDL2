@@ -25,6 +25,9 @@ linux - https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-T2FCOF8xTGdVMlU&ex
 windows - https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-aFBjdnR6cGxZWUk&export=download                           
 to edit - https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-NFVfckFEY1ZnbU0&export=download                   
 
+##License
+Everything is **free**.
+
 ##Acknowledgements
 
 Lazy Foo' Productions                               
