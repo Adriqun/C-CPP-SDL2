@@ -52,7 +52,7 @@ Profit bar #2
 ![bar2](https://cloud.githubusercontent.com/assets/19840443/17649255/3c67d020-6230-11e6-9652-0876bfa62e5f.png)
 
 Adding profits and expenses now works.
-![2](https://cloud.githubusercontent.com/assets/19840443/17767336/de852dce-652f-11e6-8091-3ea047f19e2e.png)
+![4](https://cloud.githubusercontent.com/assets/19840443/17767848/fdcbc416-6531-11e6-942d-aa92171dad43.png)
 
 I'm waiting for any comment
 ![1](https://cloud.githubusercontent.com/assets/19840443/17767573/c6076d4c-6530-11e6-8dcc-78e904f5aaf5.png)
