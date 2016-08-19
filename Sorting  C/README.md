@@ -22,10 +22,12 @@ Linux
 4. For example code in C below.                                                                                           
 ![3](https://cloud.githubusercontent.com/assets/19840443/17804073/44161566-65fa-11e6-8414-c11afa7e1c9a.png)
                                                                                                                           
-**Sleep on linux**
+**Sleep on linux**                                                                                                        
 1. Add in C library - #include "unistd.h"                                                                                 
 2. Call usleep(**microseconds**)                                                                                          
                                                                                                                           
-**Cannot open executive file on linux**
+**Cannot open executive file on linux**                                                                                   
+1. Go by **cd** command to folder of application or open terminal inside of this folder.                                  
+2. Call **chmod +x "ex_name"** then you need to write **./ex_name** - linux protect for security reasons.                 
 
 
