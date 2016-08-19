@@ -34,3 +34,9 @@ Linux
 1. Call **reset** in C system("reset").                                                                                   
 2. More quickly call **tput reset** in C system("tput reset").                                                            
 
+##Download
+linux - https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-M0wxQU1BWGlFMms&export=download                             
+to edit - https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-U3BocDRDQVBvX2s&export=download                           
+
+##License
+Everything is **free**.
