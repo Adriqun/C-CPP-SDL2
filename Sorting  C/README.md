@@ -10,14 +10,17 @@ Linux
 ![1](https://cloud.githubusercontent.com/assets/19840443/17803547/5bb7dcf2-65f7-11e6-873d-83ccdbdc0e33.png)
 
 ##In detail
-**Align to center**                                                                                                         
+**Align to center**                                                                                                       
 1. You need to know console width.											     
 2. In C add														
 ![2](https://cloud.githubusercontent.com/assets/19840443/17803957/b7f7c908-65f9-11e6-90ed-0ac55eee6a51.png)
                                                                                                                             
-**Colors without windows.h**                                                                                                
-1. We have to know the special code formatting.                                                                             
-2. Code looks - "\x1B[" + _number_ + 'm'.                                                                                   
-3. The list of formatting here http://misc.flogisoft.com/bash/tip_colors_and_formatting                                     
-4. For example code in C below.                                                                                             
+**Colors without windows.h**                                                                                              
+1. We have to know the special code formatting.                                                                           
+2. Code looks - "\x1B[" + _number_ + 'm'.                                                                                 
+3. The list of formatting here http://misc.flogisoft.com/bash/tip_colors_and_formatting                                   
+4. For example code in C below.                                                                                           
 ![3](https://cloud.githubusercontent.com/assets/19840443/17804073/44161566-65fa-11e6-8414-c11afa7e1c9a.png)
+                                                                                                                          
+**Sleep on Linux**
+
