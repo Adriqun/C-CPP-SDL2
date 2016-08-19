@@ -3,7 +3,7 @@ I'm so proud of yourself! :joy:- I'm not crazy :trollface:, try to write applica
 
 
 ##How it works
-Assume that you want to buy a new car whose cost milion - new Ferrari.
+Assume that you want to buy a new car which costs milion - new Ferrari.
 ![ferrari](https://cloud.githubusercontent.com/assets/19840443/17767063/9dcd934e-652e-11e6-8908-cf5d0499f07e.png)
 
 Write amount of money in goal row then add your profits, for example you earn 2000 **USD**, write 2000 and set name as "Job".
