@@ -8,6 +8,10 @@ number you will see the time of each sorting algorithms.
 
 Linux                                                                                                                     
 ![1](https://cloud.githubusercontent.com/assets/19840443/17803547/5bb7dcf2-65f7-11e6-873d-83ccdbdc0e33.png)
+                                                                                                                          
+Windows
+![0](https://cloud.githubusercontent.com/assets/19840443/17805982/57e799cc-6602-11e6-89ac-94804a5d1556.png)
+
 
 ##In detail
 **Align to center**                                                                                                       
@@ -36,7 +40,9 @@ Linux
 
 ##Download
 linux - https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-M0wxQU1BWGlFMms&export=download                             
+windows - https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-bm0xNUc4aWVZWmc&export=download                           
 to edit - https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-U3BocDRDQVBvX2s&export=download                           
+to edit on windows - https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-MFNJbmpJVVdKYms&export=download                
 
 ##License
 Everything is **free**.
