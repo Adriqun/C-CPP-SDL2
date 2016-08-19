@@ -29,5 +29,8 @@ Linux
 **Cannot open executive file on linux**                                                                                   
 1. Go by **cd** command to folder of application or open terminal inside of this folder.                                  
 2. Call **chmod +x "ex_name"** then you need to write **./ex_name** - linux protect for security reasons.                 
-
-
+                                                                                                                          
+**How to clean console window**                                                                                           
+1. Call **reset** in C system("reset").                                                                                   
+2. More quickly call **tput reset** in C system("tput reset").                                                            
+3. 
