@@ -11,20 +11,6 @@ Linux
 
 ##In detail
 **Align to center**                                                                                                         
-1. You need to know console width.
-2. In C add:
-######include <sys/ioctl.h>	// winsize
-######include <stdio.h>      // printf
-
-######void centre( int w, char* s )
-######{
-######	unsigned long len = strlen( s );
-######	int nr = ( w - len ) /2;
-	
-######	for( int i = 0; i < nr; ++i )
-######	{
-######		printf( " " );
-######	}
-	
-######	printf( "%s", s );
-######}
+1. You need to know console width.											     
+2. In C add														
+![2](https://cloud.githubusercontent.com/assets/19840443/17803957/b7f7c908-65f9-11e6-90ed-0ac55eee6a51.png)
