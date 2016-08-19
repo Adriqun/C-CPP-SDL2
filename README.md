@@ -4,7 +4,7 @@
 ![1](https://cloud.githubusercontent.com/assets/19840443/17767801/c1dff738-6531-11e6-878f-10ffb3c8314b.png)
 
 ##Sorting algorithms
-![example](https://cloud.githubusercontent.com/assets/19840443/17052096/474e25b6-4ffc-11e6-9c44-c54e995e5e28.png)
+![1](https://cloud.githubusercontent.com/assets/19840443/17803547/5bb7dcf2-65f7-11e6-873d-83ccdbdc0e33.png)
 
 
 ##Ninja
