@@ -14,3 +14,5 @@ Linux
 1. You need to know console width.											     
 2. In C add														
 ![2](https://cloud.githubusercontent.com/assets/19840443/17803957/b7f7c908-65f9-11e6-90ed-0ac55eee6a51.png)
+                                                                                                                            
+**Colors without windows.h**
