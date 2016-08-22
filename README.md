@@ -1,5 +1,5 @@
 ##Introduction
-Trying to write application like this is time-consuming, you need to set up all buttons! Later you realize that your code looks bad. SDL2:floppy_disk: is a really fast, great library but not for things like this. Thank you for reading this mini-article.
+Trying to write application like this is time-consuming, you need to set up all buttons! Later you realize that your code looks bad. SDL2 is a really fast, great library but not for things like this. Thank you for reading this mini-article.
 
 
 ##How it works
@@ -77,4 +77,4 @@ I'm waiting for any comment
 ...and now choose the currency from your profit maybe USD?
 ![2](https://cloud.githubusercontent.com/assets/19840443/17767580/c873eb46-6530-11e6-8fba-84a8cc3fd2d7.png)
 
-Application looks really powerful! The red bar is your expense, now you can add default type of bar, delete, choose type of period (hour, week, mounth, year) and finally choose the currency. For example you have Grandmother from USA and sometimes( once per mounth) she give you 1000 dollars (because she is rich :smirk:), add profit by green char, choose mounth in calendar and choose USD in currency. Ok but I'm from United Kingdom - it's no problem man!, set attain as GBP. I'm going to add more currency in the future just wait for it - 2016.08.16 ![3](https://cloud.githubusercontent.com/assets/19840443/17767449/50ee2078-6530-11e6-959e-67215ce19565.png)
+Application looks really powerful! The red bar is your expense, now you can add default type of bar, delete, choose type of period (hour, week, month, year) and finally choose the currency. For example you have Grandmother from USA and sometimes( once per mounth) she give you 1000 dollars (because she is rich :smirk:), add profit by green char, choose mounth in calendar and choose USD in currency. Ok but I'm from United Kingdom - it's no problem man!, set attain as GBP. I'm going to add more currency in the future just wait for it - 2016.08.16 ![3](https://cloud.githubusercontent.com/assets/19840443/17767449/50ee2078-6530-11e6-959e-67215ce19565.png)
