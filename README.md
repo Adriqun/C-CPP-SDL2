@@ -1,5 +1,5 @@
 ##Introduction
-I'm so proud of yourself! :joy:- I'm not crazy :trollface:, try to write application like this, you need to set up all buttons! It's not hard it's time-consuming, later you realize that your code is piece of :hankey: something... Yeah SDL2:floppy_disk: is a really fast, great library but not for things like this. Thank you for reading this mini-article 
+Trying to write application like this is time-consuming, you need to set up all buttons! Later you realize that your code looks bad. SDL2:floppy_disk: is a really fast, great library but not for things like this. Thank you for reading this mini-article.
 
 
 ##How it works
