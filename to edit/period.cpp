@@ -85,7 +85,7 @@ bool Period::load( SDL_Renderer* &renderer, int screen_width )
 				success = false;
 			}
 			
-			if( !texture[ 3 ].loadFromRenderedText( renderer, font.get(), "mounth", color ) )
+			if( !texture[ 3 ].loadFromRenderedText( renderer, font.get(), "month", color ) )
 			{
 				success = false;
 			}
