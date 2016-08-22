@@ -11,7 +11,7 @@ You can also add expenses, maybe you need to eat something per day, try to write
 Now you see the date :date: when you will get new Car - it's really that simple.                                          
 
 Linux                                         
-![1](https://cloud.githubusercontent.com/assets/19840443/17767801/c1dff738-6531-11e6-878f-10ffb3c8314b.png)
+![linux](https://cloud.githubusercontent.com/assets/19840443/17847718/cbd8b4a2-684f-11e6-8f25-8370ebd87edb.png)
                                                                                                                           
 Windows                                                                                
 ![1](https://cloud.githubusercontent.com/assets/19840443/17781023/dc692cdc-656d-11e6-940b-7e36425199e7.png)
@@ -72,7 +72,7 @@ Adding profits and expenses now works.
 ![4](https://cloud.githubusercontent.com/assets/19840443/17767848/fdcbc416-6531-11e6-942d-aa92171dad43.png)
 
 I'm waiting for any comment
-![1](https://cloud.githubusercontent.com/assets/19840443/17767573/c6076d4c-6530-11e6-8dcc-78e904f5aaf5.png)
+![1](https://cloud.githubusercontent.com/assets/19840443/17847742/f51be4b0-684f-11e6-949f-2102777d5b67.png)
 
 ...and now choose the currency from your profit maybe USD?
 ![2](https://cloud.githubusercontent.com/assets/19840443/17767580/c873eb46-6530-11e6-8fba-84a8cc3fd2d7.png)
