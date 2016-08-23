@@ -1,26 +1,13 @@
 ##Introduction
 Work in progress...
 
-##Following changes...
-[I'm an inline-style link](https://www.google.com)
+##Following changes
 
 [I'm an inline-style link with title](https://www.google.com "Google's Homepage")
 
-[I'm a reference-style link][Arbitrary case-insensitive reference text]
+Here's a line for us to start with.
 
-[I'm a relative reference to a repository file](../blob/master/LICENSE)
+This line is separated from the one above by two newlines, so it will be a *separate paragraph*.
 
-[You can use numbers for reference-style link definitions][1]
-
-Or leave it empty and use the [link text itself].
-
-URLs and URLs in angle brackets will automatically get turned into links. 
-http://www.example.com or <http://www.example.com> and sometimes 
-example.com (but not on Github, for example).
-
-Some text to show that the reference links can follow later.
-
-[arbitrary case-insensitive reference text]: https://www.mozilla.org
-[1]: http://slashdot.org
-[link text itself]: http://www.reddit.com
-
+This line is also a separate paragraph, but...
+This line is only separated by a single newline, so it's a separate line in the *same paragraph*.
