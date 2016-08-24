@@ -5,7 +5,8 @@ import pygame
 class Core:
 
 	def __init__( self, FPS, width, height, caption ):
-	
+		
+		self.state = 0
 		self.quit = False	#Main bool.
 		self.FPS = FPS		#Frames per second.
 
@@ -42,3 +43,9 @@ class Core:
 
 	def getWindow( self ):
 		return self.window
+
+	def getState( self ):
+		return self.state
+
+	def setState( self, newstate ):
+		self.state = newstate

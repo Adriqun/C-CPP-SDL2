@@ -5,64 +5,67 @@ import pygame
 class Texture:
 	
 	def __init__( self, path, nr = 0 ):
+		self.offset = 0
 		self.nr = nr
+		self.x = 0
+		self.y = 0
+		self.w = 0
+		self.h = 0
 		
 		if nr < 2:
 			self.texture = pygame.image.load( path ).convert_alpha()
-			self.rect = self.texture.get_rect()
+			self.w = self.texture.get_rect().width
+			self.h = self.texture.get_rect().height
 		elif nr > 1:
 			self.temporary = pygame.image.load( path ).convert_alpha()
-			self.rect = self.temporary.get_rect()
+			self.w = self.temporary.get_rect().width /nr
+			self.h = self.temporary.get_rect().height
 
-			self.w = self.rect.width /nr
-			self.h = self.rect.height
 			self.texture = []
 
-			for i in range( 0, nr-1 ):
+			for i in range( 0, nr ):
 				# print "Nr: ", i, " x=", self.w*i, " y=0, w=", self.w, " h=", self.h
 				self.texture.append( self.temporary.subsurface( [self.w*i, 0, self.w, self.h] ) )
 
 			del self.temporary
-
-	def getWidth( self ):
-		if self.nr < 2:
-			return self.rect.width
-		elif self.nr > 1:
-			return self.rect.width / self.nr
-		else:
-			return 0
-
+	
 	def getHeight( self ):
-		if self.nr < 2:
-			return self.rect.height
-		elif self.nr > 1:
-			return self.rect.height / self.nr
-		else:
-			return 0
+		return self.h
+	def getWidth( self ):
+		return self.w
 	
 	def getLeft( self ):
-		return self.rect.left()
-
+		return self.x
 	def getRight( self ):
-		if self.nr < 2:
-			return self.rect.right
-		elif self.nr > 1:
-			return self.rect.right / self.nr
-		else:
-			return 0
+		return self.x + self.w
 
 	def getBot( self ):
-		return self.rect.bot
-
+		return 	self.y + self.h
 	def getTop( self ):
-		return self.rect.top
+		return self.y
 
-	def draw( self, screen, offset = 0 ):
+	def setX( self, newx ):
+		self.x = newx
+		#print x
+
+	def setY( self, newy ):
+		self.y = newy
+		#print y
+
+	def setOffset( self, offset ):
+		self.offset = offset
+	
+	'''
+	def scale( self, w, h ):
+		self.texture = pygame.transform.scale( self.texture, ( w, h ) )
+	'''
+
+	def draw( self, screen ):
 		
 		if self.nr < 2:
-			screen.blit( self.texture, ( self.rect.x, self.rect.y ) )
+			screen.blit( self.texture, ( self.x, self.y ) )
 		elif self.nr > 1:
-			screen.blit( self.texture[ offset ], ( self.rect.x, self.rect.y ) )
+			screen.blit( self.texture[ self.offset ], ( self.x, self.y ) )
 
 
 
