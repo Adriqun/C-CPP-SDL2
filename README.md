@@ -16,11 +16,11 @@ Windows<br />
 ##Download
 
 Download files from **google drive**
-![logo-drive](https://cloud.githubusercontent.com/assets/19840443/17779441/eeaa3cac-6567-11e6-8f7f-748fe66f9b06.png)
+![gd](https://cloud.githubusercontent.com/assets/19840443/17922425/32511f7c-69df-11e6-8915-6696f35d30bb.png):
 
-[linux](https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-T2FCOF8xTGdVMlU&export=download "Linux :)")<br />
-[windows](https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-aFBjdnR6cGxZWUk&export=download "Windows")<br />
-[to edit](https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-NFVfckFEY1ZnbU0&export=download "If you want edit")<br />
+[Linux](https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-T2FCOF8xTGdVMlU&export=download "Linux :)")<br />
+[Windows](https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-aFBjdnR6cGxZWUk&export=download "Windows")<br />
+[To edit](https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-NFVfckFEY1ZnbU0&export=download "If you want edit")<br />
 
 ##License
 Everything is **free**.
