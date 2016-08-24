@@ -28,7 +28,7 @@ class Menutitle:
 		self.the.createText( "Ninja", 0x7F, 0x99, 0x95 )
 		self.the.setX( (width / 2) - (self.the.getWidth() / 2) )
 		self.the.setY( 0 )
-
+		
 	def getBot( self ):
 		return self.light.getBot()
 	

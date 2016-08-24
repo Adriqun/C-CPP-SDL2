@@ -4,7 +4,7 @@ import pygame
 
 class Texture:
 	
-	def __init__( self, path, nr = 0 ):
+	def __init__( self, path, nr = 0, rotate = False ):
 		self.offset = 0
 		self.nr = nr
 		self.x = 0
@@ -28,6 +28,9 @@ class Texture:
 				self.texture.append( self.temporary.subsurface( [self.w*i, 0, self.w, self.h] ) )
 
 			del self.temporary
+		if rotate:
+			self.temporary = self.texture
+
 	
 	def getHeight( self ):
 		return self.h
@@ -59,6 +62,10 @@ class Texture:
 	def scale( self, w, h ):
 		self.texture = pygame.transform.scale( self.texture, ( w, h ) )
 	'''
+
+	def rotation( self, angle ):
+		self.texture = pygame.transform.rotate( self.temporary, angle )
+
 
 	def draw( self, screen ):
 		

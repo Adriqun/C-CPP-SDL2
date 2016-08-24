@@ -10,6 +10,8 @@ from linkbutton import Linkbutton
 from menumus import Menumus
 from menubutton import Menubutton
 from menuposition import Menuposition
+from menuplaymusic import Menuplaymusic
+from menucursor import Menucursor
 
 class Engine:
 
@@ -28,6 +30,9 @@ class Engine:
 		self.menugame = Linkbutton( "menu/game.png", "nothing", True )
 		self.menusettings = Linkbutton( "menu/settings.png", "nothing", True )
 		self.menuposition = Menuposition( "menu/position.png" )
+		self.menuplaymusic = Menuplaymusic( "menu/Rayman Legends OST - Moving Ground.mp3" )
+		self.menucursor = Menucursor()
+		pygame.mouse.set_visible( False )
 
 	def load( self ):
 		self.menutitle.load( self.core.getW() )
@@ -43,6 +48,7 @@ class Engine:
 		self.menugame.load( self.author.getRight(), self.menuplay.getBot()+10, True )
 		self.menusettings.load( self.menugame.getRight(), self.menuplay.getBot()+10, True )
 		self.menuposition.load( self.menusettings.getRight(), self.core.getW(), self.menutitle.getBot(), self.menuplay.getBot() )
+		self.menuplaymusic.play()		
 	
 	def handle( self ):
 		for event in pygame.event.get():
@@ -59,6 +65,7 @@ class Engine:
 					self.menugoogle.handle( event )
 					self.menumus.handle( event )
 					self.menuchunk.handle( event )
+					self.menucursor.handle( event )
 				if self.menuposition.getType() == 0:
 					self.author.handle( event )
 				if self.author.getType() == 0:
@@ -82,6 +89,7 @@ class Engine:
 				self.menuchunk.draw( self.core.getWindow() )
 				self.menugame.draw( self.core.getWindow() )
 				self.menusettings.draw( self.core.getWindow() )
+				self.menucursor.draw( self.core.getWindow() )
 			
 			if self.menuposition.getType() == 0:
 				self.author.draw( self.core.getWindow() )
@@ -99,6 +107,10 @@ class Engine:
 				self.menuchunk.setState()	#CHUNK BUTTON
 				self.author.setState()		#AUTHOR BUTTON
 				self.menuposition.setState()	#POSITION BUTTON
+
+			#IF USER TURN ON/OFF MUSIC
+			if self.menumus.getState():
+				self.menuplaymusic.pause()
 			
 			#IF USER CLICK PLAY BUTTON
 			if self.menuplay.getNext() == 1:
