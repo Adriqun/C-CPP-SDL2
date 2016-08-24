@@ -4,4 +4,5 @@ Work in progress...
 
 Free font - [KG HAPPY](http://www.fontspace.com/kimberly-geswein/kg-happy "KG HAPPY")<br />
 Free gui - [FREE FANTASY GAME GUI](http://www.gameart2d.com/free-fantasy-game-gui.html "FREE FANTASY GAME GUI")<br /><br />
-![gui0](https://cloud.githubusercontent.com/assets/19840443/17906772/04e4d4b8-6979-11e6-87f7-ce1b52cf1708.png)
+![1](https://cloud.githubusercontent.com/assets/19840443/17922043/458d2a56-69dd-11e6-86b6-28bce46ea092.png) <br />
+![2](https://cloud.githubusercontent.com/assets/19840443/17922045/4b62a1b8-69dd-11e6-9cab-fe440041c46b.png) <br />
