@@ -8,19 +8,19 @@ Assume that you want to buy a new car which costs milion - new Ferrari.
 
 Write amount of money in goal row then add your profits, for example you earn 2000 **USD**, write 2000 and set name as "Job".
 You can also add expenses, maybe you need to eat something per day, try to write cost of your food per day, set as per day and set cost maybe in **GBP**?
-Now you see the date :date: when you will get new Car - it's really that simple.<br />
+Now you see the date :date: when you will get new Car - it's really that simple.<br /><br />
 Linux<br />
 ![linux](https://cloud.githubusercontent.com/assets/19840443/17847718/cbd8b4a2-684f-11e6-8f25-8370ebd87edb.png)<br />
 Windows<br />
 ![1](https://cloud.githubusercontent.com/assets/19840443/17781023/dc692cdc-656d-11e6-940b-7e36425199e7.png)<br />
 ##Download
 
-Download files from google drive
+Download files from **google drive**
 ![logo-drive](https://cloud.githubusercontent.com/assets/19840443/17779441/eeaa3cac-6567-11e6-8f7f-748fe66f9b06.png)
 
-linux - https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-T2FCOF8xTGdVMlU&export=download<br />
-windows - https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-aFBjdnR6cGxZWUk&export=download<br />
-to edit - https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-NFVfckFEY1ZnbU0&export=download<br />
+[linux](https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-T2FCOF8xTGdVMlU&export=download "Linux :)")<br />
+[windows](https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-aFBjdnR6cGxZWUk&export=download "Windows")<br />
+[to edit](https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-NFVfckFEY1ZnbU0&export=download "If you want edit")<br />
 
 ##License
 Everything is **free**.
@@ -54,7 +54,7 @@ I put 4 **currency**, PLN - mean Polish currency, EUR - Euro, USD, American doll
 Now you can choose which currency you want to operate. I also put **attain** what mean "when you will have expect amount of money. See below how it looks like.<br />
 ![3](https://cloud.githubusercontent.com/assets/19840443/17767813/cb2d5b14-6531-11e6-963b-63af784eba4d.png)
 <br />
-Set colors more readable according to this page -> http://www.colorcombos.com/color-schemes/27/ColorCombo27.html<br />
+Set colors more readable according to this page -> [colors](http://www.colorcombos.com/color-schemes/27/ColorCombo27.html "colors")<br />
 I add '+' and '-' what mean that you can put your profits and expenses. What do you think about design?<br />
 ![1](https://cloud.githubusercontent.com/assets/19840443/17767317/cdbc189a-652f-11e6-9592-b06a980e993d.png)
 
