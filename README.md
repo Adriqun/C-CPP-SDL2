@@ -66,7 +66,7 @@ Profit bar #2
 Adding profits and expenses now works.
 ![4](https://cloud.githubusercontent.com/assets/19840443/17767848/fdcbc416-6531-11e6-942d-aa92171dad43.png)
 
-I'm waiting for any comment.
+Is it ok?
 ![1](https://cloud.githubusercontent.com/assets/19840443/17847742/f51be4b0-684f-11e6-949f-2102777d5b67.png)
 
 ...and now choose the currency from your profit maybe USD?
