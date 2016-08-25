@@ -11,7 +11,6 @@ from menumus import Menumus
 from menubutton import Menubutton
 from menuposition import Menuposition
 from menuplaymusic import Menuplaymusic
-from menucursor import Menucursor
 
 class Engine:
 
@@ -31,8 +30,6 @@ class Engine:
 		self.menusettings = Linkbutton( "menu/settings.png", "nothing", True )
 		self.menuposition = Menuposition( "menu/position.png" )
 		self.menuplaymusic = Menuplaymusic( "menu/Rayman Legends OST - Moving Ground.mp3" )
-		self.menucursor = Menucursor()
-		pygame.mouse.set_visible( False )
 
 	def load( self ):
 		self.menutitle.load( self.core.getW() )
@@ -65,7 +62,6 @@ class Engine:
 					self.menugoogle.handle( event )
 					self.menumus.handle( event )
 					self.menuchunk.handle( event )
-					self.menucursor.handle( event )
 				if self.menuposition.getType() == 0:
 					self.author.handle( event )
 				if self.author.getType() == 0:
@@ -73,6 +69,8 @@ class Engine:
 
 	def states( self ):
 		if self.core.getState() == 0:
+			self.menubg.fade()
+			self.menuplay.fade()
 			
 			#DRAW ALWAYS IN MENU STATE
 			self.menubg.draw( self.core.getWindow() )
@@ -89,7 +87,6 @@ class Engine:
 				self.menuchunk.draw( self.core.getWindow() )
 				self.menugame.draw( self.core.getWindow() )
 				self.menusettings.draw( self.core.getWindow() )
-				self.menucursor.draw( self.core.getWindow() )
 			
 			if self.menuposition.getType() == 0:
 				self.author.draw( self.core.getWindow() )
@@ -114,6 +111,7 @@ class Engine:
 			
 			#IF USER CLICK PLAY BUTTON
 			if self.menuplay.getNext() == 1:
+				self.menuplaymusic.stop()
 				self.core.setState( 1 )
 
 		elif self.core.getState() == 1:

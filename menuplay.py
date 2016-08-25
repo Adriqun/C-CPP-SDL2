@@ -24,12 +24,10 @@ class Menuplay:
 	def draw( self, screen ):
 		self.texture.draw( screen )
 		self.font.draw( screen )
-
-	def getLeft( self ):
-		return self.texture.getLeft()
-
-	def getBot( self ):
-		return self.texture.getBot()
+	
+	def fade( self, vel = 1 ):
+		self.texture.fade( vel )
+		self.font.fade( vel )
 
 	def setState( self ):
 		if self.on == 0:
@@ -57,4 +55,8 @@ class Menuplay:
 					self.texture.setOffset( 1 )
 	def getNext( self ):
 		return self.next
+	def getLeft( self ):
+		return self.texture.getLeft()
+	def getBot( self ):
+		return self.texture.getBot()
 		

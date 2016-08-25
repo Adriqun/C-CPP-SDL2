@@ -36,7 +36,7 @@ class Core:
 		self.quit = True
 
 	def fillDisplay( self ):
-		self.window.fill( [ 0xFF, 0xFF, 0xFF ] )
+		self.window.fill( [ 0x15, 0x15, 0x1D ] )
 
 	def tickClock( self ):
 		self.clock.tick( self.FPS )
