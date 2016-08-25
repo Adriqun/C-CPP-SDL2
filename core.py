@@ -1,12 +1,13 @@
 #!/usr/bin/python
 
 import pygame
+import os
 
 class Core:
 
 	def __init__( self, FPS, width, height, caption ):
 		
-		self.state = 0
+		self.state = -1
 		self.quit = False	#Main bool.
 		self.FPS = FPS		#Frames per second.
 

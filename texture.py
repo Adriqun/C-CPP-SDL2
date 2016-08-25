@@ -51,8 +51,11 @@ class Texture:
 	'''
 
 	def fade( self, vel = 1 ):
-		if self.alpha < 255-vel and self.alpha > 0:
-			self.alpha += vel
+		if self.alpha < 255-vel and self.alpha > 0-vel:
+			if self.alpha < 0:
+				self.alpha = 0
+			else:
+				self.alpha += vel
 
 			if self.nr < 2:
 				self.texture = self.original.copy()

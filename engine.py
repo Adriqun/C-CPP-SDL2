@@ -11,6 +11,7 @@ from menumus import Menumus
 from menubutton import Menubutton
 from menuposition import Menuposition
 from menuplaymusic import Menuplaymusic
+from intro import Intro
 
 class Engine:
 
@@ -37,6 +38,8 @@ class Engine:
 
 		self.menuplaymusic = Menuplaymusic( "menu/Rayman Legends OST - Moving Ground.mp3" )
 
+		self.intro = Intro()
+
 	def load( self ):
 		self.menutitle.load( self.core.getW() )
 		self.menuplay.load( self.core.getW(), self.core.getH() )
@@ -51,7 +54,8 @@ class Engine:
 		self.menugame.load( self.author.getRight(), self.menuplay.getBot()+10, True )
 		self.menusettings.load( self.menugame.getRight(), self.menuplay.getBot()+10, True )
 		self.menuposition.load( self.menusettings.getRight(), self.core.getW(), self.menutitle.getBot(), self.menuplay.getBot() )
-		self.menuplaymusic.play()		
+		
+		self.intro.load( self.core.getW(), self.core.getH() )	
 	
 	def handle( self ):
 		for event in pygame.event.get():
@@ -74,22 +78,32 @@ class Engine:
 					self.menuposition.handle( event )
 
 	def states( self ):
+		
+		#INTRO
+		if self.core.getState() == -1:
+			self.intro.draw( self.core.getWindow() )
+			if self.intro.getQuit():
+				self.core.setState( 0 )
+
+		#MENU
 		if self.core.getState() == 0:
 
+			self.menuplaymusic.play()
 			#FADE IN
-			self.menubg.fade(2)
-			self.menutitle.fade(2)
-			self.menuplay.fade(2)
-			self.menugit.fade(2)
-			self.menugoogle.fade(2)
-			self.menufacebook.fade(2)
-			self.menutwitter.fade(2)
-			self.menumus.fade(2)
-			self.menuchunk.fade(2)
-			self.author.fade(2)
-			self.menugame.fade(2)
-			self.menusettings.fade(2)
-			self.menuposition.fade(2)
+			if self.menuplay.getNext() != 1:
+				self.menubg.fade(2)
+				self.menutitle.fade(2)
+				self.menuplay.fade(2)
+				self.menugit.fade(2)
+				self.menugoogle.fade(2)
+				self.menufacebook.fade(2)
+				self.menutwitter.fade(2)
+				self.menumus.fade(2)
+				self.menuchunk.fade(2)
+				self.author.fade(2)
+				self.menugame.fade(2)
+				self.menusettings.fade(2)
+				self.menuposition.fade(2)
 			
 			#DRAW ALWAYS IN MENU STATE
 			self.menubg.draw( self.core.getWindow() )
@@ -130,8 +144,24 @@ class Engine:
 			
 			#IF USER CLICK PLAY BUTTON
 			if self.menuplay.getNext() == 1:
-				self.menuplaymusic.stop()
-				self.core.setState( 1 )
+				self.menubg.fade(-2)
+				self.menutitle.fade(-2)
+				self.menuplay.fade(-2)
+				self.menugit.fade(-2)
+				self.menugoogle.fade(-2)
+				self.menufacebook.fade(-2)
+				self.menutwitter.fade(-2)
+				self.menumus.fade(-2)
+				self.menuchunk.fade(-2)
+				self.author.fade(-2)
+				self.menugame.fade(-2)
+				self.menusettings.fade(-2)
+				self.menuposition.fade(-2)
+				self.menuplaymusic.fadeOut()
+
+				if self.menuplay.getAlpha() < 5:
+					self.menuplaymusic.stop()
+					self.core.setState( 1 )
 
 		elif self.core.getState() == 1:
 			self.core.setState( 2 )	

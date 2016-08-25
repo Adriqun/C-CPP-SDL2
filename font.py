@@ -22,8 +22,11 @@ class Font:
 		self.h = self.texture.get_rect().height	#Set height
 	
 	def fade( self, vel = 1 ):
-		if self.alpha < 255-vel and self.alpha > 0:
-			self.alpha += vel
+		if self.alpha < 255-vel and self.alpha > 0-vel:
+			if self.alpha < 0:
+				self.alpha = 0
+			else:
+				self.alpha += vel
 			self.texture = self.original.copy()
 			self.texture.fill( (255, 255, 255, self.alpha), None, pygame.BLEND_RGBA_MULT )
 	

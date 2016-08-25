@@ -53,6 +53,8 @@ class Menuplay:
 					self.next = 1
 				else:
 					self.texture.setOffset( 1 )
+	def getAlpha( self ):
+		return self.texture.getAlpha()
 	def getNext( self ):
 		return self.next
 	def getLeft( self ):

@@ -17,7 +17,7 @@ class Menutitle:
 	def load( self, width ):
 
 		self.light.setX( (width / 2) - (self.light.getWidth() / 2) )
-		self.light.setY( 10 )
+		self.light.setY( -10 )
 
 		self.belt.setX( (width / 2) - (self.belt.getWidth() / 2) )
 		self.belt.setY( 10 )
@@ -34,8 +34,9 @@ class Menutitle:
 	
 	def fade( self, vel = 1 ):
 		self.light.fade( vel )
-		self.belt.fade( vel+2 )
-		self.the.fade( vel+2 )
+		self.belt.fade( vel )
+		self.the.fade( vel )
+
 	
 	def draw( self, screen ):
 		self.light.draw( screen)
