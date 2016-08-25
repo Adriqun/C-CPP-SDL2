@@ -30,6 +30,10 @@ class Menumus:
 		if self.type == 1:
 			self.scratch.draw( screen )
 
+	def fade( self, vel = 1 ):
+		self.texture.fade( vel )
+		self.scratch.fade( vel )
+
 
 	def getState( self ):
 		if self.state != self.type:
@@ -56,7 +60,7 @@ class Menumus:
 		
 		self.texture.setOffset( 0 )
 		self.x, self.y = pygame.mouse.get_pos()
-		if self.x > self.texture.getLeft() and self.x < self.texture.getRight():
+		if self.x > self.texture.getLeft() and self.x < self.texture.getRight() and self.texture.getAlpha() > 250:
 			if self.y > self.texture.getTop() and self.y < self.texture.getBot():
 				if self.focus == True:
 					if self.on == 0:

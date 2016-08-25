@@ -33,6 +33,12 @@ class Menuposition:
 		else:
 			self.texture.draw( screen )
 
+	def fade( self, vel = 1 ):
+		self.texture.fade( vel )
+		self.window.fade( vel )
+		self.font.fade( vel )	#And so on
+		
+
 
 	def getType( self ):
 		return self.type
@@ -58,7 +64,7 @@ class Menuposition:
 		if self.type == 0:
 			self.texture.setOffset( 0 )
 			self.x, self.y = pygame.mouse.get_pos()
-			if self.x > self.texture.getLeft() and self.x < self.texture.getRight():
+			if self.x > self.texture.getLeft() and self.x < self.texture.getRight() and self.texture.getAlpha() > 250:
 				if self.y > self.texture.getTop() and self.y < self.texture.getBot():
 					if self.focus == True:
 						if self.on == 0:

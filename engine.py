@@ -15,20 +15,26 @@ from menuplaymusic import Menuplaymusic
 class Engine:
 
 	def __init__( self ):
+
 		self.core = Core( 60, 1024, 768, "Ninja" )
+
 		self.menubg = Menubg()
 		self.menutitle = Menutitle()
 		self.menuplay = Menuplay()
+
 		self.menugit = Linkbutton( "menu/git.png", "https://github.com/Adriqun" )
 		self.menugoogle = Linkbutton( "menu/google.png", "https://en.wikipedia.org/wiki/Ninja" )
 		self.menufacebook = Linkbutton( "menu/facebook.png", "nothing", True )
 		self.menutwitter = Linkbutton( "menu/twitter.png", "nothing", True )
+
 		self.menumus = Menumus( "menu/music.png" )
 		self.menuchunk = Menumus( "menu/chunk.png", 1 )
+
 		self.author = Menubutton( "menu/author.png" )
 		self.menugame = Linkbutton( "menu/game.png", "nothing", True )
 		self.menusettings = Linkbutton( "menu/settings.png", "nothing", True )
 		self.menuposition = Menuposition( "menu/position.png" )
+
 		self.menuplaymusic = Menuplaymusic( "menu/Rayman Legends OST - Moving Ground.mp3" )
 
 	def load( self ):
@@ -69,8 +75,21 @@ class Engine:
 
 	def states( self ):
 		if self.core.getState() == 0:
-			self.menubg.fade()
-			self.menuplay.fade()
+
+			#FADE IN
+			self.menubg.fade(2)
+			self.menutitle.fade(2)
+			self.menuplay.fade(2)
+			self.menugit.fade(2)
+			self.menugoogle.fade(2)
+			self.menufacebook.fade(2)
+			self.menutwitter.fade(2)
+			self.menumus.fade(2)
+			self.menuchunk.fade(2)
+			self.author.fade(2)
+			self.menugame.fade(2)
+			self.menusettings.fade(2)
+			self.menuposition.fade(2)
 			
 			#DRAW ALWAYS IN MENU STATE
 			self.menubg.draw( self.core.getWindow() )

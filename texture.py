@@ -51,7 +51,7 @@ class Texture:
 	'''
 
 	def fade( self, vel = 1 ):
-		if self.alpha < 255 and self.alpha > 0:
+		if self.alpha < 255-vel and self.alpha > 0:
 			self.alpha += vel
 
 			if self.nr < 2:
@@ -69,7 +69,8 @@ class Texture:
 			screen.blit( self.texture, ( self.x, self.y ) )
 		elif self.nr > 1:
 			screen.blit( self.texture[ self.offset ], ( self.x, self.y ) )
-
+	def getAlpha( self ):
+		return self.alpha
 	def setX( self, newx ):
 		self.x = newx
 	def setY( self, newy ):

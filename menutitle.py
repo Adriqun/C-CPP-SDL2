@@ -32,6 +32,11 @@ class Menutitle:
 	def getBot( self ):
 		return self.light.getBot()
 	
+	def fade( self, vel = 1 ):
+		self.light.fade( vel )
+		self.belt.fade( vel+2 )
+		self.the.fade( vel+2 )
+	
 	def draw( self, screen ):
 		self.light.draw( screen)
 		self.belt.draw( screen)

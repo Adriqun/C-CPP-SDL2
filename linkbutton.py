@@ -38,10 +38,13 @@ class Linkbutton:
 		else:
 			self.on = 0
 		# print self.on
+	
+	def fade( self, vel = 1 ):
+		self.texture.fade( vel )
 		
 	def handle( self, event ):
 			
-		if self.locked == False:
+		if self.locked == False and self.texture.getAlpha() > 250:
 			self.focus = False
 			if event.type == pygame.MOUSEBUTTONDOWN:
 				self.focus = True
