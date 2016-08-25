@@ -17,3 +17,13 @@ To exit topical window for example menu to leave you have to click [escape] or [
 ![4](https://cloud.githubusercontent.com/assets/19840443/17930261/9497fd92-6a05-11e6-94f6-b00e23266d0a.png)
 **Scores**<br/>
 ![5](https://cloud.githubusercontent.com/assets/19840443/17930279/a2ca2124-6a05-11e6-8699-2ea39aac805b.png)
+
+I add alpha functions. Now every texture created by class Texture have function called fade( val = 1 ), you can fadeOut by fade() with negative number and fadeIn with positive. I'm not sure about my English when I want to describe deep affairs, but I hope that you know what I mean. <br/>
+The thing that you see below is a menu with changed light.<br/>
+![6](https://cloud.githubusercontent.com/assets/19840443/17967374/1d059740-6ac7-11e6-9895-9472801c70f0.png)
+That's why: ![alpha](https://cloud.githubusercontent.com/assets/19840443/17968017/bb6f0f30-6aca-11e6-81ad-77fa0964ee2d.png)
+Texture of light is brighter than title, when I changed the velocity of showing alpha that result was worse. <br/>
+
+Simple intro below (one of three frames from intro) <br/>
+![7](https://cloud.githubusercontent.com/assets/19840443/17968114/58668bc4-6acb-11e6-8702-61a4d197d641.png)
+
