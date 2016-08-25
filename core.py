@@ -18,6 +18,9 @@ class Core:
 
 		self.window = pygame.display.set_mode( ( width, height ) )	#Window
 		pygame.display.set_caption( caption )				#Caption
+		self.icon = pygame.image.load( "window/icon.bmp" )
+		self.icon.set_colorkey( [ 0x00, 0xFF, 0x00 ] )
+		pygame.display.set_icon( self.icon )
 		
 
 	def getW( self ):
