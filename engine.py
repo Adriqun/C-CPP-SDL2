@@ -2,7 +2,9 @@
 
 import pygame
 import pyaudio
+
 from core import Core
+
 from menubg import Menubg
 from menutitle import Menutitle
 from menuplay import Menuplay
@@ -11,7 +13,10 @@ from menumus import Menumus
 from menubutton import Menubutton
 from menuposition import Menuposition
 from menuplaymusic import Menuplaymusic
+
 from intro import Intro
+
+from wall import Wall
 
 class Engine:
 
@@ -40,6 +45,8 @@ class Engine:
 
 		self.intro = Intro()
 
+		self.wall = Wall()
+
 	def load( self ):
 		self.menutitle.load( self.core.getW() )
 		self.menuplay.load( self.core.getW(), self.core.getH() )
@@ -55,7 +62,8 @@ class Engine:
 		self.menusettings.load( self.menugame.getRight(), self.menuplay.getBot()+10, True )
 		self.menuposition.load( self.menusettings.getRight(), self.core.getW(), self.menutitle.getBot(), self.menuplay.getBot() )
 		
-		self.intro.load( self.core.getW(), self.core.getH() )	
+		self.intro.load( self.core.getW(), self.core.getH() )
+		self.core.setState( 0 )
 	
 	def handle( self ):
 		for event in pygame.event.get():
@@ -159,12 +167,12 @@ class Engine:
 				self.menuposition.fade(-2)
 				self.menuplaymusic.fadeOut()
 
-				if self.menuplay.getAlpha() < 5:
+				if self.menuplay.getAlpha() < 2:
 					self.menuplaymusic.stop()
 					self.core.setState( 1 )
 
 		elif self.core.getState() == 1:
-			self.core.setState( 2 )	
+			self.wall.draw( self.core.getWindow(), 2 )	
 
 
 

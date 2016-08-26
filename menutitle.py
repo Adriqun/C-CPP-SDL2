@@ -10,14 +10,10 @@ class Menutitle:
 		self.the = Font( "menu/KGHAPPY.ttf", 80 )
 		#self.title = Font( "menu/KGHAPPY.ttf", 100 )
 		#self.crown = Texture( "menu/crown.png" )
-		self.light = Texture( "menu/light2.png" )
 		self.belt =  Texture( "menu/belt.png" )
 		
 	
 	def load( self, width ):
-
-		self.light.setX( (width / 2) - (self.light.getWidth() / 2) )
-		self.light.setY( -10 )
 
 		self.belt.setX( (width / 2) - (self.belt.getWidth() / 2) )
 		self.belt.setY( 10 )
@@ -30,16 +26,14 @@ class Menutitle:
 		self.the.setY( 0 )
 		
 	def getBot( self ):
-		return self.light.getBot()
+		return self.belt.getBot()
 	
 	def fade( self, vel = 1 ):
-		self.light.fade( vel )
 		self.belt.fade( vel )
 		self.the.fade( vel )
 
 	
 	def draw( self, screen ):
-		self.light.draw( screen)
 		self.belt.draw( screen)
 		#self.crown.draw( screen)
 		self.the.draw( screen )
