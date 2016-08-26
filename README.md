@@ -4,11 +4,11 @@ Work in progress...
 
 Free font - [KG HAPPY](http://www.fontspace.com/kimberly-geswein/kg-happy "KG HAPPY")<br />
 Free gui - [FREE FANTASY GAME GUI](http://www.gameart2d.com/free-fantasy-game-gui.html "FREE FANTASY GAME GUI")<br /><br />
-Menu takes a lot of time because you need to set all buttons, it's not a ready made something that you can click and set, you need to launch your application 100 times before final version.<br />
-Ok Below you see my 3hour's work of setting the buttons, each works.<br />
-To exit topical window for example menu to leave you have to click [escape] or [space]. <br />
-I add alpha functions. Now every texture created by class Texture have function called fade( val = 1 ), you can fadeOut by fade() with negative number and fadeIn with positive. I'm not sure about my English when I want to describe deep affairs, but I hope that you know what I mean. <br/>
-The thing that you see below is a menu with changed light. Texture of light is brighter than title, when I changed the velocity of showing alpha that result was worse<br/>
+Menu takes a lot of time because you need to set all buttons, it's not a ready made something that you can click and set, you need to launch your application 100 times before final version.<br/><br/>
+Ok Below you see my 3hour's work of setting the buttons, each works.<br/>
+To exit topical window for example menu to leave you have to click [escape] or [space]. <br/>
+I add alpha functions. Now every texture created by class Texture have function called fade( val = 1 ), you can fadeOut by fade() with negative number or fadeIn with positive. I'm not sure about my English when I want to describe deep affairs, but I hope that you know what I mean. <br/><br/>
+The thing that you see below is a menu with changed light. Texture of light is brighter than title, when I changed the velocity of showing alpha the result was worse<br/>
 ![6](https://cloud.githubusercontent.com/assets/19840443/17967374/1d059740-6ac7-11e6-9895-9472801c70f0.png)
 That's why: <br/> ![alpha](https://cloud.githubusercontent.com/assets/19840443/17968017/bb6f0f30-6aca-11e6-81ad-77fa0964ee2d.png) <br/>
 
