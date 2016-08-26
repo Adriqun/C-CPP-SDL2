@@ -30,8 +30,7 @@ Move left.
 ![c1](https://cloud.githubusercontent.com/assets/19840443/17997244/ad355322-6b6d-11e6-8c3e-7cfd341b4ff0.png)<br/>
 Move right.
 ![c2](https://cloud.githubusercontent.com/assets/19840443/17997260/c6c7d3d2-6b6d-11e6-9443-9dc010a005bf.png)<br/>
-It's simple, we render artificial moving.<br/><br/>
-
+<br/><br/>
 So, how it works while we are playing? <br/>
 Draw function below: <br/>
 ```python
@@ -59,4 +58,5 @@ def draw( self, display, direction ):
 		self.bg_one.draw( display )
 		self.bg_two.draw( display )
 ```
-
+Within game. <br/>
+![wall](https://cloud.githubusercontent.com/assets/19840443/17997576/84af3dd0-6b6f-11e6-96af-a4f579215e64.png)
