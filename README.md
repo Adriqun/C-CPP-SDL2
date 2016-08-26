@@ -13,9 +13,9 @@ Every texture created by class Texture have function called fade( val = 1 ), you
 I want that my champion can move right and left. We need to move also background. I introduce you my difficulty. We have **two** the same textures, when player moves right we subtract position x. We use **two** textures because when first background will be a little father we will have a white space beetwen two. Ok what if player moves left? We need to quickly set second texture on another position. <br/>
 
 Move left.
-![c1](https://cloud.githubusercontent.com/assets/19840443/17997244/ad355322-6b6d-11e6-8c3e-7cfd341b4ff0.png)<br/>
+![left](https://cloud.githubusercontent.com/assets/19840443/17999014/8c2611d0-6b77-11e6-94cb-253c8959e5c4.png)<br/>
 Move right.
-![c2](https://cloud.githubusercontent.com/assets/19840443/17997754/c6592b78-6b70-11e6-9517-41f341f51309.png)<br/>
+![right](https://cloud.githubusercontent.com/assets/19840443/17999030/9c306490-6b77-11e6-975e-e6c572f1e0b4.png)<br/>
 <br/><br/>
 So, how it works while we are playing? <br/>
 Draw function below: <br/>
