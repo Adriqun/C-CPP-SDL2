@@ -25,7 +25,7 @@ class Intro:
 		self.preview.setX( width/2 - self.preview.getWidth()/2 )
 		self.preview.setY( height/2 - self.preview.getHeight()/2 )
 
-		self.title.createText( "Jump and jump", 0x70, 0xB7, 0x59 )
+		self.title.createText( "Ninja", 0x70, 0xB7, 0x59 )
 		self.title.setX( width/2 - self.title.getWidth()/2 - self.shuriken.getWidth() -10 )
 		self.title.setY( height/2 - self.title.getHeight()/2 )
 
@@ -36,7 +36,7 @@ class Intro:
 		self.author.setX( width/2 - self.author.getWidth()/2 )
 		self.author.setY( height/2 - self.author.getHeight()/2 )
 
-		self.produced.createText( "prudeced by", 0x70, 0xB7, 0x59 )
+		self.produced.createText( "produced by", 0x70, 0xB7, 0x59 )
 		self.produced.setX( width/2 - self.produced.getWidth()/2 )
 		self.produced.setY( height/2 - self.produced.getHeight()/2 - self.author.getHeight() -10 )
 		
