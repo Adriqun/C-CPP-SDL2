@@ -26,7 +26,7 @@ class Menutitle:
 		self.the.setY( 0 )
 		
 	def getBot( self ):
-		return self.belt.getBot()
+		return self.belt.getBot() + 150
 	
 	def fade( self, vel = 1 ):
 		self.belt.fade( vel )

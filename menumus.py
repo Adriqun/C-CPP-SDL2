@@ -13,6 +13,7 @@ class Menumus:
 		self.type = 0
 		self.state = 0
 		self.on = on
+		self.mouseup = 0
 
 	
 	def load( self, y ):
@@ -55,21 +56,27 @@ class Menumus:
 	def handle( self, event ):
 			
 		self.focus = False
+		self.texture.setOffset( 0 )
+
 		if event.type == pygame.MOUSEBUTTONDOWN:
 			self.focus = True
+			self.mouseup = 1
+		elif event.type == pygame.MOUSEBUTTONUP:
+			self.mouseup = 0
 		
-		self.texture.setOffset( 0 )
+		
 		self.x, self.y = pygame.mouse.get_pos()
 		if self.x > self.texture.getLeft() and self.x < self.texture.getRight() and self.texture.getAlpha() > 250:
 			if self.y > self.texture.getTop() and self.y < self.texture.getBot():
 				if self.focus == True:
 					if self.on == 0:
 						self.click.play()
-					self.texture.setOffset( 2 )
 					if self.type == 0:
 						self.type = 1
 					else:
 						self.type = 0
+				if self.focus == True or self.mouseup == 1:
+					self.texture.setOffset( 2 )
 				else:
 					self.texture.setOffset( 1 )
 

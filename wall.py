@@ -10,7 +10,7 @@ class Wall:
 		self.bg_two = Texture( "wall/14.png", 0, 254 )
 		self.bg_two.setX( -self.bg_one.getWidth() )
 	
-	def draw( self, screen, value ):
+	def draw( self, screen, value = 0 ):
 		
 		if value == 1:	# L
 			if self.bg_one.getLeft() == 0:

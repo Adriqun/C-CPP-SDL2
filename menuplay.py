@@ -12,6 +12,7 @@ class Menuplay:
 		self.next = 0
 		self.click = pygame.mixer.Sound( "menu/click.wav" )
 		self.on = 0
+		self.mouseup = 0
 	
 	def load( self, width, height ):
 		self.font.createText( "play", 0x82, 0xae, 0x20 )
@@ -38,9 +39,14 @@ class Menuplay:
 	
 
 	def handle( self, event ):
+
 		self.focus = False
 		if event.type == pygame.MOUSEBUTTONDOWN:
 			self.focus = True
+			self.mouseup = 1
+		elif event.type == pygame.MOUSEBUTTONUP:
+			self.mouseup = 0
+	
 		
 		self.texture.setOffset( 0 )
 		self.x, self.y = pygame.mouse.get_pos()
@@ -49,8 +55,9 @@ class Menuplay:
 				if self.focus == True:
 					if self.on == 0:
 						self.click.play()
-					self.texture.setOffset( 2 )
 					self.next = 1
+				if self.focus == True or self.mouseup == 1:
+					self.texture.setOffset( 2 )
 				else:
 					self.texture.setOffset( 1 )
 	def getAlpha( self ):

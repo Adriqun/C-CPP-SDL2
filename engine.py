@@ -63,7 +63,7 @@ class Engine:
 		self.menuposition.load( self.menusettings.getRight(), self.core.getW(), self.menutitle.getBot(), self.menuplay.getBot() )
 		
 		self.intro.load( self.core.getW(), self.core.getH() )
-		self.core.setState( 0 )
+		self.core.setState( 1 )
 	
 	def handle( self ):
 		for event in pygame.event.get():
@@ -172,7 +172,7 @@ class Engine:
 					self.core.setState( 1 )
 
 		elif self.core.getState() == 1:
-			self.wall.draw( self.core.getWindow(), 2 )	
+			self.wall.draw( self.core.getWindow() )	
 
 
 
