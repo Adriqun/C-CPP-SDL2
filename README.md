@@ -10,7 +10,7 @@ To exit topical window for example menu to leave click [escape]. <br/>
 Every texture created by class Texture have function called fade( val = 1 ), you can fadeout by fade() with negative number or fadein with positive.<br/><br/>
 ![menu](https://cloud.githubusercontent.com/assets/19840443/17998044/8f1e7b2a-6b72-11e6-965e-b39c9b23ee3c.png)<br/><br/>
 
-I want that my champion can move right and left. We need to move also background. I show you my difficulty what I mean by this image. We have **two** the same textures, when player moves right we subtract position x. We use **two** textures because when first background will be a little father we will have a white space beetwen two. Ok what if player moves left? We need to quickly set second texture on another position. <br/>
+I want that my champion can move right and left. We need to move also background. I introduce you my difficulty. We have **two** the same textures, when player moves right we subtract position x. We use **two** textures because when first background will be a little father we will have a white space beetwen two. Ok what if player moves left? We need to quickly set second texture on another position. <br/>
 
 Move left.
 ![c1](https://cloud.githubusercontent.com/assets/19840443/17997244/ad355322-6b6d-11e6-8c3e-7cfd341b4ff0.png)<br/>
