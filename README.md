@@ -27,3 +27,39 @@ Texture of light is brighter than title, when I changed the velocity of showing 
 Simple intro below (one of three frames from intro) <br/>
 ![7](https://cloud.githubusercontent.com/assets/19840443/17968114/58668bc4-6acb-11e6-8702-61a4d197d641.png)
 
+I want that my champion can move right and left. We need to move also background. I show you my difficulty what I mean by this image. We have **two** the same textures, when player moves right we subtract position x. We use **two** textures because when first background will be a little father we will have a white space beetwen two. Ok what if player moves left? We need to quickly set second texture on another position. <br/>
+
+Move left. <br/>
+![c1](https://cloud.githubusercontent.com/assets/19840443/17997244/ad355322-6b6d-11e6-8c3e-7cfd341b4ff0.png)
+Move right. <br/>
+![c2](https://cloud.githubusercontent.com/assets/19840443/17997260/c6c7d3d2-6b6d-11e6-9443-9dc010a005bf.png)
+It's simple, we render artificial moving.
+
+So, how it works while we are playing? <br/>
+Draw function below: <br/>
+```python
+def draw( self, display, direction ):
+		
+		if direction == 1:	# Move left
+			if self.bg_one.getX() == 0:
+				self.bg_two.setX( -self.bg_two.getWidth() )
+			elif self.bg_two.getX() == 0:
+				self.bg_one.setX( -self.bg_one.getWidth() )
+
+			self.bg_one.setX( self.bg_one.getX() + 1 )  # 1 - mean velocity, we can also add another variable
+			self.bg_two.setX( self.bg_two.getX() + 1 )
+
+		elif direction == 2: # Move right
+			if self.bg_one.getX() == 0:
+				self.bg_two.setX( self.bg_two.getWidth() )
+			elif self.bg_two.getX() == 0:
+				self.bg_one.setX( self.bg_one.getWidth() )
+      
+			self.bg_one.setX( self.bg_one.getX() - 1 )
+			self.bg_two.setX( self.bg_two.getX() - 1 )
+
+		# render
+		self.bg_one.draw( display )
+		self.bg_two.draw( display )
+```
+
