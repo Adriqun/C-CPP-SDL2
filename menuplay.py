@@ -26,9 +26,9 @@ class Menuplay:
 		self.texture.draw( screen )
 		self.font.draw( screen )
 	
-	def fade( self, vel = 1 ):
-		self.texture.fade( vel )
-		self.font.fade( vel )
+	def fade( self, vel = 1, minA = 0, maxA = 255 ):
+		self.texture.fade( vel, minA, maxA )
+		self.font.fade( vel, minA, maxA )
 
 	def setState( self ):
 		if self.on == 0:

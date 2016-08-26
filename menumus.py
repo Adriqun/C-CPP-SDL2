@@ -31,9 +31,9 @@ class Menumus:
 		if self.type == 1:
 			self.scratch.draw( screen )
 
-	def fade( self, vel = 1 ):
-		self.texture.fade( vel )
-		self.scratch.fade( vel )
+	def fade( self, vel = 1, minA = 0, maxA = 255 ):
+		self.texture.fade( vel, minA, maxA )
+		self.scratch.fade( vel, minA, maxA )
 
 
 	def getState( self ):

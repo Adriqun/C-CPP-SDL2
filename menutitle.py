@@ -28,9 +28,9 @@ class Menutitle:
 	def getBot( self ):
 		return self.belt.getBot() + 150
 	
-	def fade( self, vel = 1 ):
-		self.belt.fade( vel )
-		self.the.fade( vel )
+	def fade( self, vel = 1, minA = 0, maxA = 255 ):
+		self.belt.fade( vel, minA, maxA )
+		self.the.fade( vel, minA, maxA )
 
 	
 	def draw( self, screen ):

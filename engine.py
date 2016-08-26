@@ -13,6 +13,7 @@ from menumus import Menumus
 from menubutton import Menubutton
 from menuposition import Menuposition
 from menuplaymusic import Menuplaymusic
+from menuexit import Menuexit
 
 from intro import Intro
 
@@ -42,6 +43,7 @@ class Engine:
 		self.menuposition = Menuposition( "menu/position.png" )
 
 		self.menuplaymusic = Menuplaymusic( "menu/Rayman Legends OST - Moving Ground.mp3" )
+		self.menuexit = Menuexit()
 
 		self.intro = Intro()
 
@@ -61,9 +63,11 @@ class Engine:
 		self.menugame.load( self.author.getRight(), self.menuplay.getBot()+10, True )
 		self.menusettings.load( self.menugame.getRight(), self.menuplay.getBot()+10, True )
 		self.menuposition.load( self.menusettings.getRight(), self.core.getW(), self.menutitle.getBot(), self.menuplay.getBot() )
-		
+		self.menuexit.load( self.core.getW(), self.core.getH() )
+
 		self.intro.load( self.core.getW(), self.core.getH() )
-		self.core.setState( 1 )
+
+		self.core.setState( -1 )
 	
 	def handle( self ):
 		for event in pygame.event.get():
@@ -71,8 +75,12 @@ class Engine:
 			if event.type == pygame.QUIT:
 				self.core.setQuit()
 			
+#STATE 0 -------------------------------------------------------------------- MENU
 			if self.core.getState() == 0:
 				
+				# EXIT HANDLE
+				self.menuexit.handle( event )
+
 				#HANDLE IF AUTHOR BUTTON == OFF AND POSITION BUTTON == OFF
 				if self.author.getType() == 0 and self.menuposition.getType() == 0:
 					self.menuplay.handle( event )
@@ -86,19 +94,20 @@ class Engine:
 					self.menuposition.handle( event )
 
 	def states( self ):
-		
-		#INTRO
+#STATE -1-------------------------------------------------------------------- INTRO
 		if self.core.getState() == -1:
 			self.intro.draw( self.core.getWindow() )
 			if self.intro.getQuit():
 				self.core.setState( 0 )
 
-		#MENU
+#STATE 0 -------------------------------------------------------------------- MENU
 		if self.core.getState() == 0:
-
+			
+			#MENU MUSIC
 			self.menuplaymusic.play()
-			#FADE IN
-			if self.menuplay.getNext() != 1:
+
+			#FADE IN - START
+			if self.menuplay.getNext() != 1 and self.menuexit.getType() == 0:
 				self.menubg.fade(5)
 				self.menutitle.fade(5)
 				self.menuplay.fade(5)
@@ -112,12 +121,14 @@ class Engine:
 				self.menugame.fade(5)
 				self.menusettings.fade(5)
 				self.menuposition.fade(5)
+				self.menuplaymusic.setVolume( 1.0 )
 			
 			#DRAW ALWAYS IN MENU STATE
 			self.menubg.draw( self.core.getWindow() )
 			self.menutitle.draw( self.core.getWindow() )
+			self.menuexit.draw( self.core.getWindow() )
 
-			#DRAW IF AUTHOR BUTTON == OFF AND POSITION BUTTON == OFF
+			#DRAW IF AUTHOR BUTTON == OFF AND SCORE BUTTON == OFF
 			if self.author.getType() == 0 and self.menuposition.getType() == 0:
 				self.menugit.draw( self.core.getWindow() )			
 				self.menugoogle.draw( self.core.getWindow() )
@@ -128,7 +139,6 @@ class Engine:
 				self.menuchunk.draw( self.core.getWindow() )
 				self.menugame.draw( self.core.getWindow() )
 				self.menusettings.draw( self.core.getWindow() )
-			
 			if self.menuposition.getType() == 0:
 				self.author.draw( self.core.getWindow() )
 			if self.author.getType() == 0:
@@ -149,6 +159,29 @@ class Engine:
 			#IF USER TURN ON/OFF MUSIC
 			if self.menumus.getState():
 				self.menuplaymusic.pause()
+			
+			#IF USER CLICK ESCAPE
+			if self.menuexit.getType() == 1 or self.menuexit.getType() == 2:
+				self.menubg.fade( -6 )
+				self.menutitle.fade( -6 )
+				self.menuplay.fade( -6 )
+				self.menugit.fade( -6 )
+				self.menugoogle.fade( -6 )
+				self.menufacebook.fade( -6 )
+				self.menutwitter.fade( -6 )
+				self.menumus.fade( -6 )
+				self.menuchunk.fade( -6 )
+				self.author.fade( -6 )
+				self.menugame.fade( -6 )
+				self.menusettings.fade( -6 )
+				self.menuposition.fade( -6 )
+				self.menuplaymusic.setVolume( 0.3 )
+			if self.menuexit.getType() == 2 and self.menuplay.getAlpha() < 2:
+				self.core.setQuit()
+				
+
+			#print self.menuexit.getType()
+			#print self.menuexit.getType(), " ", self.menuplay.getAlpha()
 			
 			#IF USER CLICK PLAY BUTTON
 			if self.menuplay.getNext() == 1:
@@ -171,6 +204,8 @@ class Engine:
 					self.menuplaymusic.stop()
 					self.core.setState( 1 )
 
+
+#STATE 1 -------------------------------------------------------------------- GAME
 		elif self.core.getState() == 1:
 
 			#FADE IN

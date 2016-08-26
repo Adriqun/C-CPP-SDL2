@@ -39,8 +39,8 @@ class Linkbutton:
 			self.on = 0
 		# print self.on
 	
-	def fade( self, vel = 1 ):
-		self.texture.fade( vel )
+	def fade( self, vel = 1, minA = 0, maxA = 255 ):
+		self.texture.fade( vel, minA, maxA )
 		
 	def handle( self, event ):
 			

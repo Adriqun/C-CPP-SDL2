@@ -33,10 +33,10 @@ class Menuposition:
 		else:
 			self.texture.draw( screen )
 
-	def fade( self, vel = 1 ):
-		self.texture.fade( vel )
-		self.window.fade( vel )
-		self.font.fade( vel )	#And so on
+	def fade( self, vel = 1, minA = 0, maxA = 255 ):
+		self.texture.fade( vel, minA, maxA )
+		self.window.fade( vel, minA, maxA )
+		self.font.fade( vel, minA, maxA )	#And so on
 		
 
 

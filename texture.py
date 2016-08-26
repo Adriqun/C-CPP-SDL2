@@ -42,24 +42,28 @@ class Texture:
 
 
 	'''
-	def setAlpha( self, alpha ):
-		if self.nr < 2:
-			self.texture.fill( (255, 255, 255, alpha), None, pygame.BLEND_RGBA_MULT )
-		elif self.nr > 1:
-			for i in range( 0, self.nr ):
-				self.texture[ i ].fill( (255, 255, 255, alpha), None, pygame.BLEND_RGBA_MULT )
+	def setAlpha( self, newalpha ):
+		if self.alpha != newalpha:
+			self.alpha = newalpha
+			if self.nr < 2:
+				self.texture = self.original.copy()
+				self.texture.fill( (255, 255, 255, self.alpha), None, pygame.BLEND_RGBA_MULT )
+			elif self.nr > 1:
+				for i in range( 0, self.nr ):
+					self.texture[ i ] = self.original[ i ].copy()
+					self.texture[ i ].fill( (255, 255, 255, self.alpha), None, pygame.BLEND_RGBA_MULT )
 	'''
 
-	def fade( self, vel = 1 ):
+	def fade( self, vel = 1, minA = 0, maxA = 255 ):
 
-		if self.alpha < 255 and self.alpha > 0:
+		if self.alpha < maxA and self.alpha > minA:
 			
 			self.alpha += vel
 
-			if self.alpha < 0:
-				self.alpha = 1
-			elif self.alpha > 255:
-				self.alpha = 254
+			if self.alpha < minA:
+				self.alpha = minA + 1
+			elif self.alpha > maxA:
+				self.alpha = maxA - 1
 				
 			if self.nr < 2:
 				self.texture = self.original.copy()
