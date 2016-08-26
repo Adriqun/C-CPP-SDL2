@@ -99,19 +99,19 @@ class Engine:
 			self.menuplaymusic.play()
 			#FADE IN
 			if self.menuplay.getNext() != 1:
-				self.menubg.fade(2)
-				self.menutitle.fade(2)
-				self.menuplay.fade(2)
-				self.menugit.fade(2)
-				self.menugoogle.fade(2)
-				self.menufacebook.fade(2)
-				self.menutwitter.fade(2)
-				self.menumus.fade(2)
-				self.menuchunk.fade(2)
-				self.author.fade(2)
-				self.menugame.fade(2)
-				self.menusettings.fade(2)
-				self.menuposition.fade(2)
+				self.menubg.fade(5)
+				self.menutitle.fade(5)
+				self.menuplay.fade(5)
+				self.menugit.fade(5)
+				self.menugoogle.fade(5)
+				self.menufacebook.fade(5)
+				self.menutwitter.fade(5)
+				self.menumus.fade(5)
+				self.menuchunk.fade(5)
+				self.author.fade(5)
+				self.menugame.fade(5)
+				self.menusettings.fade(5)
+				self.menuposition.fade(5)
 			
 			#DRAW ALWAYS IN MENU STATE
 			self.menubg.draw( self.core.getWindow() )
@@ -152,19 +152,19 @@ class Engine:
 			
 			#IF USER CLICK PLAY BUTTON
 			if self.menuplay.getNext() == 1:
-				self.menubg.fade(-2)
-				self.menutitle.fade(-2)
-				self.menuplay.fade(-2)
-				self.menugit.fade(-2)
-				self.menugoogle.fade(-2)
-				self.menufacebook.fade(-2)
-				self.menutwitter.fade(-2)
-				self.menumus.fade(-2)
-				self.menuchunk.fade(-2)
-				self.author.fade(-2)
-				self.menugame.fade(-2)
-				self.menusettings.fade(-2)
-				self.menuposition.fade(-2)
+				self.menubg.fade(-6)
+				self.menutitle.fade(-6)
+				self.menuplay.fade(-6)
+				self.menugit.fade(-6)
+				self.menugoogle.fade(-6)
+				self.menufacebook.fade(-6)
+				self.menutwitter.fade(-6)
+				self.menumus.fade(-6)
+				self.menuchunk.fade(-6)
+				self.author.fade(-6)
+				self.menugame.fade(-6)
+				self.menusettings.fade(-6)
+				self.menuposition.fade(-6)
 				self.menuplaymusic.fadeOut()
 
 				if self.menuplay.getAlpha() < 2:
@@ -172,6 +172,9 @@ class Engine:
 					self.core.setState( 1 )
 
 		elif self.core.getState() == 1:
+
+			#FADE IN
+			self.wall.fade( 5 )
 			self.wall.draw( self.core.getWindow() )	
 
 

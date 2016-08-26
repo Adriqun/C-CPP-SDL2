@@ -24,7 +24,7 @@ class Menuplaymusic:
 			self.counter = 0
 	def fadeOut( self ):
 		if self.fadeC == 0:
-			self.music = pygame.mixer.music.fadeout( 5500 )
+			self.music = pygame.mixer.music.fadeout( 2000 )
 
 	def stop( self ):
 		self.music = pygame.mixer.music.stop()

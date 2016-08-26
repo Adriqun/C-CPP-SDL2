@@ -6,8 +6,8 @@ from texture import Texture
 class Wall:
 	
 	def __init__( self ):
-		self.bg_one = Texture( "wall/14.png", 0, 254 )
-		self.bg_two = Texture( "wall/14.png", 0, 254 )
+		self.bg_one = Texture( "wall/14.png", 0, 1 )
+		self.bg_two = Texture( "wall/14.png", 0, 1 )
 		self.bg_two.setX( -self.bg_one.getWidth() )
 	
 	def draw( self, screen, value = 0 ):
