@@ -16,33 +16,28 @@ class Wall:
 	def load( self ):
 		self.bg_one.load( "wall/14.png" )
 		self.bg_two.load( "wall/14.png" )
-		self.bg_two.setX( -self.bg_one.getWidth() )
+		self.bg_two.setX( self.bg_two.getWidth() )
 
 #-------------------------------------------------------------------------------------------------------
 	
-	def draw( self, window, value = 0 ):
+	def draw( self, window, move = True, vel = 2 ):
+
+		if self.bg_one.getAlpha() == 255 and move:
+			self.bg_one.setX( self.bg_one.getLeft() - vel )
+			self.bg_two.setX( self.bg_two.getLeft() - vel )
 		
-		if value == 1:	# L
-			if self.bg_one.getLeft() == 0:
-				self.bg_two.setX( -self.bg_two.getWidth() )
-			elif self.bg_two.getLeft() == 0:
-				self.bg_one.setX( -self.bg_one.getWidth() )
-
-			self.bg_one.setX( self.bg_one.getLeft() + 1 )
-			self.bg_two.setX( self.bg_two.getLeft() + 1 )
-
-		elif value == 2: # R
-			if self.bg_one.getLeft() == 0:
-				self.bg_two.setX( self.bg_two.getWidth() )
-			elif self.bg_two.getLeft() == 0:
+			if self.bg_one.getLeft() <= -self.bg_one.getWidth():
 				self.bg_one.setX( self.bg_one.getWidth() )
-
-			self.bg_one.setX( self.bg_one.getLeft() - 1 )
-			self.bg_two.setX( self.bg_two.getLeft() - 1 )
-
+			elif self.bg_two.getLeft() <= -self.bg_two.getWidth():
+				self.bg_two.setX( self.bg_two.getWidth() )
 		
 		self.bg_one.draw( window )
 		self.bg_two.draw( window )
+
+#-------------------------------------------------------------------------------------------------------
+
+	def getAlpha( self ):
+		return self.bg_two.getAlpha()
 
 #-------------------------------------------------------------------------------------------------------
 

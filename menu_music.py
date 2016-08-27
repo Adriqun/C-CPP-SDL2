@@ -10,15 +10,12 @@ class Menu_music:
 		self.music = pygame.mixer.music.load( path )
 		self.counter = 0
 		self.fadeC = 0
-		self.playC = 0
 		self.volume = 0
 
 #-------------------------------------------------------------------------------------------------------
 	
 	def play( self ):
-		if self.playC == 0:
-			self.music = pygame.mixer.music.play( -1, 0.0 )
-			self.playC = 1
+		self.music = pygame.mixer.music.play( -1, 0.0 )
 
 #-------------------------------------------------------------------------------------------------------
 
@@ -29,6 +26,14 @@ class Menu_music:
 		elif self.volume > vol:
 			self.volume -= 0.02
 			self.music = pygame.mixer.music.set_volume( self.volume )
+
+#-------------------------------------------------------------------------------------------------------
+
+	def isPaused( self ):
+		if self.counter == 1:
+			return True
+		else:
+			return False
 
 #-------------------------------------------------------------------------------------------------------
 	

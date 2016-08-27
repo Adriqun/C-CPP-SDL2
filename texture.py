@@ -70,6 +70,17 @@ class Texture:
 
 #-------------------------------------------------------------------------------------------------------
 
+	def setColor( self, r, g, b ):
+		if self.nr < 2:
+			self.texture = self.original.copy()
+			self.texture.fill( ( r, g, b, self.alpha ), None, pygame.BLEND_RGBA_MULT )
+		elif self.nr > 1:
+			for i in range( 0, self.nr ):
+				self.texture[ i ] = self.original[ i ].copy()
+				self.texture[ i ].fill( ( r, g, b, self.alpha ), None, pygame.BLEND_RGBA_MULT )
+
+#-------------------------------------------------------------------------------------------------------
+
 	def fadein( self, i = 1, m = 255 ):
 
 		if self.alpha < m:

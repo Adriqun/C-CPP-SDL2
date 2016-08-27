@@ -18,8 +18,8 @@ from menu_score_log import Menu_score_log
 from menu_music import Menu_music
 
 from wall import Wall
-
-#from hero import Hero
+from hero import Hero
+from menu_log import Menu_log
 
 
 class Engine:
@@ -48,13 +48,14 @@ class Engine:
 		self.menu_music = Menu_music( "menu/Rayman Legends OST - Moving Ground.mp3" )
 		
 		self.wall = Wall()
-		#self.hero = Hero()
+		self.hero = Hero()
+		self.menu_log = Menu_log()
 	
 #-------------------------------------------------------------------------------------------------------
 
 	def load( self ):
 
-		self.core.setState( -1 )
+		self.core.setState( 1 )
 
 		self.intro.load( self.core.getWidth(), self.core.getHeight() )
 
@@ -74,9 +75,8 @@ class Engine:
 		self.menu_score_log.load( self.menu_settings_log.getRight(), self.core.getWidth(), self.menu_title.getBot() +150, self.menu_play_button.getBot() )
 
 		self.wall.load()
-	
-		#self.hero.load( self.core.getH() )
-		
+		self.hero.load( self.core.getWidth(), self.core.getHeight() )
+		self.menu_log.load( self.core.getWidth(), self.core.getHeight() )
 
 #-------------------------------------------------------------------------------------------------------	
 
@@ -85,7 +85,9 @@ class Engine:
 
 			if event.type == pygame.QUIT:
 				self.core.setQuit()
-					
+
+#-------------------------------------------------------------------------------------------------------
+
 			if self.core.getState() == 0:
 				
 				if self.menu_play_button.getState() == 0:
@@ -102,6 +104,15 @@ class Engine:
 					self.menu_author_log.handle( event )
 				if self.menu_author_log.getState() == 0:
 					self.menu_score_log.handle( event )
+
+#-------------------------------------------------------------------------------------------------------
+
+			if self.core.getState() == 1:
+				
+				self.menu_log.handle( event )
+				#HANDLE IF MENU_LOG == OFF
+				if self.menu_log.getState() == 0:
+					self.hero.handle( event )
 				
 #-------------------------------------------------------------------------------------------------------
 
@@ -112,15 +123,14 @@ class Engine:
 		if self.core.getState() == -1:
 			self.intro.draw( self.core.getWindow() )
 			if self.intro.getQuit():
+				#MENU MUSIC
+				self.menu_music.play()
 				self.core.setState( 0 )
 		
 
 #-------------------------------------------------------------------------------------------------------STATE 0
 
 		if self.core.getState() == 0:
-
-			#MENU MUSIC
-			self.menu_music.play()
 
 			#FADE IN
 			if self.menu_play_button.getState() != 1 and self.menu_exit_log.getState() == 0:
@@ -222,20 +232,38 @@ class Engine:
 				self.menu_game_log.fadeout( 6 )
 				self.menu_settings_log.fadeout( 6 )
 				self.menu_score_log.fadeout( 6 )
-				self.menu_music.fadeOut()
+				if self.menu_music.isPaused() == False:
+					self.menu_music.fadeOut()
 
 				if self.menu_play_button.getAlpha() == 0:
+					self.menu_play_button.setNext( 0 )
 					self.core.setState( 1 )
 
 #-------------------------------------------------------------------------------------------------------STATE 1
 		
 		if self.core.getState() == 1:
 			
-			#FADE IN
-			self.wall.fadein( 5 )
+			#FADE IN IF PAUSE BUTTON == OFF AND MENU_LOG == OFF
+			if self.menu_log.getState() == 0:
+				self.wall.fadein( 5 )
+				self.hero.fadein( 5 )
+			elif self.menu_log.getState() == 1:
+				self.wall.fadeout( 6, 130 )
+				self.hero.fadeout( 6, 130 )
+			elif self.menu_log.getState() == 2:
+				self.wall.fadeout( 6 )
+				self.hero.fadeout( 6 )
+				if self.wall.getAlpha() == 0:
+					self.menu_log.setState( 0 )
+					if self.menu_music.isPaused() == False:
+						self.menu_music.play()
+					self.core.setState( 0 ) #Back to menu
 			
 			#DRAW
 			self.wall.draw( self.core.getWindow() )
+			self.hero.draw( self.core.getWindow() )
+			self.menu_log.draw( self.core.getWindow() )
+			
 
 
 
