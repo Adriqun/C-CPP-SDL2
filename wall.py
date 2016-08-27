@@ -4,13 +4,23 @@ import pygame
 from texture import Texture
 
 class Wall:
+
+#-------------------------------------------------------------------------------------------------------
 	
 	def __init__( self ):
-		self.bg_one = Texture( "wall/14.png", 0, 1 )
-		self.bg_two = Texture( "wall/14.png", 0, 1 )
+		self.bg_one = Texture()
+		self.bg_two = Texture()
+
+#-------------------------------------------------------------------------------------------------------
+
+	def load( self ):
+		self.bg_one.load( "wall/14.png" )
+		self.bg_two.load( "wall/14.png" )
 		self.bg_two.setX( -self.bg_one.getWidth() )
+
+#-------------------------------------------------------------------------------------------------------
 	
-	def draw( self, screen, value = 0 ):
+	def draw( self, window, value = 0 ):
 		
 		if value == 1:	# L
 			if self.bg_one.getLeft() == 0:
@@ -31,9 +41,19 @@ class Wall:
 			self.bg_two.setX( self.bg_two.getLeft() - 1 )
 
 		
-		self.bg_one.draw( screen )
-		self.bg_two.draw( screen )
+		self.bg_one.draw( window )
+		self.bg_two.draw( window )
 
-	def fade( self, vel = 1 ):
-		self.bg_one.fade( vel )
-		self.bg_two.fade( vel )
+#-------------------------------------------------------------------------------------------------------
+
+	def fadein( self, i = 1, m = 255 ):
+		self.bg_one.fadein( i, m )
+		self.bg_two.fadein( i, m )
+
+#-------------------------------------------------------------------------------------------------------
+
+	def fadeout( self, i = 1, m = 0 ):
+		self.bg_one.fadeout( i, m )
+		self.bg_two.fadeout( i, m )
+
+#-------------------------------------------------------------------------------------------------------

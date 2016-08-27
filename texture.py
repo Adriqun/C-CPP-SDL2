@@ -12,7 +12,7 @@ class Texture:
 		self.nr = nr		#Set how many offset's
 		self.x = 0		#Set x
 		self.y = 0		#Set y
-		self.offset = 0		#Set offset
+		self.offset = 0		#Set offset		
 
 #-------------------------------------------------------------------------------------------------------
 
@@ -48,7 +48,7 @@ class Texture:
 				print "Cannot load image: ", path
 				raise SystemExit, message
 			self.tex.convert_alpha()
-
+			
 			#Create space for textures
 			self.texture = []
 			self.original = []

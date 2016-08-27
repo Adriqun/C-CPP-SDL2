@@ -5,6 +5,8 @@ import pyaudio
 
 from core import Core
 
+from intro import Intro
+
 from texture import Texture
 from menu_title import Menu_title
 from menu_play_button import Menu_play_button
@@ -12,15 +14,13 @@ from menu_link_button import Menu_link_button
 from menu_music_button import Menu_music_button
 from menu_exit_log import Menu_exit_log
 from menu_author_log import Menu_author_log
-'''
-from menuposition import Menuposition
-from menuplaymusic import Menuplaymusic
-
-from intro import Intro
+from menu_score_log import Menu_score_log
+from menu_music import Menu_music
 
 from wall import Wall
-from hero import Hero
-'''
+
+#from hero import Hero
+
 
 class Engine:
 
@@ -28,6 +28,8 @@ class Engine:
 	def __init__( self ):
 
 		self.core = Core( 60, 1024, 768, "Ninja" )
+
+		self.intro = Intro()
 
 		self.menu_background = Texture()
 		self.menu_title = Menu_title()
@@ -42,20 +44,20 @@ class Engine:
 		self.menu_author_log = Menu_author_log()
 		self.menu_game_log = Menu_link_button( "menu/game.png", "nothing", True )
 		self.menu_settings_log = Menu_link_button( "menu/settings.png", "nothing", True )
-		'''
-		self.menuposition = Menuposition( "menu/position.png" )
-		self.menuplaymusic = Menuplaymusic( "menu/Rayman Legends OST - Moving Ground.mp3" )
-
-		self.intro = Intro()
-
+		self.menu_score_log = Menu_score_log()
+		self.menu_music = Menu_music( "menu/Rayman Legends OST - Moving Ground.mp3" )
+		
 		self.wall = Wall()
-		self.hero = Hero()
-		'''
-
+		#self.hero = Hero()
+	
 #-------------------------------------------------------------------------------------------------------
 
 	def load( self ):
-		self.core.setState( 0 )
+
+		self.core.setState( -1 )
+
+		self.intro.load( self.core.getWidth(), self.core.getHeight() )
+
 		self.menu_background.load( "menu/background.png" )
 		self.menu_title.load( self.core.getWidth() )
 		self.menu_play_button.load( self.core.getWidth(), self.core.getHeight() )
@@ -69,13 +71,12 @@ class Engine:
 		self.menu_author_log.load( self.menu_play_button.getLeft()+5, self.core.getWidth(), self.menu_title.getBot() +150, self.menu_play_button.getBot() )
 		self.menu_game_log.load( self.menu_author_log.getRight(), self.menu_play_button.getBot() +10, True )
 		self.menu_settings_log.load( self.menu_game_log.getRight(), self.menu_play_button.getBot() +10, True )
+		self.menu_score_log.load( self.menu_settings_log.getRight(), self.core.getWidth(), self.menu_title.getBot() +150, self.menu_play_button.getBot() )
 
-		'''
-		self.menuposition.load( self.menusettings.getRight(), self.core.getW(), self.menutitle.getBot(), self.menuplay.getBot() )
-
-		self.intro.load( self.core.getW(), self.core.getH() )
-		self.hero.load( self.core.getH() )
-		'''
+		self.wall.load()
+	
+		#self.hero.load( self.core.getH() )
+		
 
 #-------------------------------------------------------------------------------------------------------	
 
@@ -91,28 +92,35 @@ class Engine:
 					self.menu_exit_log.handle( event )
 
 				#HANDLE IF AUTHOR BUTTON == OFF AND SCORE BUTTON == OFF
-				if self.menu_author_log.getState() == 0: #and self.menu_score_log.getState() == 0:
+				if self.menu_author_log.getState() == 0 and self.menu_score_log.getState() == 0:
 					self.menu_play_button.handle( event )
 					self.menu_git_button.handle( event )
 					self.menu_google_button.handle( event )
 					self.menu_music_button.handle( event )
 					self.menu_chunk_button.handle( event )
-				
-				#if self.menu_score_log.getState() == 0:
-				self.menu_author_log.handle( event )
-				'''
+				if self.menu_score_log.getState() == 0:
+					self.menu_author_log.handle( event )
 				if self.menu_author_log.getState() == 0:
 					self.menu_score_log.handle( event )
-				'''
 				
+#-------------------------------------------------------------------------------------------------------
 
 	def states( self ):
 
+#-------------------------------------------------------------------------------------------------------STATE -1
+
+		if self.core.getState() == -1:
+			self.intro.draw( self.core.getWindow() )
+			if self.intro.getQuit():
+				self.core.setState( 0 )
+		
+
+#-------------------------------------------------------------------------------------------------------STATE 0
+
 		if self.core.getState() == 0:
-			'''
+
 			#MENU MUSIC
-			self.menuplaymusic.play()
-			'''
+			self.menu_music.play()
 
 			#FADE IN
 			if self.menu_play_button.getState() != 1 and self.menu_exit_log.getState() == 0:
@@ -128,16 +136,15 @@ class Engine:
 				self.menu_author_log.fadein( 5 )
 				self.menu_game_log.fadein( 5 )
 				self.menu_settings_log.fadein( 5 )
-			'''
-				self.menu_score_log.fade(5)
-				self.menuplaymusic.setVolume( 1.0 )
-			'''
+				self.menu_score_log.fadein( 5 )
+				self.menu_music.setVolume( 1.0 )
+
 			#DRAW ALWAYS IN MENU STATE
 			self.menu_background.draw( self.core.getWindow() )
 			self.menu_title.draw( self.core.getWindow() )
 			self.menu_exit_log.draw( self.core.getWindow() )
 			#DRAW IF AUTHOR BUTTON == OFF AND SCORE BUTTON == OFF
-			if self.menu_author_log.getState() == 0: #and self.menu_score_button.getState() == 0:
+			if self.menu_author_log.getState() == 0 and self.menu_score_log.getState() == 0:
 				self.menu_git_button.draw( self.core.getWindow() )			
 				self.menu_google_button.draw( self.core.getWindow() )
 				self.menu_facebook_button.draw( self.core.getWindow() )
@@ -148,12 +155,11 @@ class Engine:
 				self.menu_game_log.draw( self.core.getWindow() )
 				self.menu_settings_log.draw( self.core.getWindow() )
 
-			#if self.menu_score_log.getState() == 0:
-			self.menu_author_log.draw( self.core.getWindow() )
-			'''
+			if self.menu_score_log.getState() == 0:
+				self.menu_author_log.draw( self.core.getWindow() )
 			if self.menu_author_log.getState() == 0:
 				self.menu_score_log.draw( self.core.getWindow() )
-			'''
+
 			#IF USER TURN ON/OFF CHUNKS
 			if self.menu_chunk_button.getState():
 				self.menu_play_button.setState()
@@ -161,14 +167,11 @@ class Engine:
 				self.menu_google_button.setState()
 				self.menu_music_button.setState()
 				self.menu_chunk_button.setState()
-				self.menu_author_button.setState()
-			'''
-				self.menu_score_button.setState()	#POSITION BUTTON
-
+				self.menu_author_log.setState()
+				self.menu_score_log.setState()
 			#IF USER TURN ON/OFF MUSIC
 			if self.menu_music_button.getState():
-				self.menuplaymusic.pause()
-			'''
+				self.menu_music.pause()
 
 			#IF USER PRESS Q - EXIT
 			if self.menu_exit_log.getState() == 1:
@@ -184,10 +187,9 @@ class Engine:
 				self.menu_author_log.fadeout( 6, 120 )
 				self.menu_game_log.fadeout( 6, 120 )
 				self.menu_settings_log.fadeout( 6, 120 )
-				'''
-				self.menuposition.fadeout( 6 )
-				self.menuplaymusic.setVolume( 0.3 )
-				'''
+				self.menu_score_log.fadeout( 6, 120 )
+				self.menu_music.setVolume( 0.3 )
+
 			elif self.menu_exit_log.getState() == 2:
 				self.menu_background.fadeout( 6 )
 				self.menu_title.fadeout( 6 )
@@ -201,6 +203,7 @@ class Engine:
 				self.menu_author_log.fadeout( 6 )
 				self.menu_game_log.fadeout( 6 )
 				self.menu_settings_log.fadeout( 6 )
+				self.menu_score_log.fadeout( 6 )
 			if self.menu_exit_log.getState() == 2 and self.menu_background.getAlpha() == 0:
 				self.core.setQuit()
 
@@ -218,15 +221,21 @@ class Engine:
 				self.menu_author_log.fadeout( 6 )
 				self.menu_game_log.fadeout( 6 )
 				self.menu_settings_log.fadeout( 6 )
-				'''
 				self.menu_score_log.fadeout( 6 )
-				self.menuplaymusic.fadeOut()
-				'''
+				self.menu_music.fadeOut()
+
 				if self.menu_play_button.getAlpha() == 0:
 					self.core.setState( 1 )
 
+#-------------------------------------------------------------------------------------------------------STATE 1
 		
-
+		if self.core.getState() == 1:
+			
+			#FADE IN
+			self.wall.fadein( 5 )
+			
+			#DRAW
+			self.wall.draw( self.core.getWindow() )
 
 
 
