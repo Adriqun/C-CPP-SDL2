@@ -19,19 +19,18 @@ class Core:
 
 		self.window = pygame.display.set_mode( ( width, height ) )	#Window
 		pygame.display.set_caption( caption )				#Caption
+		
+		#Icon
 		self.icon = pygame.image.load( "window/icon.bmp" )
 		self.icon.set_colorkey( [ 0x00, 0xFF, 0x00 ] )
 		pygame.display.set_icon( self.icon )
 		
 
-	def getW( self ):
+	def getWidth( self ):
 		return self.width
 
-	def getH( self ):
+	def getHeight( self ):
 		return self.height
-
-	def getFPS( self ):
-		return self.FPS
 
 	def isQuit( self ):
 		return self.quit
@@ -51,5 +50,5 @@ class Core:
 	def getState( self ):
 		return self.state
 
-	def setState( self, newstate ):
-		self.state = newstate
+	def setState( self, state ):
+		self.state = state

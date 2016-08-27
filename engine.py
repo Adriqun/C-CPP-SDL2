@@ -5,216 +5,227 @@ import pyaudio
 
 from core import Core
 
-from menubg import Menubg
-from menutitle import Menutitle
-from menuplay import Menuplay
-from linkbutton import Linkbutton
-from menumus import Menumus
-from menubutton import Menubutton
+from texture import Texture
+from menu_title import Menu_title
+from menu_play_button import Menu_play_button
+from menu_link_button import Menu_link_button
+from menu_music_button import Menu_music_button
+from menu_exit_log import Menu_exit_log
+from menu_author_log import Menu_author_log
+'''
 from menuposition import Menuposition
 from menuplaymusic import Menuplaymusic
-from menuexit import Menuexit
 
 from intro import Intro
 
 from wall import Wall
+from hero import Hero
+'''
 
 class Engine:
 
+#-------------------------------------------------------------------------------------------------------
 	def __init__( self ):
 
 		self.core = Core( 60, 1024, 768, "Ninja" )
 
-		self.menubg = Menubg()
-		self.menutitle = Menutitle()
-		self.menuplay = Menuplay()
-
-		self.menugit = Linkbutton( "menu/git.png", "https://github.com/Adriqun" )
-		self.menugoogle = Linkbutton( "menu/google.png", "https://en.wikipedia.org/wiki/Ninja" )
-		self.menufacebook = Linkbutton( "menu/facebook.png", "nothing", True )
-		self.menutwitter = Linkbutton( "menu/twitter.png", "nothing", True )
-
-		self.menumus = Menumus( "menu/music.png" )
-		self.menuchunk = Menumus( "menu/chunk.png", 1 )
-
-		self.author = Menubutton( "menu/author.png" )
-		self.menugame = Linkbutton( "menu/game.png", "nothing", True )
-		self.menusettings = Linkbutton( "menu/settings.png", "nothing", True )
+		self.menu_background = Texture()
+		self.menu_title = Menu_title()
+		self.menu_play_button = Menu_play_button()
+		self.menu_git_button = Menu_link_button( "menu/git.png", "https://github.com/Adriqun" )
+		self.menu_google_button = Menu_link_button( "menu/google.png", "https://en.wikipedia.org/wiki/Ninja" )
+		self.menu_facebook_button = Menu_link_button( "menu/facebook.png", "nothing", True )
+		self.menu_twitter_button = Menu_link_button( "menu/twitter.png", "nothing", True )
+		self.menu_music_button = Menu_music_button( "menu/music.png" )
+		self.menu_chunk_button = Menu_music_button( "menu/chunk.png", 1 )
+		self.menu_exit_log = Menu_exit_log()
+		self.menu_author_log = Menu_author_log()
+		self.menu_game_log = Menu_link_button( "menu/game.png", "nothing", True )
+		self.menu_settings_log = Menu_link_button( "menu/settings.png", "nothing", True )
+		'''
 		self.menuposition = Menuposition( "menu/position.png" )
-
 		self.menuplaymusic = Menuplaymusic( "menu/Rayman Legends OST - Moving Ground.mp3" )
-		self.menuexit = Menuexit()
 
 		self.intro = Intro()
 
 		self.wall = Wall()
+		self.hero = Hero()
+		'''
+
+#-------------------------------------------------------------------------------------------------------
 
 	def load( self ):
-		self.menutitle.load( self.core.getW() )
-		self.menuplay.load( self.core.getW(), self.core.getH() )
-		self.menugit.load( self.core.getW(), 10 )
-		self.menugoogle.load( self.core.getW(), self.menugit.getBot() )
-		self.menufacebook.load( self.core.getW(), self.menugoogle.getBot() )
-		self.menutwitter.load( self.core.getW(), self.menufacebook.getBot() )
-		self.menumus.load( 10 )
-		self.menuchunk.load( self.menumus.getBot() )
-		#print self.core.getH()
-		self.author.load( self.menuplay.getLeft()+5, self.core.getW(), self.menutitle.getBot(), self.menuplay.getBot() )
-		self.menugame.load( self.author.getRight(), self.menuplay.getBot()+10, True )
-		self.menusettings.load( self.menugame.getRight(), self.menuplay.getBot()+10, True )
+		self.core.setState( 0 )
+		self.menu_background.load( "menu/background.png" )
+		self.menu_title.load( self.core.getWidth() )
+		self.menu_play_button.load( self.core.getWidth(), self.core.getHeight() )
+		self.menu_git_button.load( self.core.getWidth(), 10 )
+		self.menu_google_button.load( self.core.getWidth(), self.menu_git_button.getBot() )
+		self.menu_facebook_button.load( self.core.getWidth(), self.menu_google_button.getBot() )
+		self.menu_twitter_button.load( self.core.getWidth(), self.menu_facebook_button.getBot() )
+		self.menu_music_button.load( 10 )
+		self.menu_chunk_button.load( self.menu_music_button.getBot() )
+		self.menu_exit_log.load( self.core.getWidth(), self.core.getHeight() )
+		self.menu_author_log.load( self.menu_play_button.getLeft()+5, self.core.getWidth(), self.menu_title.getBot() +150, self.menu_play_button.getBot() )
+		self.menu_game_log.load( self.menu_author_log.getRight(), self.menu_play_button.getBot() +10, True )
+		self.menu_settings_log.load( self.menu_game_log.getRight(), self.menu_play_button.getBot() +10, True )
+
+		'''
 		self.menuposition.load( self.menusettings.getRight(), self.core.getW(), self.menutitle.getBot(), self.menuplay.getBot() )
-		self.menuexit.load( self.core.getW(), self.core.getH() )
 
 		self.intro.load( self.core.getW(), self.core.getH() )
+		self.hero.load( self.core.getH() )
+		'''
 
-		self.core.setState( -1 )
-	
+#-------------------------------------------------------------------------------------------------------	
+
 	def handle( self ):
 		for event in pygame.event.get():
 
 			if event.type == pygame.QUIT:
 				self.core.setQuit()
-			
-#STATE 0 -------------------------------------------------------------------- MENU
+					
 			if self.core.getState() == 0:
 				
-				# EXIT HANDLE
-				self.menuexit.handle( event )
+				if self.menu_play_button.getState() == 0:
+					self.menu_exit_log.handle( event )
 
-				#HANDLE IF AUTHOR BUTTON == OFF AND POSITION BUTTON == OFF
-				if self.author.getType() == 0 and self.menuposition.getType() == 0:
-					self.menuplay.handle( event )
-					self.menugit.handle( event )
-					self.menugoogle.handle( event )
-					self.menumus.handle( event )
-					self.menuchunk.handle( event )
-				if self.menuposition.getType() == 0:
-					self.author.handle( event )
-				if self.author.getType() == 0:
-					self.menuposition.handle( event )
-
-	def states( self ):
-#STATE -1-------------------------------------------------------------------- INTRO
-		if self.core.getState() == -1:
-			self.intro.draw( self.core.getWindow() )
-			if self.intro.getQuit():
-				self.core.setState( 0 )
-
-#STATE 0 -------------------------------------------------------------------- MENU
-		if self.core.getState() == 0:
-			
-			#MENU MUSIC
-			self.menuplaymusic.play()
-
-			#FADE IN - START
-			if self.menuplay.getNext() != 1 and self.menuexit.getType() == 0:
-				self.menubg.fade(5)
-				self.menutitle.fade(5)
-				self.menuplay.fade(5)
-				self.menugit.fade(5)
-				self.menugoogle.fade(5)
-				self.menufacebook.fade(5)
-				self.menutwitter.fade(5)
-				self.menumus.fade(5)
-				self.menuchunk.fade(5)
-				self.author.fade(5)
-				self.menugame.fade(5)
-				self.menusettings.fade(5)
-				self.menuposition.fade(5)
-				self.menuplaymusic.setVolume( 1.0 )
-			
-			#DRAW ALWAYS IN MENU STATE
-			self.menubg.draw( self.core.getWindow() )
-			self.menutitle.draw( self.core.getWindow() )
-			self.menuexit.draw( self.core.getWindow() )
-
-			#DRAW IF AUTHOR BUTTON == OFF AND SCORE BUTTON == OFF
-			if self.author.getType() == 0 and self.menuposition.getType() == 0:
-				self.menugit.draw( self.core.getWindow() )			
-				self.menugoogle.draw( self.core.getWindow() )
-				self.menufacebook.draw( self.core.getWindow() )
-				self.menutwitter.draw( self.core.getWindow() )
-				self.menuplay.draw( self.core.getWindow() )
-				self.menumus.draw( self.core.getWindow() )
-				self.menuchunk.draw( self.core.getWindow() )
-				self.menugame.draw( self.core.getWindow() )
-				self.menusettings.draw( self.core.getWindow() )
-			if self.menuposition.getType() == 0:
-				self.author.draw( self.core.getWindow() )
-			if self.author.getType() == 0:
-				self.menuposition.draw( self.core.getWindow() )
-			
-			#IF USER TURN ON/OFF CHUNKS
-			if self.menuchunk.getState():
-				self.menugit.setState()		#GIT
-				self.menugoogle.setState()	#GOOGLE
-				#self.menufacebook.setState()	#FACEBOOK - locked
-				#self.menutwitter.setState()	#TWITTER - locked
-				self.menuplay.setState()	#PLAY BUTTON
-				self.menumus.setState()		#MUSIC BUTTON
-				self.menuchunk.setState()	#CHUNK BUTTON
-				self.author.setState()		#AUTHOR BUTTON
-				self.menuposition.setState()	#POSITION BUTTON
-
-			#IF USER TURN ON/OFF MUSIC
-			if self.menumus.getState():
-				self.menuplaymusic.pause()
-			
-			#IF USER CLICK ESCAPE
-			if self.menuexit.getType() == 1 or self.menuexit.getType() == 2:
-				self.menubg.fade( -6 )
-				self.menutitle.fade( -6 )
-				self.menuplay.fade( -6 )
-				self.menugit.fade( -6 )
-				self.menugoogle.fade( -6 )
-				self.menufacebook.fade( -6 )
-				self.menutwitter.fade( -6 )
-				self.menumus.fade( -6 )
-				self.menuchunk.fade( -6 )
-				self.author.fade( -6 )
-				self.menugame.fade( -6 )
-				self.menusettings.fade( -6 )
-				self.menuposition.fade( -6 )
-				self.menuplaymusic.setVolume( 0.3 )
-			if self.menuexit.getType() == 2 and self.menuplay.getAlpha() < 2:
-				self.core.setQuit()
+				#HANDLE IF AUTHOR BUTTON == OFF AND SCORE BUTTON == OFF
+				if self.menu_author_log.getState() == 0: #and self.menu_score_log.getState() == 0:
+					self.menu_play_button.handle( event )
+					self.menu_git_button.handle( event )
+					self.menu_google_button.handle( event )
+					self.menu_music_button.handle( event )
+					self.menu_chunk_button.handle( event )
+				
+				#if self.menu_score_log.getState() == 0:
+				self.menu_author_log.handle( event )
+				'''
+				if self.menu_author_log.getState() == 0:
+					self.menu_score_log.handle( event )
+				'''
 				
 
-			#print self.menuexit.getType()
-			#print self.menuexit.getType(), " ", self.menuplay.getAlpha()
-			
-			#IF USER CLICK PLAY BUTTON
-			if self.menuplay.getNext() == 1:
-				self.menubg.fade(-6)
-				self.menutitle.fade(-6)
-				self.menuplay.fade(-6)
-				self.menugit.fade(-6)
-				self.menugoogle.fade(-6)
-				self.menufacebook.fade(-6)
-				self.menutwitter.fade(-6)
-				self.menumus.fade(-6)
-				self.menuchunk.fade(-6)
-				self.author.fade(-6)
-				self.menugame.fade(-6)
-				self.menusettings.fade(-6)
-				self.menuposition.fade(-6)
-				self.menuplaymusic.fadeOut()
+	def states( self ):
 
-				if self.menuplay.getAlpha() < 2:
-					self.menuplaymusic.stop()
-					self.core.setState( 1 )
-
-
-#STATE 1 -------------------------------------------------------------------- GAME
-		elif self.core.getState() == 1:
+		if self.core.getState() == 0:
+			'''
+			#MENU MUSIC
+			self.menuplaymusic.play()
+			'''
 
 			#FADE IN
-			self.wall.fade( 5 )
-			self.wall.draw( self.core.getWindow() )	
+			if self.menu_play_button.getState() != 1 and self.menu_exit_log.getState() == 0:
+				self.menu_background.fadein( 5 )
+				self.menu_title.fadein( 5 )
+				self.menu_play_button.fadein( 5 )
+				self.menu_git_button.fadein( 5 )
+				self.menu_google_button.fadein( 5 )
+				self.menu_facebook_button.fadein( 5 )
+				self.menu_twitter_button.fadein( 5 )
+				self.menu_music_button.fadein( 5 )
+				self.menu_chunk_button.fadein( 5 )
+				self.menu_author_log.fadein( 5 )
+				self.menu_game_log.fadein( 5 )
+				self.menu_settings_log.fadein( 5 )
+			'''
+				self.menu_score_log.fade(5)
+				self.menuplaymusic.setVolume( 1.0 )
+			'''
+			#DRAW ALWAYS IN MENU STATE
+			self.menu_background.draw( self.core.getWindow() )
+			self.menu_title.draw( self.core.getWindow() )
+			self.menu_exit_log.draw( self.core.getWindow() )
+			#DRAW IF AUTHOR BUTTON == OFF AND SCORE BUTTON == OFF
+			if self.menu_author_log.getState() == 0: #and self.menu_score_button.getState() == 0:
+				self.menu_git_button.draw( self.core.getWindow() )			
+				self.menu_google_button.draw( self.core.getWindow() )
+				self.menu_facebook_button.draw( self.core.getWindow() )
+				self.menu_twitter_button.draw( self.core.getWindow() )
+				self.menu_play_button.draw( self.core.getWindow() )
+				self.menu_music_button.draw( self.core.getWindow() )
+				self.menu_chunk_button.draw( self.core.getWindow() )
+				self.menu_game_log.draw( self.core.getWindow() )
+				self.menu_settings_log.draw( self.core.getWindow() )
 
+			#if self.menu_score_log.getState() == 0:
+			self.menu_author_log.draw( self.core.getWindow() )
+			'''
+			if self.menu_author_log.getState() == 0:
+				self.menu_score_log.draw( self.core.getWindow() )
+			'''
+			#IF USER TURN ON/OFF CHUNKS
+			if self.menu_chunk_button.getState():
+				self.menu_play_button.setState()
+				self.menu_git_button.setState()
+				self.menu_google_button.setState()
+				self.menu_music_button.setState()
+				self.menu_chunk_button.setState()
+				self.menu_author_button.setState()
+			'''
+				self.menu_score_button.setState()	#POSITION BUTTON
 
+			#IF USER TURN ON/OFF MUSIC
+			if self.menu_music_button.getState():
+				self.menuplaymusic.pause()
+			'''
 
+			#IF USER PRESS Q - EXIT
+			if self.menu_exit_log.getState() == 1:
+				self.menu_background.fadeout( 6, 120 )
+				self.menu_title.fadeout( 6, 120 )
+				self.menu_play_button.fadeout( 6, 120 )
+				self.menu_git_button.fadeout( 6, 120 )
+				self.menu_google_button.fadeout( 6, 120 )
+				self.menu_facebook_button.fadeout( 6, 120 )
+				self.menu_twitter_button.fadeout( 6, 120 )
+				self.menu_music_button.fadeout( 6, 120 )
+				self.menu_chunk_button.fadeout( 6, 120 )
+				self.menu_author_log.fadeout( 6, 120 )
+				self.menu_game_log.fadeout( 6, 120 )
+				self.menu_settings_log.fadeout( 6, 120 )
+				'''
+				self.menuposition.fadeout( 6 )
+				self.menuplaymusic.setVolume( 0.3 )
+				'''
+			elif self.menu_exit_log.getState() == 2:
+				self.menu_background.fadeout( 6 )
+				self.menu_title.fadeout( 6 )
+				self.menu_play_button.fadeout( 6 )
+				self.menu_git_button.fadeout( 6 )
+				self.menu_google_button.fadeout( 6 )
+				self.menu_facebook_button.fadeout( 6 )
+				self.menu_twitter_button.fadeout( 6 )
+				self.menu_music_button.fadeout( 6 )
+				self.menu_chunk_button.fadeout( 6 )
+				self.menu_author_log.fadeout( 6 )
+				self.menu_game_log.fadeout( 6 )
+				self.menu_settings_log.fadeout( 6 )
+			if self.menu_exit_log.getState() == 2 and self.menu_background.getAlpha() == 0:
+				self.core.setQuit()
 
+			#IF USER CLICK PLAY BUTTON
+			if self.menu_play_button.getState() == 1:
+				self.menu_background.fadeout( 6 )
+				self.menu_title.fadeout( 6 )
+				self.menu_play_button.fadeout( 6 )
+				self.menu_git_button.fadeout( 6 )
+				self.menu_google_button.fadeout( 6 )
+				self.menu_facebook_button.fadeout( 6 )
+				self.menu_twitter_button.fadeout( 6 )
+				self.menu_music_button.fadeout( 6 )
+				self.menu_chunk_button.fadeout( 6 )
+				self.menu_author_log.fadeout( 6 )
+				self.menu_game_log.fadeout( 6 )
+				self.menu_settings_log.fadeout( 6 )
+				'''
+				self.menu_score_log.fadeout( 6 )
+				self.menuplaymusic.fadeOut()
+				'''
+				if self.menu_play_button.getAlpha() == 0:
+					self.core.setState( 1 )
+
+		
 
 
 

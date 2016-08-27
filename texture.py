@@ -3,98 +3,162 @@
 import pygame
 
 class Texture:
-	
-	def __init__( self, path, nr = 0, alpha = 1 ):
 
-		self.offset = 0		#Offset counter
+#-------------------------------------------------------------------------------------------------------
+
+	def __init__( self, nr = 0, alpha = 0 ):
+		
+		self.alpha = alpha	#Set start alpha
 		self.nr = nr		#Set how many offset's
 		self.x = 0		#Set x
 		self.y = 0		#Set y
-		self.alpha = alpha	#Set alpha
+		self.offset = 0		#Set offset
+
+#-------------------------------------------------------------------------------------------------------
+
+	def load( self, path ):
 		
-		if nr < 2:	#If we don't have offset's
-			self.texture = pygame.image.load( path ).convert_alpha()	#Load texture
-			self.original = self.texture.copy()				#Set Original texture
-			self.w = self.texture.get_rect().width				#Set width of texture
-			self.h = self.texture.get_rect().height				#Set height of texture
+		#If we don't have offset's
+		if self.nr < 2:
+			
+			#Load texture
+			try:
+				self.texture = pygame.image.load( path )
+			except pygame.error, message:
+				print "Cannot load image: ", path
+				raise SystemExit, message
+			self.texture.convert_alpha()
+				
+			
+			#Set original texture
+			self.original = self.texture.copy()
 
-			self.texture = self.original.copy()						#Copy original and
-			self.texture.fill( (255, 255, 255, alpha), None, pygame.BLEND_RGBA_MULT )	#set start alpha
+			self.w = self.texture.get_rect().width
+			self.h = self.texture.get_rect().height
+			
+			#Set start alpha
+			self.texture.fill( ( 255, 255, 255, self.alpha ), None, pygame.BLEND_RGBA_MULT )
 
-		elif nr > 1:	#Else
-			self.temporary = pygame.image.load( path ).convert_alpha()	#Load temporary texture
-			self.original = []						#Create space for original texture
-			self.w = self.temporary.get_rect().width /nr			#Set width of texture / number of offset's
-			self.h = self.temporary.get_rect().height				#Set height of texture
-			self.texture = []						#Create space for texture
+		elif self.nr > 1:
+
+			#Load temporary texture
+			try:
+				self.tex = pygame.image.load( path )
+			except pygame.error, message:
+				print "Cannot load image: ", path
+				raise SystemExit, message
+			self.tex.convert_alpha()
+
+			#Create space for textures
+			self.texture = []
+			self.original = []
+
+			self.w = self.tex.get_rect().width / self.nr
+			self.h = self.tex.get_rect().height
 			
 			for i in range( 0, self.nr ):
-				# print "Nr: ", i, " x=", self.w*i, " y=0, w=", self.w, " h=", self.h
-				self.texture.append( self.temporary.subsurface( [self.w*i, 0, self.w, self.h] ) )
-				self.original.append( self.texture[ i ].copy() )
 
-				self.texture[ i ] = self.original[ i ].copy()						#Copy original and
-				self.texture[ i ].fill( (255, 255, 255, self.alpha), None, pygame.BLEND_RGBA_MULT )	#set start alpha
-			del self.temporary	#Delete old texture
-	
+				#Set textures
+				self.texture.append( self.tex.subsurface( [ self.w*i, 0, self.w, self.h ] ) )
+				self.original.append( self.texture[ i ].copy() )
+				
+				#Set start alpha
+				self.texture[ i ].fill( ( 255, 255, 255, self.alpha ), None, pygame.BLEND_RGBA_MULT )
+
+			#Delete temporary texture
+			del self.tex
+
+#-------------------------------------------------------------------------------------------------------
+
+	def fadein( self, i = 1, m = 255 ):
+
+		if self.alpha < m:
+
+			self.alpha += i
+
+			if self.alpha > m:
+				self.alpha = m
+			
+			if self.nr < 2:
+				self.texture = self.original.copy()
+				self.texture.fill( ( 255, 255, 255, self.alpha ), None, pygame.BLEND_RGBA_MULT )
+			elif self.nr > 1:
+				for i in range( 0, self.nr ):
+					self.texture[ i ] = self.original[ i ].copy()
+					self.texture[ i ].fill( ( 255, 255, 255, self.alpha ), None, pygame.BLEND_RGBA_MULT )
+
+#-------------------------------------------------------------------------------------------------------
+		
+	def fadeout( self, i = 1, m = 0 ):
+
+		if self.alpha > m:
+
+			self.alpha -= i
+
+			if self.alpha < m:
+				self.alpha = m
+			
+			if self.nr < 2:
+				self.texture = self.original.copy()
+				self.texture.fill( ( 255, 255, 255, self.alpha ), None, pygame.BLEND_RGBA_MULT )
+			elif self.nr > 1:
+				for i in range( 0, self.nr ):
+					self.texture[ i ] = self.original[ i ].copy()
+					self.texture[ i ].fill( ( 255, 255, 255, self.alpha ), None, pygame.BLEND_RGBA_MULT )
+
+#-------------------------------------------------------------------------------------------------------
+
+	def draw( self, window ):
+
+		if self.nr < 2:
+			window.blit( self.texture, ( self.x, self.y ) )
+
+		elif self.nr > 1:
+			window.blit( self.texture[ self.offset ], ( self.x, self.y ) )
+
+#-------------------------------------------------------------------------------------------------------
+
 	def setOffset( self, offset ):
 		self.offset = offset
 
+#-------------------------------------------------------------------------------------------------------
 
-	'''
-	def setAlpha( self, newalpha ):
-		if self.alpha != newalpha:
-			self.alpha = newalpha
-			if self.nr < 2:
-				self.texture = self.original.copy()
-				self.texture.fill( (255, 255, 255, self.alpha), None, pygame.BLEND_RGBA_MULT )
-			elif self.nr > 1:
-				for i in range( 0, self.nr ):
-					self.texture[ i ] = self.original[ i ].copy()
-					self.texture[ i ].fill( (255, 255, 255, self.alpha), None, pygame.BLEND_RGBA_MULT )
-	'''
-
-	def fade( self, vel = 1, minA = 0, maxA = 255 ):
-
-		if self.alpha < maxA and self.alpha > minA:
-			
-			self.alpha += vel
-
-			if self.alpha < minA:
-				self.alpha = minA + 1
-			elif self.alpha > maxA:
-				self.alpha = maxA - 1
-				
-			if self.nr < 2:
-				self.texture = self.original.copy()
-				self.texture.fill( (255, 255, 255, self.alpha), None, pygame.BLEND_RGBA_MULT )
-			elif self.nr > 1:
-				for i in range( 0, self.nr ):
-					self.texture[ i ] = self.original[ i ].copy()
-					self.texture[ i ].fill( (255, 255, 255, self.alpha), None, pygame.BLEND_RGBA_MULT )
-		
-		
-		
-	def draw( self, screen ):
-		if self.nr < 2:
-			screen.blit( self.texture, ( self.x, self.y ) )
-		elif self.nr > 1:
-			screen.blit( self.texture[ self.offset ], ( self.x, self.y ) )
 	def getAlpha( self ):
 		return self.alpha
-	def setX( self, newx ):
-		self.x = newx
-	def setY( self, newy ):
-		self.y = newy
+
+#-------------------------------------------------------------------------------------------------------
+
+	def setX( self, x ):
+		self.x = x
+	def setY( self, y ):
+		self.y = y
+
+#-------------------------------------------------------------------------------------------------------
+
 	def getHeight( self ):
 		return self.h
 	def getWidth( self ):
 		return self.w
+
+#-------------------------------------------------------------------------------------------------------
+
 	def getLeft( self ):
 		return self.x
 	def getRight( self ):
 		return self.x + self.w
-	def getBot( self ):
-		return self.y + self.h
+	
+#-------------------------------------------------------------------------------------------------------
+
 	def getTop( self ):
 		return self.y
+	def getBot( self ):
+		return self.y + self.h
+
+#-------------------------------------------------------------------------------------------------------
+
+	def getX( self ):
+		return self.x
+	def getY( self ):
+		return self.y
+
+#-------------------------------------------------------------------------------------------------------
