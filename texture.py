@@ -6,136 +6,108 @@ class Texture:
 
 #-------------------------------------------------------------------------------------------------------
 
-	def __init__( self, nr = 0, alpha = 0 ):
-		
-		self.alpha = alpha	#Set start alpha
-		self.nr = nr		#Set how many offset's
+	def __init__( self, path, alpha = 0 ):
+
 		self.x = 0		#Set x
 		self.y = 0		#Set y
-		self.offset = 0		#Set offset		
+
+		self.r = 0xFF	#Red
+		self.g = 0xFF	#Green
+		self.b = 0xFF	#Blue
+		self.a = alpha	#Set alpha
+		
+		#Load texture
+		try:
+			self.texture = pygame.image.load( path )
+		except pygame.error, message:
+			print "Cannot load image: ", path
+			raise SystemExit, message
+		self.texture.convert_alpha()
+			
+		#Set original texture
+		self.original = self.texture.copy()
+
+		self.w = self.texture.get_rect().width
+		self.h = self.texture.get_rect().height
+			
+		#Set start alpha
+		self.texture.fill( ( self.r, self.g, self.b, self.a ), None, pygame.BLEND_RGBA_MULT )
 
 #-------------------------------------------------------------------------------------------------------
 
-	def load( self, path ):
-		
-		#If we don't have offset's
-		if self.nr < 2:
-			
-			#Load texture
-			try:
-				self.texture = pygame.image.load( path )
-			except pygame.error, message:
-				print "Cannot load image: ", path
-				raise SystemExit, message
-			self.texture.convert_alpha()
-				
-			
-			#Set original texture
-			self.original = self.texture.copy()
+	def free( self ):
 
-			self.w = self.texture.get_rect().width
-			self.h = self.texture.get_rect().height
-			
-			#Set start alpha
-			self.texture.fill( ( 255, 255, 255, self.alpha ), None, pygame.BLEND_RGBA_MULT )
+		del self.w
+		del self.h
+		del self.x
+		del self.y
 
-		elif self.nr > 1:
+		del self.texture
+		del self.original
 
-			#Load temporary texture
-			try:
-				self.tex = pygame.image.load( path )
-			except pygame.error, message:
-				print "Cannot load image: ", path
-				raise SystemExit, message
-			self.tex.convert_alpha()
-			
-			#Create space for textures
-			self.texture = []
-			self.original = []
-
-			self.w = self.tex.get_rect().width / self.nr
-			self.h = self.tex.get_rect().height
-			
-			for i in range( 0, self.nr ):
-
-				#Set textures
-				self.texture.append( self.tex.subsurface( [ self.w*i, 0, self.w, self.h ] ) )
-				self.original.append( self.texture[ i ].copy() )
-				
-				#Set start alpha
-				self.texture[ i ].fill( ( 255, 255, 255, self.alpha ), None, pygame.BLEND_RGBA_MULT )
-
-			#Delete temporary texture
-			del self.tex
+		del self.r
+		del self.g
+		del self.b
+		del self.a
 
 #-------------------------------------------------------------------------------------------------------
 
 	def setColor( self, r, g, b ):
-		if self.nr < 2:
+		if self.r != r or self.g != g or self.b != b:
+
+			self.r = r
+			self.g = g
+			self.b = b
+
 			self.texture = self.original.copy()
-			self.texture.fill( ( r, g, b, self.alpha ), None, pygame.BLEND_RGBA_MULT )
-		elif self.nr > 1:
-			for i in range( 0, self.nr ):
-				self.texture[ i ] = self.original[ i ].copy()
-				self.texture[ i ].fill( ( r, g, b, self.alpha ), None, pygame.BLEND_RGBA_MULT )
+			self.texture.fill( ( self.r, self.g, self.b, self.a ), None, pygame.BLEND_RGBA_MULT )
 
 #-------------------------------------------------------------------------------------------------------
 
 	def fadein( self, i = 1, m = 255 ):
 
-		if self.alpha < m:
+		if self.a < m:
 
-			self.alpha += i
+			self.a += i
 
-			if self.alpha > m:
-				self.alpha = m
+			if self.a > m:
+				self.a = m
 			
-			if self.nr < 2:
-				self.texture = self.original.copy()
-				self.texture.fill( ( 255, 255, 255, self.alpha ), None, pygame.BLEND_RGBA_MULT )
-			elif self.nr > 1:
-				for i in range( 0, self.nr ):
-					self.texture[ i ] = self.original[ i ].copy()
-					self.texture[ i ].fill( ( 255, 255, 255, self.alpha ), None, pygame.BLEND_RGBA_MULT )
+			self.texture = self.original.copy()
+			self.texture.fill( ( self.r, self.g, self.b, self.a ), None, pygame.BLEND_RGBA_MULT )
 
 #-------------------------------------------------------------------------------------------------------
 		
 	def fadeout( self, i = 1, m = 0 ):
 
-		if self.alpha > m:
+		if self.a > m:
 
-			self.alpha -= i
+			self.a -= i
 
-			if self.alpha < m:
-				self.alpha = m
-			
-			if self.nr < 2:
-				self.texture = self.original.copy()
-				self.texture.fill( ( 255, 255, 255, self.alpha ), None, pygame.BLEND_RGBA_MULT )
-			elif self.nr > 1:
-				for i in range( 0, self.nr ):
-					self.texture[ i ] = self.original[ i ].copy()
-					self.texture[ i ].fill( ( 255, 255, 255, self.alpha ), None, pygame.BLEND_RGBA_MULT )
+			if self.a < m:
+				self.a = m
+
+			self.texture = self.original.copy()
+			self.texture.fill( ( self.r, self.g, self.b, self.a ), None, pygame.BLEND_RGBA_MULT )
 
 #-------------------------------------------------------------------------------------------------------
 
 	def draw( self, window ):
-
-		if self.nr < 2:
-			window.blit( self.texture, ( self.x, self.y ) )
-
-		elif self.nr > 1:
-			window.blit( self.texture[ self.offset ], ( self.x, self.y ) )
+		window.blit( self.texture, ( self.x, self.y ) )
 
 #-------------------------------------------------------------------------------------------------------
 
-	def setOffset( self, offset ):
-		self.offset = offset
+	def setAlpha( self, alpha = 0xFF ):
+		if self.a != alpha:
+
+			self.a = alpha
+			self.texture = self.original.copy()
+			self.texture.fill( ( self.r, self.g, self.b, self.a ), None, pygame.BLEND_RGBA_MULT )
 
 #-------------------------------------------------------------------------------------------------------
 
 	def getAlpha( self ):
-		return self.alpha
+		return self.a
 
 #-------------------------------------------------------------------------------------------------------
 

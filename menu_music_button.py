@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 import pygame
+from sprite import Sprite
 from texture import Texture
 
 class Menu_music_button:
@@ -9,9 +10,9 @@ class Menu_music_button:
 
 	def __init__( self, path, on = 0 ):
 
-		self.path = path
-		self.texture = Texture( 4 )
-		self.scratch = Texture()
+		self.sprite = Sprite( path, 4 )
+
+		self.scratch = Texture( "menu/scratch.png" )
 		self.click = pygame.mixer.Sound( "menu/click.wav" )
 
 		self.type = 0
@@ -22,36 +23,34 @@ class Menu_music_button:
 #-------------------------------------------------------------------------------------------------------
 	
 	def load( self, y ):
-		self.texture.load( self.path )
-		self.texture.setX( 10 )
-		self.texture.setY( y )
+		self.sprite.setX( 10 )
+		self.sprite.setY( y )
 		
-		self.scratch.load( "menu/scratch.png" )
 		self.scratch.setX( 10 )
 		self.scratch.setY( y )
 
 #-------------------------------------------------------------------------------------------------------
 
 	def getBot( self ):
-		return self.texture.getBot()
+		return self.sprite.getBot()
 
 #-------------------------------------------------------------------------------------------------------
 	
 	def draw( self, window ):
-		self.texture.draw( window )
+		self.sprite.draw( window )
 		if self.type == 1:
 			self.scratch.draw( window )
 
 #-------------------------------------------------------------------------------------------------------
 
 	def fadein( self, i = 1, m = 255 ):
-		self.texture.fadein( i, m )
+		self.sprite.fadein( i, m )
 		self.scratch.fadein( i, m )
 
 #-------------------------------------------------------------------------------------------------------
 
 	def fadeout( self, i = 1, m = 0 ):
-		self.texture.fadeout( i, m )
+		self.sprite.fadeout( i, m )
 		self.scratch.fadeout( i, m )
 
 #-------------------------------------------------------------------------------------------------------
@@ -77,7 +76,7 @@ class Menu_music_button:
 	def handle( self, event ):
 			
 		self.focus = False
-		self.texture.setOffset( 0 )
+		self.sprite.setOffset( 0 )
 
 		if event.type == pygame.MOUSEBUTTONDOWN:
 			self.focus = True
@@ -87,8 +86,8 @@ class Menu_music_button:
 		
 		
 		self.x, self.y = pygame.mouse.get_pos()
-		if self.x > self.texture.getLeft() and self.x < self.texture.getRight() and self.texture.getAlpha() == 255:
-			if self.y > self.texture.getTop() and self.y < self.texture.getBot():
+		if self.x > self.sprite.getLeft() and self.x < self.sprite.getRight() and self.sprite.getAlpha() == 255:
+			if self.y > self.sprite.getTop() and self.y < self.sprite.getBot():
 				if self.focus == True:
 					if self.on == 0:
 						self.click.play()
@@ -97,8 +96,8 @@ class Menu_music_button:
 					else:
 						self.type = 0
 				if self.focus == True or self.mouseup == 1:
-					self.texture.setOffset( 2 )
+					self.sprite.setOffset( 2 )
 				else:
-					self.texture.setOffset( 1 )
+					self.sprite.setOffset( 1 )
 
 #-------------------------------------------------------------------------------------------------------

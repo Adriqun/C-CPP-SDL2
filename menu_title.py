@@ -9,14 +9,13 @@ class Menu_title:
 #-------------------------------------------------------------------------------------------------------
 
 	def __init__( self ):
-		self.texture =  Texture()
+		self.texture =  Texture( "menu/belt.png" )
 		self.text = Text( "menu/KGHAPPY.ttf", 80 )
 
 #-------------------------------------------------------------------------------------------------------		
 		
 	def load( self, width ):
 		
-		self.texture.load( "menu/belt.png" )
 		self.texture.setX( ( width / 2 ) - ( self.texture.getWidth() / 2 ) )
 		self.texture.setY( 10 )
 
@@ -33,7 +32,7 @@ class Menu_title:
 #-------------------------------------------------------------------------------------------------------
 		
 	def getBot( self ):
-		return self.texture.getBot() # +150
+		return self.texture.getBot()
 
 #-------------------------------------------------------------------------------------------------------
 	

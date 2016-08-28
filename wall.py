@@ -8,15 +8,14 @@ class Wall:
 #-------------------------------------------------------------------------------------------------------
 	
 	def __init__( self ):
-		self.bg_one = Texture()
-		self.bg_two = Texture()
+		self.bg_one = Texture( "wall/14.png" )
+		self.bg_two = Texture( "wall/14.png" )
 
 #-------------------------------------------------------------------------------------------------------
 
 	def load( self ):
-		self.bg_one.load( "wall/14.png" )
-		self.bg_two.load( "wall/14.png" )
 		self.bg_two.setX( self.bg_two.getWidth() )
+		
 
 #-------------------------------------------------------------------------------------------------------
 	
@@ -30,6 +29,7 @@ class Wall:
 				self.bg_one.setX( self.bg_one.getWidth() )
 			elif self.bg_two.getLeft() <= -self.bg_two.getWidth():
 				self.bg_two.setX( self.bg_two.getWidth() )
+			
 		
 		self.bg_one.draw( window )
 		self.bg_two.draw( window )

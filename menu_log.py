@@ -10,14 +10,13 @@ class Menu_log:
 
 	def __init__( self ):
 		self.text = Text( "menu/KGHAPPY.ttf", 27, 255 )
-		self.texture = Texture( 0, 255 )
+		self.texture = Texture( "menu/exit.png", 255 )
 		self.type = 0
 
 #-------------------------------------------------------------------------------------------------------
 	
 	def load( self, width, height ):
 
-		self.texture.load( "menu/exit.png" )
 		self.texture.setX( width/2 - self.texture.getWidth()/2 )
 		self.texture.setY( height/2 - self.texture.getHeight()/2 )
 		self.texture.setColor( 30, 0, 255 )

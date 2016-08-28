@@ -20,6 +20,7 @@ from menu_music import Menu_music
 from wall import Wall
 from hero import Hero
 from menu_log import Menu_log
+from map import Map
 
 
 class Engine:
@@ -31,7 +32,7 @@ class Engine:
 
 		self.intro = Intro()
 
-		self.menu_background = Texture()
+		self.menu_background = Texture( "menu/background.png" )
 		self.menu_title = Menu_title()
 		self.menu_play_button = Menu_play_button()
 		self.menu_git_button = Menu_link_button( "menu/git.png", "https://github.com/Adriqun" )
@@ -55,11 +56,10 @@ class Engine:
 
 	def load( self ):
 
-		self.core.setState( 1 )
+		self.core.setState( -1 )
 
 		self.intro.load( self.core.getWidth(), self.core.getHeight() )
 
-		self.menu_background.load( "menu/background.png" )
 		self.menu_title.load( self.core.getWidth() )
 		self.menu_play_button.load( self.core.getWidth(), self.core.getHeight() )
 		self.menu_git_button.load( self.core.getWidth(), 10 )
@@ -123,8 +123,9 @@ class Engine:
 		if self.core.getState() == -1:
 			self.intro.draw( self.core.getWindow() )
 			if self.intro.getQuit():
-				#MENU MUSIC
-				self.menu_music.play()
+				self.intro.free()
+				del self.intro
+				self.menu_music.play()#MENU MUSIC
 				self.core.setState( 0 )
 		
 

@@ -15,6 +15,17 @@ class Text:
 
 #-------------------------------------------------------------------------------------------------------
 
+	def free( self ):
+		del self.alpha
+		del self.x
+		del self.y
+		del self.w
+		del self.h
+		del self.texture
+		del self.original
+
+#-------------------------------------------------------------------------------------------------------
+
 	def createText( self, text, color ):
 
 		#Load texture
