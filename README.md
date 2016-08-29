@@ -36,8 +36,12 @@ Tutorials Point<br />
 CodeLite<br />
 ![codelitelogo](https://cloud.githubusercontent.com/assets/19840443/17767484/729f7398-6530-11e6-8639-a744e3be463f.png)
 
-<br />
-<br />
+Code::Blocks<br/>
+![codeblocks](https://cloud.githubusercontent.com/assets/19840443/18059432/3ff055f6-6e19-11e6-8dc6-e414b406fc93.png)
+
+Eclipse C++<br/>
+![eclipse](https://cloud.githubusercontent.com/assets/19840443/18059436/423d5872-6e19-11e6-8e58-92e16413645a.png)
+
 <br />
 
 ##Following changes
