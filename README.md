@@ -9,35 +9,35 @@ Assume that you want to buy a new car which costs milion - new Ferrari.
 Write amount of money in goal row then add your profits, for example you earn 2000 **USD**, write 2000 and set name as "Job".
 You can also add expenses, maybe you need to eat something per day, try to write cost of your food per day, set as per day and set cost maybe in **GBP**?
 Now you see the date :date: when you will get new Car - it's really that simple.<br /><br />
-Linux<br />
-![linux](https://cloud.githubusercontent.com/assets/19840443/17847718/cbd8b4a2-684f-11e6-8f25-8370ebd87edb.png)<br />
-Windows<br />
+**Linux**<br />
+![linux](https://cloud.githubusercontent.com/assets/19840443/18059159/fffe5e30-6e17-11e6-836c-e3c4e57efec4.png)<br />
+<br/>**Windows**(old version image)<br />
 ![1](https://cloud.githubusercontent.com/assets/19840443/17781023/dc692cdc-656d-11e6-940b-7e36425199e7.png)<br />
 ##Download
 
 Download files from **google drive**
 ![gd](https://cloud.githubusercontent.com/assets/19840443/17922425/32511f7c-69df-11e6-8915-6696f35d30bb.png):
 
-[Linux](https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-T2FCOF8xTGdVMlU&export=download "Linux :)")<br />
-[Windows](https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-aFBjdnR6cGxZWUk&export=download "Windows")<br />
-[To edit](https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-NFVfckFEY1ZnbU0&export=download "If you want edit")<br />
+[Linux](https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-cWdpZXdOd0RjUzA&export=download "Linux :)")<br />
+[Windows](https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-aFBjdnR6cGxZWUk&export=download "Windows :D")<br />
+[To edit](https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-aThxVXhNaVdiakE&export=download "If you want edit code -_-") - compiling with *-std=c++11*<br />
 
 ##License
 Everything is **free**.
 
 ##Acknowledgements
-
-Lazy Foo' Productions<br />
+[Lazy Foo' Productions](http://lazyfoo.net/tutorials/SDL/index.php "My start :)")<br/>
 ![lazyfoo](https://cloud.githubusercontent.com/assets/19840443/17767077/a5a911ec-652e-11e6-9679-7015c9d9aaef.png)
 
-Tutorials Point<br />
-![logo](https://cloud.githubusercontent.com/assets/19840443/17766922/d41e2b76-652d-11e6-8f9f-e6aa0b6138bd.png)
-
-CodeLite<br />
+[CodeLite](http://codelite.org/ "CodeLite")<br/>
 ![codelitelogo](https://cloud.githubusercontent.com/assets/19840443/17767484/729f7398-6530-11e6-8639-a744e3be463f.png)
 
-<br />
-<br />
+[Tutorials Point](http://www.tutorialspoint.com/cplusplus/ "Tutorials Point")<br/>
+![logo](https://cloud.githubusercontent.com/assets/19840443/17766922/d41e2b76-652d-11e6-8f9f-e6aa0b6138bd.png)
+
+[MZ site](http://miroslawzelent.pl/ "Mirosław Zelent")<br/>
+![miroslawzelent](https://cloud.githubusercontent.com/assets/19840443/18060143/0118904c-6e1d-11e6-8dc3-fedf5bed03ca.png)
+
 <br />
 
 ##Following changes
@@ -73,3 +73,8 @@ Is it ok?
 ![2](https://cloud.githubusercontent.com/assets/19840443/17767580/c873eb46-6530-11e6-8fba-84a8cc3fd2d7.png)
 
 Application looks really powerful! The red bar is your expense, now you can add default type of bar, delete, choose type of period (hour, week, month, year) and finally choose the currency. For example you have Grandmother from USA and sometimes( once per mounth) she give you 1000 dollars (because she is rich :smirk:), add profit by green char, choose mounth in calendar and choose USD in currency. Ok but I'm from United Kingdom - it's no problem man!, set attain as GBP. I'm going to add more currency in the future just wait for it - 2016.08.16 ![3](https://cloud.githubusercontent.com/assets/19840443/17767449/50ee2078-6530-11e6-959e-67215ce19565.png)
+
+<br/>
+<br/>
+Last update, one user tell me that while we using application we sometimes forget what we click, we don't remember that we set month or week? I add colors to find values that we set.
+![linux](https://cloud.githubusercontent.com/assets/19840443/18059159/fffe5e30-6e17-11e6-836c-e3c4e57efec4.png)
