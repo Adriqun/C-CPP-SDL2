@@ -20,7 +20,7 @@ Download files from **google drive**
 
 [Linux](https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-RVNFMlMyOWdLcFE&export=download "Linux :)")<br />
 [Windows](https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-TkxqWlFfR2Fqb2c&export=download "Windows :D")<br />
-[To edit](https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-SF9QcVBnSkE4LVE&export=download "If you want edit code -_-") - compiling with *-std=c++11*<br />
+[To edit](https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-SF9QcVBnSkE4LVE&export=download "If you want edit code -_-") - follow the C++11 ISO C++ language standard *[-std=c++11]*<br />
 
 ##License
 Everything is **free**.
