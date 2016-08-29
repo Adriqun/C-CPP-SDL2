@@ -6,13 +6,6 @@ from text import Text
 
 class Intro:
 
-	'''
-	nie jest to wersja finalowa aplikacji
-	gra moze byc rozwijana rowniez dzieki tobie
-	kod dziala na azsadzie open source
-	aplikacja prezentuje wykorzystanie biblioteki pygame
-	'''
-
 #-------------------------------------------------------------------------------------------------------
 	
 	def __init__( self ):

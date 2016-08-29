@@ -51,6 +51,7 @@ class Engine:
 		self.wall = Wall()
 		self.hero = Hero()
 		self.menu_log = Menu_log()
+		self.map = Map()
 	
 #-------------------------------------------------------------------------------------------------------
 
@@ -77,6 +78,7 @@ class Engine:
 		self.wall.load()
 		self.hero.load( self.core.getWidth(), self.core.getHeight() )
 		self.menu_log.load( self.core.getWidth(), self.core.getHeight() )
+		self.map.load()
 
 #-------------------------------------------------------------------------------------------------------	
 
@@ -248,12 +250,15 @@ class Engine:
 			if self.menu_log.getState() == 0:
 				self.wall.fadein( 5 )
 				self.hero.fadein( 5 )
+				self.map.fadein( 5 )
 			elif self.menu_log.getState() == 1:
 				self.wall.fadeout( 6, 130 )
 				self.hero.fadeout( 6, 130 )
+				self.map.fadeout( 6, 130 )
 			elif self.menu_log.getState() == 2:
 				self.wall.fadeout( 6 )
 				self.hero.fadeout( 6 )
+				self.map.fadeout( 6 )
 				if self.wall.getAlpha() == 0:
 					self.menu_log.setState( 0 )
 					if self.menu_music.isPaused() == False:
@@ -264,7 +269,7 @@ class Engine:
 			self.wall.draw( self.core.getWindow() )
 			self.hero.draw( self.core.getWindow() )
 			self.menu_log.draw( self.core.getWindow() )
-			
+			self.map.draw( self.core.getWindow() )
 
 
 
