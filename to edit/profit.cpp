@@ -437,6 +437,10 @@ void Profit::handle( SDL_Event &event )
 	
 	currency.handle( event );
 	period.handle( event );
+	
+	//Temporary color -> set 2016.08.30 -> School is coming :c
+	texture[ 2 ].setColor( currency.getColor().r, currency.getColor().g, currency.getColor().b );
+	texture[ 3 ].setColor( period.getColor().r, period.getColor().g, period.getColor().b );
 }
 
 bool Profit::isThrash()

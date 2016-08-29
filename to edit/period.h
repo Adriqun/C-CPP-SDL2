@@ -30,6 +30,7 @@ public:
 	void handle( SDL_Event &event );
 
 	int getPeriod();
+	SDL_Color getColor();
 };
 
 class ProfitCurrency: public Period
@@ -37,4 +38,5 @@ class ProfitCurrency: public Period
 	
 public:
 	bool load( SDL_Renderer* &renderer, int screen_width );
+	
 };

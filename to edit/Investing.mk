@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Adrian Michalek
-Date                   :=18/08/16
+Date                   :=29/08/16
 CodeLitePath           :="/home/adrian/.codelite"
 LinkerName             :=clang++
 SharedObjectLinkerName :=clang++ -shared -fPIC
@@ -35,7 +35,7 @@ PreprocessOnlySwitch   :=-E
 ObjectsFileList        :="Investing.txt"
 PCHCompileFlags        :=
 MakeDirCommand         :=mkdir -p
-LinkOptions            :=  -lSDL2 -lSDL2_image  -lSDL2_mixer  -lSDL2_ttf
+LinkOptions            :=  -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
 IncludePath            :=  $(IncludeSwitch). $(IncludeSwitch). 
 IncludePCH             := 
 RcIncludePath          := 
@@ -50,7 +50,7 @@ LibPath                := $(LibraryPathSwitch).
 AR       := ar rcus
 CXX      := clang++
 CC       := clang
-CXXFLAGS :=  -g -O0 -std=c++11 -Wall $(Preprocessors)
+CXXFLAGS :=  -g -O0 -std=c++14 -std=c++11 -Wall $(Preprocessors)
 CFLAGS   :=  -g -O0 -Wall $(Preprocessors)
 ASFLAGS  := 
 AS       := llvm-as
@@ -60,8 +60,8 @@ AS       := llvm-as
 ## User defined environment variables
 ##
 CodeLiteDir:=/usr/share/codelite
-Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/value.cpp$(ObjectSuffix) $(IntermediateDirectory)/title.cpp$(ObjectSuffix) $(IntermediateDirectory)/texture.cpp$(ObjectSuffix) $(IntermediateDirectory)/tax.cpp$(ObjectSuffix) $(IntermediateDirectory)/profit.cpp$(ObjectSuffix) $(IntermediateDirectory)/period.cpp$(ObjectSuffix) $(IntermediateDirectory)/goal.cpp$(ObjectSuffix) $(IntermediateDirectory)/font.cpp$(ObjectSuffix) $(IntermediateDirectory)/engine.cpp$(ObjectSuffix) \
-	$(IntermediateDirectory)/currency.cpp$(ObjectSuffix) $(IntermediateDirectory)/core.cpp$(ObjectSuffix) $(IntermediateDirectory)/chunk.cpp$(ObjectSuffix) $(IntermediateDirectory)/attain.cpp$(ObjectSuffix) $(IntermediateDirectory)/file.cpp$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/value.cpp$(ObjectSuffix) $(IntermediateDirectory)/title.cpp$(ObjectSuffix) $(IntermediateDirectory)/texture.cpp$(ObjectSuffix) $(IntermediateDirectory)/tax.cpp$(ObjectSuffix) $(IntermediateDirectory)/profit.cpp$(ObjectSuffix) $(IntermediateDirectory)/period.cpp$(ObjectSuffix) $(IntermediateDirectory)/goal.cpp$(ObjectSuffix) $(IntermediateDirectory)/font.cpp$(ObjectSuffix) $(IntermediateDirectory)/file.cpp$(ObjectSuffix) \
+	$(IntermediateDirectory)/engine.cpp$(ObjectSuffix) $(IntermediateDirectory)/currency.cpp$(ObjectSuffix) $(IntermediateDirectory)/core.cpp$(ObjectSuffix) $(IntermediateDirectory)/chunk.cpp$(ObjectSuffix) $(IntermediateDirectory)/attain.cpp$(ObjectSuffix) 
 
 
 
@@ -137,6 +137,11 @@ $(IntermediateDirectory)/font.cpp$(ObjectSuffix): font.cpp
 $(IntermediateDirectory)/font.cpp$(PreprocessSuffix): font.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/font.cpp$(PreprocessSuffix) "font.cpp"
 
+$(IntermediateDirectory)/file.cpp$(ObjectSuffix): file.cpp 
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/adrian/.codelite/Workspace_one/Investing/file.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/file.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/file.cpp$(PreprocessSuffix): file.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/file.cpp$(PreprocessSuffix) "file.cpp"
+
 $(IntermediateDirectory)/engine.cpp$(ObjectSuffix): engine.cpp 
 	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/adrian/.codelite/Workspace_one/Investing/engine.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/engine.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/engine.cpp$(PreprocessSuffix): engine.cpp
@@ -161,11 +166,6 @@ $(IntermediateDirectory)/attain.cpp$(ObjectSuffix): attain.cpp
 	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/adrian/.codelite/Workspace_one/Investing/attain.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/attain.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/attain.cpp$(PreprocessSuffix): attain.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/attain.cpp$(PreprocessSuffix) "attain.cpp"
-
-$(IntermediateDirectory)/file.cpp$(ObjectSuffix): file.cpp 
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/adrian/.codelite/Workspace_one/Investing/file.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/file.cpp$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/file.cpp$(PreprocessSuffix): file.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/file.cpp$(PreprocessSuffix) "file.cpp"
 
 ##
 ## Clean

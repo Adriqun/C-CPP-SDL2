@@ -20,6 +20,37 @@ Period::~Period()
 	free();
 }
 
+SDL_Color Period::getColor()
+{
+	SDL_Color color;
+	if( type == 1 )
+	{
+		color.r = 0xFD;
+		color.g = 0xE8;
+		color.b = 0xD7;
+	}
+	else if( type == 2 )
+	{
+		color.r = 0x99;
+		color.g = 0xFF;
+		color.b = 0x00; 
+	}
+	else if( type == 3 )
+	{
+		color.r = 0xFF;
+		color.g = 0xCC;
+		color.b = 0x00; 
+	}
+	else if( type == 4 )
+	{
+		color.r = 0x65;
+		color.g = 0x99;
+		color.b = 0xFF; 
+	}
+	
+	return color;
+}
+
 void Period::free()
 {
 	if( texture != NULL )
@@ -67,29 +98,37 @@ bool Period::load( SDL_Renderer* &renderer, int screen_width )
 			{
 				success = false;
 			}
-			
-			SDL_Color color = { 0x58, 0x74, 0x98 };
-			
+
+			SDL_Color color = { 0xFD, 0xE8, 0xD7 };
 			if( !texture[ 1 ].loadFromRenderedText( renderer, font.get(), "day", color ) )
 			{
 				success = false;
 			}
 			else
 			{
-				whose = 1;
-				texture[ 1 ].setColor( 100, 100, 100 );
+				//whose = 1;
+				//texture[ 1 ].setColor( 100, 100, 100 );
 			}
 			
+			color.r = 0x99;
+			color.g = 0xFF;
+			color.b = 0x00;
 			if( !texture[ 2 ].loadFromRenderedText( renderer, font.get(), "week", color ) )
 			{
 				success = false;
 			}
 			
+			color.r = 0xFF;
+			color.g = 0xCC;
+			color.b = 0x00;
 			if( !texture[ 3 ].loadFromRenderedText( renderer, font.get(), "month", color ) )
 			{
 				success = false;
 			}
 			
+			color.r = 0x65;
+			color.g = 0x99;
+			color.b = 0xFF;
 			if( !texture[ 4 ].loadFromRenderedText( renderer, font.get(), "year", color ) )
 			{
 				success = false;
@@ -139,17 +178,17 @@ void Period::handle( SDL_Event &event )
 					if( y > texture[ i ].getY() && y < texture[ i ].getB() )
 					{
 						type = i;
-						whose = i;
-						texture[ i ].setColor( 100, 100, 100 );
+						//whose = i;
+						//texture[ i ].setColor( 100, 100, 100 );
 					}
 				}
 			}
 			
-			for( int i = 1; i < nr; i ++ )
-			{
-				if( i != whose )
-					texture[ i ].setColor( 255, 255, 255 );
-			}
+			//for( int i = 1; i < nr; i ++ )
+			//{
+			//	if( i != whose )
+			//		texture[ i ].setColor( 255, 255, 255 );
+			//}
 		}
 	}
 }
@@ -181,28 +220,36 @@ bool ProfitCurrency::load( SDL_Renderer* &renderer, int screen_width )
 				success = false;
 			}
 			
-			SDL_Color color = { 0x58, 0x74, 0x98 };
-			
+			SDL_Color color = { 0xFD, 0xE8, 0xD7 };
 			if( !texture[ 1 ].loadFromRenderedText( renderer, font.get(), "PLN", color ) )
 			{
 				success = false;
 			}
 			else
 			{
-				whose = 1;
-				texture[ 1 ].setColor( 100, 100, 100 );
+				//whose = 1;
+				//texture[ 1 ].setColor( 100, 100, 100 );
 			}
 			
+			color.r = 0x99;
+			color.g = 0xFF;
+			color.b = 0x00;
 			if( !texture[ 2 ].loadFromRenderedText( renderer, font.get(), "EUR", color ) )
 			{
 				success = false;
 			}
 			
+			color.r = 0xFF;
+			color.g = 0xCC;
+			color.b = 0x00;
 			if( !texture[ 3 ].loadFromRenderedText( renderer, font.get(), "USD", color ) )
 			{
 				success = false;
 			}
 			
+			color.r = 0x65;
+			color.g = 0x99;
+			color.b = 0xFF;
 			if( !texture[ 4 ].loadFromRenderedText( renderer, font.get(), "BGP", color ) )
 			{
 				success = false;
