@@ -26,17 +26,12 @@ Download files from **google drive**
 Everything is **free**.
 
 ##Acknowledgements
-
-Lazy Foo' Productions<br />
+Lazy Foo' Productions   CodeLite    Code::Blocks    Eclipse C++   Tutorials Point<br />
 ![lazyfoo](https://cloud.githubusercontent.com/assets/19840443/17767077/a5a911ec-652e-11e6-9679-7015c9d9aaef.png)
-
-Tutorials Point<br />
-![logo](https://cloud.githubusercontent.com/assets/19840443/17766922/d41e2b76-652d-11e6-8f9f-e6aa0b6138bd.png)
-
-CodeLite    Code::Blocks    Eclipse C++<br />
 ![codelitelogo](https://cloud.githubusercontent.com/assets/19840443/17767484/729f7398-6530-11e6-8639-a744e3be463f.png)
 ![codeblocks](https://cloud.githubusercontent.com/assets/19840443/18059432/3ff055f6-6e19-11e6-8dc6-e414b406fc93.png)
 ![eclipse](https://cloud.githubusercontent.com/assets/19840443/18059436/423d5872-6e19-11e6-8e58-92e16413645a.png)
+![logo](https://cloud.githubusercontent.com/assets/19840443/17766922/d41e2b76-652d-11e6-8f9f-e6aa0b6138bd.png)
 
 <br />
 
