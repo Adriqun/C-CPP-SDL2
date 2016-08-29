@@ -19,18 +19,26 @@ Download files from **google drive**
 ![gd](https://cloud.githubusercontent.com/assets/19840443/17922425/32511f7c-69df-11e6-8915-6696f35d30bb.png):
 
 [Linux](https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-T2FCOF8xTGdVMlU&export=download "Linux :)")<br />
-[Windows](https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-aFBjdnR6cGxZWUk&export=download "Windows")<br />
-[To edit](https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-NFVfckFEY1ZnbU0&export=download "If you want edit")<br />
+[Windows](https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-aFBjdnR6cGxZWUk&export=download "Windows :D")<br />
+[To edit](https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-NFVfckFEY1ZnbU0&export=download "If you want edit code -_-")<br />
 
 ##License
 Everything is **free**.
 
 ##Acknowledgements
-Lazy Foo' Productions   CodeLite    Code::Blocks    Eclipse C++   Tutorials Point<br />
+[Lazy Foo' Productions](http://lazyfoo.net/tutorials/SDL/index.php "My start :)")<br/>
 ![lazyfoo](https://cloud.githubusercontent.com/assets/19840443/17767077/a5a911ec-652e-11e6-9679-7015c9d9aaef.png)
+
+[CodeLite](http://codelite.org/ "Respect")<br/>
 ![codelitelogo](https://cloud.githubusercontent.com/assets/19840443/17767484/729f7398-6530-11e6-8639-a744e3be463f.png)
+
+[Code::Blocks](http://www.codeblocks.org/ "Old nice IDE")<br/>
 ![codeblocks](https://cloud.githubusercontent.com/assets/19840443/18059432/3ff055f6-6e19-11e6-8dc6-e414b406fc93.png)
+
+[Eclipse C++](http://www.eclipse.org/downloads/packages/eclipse-ide-cc-developers/keplersr2 "Eclipse")<br/>
 ![eclipse](https://cloud.githubusercontent.com/assets/19840443/18059436/423d5872-6e19-11e6-8e58-92e16413645a.png)
+
+Tutorials Point<br/>
 ![logo](https://cloud.githubusercontent.com/assets/19840443/17766922/d41e2b76-652d-11e6-8f9f-e6aa0b6138bd.png)
 
 <br />
