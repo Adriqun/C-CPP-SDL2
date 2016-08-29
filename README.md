@@ -10,7 +10,7 @@ Write amount of money in goal row then add your profits, for example you earn 20
 You can also add expenses, maybe you need to eat something per day, try to write cost of your food per day, set as per day and set cost maybe in **GBP**?
 Now you see the date :date: when you will get new Car - it's really that simple.<br /><br />
 Linux<br />
-![linux](https://cloud.githubusercontent.com/assets/19840443/17847718/cbd8b4a2-684f-11e6-8f25-8370ebd87edb.png)<br />
+![linux](https://cloud.githubusercontent.com/assets/19840443/18059159/fffe5e30-6e17-11e6-836c-e3c4e57efec4.png)<br />
 Windows<br />
 ![1](https://cloud.githubusercontent.com/assets/19840443/17781023/dc692cdc-656d-11e6-940b-7e36425199e7.png)<br />
 ##Download
@@ -73,3 +73,8 @@ Is it ok?
 ![2](https://cloud.githubusercontent.com/assets/19840443/17767580/c873eb46-6530-11e6-8fba-84a8cc3fd2d7.png)
 
 Application looks really powerful! The red bar is your expense, now you can add default type of bar, delete, choose type of period (hour, week, month, year) and finally choose the currency. For example you have Grandmother from USA and sometimes( once per mounth) she give you 1000 dollars (because she is rich :smirk:), add profit by green char, choose mounth in calendar and choose USD in currency. Ok but I'm from United Kingdom - it's no problem man!, set attain as GBP. I'm going to add more currency in the future just wait for it - 2016.08.16 ![3](https://cloud.githubusercontent.com/assets/19840443/17767449/50ee2078-6530-11e6-959e-67215ce19565.png)
+
+<br/>
+<br/>
+Last update, one user tell me that while we using application we sometimes forget what we click, we don't remember that we set month or week? I add colors to find values that we set.
+![linux](https://cloud.githubusercontent.com/assets/19840443/18059159/fffe5e30-6e17-11e6-836c-e3c4e57efec4.png)
