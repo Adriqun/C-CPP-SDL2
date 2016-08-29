@@ -50,6 +50,7 @@ bool Cost::load( SDL_Renderer* &renderer, int x, int y )
 void Cost::setY( int y )
 {
 	name.getY() = y+3;
+	focusRect.y = y+1;
 	line.getY() = y+4;
 }
 
@@ -167,6 +168,7 @@ void Name::render( SDL_Renderer* &renderer )
 void Name::setY( int y )
 {
 	name.getY() = y+3;
+	focusRect.y = y+1;
 	line.getY() = y+4;
 }
 
