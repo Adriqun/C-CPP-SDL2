@@ -29,17 +29,14 @@ Everything is **free**.
 [Lazy Foo' Productions](http://lazyfoo.net/tutorials/SDL/index.php "My start :)")<br/>
 ![lazyfoo](https://cloud.githubusercontent.com/assets/19840443/17767077/a5a911ec-652e-11e6-9679-7015c9d9aaef.png)
 
-[CodeLite](http://codelite.org/ "Respect")<br/>
+[CodeLite](http://codelite.org/ "CodeLite")<br/>
 ![codelitelogo](https://cloud.githubusercontent.com/assets/19840443/17767484/729f7398-6530-11e6-8639-a744e3be463f.png)
 
-[Code::Blocks](http://www.codeblocks.org/ "Old nice IDE")<br/>
-![codeblocks](https://cloud.githubusercontent.com/assets/19840443/18059432/3ff055f6-6e19-11e6-8dc6-e414b406fc93.png)
-
-[Eclipse C++](http://www.eclipse.org/downloads/packages/eclipse-ide-cc-developers/keplersr2 "Eclipse")<br/>
-![eclipse](https://cloud.githubusercontent.com/assets/19840443/18059436/423d5872-6e19-11e6-8e58-92e16413645a.png)
-
-Tutorials Point<br/>
+[Tutorials Point](http://www.tutorialspoint.com/cplusplus/ "Tutorials Point")<br/>
 ![logo](https://cloud.githubusercontent.com/assets/19840443/17766922/d41e2b76-652d-11e6-8f9f-e6aa0b6138bd.png)
+
+[MZ site](http://miroslawzelent.pl/ "Mirosław Zelent")<br/>
+![miroslawzelent](https://cloud.githubusercontent.com/assets/19840443/18060143/0118904c-6e1d-11e6-8dc3-fedf5bed03ca.png)
 
 <br />
 
