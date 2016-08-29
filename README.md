@@ -18,9 +18,9 @@ Now you see the date :date: when you will get new Car - it's really that simple.
 Download files from **google drive**
 ![gd](https://cloud.githubusercontent.com/assets/19840443/17922425/32511f7c-69df-11e6-8915-6696f35d30bb.png):
 
-[Linux](https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-T2FCOF8xTGdVMlU&export=download "Linux :)")<br />
+[Linux](https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-cWdpZXdOd0RjUzA&export=download "Linux :)")<br />
 [Windows](https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-aFBjdnR6cGxZWUk&export=download "Windows :D")<br />
-[To edit](https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-NFVfckFEY1ZnbU0&export=download "If you want edit code -_-")<br />
+[To edit](https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-aThxVXhNaVdiakE&export=download "If you want edit code -_-") - compiling with *-std=c++11*<br />
 
 ##License
 Everything is **free**.
