@@ -9,9 +9,9 @@ Assume that you want to buy a new car which costs milion - new Ferrari.
 Write amount of money in goal row then add your profits, for example you earn 2000 **USD**, write 2000 and set name as "Job".
 You can also add expenses, maybe you need to eat something per day, try to write cost of your food per day, set as per day and set cost maybe in **GBP**?
 Now you see the date :date: when you will get new Car - it's really that simple.<br /><br />
-Linux<br />
+**Linux**<br />
 ![linux](https://cloud.githubusercontent.com/assets/19840443/18059159/fffe5e30-6e17-11e6-836c-e3c4e57efec4.png)<br />
-Windows(old version image)<br />
+<br/>**Windows**(old version image)<br />
 ![1](https://cloud.githubusercontent.com/assets/19840443/17781023/dc692cdc-656d-11e6-940b-7e36425199e7.png)<br />
 ##Download
 
