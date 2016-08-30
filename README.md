@@ -5,7 +5,7 @@
 
 **compile**<br/>
 ```
-*gcc hello.m `gnustep-config --objc-flags` `gnustep-config --base-libs` -o hello*<br/><br/>
+gcc hello.m `gnustep-config --objc-flags` `gnustep-config --base-libs` -o hello
 ```
 
 **example**<br/>
