@@ -4,7 +4,9 @@
 *sudo apt-get install gobjc*<br/><br/>
 
 **compile**<br/>
+```
 *gcc hello.m `gnustep-config --objc-flags` `gnustep-config --base-libs` -o hello*<br/><br/>
+```
 
 **example**<br/>
 ```objective-c
