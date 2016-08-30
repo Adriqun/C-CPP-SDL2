@@ -4,5 +4,17 @@
 *sudo apt-get install gobjc*<br/><br/>
 
 **compile**<br/>
-gcc -o hello hello.m -Wall -lobjc
+*gcc hello.m `gnustep-config --objc-flags` `gnustep-config --base-libs` -o hello*<br/><br/>
 
+**example**<br/>
+```objective-c
+import <Foundation/Foundation.h>
+
+int main()
+{
+   /* my first program in Objective-C */
+   NSLog(@"Hello, World! \n");
+   
+   return 0;
+}
+```
