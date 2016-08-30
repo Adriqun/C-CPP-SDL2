@@ -1,9 +1,9 @@
 ##Linux
 
 **install**<br/>
-'''
+```
 sudo apt-get install gobjc
-'''
+```
 
 **compile**<br/>
 ```
