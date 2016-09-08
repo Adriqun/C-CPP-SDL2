@@ -1,7 +1,3 @@
-# C-CPP-SDL2
-
-C, C++ with Simple DirectMedia Layer
-
 Everything inside is a tests, all of them have bugs!
 
 ![8](https://cloud.githubusercontent.com/assets/19840443/17054038/4a9c5cfc-5005-11e6-8973-c3120a9a0182.png)
