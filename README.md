@@ -1,5 +1,6 @@
 ##Introduction
-Work in progress...
+Work in progress...<br/>
+Project will be continuated...
 ##Following changes
 
 Free font - [KG HAPPY](http://www.fontspace.com/kimberly-geswein/kg-happy "KG HAPPY")<br />
