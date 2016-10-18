@@ -22,9 +22,6 @@ Download files from **google drive**
 [Windows](https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-TkxqWlFfR2Fqb2c&export=download "Windows :D")<br />
 [To edit](https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-SF9QcVBnSkE4LVE&export=download "If you want edit code -_-") - follow the C++11 ISO C++ language standard *[-std=c++11]*<br />
 
-##License
-Everything is **free**.
-
 ##Acknowledgements
 [Lazy Foo' Productions](http://lazyfoo.net/tutorials/SDL/index.php "My start :)")<br/>
 ![lazyfoo](https://cloud.githubusercontent.com/assets/19840443/17767077/a5a911ec-652e-11e6-9679-7015c9d9aaef.png)
