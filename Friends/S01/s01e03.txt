@@ -1,32 +1,32 @@
 metro - subway
 od kiedy? - since when?
-narzekać - complain
-zamortyzować uderzenie - cushion the blow
-ścigać - chase
-cela więzienna - cell
+narzekac - complain
+zamortyzowac uderzenie - cushion the blow
+scigac - chase
+cela wiezienna - cell
 nadgarstek - wrist
-wupuszczać dym - puff
+wupuszczac dym - puff
 kciuk - thumb
-palec wskazujący - index finger
+palec wskazujacy - index finger
 bezsensowny - ridiculous
 doskonale - excellent
 mamotanie - mubling
-sługa - minion
-rażąco - gross
+sluga - minion
+razaco - gross
 nagrowa - reward
-zrozumieć czyjeś zachowanie - figure out
+zrozumiec czyjes zachowanie - figure out
 seplenienie - lisping
-tłum, stado - herd
-część - share of
-rozglądać - look out
+tlum, stado - herd
+czesc - share of
+rozgladac - look out
 szanse - odds
 krytykowanie - bashing
-crooked - nieuczciwy
-yardstick - miara
-przemyślany - measured
+nieuczciwy - crooced
+miara - yardstick
+przemyslany - measured
 wrodzony - innate
-wielbić - adore
-słone krakersy - saltines
+wielbic - adore
+slone krakersy - saltines
 do zobaczenia - see ya
 konkurs - contest
 skaza, wada - flaw
@@ -34,6 +34,6 @@ denerwujacy - annoying
 urocze - endearing
 w rzeczywistości - indeed
 wilk - coyote
-rzucać - dump
+rzucac - dump
 sedno sprawy - the bottom line
 plaster antynikotynowy - patch
