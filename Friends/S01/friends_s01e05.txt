@@ -1,7 +1,7 @@
 dochodzic w  - reach in
 manewrowac - maneover
 stanik - bra
-rekaw - sleeve
+rekaw - sleeve (sliw)
 za czyms - beyond
 zlosliwy - mean
 ani jednego - not a one
@@ -13,7 +13,7 @@ obrzydliwy - horrible
 chetny - eager
 cudaczny - freakish
 zbieg okolicznosci - coincidence
-pranie - laundry
+pranie - laundry (londri)
 mechaty - fluffy
 alfabet - belch
 przysluga - favor
@@ -34,7 +34,7 @@ zasmucony - upset
 slabeusz - underdog
 napompowac - inflate
 nieodpowiedni - inappriopriate
-niesforny - rambunctious
+niesforny - rambunctious (raembankszes)
 talia - waist
 nieprawdopodobny - incredible
 powinien - ought (You ought to stop smoking)
