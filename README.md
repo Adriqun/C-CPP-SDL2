@@ -28,9 +28,9 @@ len equ $ - msg     ;length of the string
 <br/>
 ## Create object file
 The ```nasm -hf``` gives available output formats. Check [stackoverflow]( "http://stackoverflow.com/questions/4252227/error-when-trying-to-run-asm-file-on-nasm-on-ubuntu" "stackoverflow site" ).
-```
-valid output formats for -f are (`*' denotes default):
-  * bin       flat-form binary files (e.g. DOS .COM, .SYS)
+`
+valid output formats for -f are:
+    bin       flat-form binary files (e.g. DOS .COM, .SYS)
     ith       Intel hex
     srec      Motorola S-records
     aout      Linux a.out object files
@@ -49,19 +49,19 @@ valid output formats for -f are (`*' denotes default):
     macho     MACHO (short name for MACHO32)
     macho64   NeXTstep/OpenStep/Rhapsody/Darwin/MacOS X (x86_64) object files
     dbg       Trace of all info passed to output stage
-```
+`
 We have linux, so try it
-```
+`
 nasm -f elf64 -o main.o main.asm
-```
+`
 <br/>
 ## Create executable file
-```
+`
 ld main.o -o main
-```
+`
 <br/>
 ## Open
-```
+`
 chmod +x main
 ./main
-```
+`
