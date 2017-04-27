@@ -2,9 +2,9 @@
 
 ## Install nasm
 We need **nasm** to create object file by assembly code. [Wikipedia](https://en.wikipedia.org/wiki/Netwide_Assembler "Click me!") says: **nasm** is an assembler and disassembler for the Intel x86 architecture. It can be used to write 16-bit, 32-bit (IA-32) and 64-bit (x86-64) programs. NASM is considered to be one of the most popular assemblers for Linux. Try
-```
+<!-
 sudo apt install nasm
-```
+-->
 <br/>
 ## Create asm file
 We want to see results so just copy the code below and save as "main.asm".<br/>
@@ -27,9 +27,9 @@ len equ $ - msg     ;length of the string
 -->
 <br/>
 ## Create object file
-The ```nasm -hf``` gives available output formats. Check [stackoverflow]( "http://stackoverflow.com/questions/4252227/error-when-trying-to-run-asm-file-on-nasm-on-ubuntu" "stackoverflow site" ).
-```
-valid output formats for -f are (`*' denotes default):
+The <!-nasm -hf--> gives available output formats. Check [stackoverflow]( "http://stackoverflow.com/questions/4252227/error-when-trying-to-run-asm-file-on-nasm-on-ubuntu" "stackoverflow site" ).
+<!-
+valid output formats for -f are:
   * bin       flat-form binary files (e.g. DOS .COM, .SYS)
     ith       Intel hex
     srec      Motorola S-records
@@ -49,19 +49,19 @@ valid output formats for -f are (`*' denotes default):
     macho     MACHO (short name for MACHO32)
     macho64   NeXTstep/OpenStep/Rhapsody/Darwin/MacOS X (x86_64) object files
     dbg       Trace of all info passed to output stage
-```
+-->
 We have linux, so try it
-```
+<!-
 nasm -f elf64 -o main.o main.asm
-```
+-->
 <br/>
 ## Create executable file
-```
+<!-
 ld main.o -o main
-```
+-->
 <br/>
 ## Open
-```
+<!-
 chmod +x main
 ./main
-```
+-->
