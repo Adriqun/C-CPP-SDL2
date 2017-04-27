@@ -6,9 +6,9 @@ We need **nasm** to create object file by assembly code. [Wikipedia](https://en.
 sudo apt install nasm
 ```
 <br/>
-## Create asm file<br/>
+## Create asm file
 We want to see results so just copy the code below and save as "main.asm". Code is from ![logo](https://cloud.githubusercontent.com/assets/19840443/19013290/f3fcb338-87cc-11e6-96a5-eaa50f0c0aca.png)<br/>
-``` asm
+``` 
 section	.text
     global _start   ;must be declared for linker (ld)
 _start:	            ;tells linker entry point
