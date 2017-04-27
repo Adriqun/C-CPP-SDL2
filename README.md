@@ -8,7 +8,7 @@ sudo apt install nasm
 <br/>
 ## Create asm file
 We want to see results so just copy the code below and save as "main.asm". Code is from ![logo](https://cloud.githubusercontent.com/assets/19840443/19013290/f3fcb338-87cc-11e6-96a5-eaa50f0c0aca.png)<br/>
-`
+```
 section	.text
     global _start   ;must be declared for linker (ld)
 _start:	            ;tells linker entry point
@@ -24,7 +24,7 @@ _start:	            ;tells linker entry point
 section	.data
 msg db Hello, world!, 0xa  ;string to be printed
 len equ $ - msg     ;length of the string
-`
+```
 <br/>
 ## Create object file
 The `nasm -hf` gives available output formats. Check [stackoverflow]( "http://stackoverflow.com/questions/4252227/error-when-trying-to-run-asm-file-on-nasm-on-ubuntu" "stackoverflow site" ).
@@ -64,4 +64,4 @@ ld main.o -o main
 `
 chmod +x main
 ./main
-
+`
