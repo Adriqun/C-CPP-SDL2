@@ -8,7 +8,7 @@ sudo apt install nasm
 <br/>
 ## Create asm file
 We want to see results so just copy the code below and save as "main.asm". Code is from ![logo](https://cloud.githubusercontent.com/assets/19840443/19013290/f3fcb338-87cc-11e6-96a5-eaa50f0c0aca.png)<br/>
-`
+```
 section	.text
     global _start   ;must be declared for linker (ld)
 _start:	            ;tells linker entry point
@@ -24,11 +24,11 @@ _start:	            ;tells linker entry point
 section	.data
 msg db 'Hello, world!', 0xa  ;string to be printed
 len equ $ - msg     ;length of the string
-`
+```
 <br/>
 ## Create object file
-The ```nasm -hf``` gives available output formats. Check [stackoverflow]( "http://stackoverflow.com/questions/4252227/error-when-trying-to-run-asm-file-on-nasm-on-ubuntu" "stackoverflow site" ).
-`
+The `nasm -hf` gives available output formats. Check [stackoverflow]( "http://stackoverflow.com/questions/4252227/error-when-trying-to-run-asm-file-on-nasm-on-ubuntu" "stackoverflow site" ).
+```
 valid output formats for -f are:
     bin       flat-form binary files (e.g. DOS .COM, .SYS)
     ith       Intel hex
@@ -49,7 +49,7 @@ valid output formats for -f are:
     macho     MACHO (short name for MACHO32)
     macho64   NeXTstep/OpenStep/Rhapsody/Darwin/MacOS X (x86_64) object files
     dbg       Trace of all info passed to output stage
-`
+```
 We have linux, so try it
 `
 nasm -f elf64 -o main.o main.asm
