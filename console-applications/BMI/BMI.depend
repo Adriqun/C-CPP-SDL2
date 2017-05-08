@@ -1,6 +1,0 @@
-# depslib dependency file v1.0
-1466941401 source:c:\users\lenovo1\desktop\bmi\main.cpp
-	<iostream>
-	<stdio.h>
-	<vector>
-

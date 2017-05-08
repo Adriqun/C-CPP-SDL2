@@ -1,7 +1,0 @@
-# depslib dependency file v1.0
-1465637054 source:c:\users\lenovo1\desktop\biorytm\main.cpp
-	<math.h>
-	<time.h>
-	<iostream>
-	<conio.h>
-
