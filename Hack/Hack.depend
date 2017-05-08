@@ -1,7 +1,0 @@
-# depslib dependency file v1.0
-1472752499 source:c:\users\lenovo1\desktop\hack\main.cpp
-	<windows.h>
-	<fstream>
-	<stdio.h>
-	<time.h>
-

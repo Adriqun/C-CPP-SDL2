@@ -1,9 +1,0 @@
-# depslib dependency file v1.0
-1452712043 source:c:\users\lenovo1\desktop\lekcja 32 (wpisywanie tekstu i wyœwietlanie go)\main.cpp
-	<SDL.h>
-	<SDL_image.h>
-	<SDL_ttf.h>
-	<stdio.h>
-	<string>
-	<sstream>
-
