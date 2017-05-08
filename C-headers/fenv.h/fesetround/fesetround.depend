@@ -1,6 +1,0 @@
-# depslib dependency file v1.0
-1457885795 source:c:\users\lenovo1\desktop\fesetround\main.cpp
-	<stdio.h>
-	<fenv.h>
-	<math.h>
-
