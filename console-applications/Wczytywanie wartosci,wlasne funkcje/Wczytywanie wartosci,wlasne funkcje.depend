@@ -1,6 +1,0 @@
-# depslib dependency file v1.0
-1439129683 source:c:\users\lenovo1\desktop\wczytywanie wartosci,wlasne funkcje\main.cpp
-	<iostream>
-	<fstream>
-	<cstdlib>
-

@@ -1,8 +1,0 @@
-# depslib dependency file v1.0
-1438591687 source:c:\users\lenovo1\desktop\c++\transform\main.cpp
-	<iostream>
-	<algorithm>
-	<string>
-	<cstdlib>
-	<windows.h>
-
