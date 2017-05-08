@@ -1,7 +1,0 @@
-# depslib dependency file v1.0
-1468794249 source:c:\users\lenovo1\desktop\github\c-cpp-sdl2\c-headers\stdarg.h\va_copy\main.cpp
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	<stdarg.h>
-
