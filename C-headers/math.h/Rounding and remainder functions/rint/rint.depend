@@ -1,6 +1,0 @@
-# depslib dependency file v1.0
-1468080597 source:c:\users\lenovo1\desktop\rint\main.cpp
-	<stdio.h>
-	<fenv.h>
-	<math.h>
-
