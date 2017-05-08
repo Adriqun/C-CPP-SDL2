@@ -1,7 +1,7 @@
-##Introduction
+## Introduction
 Console application based on **eleven** sorting algorithms :books:.                                                            
 
-##How it works
+## How it works
 You have to write **one** number between 1-45 000 000, don't worry about mistakes because application care about exceptions. If you wrote a
 number you will see the time of each sorting algorithms.
 
@@ -11,13 +11,13 @@ Linux
 Windows                                                                                                                 
 ![0](https://cloud.githubusercontent.com/assets/19840443/17805982/57e799cc-6602-11e6-89ac-94804a5d1556.png)
 
-##Download
+## Download
 linux - https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-M0wxQU1BWGlFMms&export=download <br/>
 windows - https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-bm0xNUc4aWVZWmc&export=download <br/>
 to edit - https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-U3BocDRDQVBvX2s&export=download <br/>
 to edit on windows - https://docs.google.com/uc?authuser=0&id=0B36D1JHNNqr-MFNJbmpJVVdKYms&export=download <br/>
 
-##In detail
+## In detail
 **Align to center**                                                                                                       
 1. You need to know console width.											     
 2. In C add														
