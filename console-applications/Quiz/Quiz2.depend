@@ -1,9 +1,0 @@
-# depslib dependency file v1.0
-1438381780 source:c:\users\lenovo1\desktop\c++\quiz\main.cpp
-	<iostream>
-	<fstream>
-	<stdio.h>
-	<cstdlib>
-	<algorithm>
-	<string>
-

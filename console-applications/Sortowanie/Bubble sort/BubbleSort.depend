@@ -1,6 +1,0 @@
-# depslib dependency file v1.0
-1440714832 source:c:\users\lenovo1\desktop\bubblesort\main.cpp
-	<iostream>
-	<windows.h>
-	<time.h>
-

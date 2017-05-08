@@ -1,6 +1,0 @@
-# depslib dependency file v1.0
-1439733786 source:c:\users\lenovo1\desktop\c++\odmierzanie czasu- wskazniki\main.cpp
-	<iostream>
-	<time.h>
-	<cstdlib>
-
