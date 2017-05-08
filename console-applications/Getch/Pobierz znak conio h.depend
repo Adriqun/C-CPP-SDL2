@@ -1,6 +1,0 @@
-# depslib dependency file v1.0
-1447699103 source:c:\users\lenovo1\desktop\c++ biblioteki\getch\main.cpp
-	<iostream>
-	<conio.h>
-	<cstdlib>
-

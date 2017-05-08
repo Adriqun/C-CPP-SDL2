@@ -1,7 +1,0 @@
-# depslib dependency file v1.0
-1438590371 source:c:\users\lenovo1\desktop\getchar i transform\main.cpp
-	<iostream>
-	<conio.h>
-	<cstdlib>
-	<windows.h>
-
