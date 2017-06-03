@@ -1,58 +1,59 @@
-wykrzyknik - excalamation point
-bez obaw - no fear
-zauwazyc, zdawac sobie sprawe - notice
-smierc - doom
-zauwazyc - point out
-odnawiac asortyment - restock
-alkohol, gorzala - booze (buz)
-dostrzec - spot
-nieuchronny - impedning
-penis - dinkle, schwang
-dzwieczenie - tinkle
-wieszac - hang
-zgwalcony (o umysle) - violated
-sciagac cos z siebie - peel (something) off
-pierwszy krok - opening line
-swiadomy - aware of
-biletowy (w teatrze) - usher
-namietnosc - passion
-ledwo - barely
-owdowialy - widowed
-monogamia - monogamy
-trudny - tricky
-pojecie - concept
-koncowka (np. do odkurzacza) - attachment
-pufa - ottoman
-rozlozyc (np. rzeczy na stole) - fan out
-wykreslic - scratch out
-mierzyc - measuring
-nieosiagalny - unattainable (anateinabl)
-niepokojacy - disturbing (disterbing)
-przepuscic (np. okazje) - blow
-gowniane - crappy
-okazja - shot
-rozrzucac - strew (stru)
-mimochodem - casually
-nieostrozny - reckless
-przypadek, los szczescia - haphazard
-maniera - manner
-udowadniac - prove
-nie uczciwe - unfair
-zapuszczony - raggedy (ragedi)
-czubek - kook
-dziewczyna - gal
-wariat - madcap
-sklep spozywczy - grocery
-podkladka pod kubek - coaster
-kropla - bead (bid)
-posuwac sie wolno - inching
-zmagac sie, borykac sie - strugle
-krem nawilzajacy - moisturizer (moistszeraizer)
-gniew - resentment (rizentment)
-szorowac - scrub
-szlafrok - robe
-zasmucony - upset
-zalowac - regret
-spelniona/y - fulfilled
-zobowiazany - obligated
-zbierac lzy w oczach ze szczescia - well up
+wykrzyknik # exclamation point
+bez obaw # no fear
+zauważyć, zdawać sobie sprawe # notice
+śmierć # doom
+zauważyć # point out
+odnawiać asortyment # restock
+alkohol, gorzała # booze
+dostrzeć # spot
+nieuchronny # impending
+penis no. 1 # dinkle
+penis no. 2 # schwang
+dźwięczenie # tinkle
+wieszać # hang
+zgwałcony (o umyśle) # violated
+ściągać coś z siebie # peel off
+pierwszy krok # opening line
+świadomy (czegoś) # aware of
+biletowy (w teatrze) # usher
+namiętność # passion
+ledwo # barely
+owdowialy # widowed
+monogamia # monogamy
+trudny # tricky
+pojęcie # concept
+końcówka (np. do odkurzacza) # attachment
+pufa # ottoman
+rozłożyć (np. rzeczy na stole) # fan out
+wykreślić # scratch out
+mierzyć # measure
+nieosiągalny # unattainable
+niepokojący # disturbing
+przepuścić (np. okazje) # blow
+gówniane # crappy
+okazja # shot
+rozrzucać # strew
+mimochodem # casually
+nieostrożny # reckless
+przypadek, los szczescia # haphazard
+maniera # manner
+udowadniać # prove
+nieuczciwe # unfair
+zapuszczony # raggedy
+czubek # kook
+dziewczyna # gal
+wariat # madcap
+sklep spożywczy # grocery
+podkładka pod kubek # coaster
+kropla # bead
+posuwać sie wolno # inching
+zmagać sie, borykać się # strugle
+krem nawilżający # moisturizer
+gniew # resentment
+szorować # scrub
+szlafrok # robe
+zasmucony # upset
+żałować # regret
+spelniony # fulfilled
+zobowiązany # obligated
+zbierać łzy w oczach ze szczęścia # well up
