@@ -1,38 +1,40 @@
-odwodniony - dyhydrated
-kluski, makaron - noodles
-odblaskowy - fluorescent
-wspolzalezny - co-dependent
-spuscic (do toalety) - flush (something) down
-wpatrywac sie (w cycki) - taking to
-niejasny - vaque
-piszczec - beep
-jak sie ona ma? - how is she doing?
-to zajmie godziny - it is matter of hours
-wibracja (np. pozytywna) - (good) vibe
-temperowac (olowek) - sharpen
-temperowka - sharpener
-zwloki - worm-food
-trumna - casket
-aparat na zeby - retainer (USA), brace (GB)
-pochowany - buried
-o rany! - gee!
-przewidywalne - predictable
-szkoda - shame
-co za szkoda - what a shame!, what a pity!
-lista plac - payroll
-wiecznosc - eternity
-damski garnitur - pantsuit
-wino z francji - burgundy
-obcas, pieta - heel (long e)
-wzgorze - hill (short i)
-cecha - feature
-kochanie - sweetheart
-plaszcz - overcoat
-wybitnie - remarkably
-zobacz to - check it out
-skurcz - spasm
-szlufka - belt loop
-zaburzenie - disability
-potwierdzac - affirm
-radzic sobie - get along
-dorosly - grown-up
+odwodniony # dyhydrated
+kluski, makaron # noodles
+odblaskowy # fluorescent
+wspołzależny # co-dependent
+spuścić (do toalety) # flush down
+wpatrywać się (w cycki) # taking to
+niejasny # vaque
+piszczeć # beep
+jak sie ona ma? # how is she doing
+to zajmie godziny # it is matter of hours
+wibracja (np. pozytywna) # vibe
+temperować (ołówek) # sharpen
+temperówka # sharpener
+zwłoki # worm-food
+trumna # casket
+aparat na zęby (USA) # retainer
+aparat na zęby (GB) # brace
+pochowany # buried
+o rany! # gee
+przewidywalne # predictable
+szkoda # shame
+co za szkoda no. 1 # what a shame
+co za szkoda no. 2 # what a pity
+lista plac # payroll
+wieczność # eternity
+damski garnitur # pantsuit
+wino z francji # burgundy
+obcas, pięta # heel
+wzgórze # hill
+cecha # feature
+kochanie # sweetheart
+płaszcz # overcoat
+wybitnie # remarkably
+zobacz to # check it out
+skurcz # spasm
+szlufka # belt loop
+zaburzenie # disability
+potwierdzać # affirm
+radzić sobie # get along
+dorosły # grown-up
