@@ -1,4 +1,4 @@
-płacić z góry # advance
+﻿płacić z góry # advance
 tak jakby # sort of
 począwszy od # as of
 zaczynając # starting from
@@ -51,3 +51,7 @@ wymiotować (Informal no. 2) # gag
 kiła # syphylis
 kiepski # lousy
 racja! # hear
+napiwek # tip
+zebranie wydziałowców # faculty meeting
+znać się na czymś # familiar with
+choroba weneryczna # venereal disease

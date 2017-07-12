@@ -1,52 +1,52 @@
-slodki (o osobie) - precious
-kaplica na statku - bethel
-pewne, niektorzy - certain
-zalosny - pathetic
-balwan - snowman
-sklep - store
-radosny - jolly
-cos obrazliwego, policzek (idiom) - slap in the face
-wspinaczka - scramble
-upuscic - drop
-uklad - pact
-zadanie, postulat - demand
-oczarowac - betwitch
-metodyczny - methodical
-wegiel - coal
-sloik - jar
-lsniacy - luminous
-delikatny - delicate
-wdziek - grace
-odrobina, kapka - smidge
-puscic (o nerwach) - snapped
-drwic - mock
-szpatulka kuchenna - spatulas
-wazny - valid
-facet, gosc - fella
-ludziska - folks
-podskakiwac - hop
-wlec (ciagnac cos z trudem) - drag
-dobra zabawa, ubaw - blast
-a niech to! - blast it!
-zonglowanie - juggling
-zamkniete w kulke - balled-up
-karczoch (rodzaj rosliny) - artichoke
-dieta - diet
-oddawac mocz - urinate
-mielenie - milling
-dogonic (kogos), osiagnac (czyjs) poziom - catch up with (somebody)
-taxi - cab
-portfel - pocketbook
-zablokowac (przeciwnika w grze) - tackle
-krawznik - curb
-sos (do maczania kasek) - dip
-odprawa - check in
-odejsc - get away
-ponownie polaczyc, scalac - reunite
-blask - glitter
-rozedrzec (cos) na strzepy - tearing (something) apart
-prawie - almost
-radosc - joy
-od nas - upon us
-pchla - flea
-porysowany, popekany - cracked
+﻿słodki (o kimś) # precious
+kaplica na statku # bethel
+pewne, niektórzy # certain
+załosny # pathetic
+bałwan # snowman
+sklep # store
+radosny # jolly
+coś obraźliwego, policzek (idiom) # slap in the face
+wspinaczka # scramble
+upuścić # drop
+układ # pact
+zadanie, postulat # demand
+oczarować # betwitch
+metodyczny # methodical
+węgiel # coal
+słoik # jar
+lśniący # luminous
+delikatny # delicate
+wdzięk # grace
+odrobina, kapka # smidge
+puścić (o nerwach) # snapped
+drwić # mock
+szpatułka kuchenna # spatulas
+ważny # valid
+facet, gość # fella
+ludziska # folks
+podskakiwać # hop
+wlec (ciągnąć coś z trudem) # drag
+dobra zabawa, ubaw # blast
+a niech to! # blast it
+żonglowanie # juggling
+zamknięte w kulke # balled-up
+karczoch (rodzaj rośliny) # artichoke
+dieta # diet
+oddawać mocz # urinate
+mielenie # milling
+dogonić (kogoś), osiagnąć (czyjś) poziom # catch up with
+taxi # cab
+portfel # pocketbook
+zablokować (przeciwnika w grze) # tackle
+krawężnik # curb
+sos (do maczania kąsek) # dip
+odprawa # check in
+odejść # get away
+ponownie połączyć, scalać # reunite
+blask # glitter
+rozedrzeć (coś) na strzępy # tear apart
+prawie # almost
+radość # joy
+od nas # upon us
+pchła # flea
+porysowany, popękany # cracked
