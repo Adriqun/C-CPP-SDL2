@@ -1,0 +1,24 @@
+#include <iostream>
+#include <fstream>
+#include <cstdlib>
+using namespace std;
+fstream plik;
+float linia;
+void g(string a);
+int main()
+{   while (true)
+{
+    cout<<"Wpisz dane: ";
+    cin>>linia;
+    getchar(); getchar();
+}
+    cin>>linia;
+    plik.open("liczby.txt", ios::out|ios::app);
+    plik<<endl<<linia<<endl;
+    plik.close();
+    return 0;
+}
+void g(string a)
+{
+a="Witaj w programie, ";
+}

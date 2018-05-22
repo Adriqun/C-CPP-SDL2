@@ -1,0 +1,4 @@
+C:\Users\Lenovo1\Documents\Projects\Zmienne\Zmienne\bin\Debug\Zmienne.exe
+C:\Users\Lenovo1\Documents\Projects\Zmienne\Zmienne\bin\Debug\Zmienne.pdb
+C:\Users\Lenovo1\Documents\Projects\Zmienne\Zmienne\obj\x86\Debug\Zmienne.exe
+C:\Users\Lenovo1\Documents\Projects\Zmienne\Zmienne\obj\x86\Debug\Zmienne.pdb
