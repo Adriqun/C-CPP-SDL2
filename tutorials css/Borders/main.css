@@ -1,0 +1,66 @@
+p.dotted
+{
+	border-style: dotted;
+	border-width: 5px;
+}
+
+
+p.dashed {
+	border-style: dashed;
+	border-width: medium;
+}
+
+p.solid {
+	border-style: solid;
+	border-width: 2px 10px 4px 20px;
+}
+
+
+
+p.double
+{
+	border-style: double;
+	border-left: 7px solid red;
+	background-color: lightgray;
+}
+
+p.groove
+{
+	border-style: groove;
+	border-radius: 10px; /* zaokraglanie */
+}
+
+p.ridge
+{
+	border-style: ridge;
+}
+
+
+
+p.inset
+{
+	border-style: inset;
+}
+
+p.outset
+{
+	border-style: outset;
+}
+
+p.none
+{
+	border-style: none;
+}
+
+
+
+
+p.hidden
+{
+	border-style: hidden;
+}
+
+p.mix
+{
+	border-style: dotted dashed solid double;
+}

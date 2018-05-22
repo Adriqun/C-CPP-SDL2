@@ -1,0 +1,19 @@
+body
+{
+	background-color: linen;
+}
+
+@font-face
+{
+	font-family: adventure;
+	src: url( Adventure.otf );
+}
+
+h1.h1
+{
+	color: navy;
+	margin-left: 30px;
+	font-family: adventure;
+	text-align: center;
+	font-size: 400%;
+}
