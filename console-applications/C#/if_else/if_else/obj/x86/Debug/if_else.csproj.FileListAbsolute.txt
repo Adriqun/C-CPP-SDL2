@@ -1,4 +1,0 @@
-C:\Users\Lenovo1\Documents\Projects\if_else\if_else\bin\Debug\if_else.exe
-C:\Users\Lenovo1\Documents\Projects\if_else\if_else\bin\Debug\if_else.pdb
-C:\Users\Lenovo1\Documents\Projects\if_else\if_else\obj\x86\Debug\if_else.exe
-C:\Users\Lenovo1\Documents\Projects\if_else\if_else\obj\x86\Debug\if_else.pdb

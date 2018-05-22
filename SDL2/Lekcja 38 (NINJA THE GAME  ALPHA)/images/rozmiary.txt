@@ -1,5 +1,0 @@
-champion w = 88 h = 88 1-4 ruch, 5 - postac stoi, 6 - skok, 7 - atak, 8 - smierc
-mon1 w = 50 h = 40 1-5 ruch, 6-8 atak, 9-13 smierc
-mon2 w = 64 h = 64 1-4 postac stoi, 5-8 ruch, 9-13 atak, 14-20 smierc, 21-26 zmiana w czache
-mon3 w = 64 h = 64 1-5 ruch, 6-10 atak, 11-18 smierc
-medals 330x413

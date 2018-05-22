@@ -1,4 +1,0 @@
-C:\Users\Lenovo1\Documents\Projects\petle\petle\bin\Debug\petle.exe
-C:\Users\Lenovo1\Documents\Projects\petle\petle\bin\Debug\petle.pdb
-C:\Users\Lenovo1\Documents\Projects\petle\petle\obj\x86\Debug\petle.exe
-C:\Users\Lenovo1\Documents\Projects\petle\petle\obj\x86\Debug\petle.pdb

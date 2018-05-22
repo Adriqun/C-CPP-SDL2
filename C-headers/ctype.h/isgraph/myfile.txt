@@ -1,3 +1,0 @@
-wczytuje 
-dane 
-z pliku
