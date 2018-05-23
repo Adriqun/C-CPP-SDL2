@@ -1,0 +1,20 @@
+Lubisz placki?
+tak
+nie
+a
+lubisz czekolade?
+tak
+nie
+a
+jesz brukiew?
+ssam
+sram
+b
+What do you to do to became that person?
+Do small things every day
+Have a big idea about life
+a
+Jaki jest najlepszy jezyk na start?
+java
+c++
+b
