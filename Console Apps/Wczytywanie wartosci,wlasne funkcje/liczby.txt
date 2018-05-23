@@ -1,4 +1,0 @@
-
-1. Temperatura w stopniach Celcjusza: 1
-Temperatura w stopniach Kelwina: -272.15
-Temperatura w stopniach Fahrenheita: 33.8
