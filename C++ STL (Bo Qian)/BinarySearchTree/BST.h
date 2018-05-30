@@ -6,7 +6,6 @@ struct Node {
 	Node* right;
 
 	Node(int key = 0);
-	~Node();
 };
 
 class BST {
@@ -23,6 +22,7 @@ class BST {
 	void removePrivate(int key, Node* node);
 	void removeRoot();
 	void removeMatch(Node* parent, Node* match, bool left);
+	void free(Node* node);
 
 public:
 	BST();

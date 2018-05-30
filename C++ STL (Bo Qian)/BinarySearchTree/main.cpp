@@ -14,8 +14,8 @@ int main()
 		tree->add(treeKeys[i]);
 	}
 
-	tree->remove(2);
-	// tree->printChildren(50);
+	tree->remove(50);
+	tree->printChildren(50);
 	tree->print();
 	std::cout << std::endl  << "Smallest: " << *tree->getSmallest() << std::endl;
 	std::cout << "Greatest: " << *tree->getGreatest() << std::endl;

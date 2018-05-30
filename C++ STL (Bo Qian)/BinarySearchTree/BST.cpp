@@ -8,21 +8,6 @@ Node::Node(int key)
 	right = nullptr;
 }
 
-Node::~Node()
-{
-	if (left != nullptr)
-	{
-		delete left;
-		left = nullptr;
-	}
-
-	if (right != nullptr)
-	{
-		delete right;
-		right = nullptr;
-	}
-}
-
 
 
 BST::BST()
@@ -33,12 +18,14 @@ BST::BST()
 
 BST::~BST()
 {
-	if (!empty())
+	/*if (!empty())
 	{
-		_size = 0;
 		delete root;
 		root = nullptr;
-	}
+	}*/
+
+	_size = 0;
+	free(root);
 }
 
 int BST::size()
@@ -295,8 +282,8 @@ void BST::removeMatch(Node* parent, Node* match, bool left)
 	if (match->left == nullptr && match->right == nullptr)
 	{
 		--_size;
-		std::cout << "hehe1";
 		left ? parent->left = nullptr : parent->right = nullptr;
+		match = nullptr;
 		delete delNode;
 	}
 
@@ -305,20 +292,35 @@ void BST::removeMatch(Node* parent, Node* match, bool left)
 	{
 		--_size;
 		left ? parent->left = match->right : parent->right = match->right;
+		match->right = nullptr;
+		match = nullptr;
 		delete delNode;
 	}
 	else if (match->left != nullptr && match->right == nullptr)
 	{
 		--_size;
 		left ? parent->left = match->left : parent->right = match->left;
+		match->left = nullptr;
+		match = nullptr;
 		delete delNode;
 	}
 
 	// 2 children.
 	else
 	{
-		int* smallest = findSmallest(match);
-		removePrivate(*smallest, match);
-		match->key = *smallest;
+		int smallest = *findSmallest(match->right);
+		removePrivate(smallest, match);
+		match->key = smallest;
+	}
+}
+
+void BST::free(Node* node)
+{
+	if (node != nullptr)
+	{
+		if (node->left != nullptr)	free(node->left);
+		if (node->right != nullptr)	free(node->right);
+
+		delete node;
 	}
 }
