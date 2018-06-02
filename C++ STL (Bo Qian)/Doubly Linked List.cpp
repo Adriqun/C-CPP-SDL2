@@ -31,7 +31,7 @@ public:
 
 	Node* &begin();
 	Node* &end();
-	void swap(List* list);
+	void swap(List* &list);
 };
 
 
@@ -230,7 +230,7 @@ Node* &List::end()
 	return tail;
 }
 
-void List::swap(List* list)
+void List::swap(List* &list)
 {
 	Node* head_supp = head;
 	Node* tail_supp = tail;
