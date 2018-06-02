@@ -24,7 +24,8 @@ public:
 	void add(int data);
 	void remove(int data);
 
-	Node* head();
+	Node* &head();
+	void swap(List* &list);
 	void print();
 };
 
@@ -44,19 +45,26 @@ int main()
 	list->print();
 	std::cout << std::endl;
 
-	std::cout << "2.\n";
-	list->remove(31);
-	list->print();
-	std::cout << std::endl;
-
-	std::cout << "3.\n";
-	list->remove(15);
-	list->remove(9);
-	list->print();
-	std::cout << std::endl;
+	// Test.
+	List* list2 = new List;
+	list2->swap(list);
 
 	delete list;
 	list = nullptr;
+
+	std::cout << "2.\n";
+	list2->remove(31);
+	list2->print();
+	std::cout << std::endl;
+
+	std::cout << "3.\n";
+	list2->remove(15);
+	list2->remove(9);
+	list2->print();
+	std::cout << std::endl;
+
+	delete list2;
+	list2 = nullptr;
 
 	return 0;
 }
@@ -149,7 +157,7 @@ void List::remove(int data)
 		--_size;
 		Node* delNode = node;
 		previous->next = node->next;
-		
+
 		if (node == _head)
 		{
 			_head = _head->next;
@@ -159,9 +167,16 @@ void List::remove(int data)
 	}
 }
 
-Node* List::head()
+Node* &List::head()
 {
 	return _head;
+}
+
+void List::swap(List* &list)
+{
+	Node* supp = _head;
+	_head = list->head();
+	list->head() = supp;
 }
 
 void List::print()
