@@ -7,5 +7,5 @@ The best idea to see PNG to ASCII converter in action is to set font that has th
 To have own limit of chars in a row and in a column you have to run exe like: PNG_TO_ASCII "full_path_to_png" "your_limit".<br/>
 
 ## Download
-[PNG_TO_ASCII](https://drive.google.com/uc?authuser=0&id=1RN5Wyd6PGM3IUt9pVyO0V3yhBySUyLNn&export=download)<br/>
+[PNG_TO_ASCII](https://drive.google.com/uc?authuser=0&id=1QfaoqnLM64MaOgIRCW4xiRHxB3UKUzts&export=download)<br/>
 [Font](https://dl.dafont.com/dl/?f=futurist_fixed_width)
