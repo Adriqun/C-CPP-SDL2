@@ -1,0 +1,1 @@
+TYPE CON > output.txt
