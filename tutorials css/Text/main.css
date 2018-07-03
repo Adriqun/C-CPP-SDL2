@@ -1,0 +1,37 @@
+body
+{
+	color: blue;
+}
+
+
+h1
+{
+	color: green;
+	text-align: center;
+}
+
+
+h2
+{
+	color: green;
+	text-align: left;
+}
+
+h3
+{
+	color: green;
+	text-align: right;
+}
+
+div
+{
+	text-align: justify;
+}
+
+a
+{
+	text-decoration: none;
+}
+
+
+

@@ -1,0 +1,24 @@
+h1
+{
+	color: #770101;
+	font-size: 300%;
+	font-family: verdana;
+}
+
+p.error
+{
+	font-family: courier;
+	border: 10px solid white;
+	padding: 30px;
+	margin: 50px;
+}
+
+#p01
+{
+	color: yellow;
+}
+
+body
+{
+	background-color: powderblue;
+}
