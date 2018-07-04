@@ -1,0 +1,39 @@
+body {
+    background-image: url("assets/bg.png");
+    background-repeat: repeat;
+}
+
+@font-face {
+    font-family: 'coolvetica'; /*a name to be used later*/
+    src: url('assets/coolvetica rg.ttf'); /*URL to font*/
+}
+
+.own_font_header {
+	font-family: coolvetica;
+	font-size: 125% !important;
+}
+
+h1.title {
+	font-family: coolvetica;
+	font-size: 450%;
+	color: #CE5A57;
+}
+
+.content {
+	margin-right: 15px;
+	margin-left: 15px;
+}
+
+.own_font_stuff {
+	font-family: coolvetica;
+	font-size: 115% !important;
+}
+
+.own_font {
+	font-family: coolvetica;
+}
+
+body.pushable >.pusher {
+	background-image: url("assets/bg.png");
+	background-repeat: repeat;
+}
