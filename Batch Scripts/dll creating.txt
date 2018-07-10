@@ -1,0 +1,34 @@
+#1 - This one works on WIN32.
+Create c file "file.c" and "mainfile.c"
+file.cpp would be our dll, mainfile.c would be simply main file that loads dll.
+
+mainfile.c contains:
+#include <stdlib.h>
+#include <stdio.h>
+
+__declspec(dllimport) int __cdecl Add(int a, int b);
+
+int main(int argc, char** argv)
+{
+  printf("%d\n", Add(6, 23));
+
+  return EXIT_SUCCESS;
+}
+
+file.c contains:
+__declspec(dllexport) int __cdecl Add(int a, int b)
+{
+  return (a + b);
+}
+
+Call "..\..\Release\mingw\bin\gcc -c -o file.o file.c"
+Call "..\..\Release\mingw\bin\gcc -o file.dll -s -shared file.o -Wl,--subsystem,windows"
+Call "..\..\Release\mingw\bin\gcc -c -o mainfile.o mainfile.c"
+Call "..\..\Release\mingw\bin\gcc -o mainfile.exe -s mainfile.o -L. -lfile"
+
+
+
+
+#2 - Another method but I did not plunge into it (probably linux stuff).
+Call "..\..\Release\mingw\bin\gcc -c -o file.o file.cpp
+Call "ar rcs file.dll file.o"
