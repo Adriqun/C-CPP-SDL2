@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=C:\Users\adriqun\Documents\Xilinx\hello_world\hello.ncd
+OUTFILE=C:\Users\adriqun\Documents\Xilinx\hello_world\hello.bit
+FAMILY=Spartan3A and Spartan3AN
+PART=xc3s50a-5tq144
+WORKINGDIR=C:\Users\adriqun\Documents\Xilinx\hello_world
+LICENSE=WebPack
+USER_INFO=211609511_0_0_958

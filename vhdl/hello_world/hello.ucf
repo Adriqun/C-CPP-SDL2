@@ -1,0 +1,22 @@
+CONFIG VCCAUX = "3.3" ;
+ 
+# Clock 12 MHz
+NET "Clk"                  LOC = P129  | IOSTANDARD = LVCMOS33 | PERIOD = 12MHz;
+ 
+NET "LED[0]"             LOC = P46   | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 12;
+NET "LED[1]"             LOC = P47   | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 12;
+NET "LED[2]"             LOC = P48   | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 12;
+NET "LED[3]"             LOC = P49   | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 12;
+NET "LED[4]"             LOC = P50   | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 12;
+NET "LED[5]"             LOC = P51   | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 12;
+NET "LED[6]"             LOC = P54   | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 12;
+NET "LED[7]"             LOC = P55   | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 12;
+
+// NET - connection
+// LOC - location, number of pin (from documentation)
+// IOSTANDARD - voltage standard, that's 3.3V
+// PERIOD - frequency, matters only while declaring signal
+// DRIVE - current capability (in mA) for particular pin
+// SLEW - ability of changing the state from 0 to 1 and so on (how fast)
+// - in this project the velocity is not valid so it is set as SLOW
+// higher SLEW RATE means more interferences

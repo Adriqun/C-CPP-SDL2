@@ -1,0 +1,7 @@
+V3 3
+FL C:/Users/adriqun/Documents/Xilinx/hello_world/hello.vhd 2018/10/11.21:08:33 P.20131013
+EN work/hello 1539284916 \
+      FL C:/Users/adriqun/Documents/Xilinx/hello_world/hello.vhd \
+      PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181
+AR work/hello/Behavioral 1539284917 \
+      FL C:/Users/adriqun/Documents/Xilinx/hello_world/hello.vhd EN work/hello 1539284916

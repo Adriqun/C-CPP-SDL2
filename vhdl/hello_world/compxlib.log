@@ -1,0 +1,54 @@
+    ____  ____
+   /   /\/   /
+  /___/  \  /    VENDOR      : Xilinx Inc.
+  \   \   \/     VERSION     : 14.7 (P.20131013)
+   \   \         APPLICATION : C:\Users\adriqun\FPGA\xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\compxlib.exe
+   /   /         CONTENTS    : Compilation Log
+  /___/   /\     FILENAME    : compxlib.log
+  \   \  /  \    
+   \___\/\___\
+
+Release 14.7 - C:\Users\adriqun\FPGA\xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\compxlib.exe 14.7 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+Processing command line ...
+Library Source Paths => 'C:/Users/adriqun/FPGA/xilinx/14.7/ISE_DS/ISE'
+Current Working Directory => 'C:\Users\adriqun\Documents\Xilinx\hello_world'
+Compilation Mode = FAST
+Execute Mode = ON
+Scheduling library installation & compilation for architectures: spartan3a
+
+Scheduling library installation & compilation for libraries: simprim unisim xilinxcorelib edk
+
+Signature:-
+------------------------------------------------------------------------------
+C:\Users\adriqun\FPGA\xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\compxlib.exe -s mti_pe -l all -arch spartan3a -lib unisim -lib simprim -lib xilinxcorelib -lib edk -exclude_superseded -intstyle ise 
+------------------------------------------------------------------------------
+ERROR:Compxlib - COMPXLIB[sim]: Unable to automatically find executables for simulator 'mti_pe' from the following paths:
+    C:\Users\adriqun\FPGA\xilinx\14.7\ISE_DS\ISE\\lib\nt64
+   C:\Users\adriqun\FPGA\xilinx\14.7\ISE_DS\ISE\\bin\nt64
+   C:\Users\adriqun\FPGA\xilinx\14.7\ISE_DS\ISE\bin\nt64
+   C:\Users\adriqun\FPGA\xilinx\14.7\ISE_DS\ISE\lib\nt64
+   C:\Users\adriqun\FPGA\xilinx\14.7\ISE_DS\ISE\..\..\..\DocNav
+   C:\Users\adriqun\FPGA\xilinx\14.7\ISE_DS\PlanAhead\bin
+   C:\Users\adriqun\FPGA\xilinx\14.7\ISE_DS\EDK\bin\nt64
+   C:\Users\adriqun\FPGA\xilinx\14.7\ISE_DS\EDK\lib\nt64
+   C:\Users\adriqun\FPGA\xilinx\14.7\ISE_DS\EDK\gnu\microblaze\nt\bin
+   C:\Users\adriqun\FPGA\xilinx\14.7\ISE_DS\EDK\gnu\powerpc-eabi\nt\bin
+   C:\Users\adriqun\FPGA\xilinx\14.7\ISE_DS\EDK\gnuwin\bin
+   C:\Users\adriqun\FPGA\xilinx\14.7\ISE_DS\EDK\gnu\arm\nt\bin
+   C:\Users\adriqun\FPGA\xilinx\14.7\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt64_be\bin
+   C:\Users\adriqun\FPGA\xilinx\14.7\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt64_le\bin
+   C:\Users\adriqun\FPGA\xilinx\14.7\ISE_DS\common\bin\nt64
+   C:\Users\adriqun\FPGA\xilinx\14.7\ISE_DS\common\lib\nt64
+   C:\Program Files (x86)\Common Files\Oracle\Java\javapath
+   C:\ProgramData\Oracle\Java\javapath
+   C:\Windows\system32
+   C:\Windows
+   C:\Windows\System32\Wbem
+   C:\Windows\System32\WindowsPowerShell\v1.0\
+   C:\Program Files (x86)\GtkSharp\2.12\bin
+   C:\Program Files\TortoiseSVN\bin\
+   C:\Program Files\CMake\bin
+   C:\Users\adriqun\AppData\Local\GitHubDesktop\bin.
+Simulator 'mti_pe' is ignored.
