@@ -15,7 +15,7 @@
 
 // # EXAMPLE 3
 #include "boost/accumulators/statistics/tail.hpp"
-#include "boost/bind.hpp""
+#include "boost/bind.hpp"
 #include "boost/ref.hpp"
 
 // # EXAMPLE 5
