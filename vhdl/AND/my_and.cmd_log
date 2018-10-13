@@ -1,0 +1,8 @@
+xst -intstyle ise -ifn "C:/Users/adriqun/Documents/Xilinx/AND/my_and.xst" -ofn "C:/Users/adriqun/Documents/Xilinx/AND/my_and.syr" 
+xst -intstyle ise -ifn "C:/Users/adriqun/Documents/Xilinx/AND/my_and.xst" -ofn "C:/Users/adriqun/Documents/Xilinx/AND/my_and.syr" 
+xst -intstyle ise -ifn "C:/Users/adriqun/Documents/Xilinx/AND/my_and.xst" -ofn "C:/Users/adriqun/Documents/Xilinx/AND/my_and.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc my_and.ucf -p xc3s50a-tq144-5 my_and.ngc my_and.ngd  
+map -intstyle ise -p xc3s50a-tq144-5 -cm area -ir off -pr off -c 100 -o my_and_map.ncd my_and.ngd my_and.pcf 
+par -w -intstyle ise -ol high -t 1 my_and_map.ncd my_and.ncd my_and.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml my_and.twx my_and.ncd -o my_and.twr my_and.pcf -ucf my_and.ucf 
+bitgen -intstyle ise -f my_and.ut my_and.ncd 

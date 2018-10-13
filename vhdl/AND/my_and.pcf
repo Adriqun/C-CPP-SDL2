@@ -1,0 +1,10 @@
+//! **************************************************************************
+// Written by: Map P.20131013 on Fri Oct 12 22:59:02 2018
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "LED<0>" LOCATE = SITE "P46" LEVEL 1;
+COMP "switch<0>" LOCATE = SITE "P80" LEVEL 1;
+COMP "switch<1>" LOCATE = SITE "P79" LEVEL 1;
+SCHEMATIC END;
+
