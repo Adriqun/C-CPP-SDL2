@@ -1,9 +1,0 @@
-xst -intstyle ise -ifn "C:/Users/adriqun/Documents/Xilinx/hello_world/hello.xst" -ofn "C:/Users/adriqun/Documents/Xilinx/hello_world/hello.syr" 
-xst -intstyle ise -ifn "C:/Users/adriqun/Documents/Xilinx/hello_world/hello.xst" -ofn "C:/Users/adriqun/Documents/Xilinx/hello_world/hello.syr" 
-xst -intstyle ise -ifn "C:/Users/adriqun/Documents/Xilinx/hello_world/hello.xst" -ofn "C:/Users/adriqun/Documents/Xilinx/hello_world/hello.syr" 
-xst -intstyle ise -ifn "C:/Users/adriqun/Documents/Xilinx/hello_world/hello.xst" -ofn "C:/Users/adriqun/Documents/Xilinx/hello_world/hello.syr" 
-ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc hello.ucf -p xc3s50a-tq144-5 hello.ngc hello.ngd  
-map -intstyle ise -p xc3s50a-tq144-5 -cm area -ir off -pr off -c 100 -o hello_map.ncd hello.ngd hello.pcf 
-par -w -intstyle ise -ol high -t 1 hello_map.ncd hello.ncd hello.pcf 
-trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml hello.twx hello.ncd -o hello.twr hello.pcf -ucf hello.ucf 
-bitgen -intstyle ise -f hello.ut hello.ncd 

@@ -1,8 +1,0 @@
-INTSTYLE=ise
-INFILE=C:\Users\adriqun\Documents\Xilinx\AND\my_and.ncd
-OUTFILE=C:\Users\adriqun\Documents\Xilinx\AND\my_and.bit
-FAMILY=Spartan3A and Spartan3AN
-PART=xc3s50a-5tq144
-WORKINGDIR=C:\Users\adriqun\Documents\Xilinx\AND
-LICENSE=WebPack
-USER_INFO=211609511_0_0_958
