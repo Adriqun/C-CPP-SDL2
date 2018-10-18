@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{CE45E7D6-8081-4661-81A0-581F6A1B3F44}</ProjectGuid>
+    <RootNamespace>LightSystem</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>../SFML/include;../boost</AdditionalIncludeDirectories>
+      <TreatWarningAsError>true</TreatWarningAsError>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>../SFML/lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-audio-d.lib;sfml-network-d.lib;sfml-system-d.lib;sfml-main-d.lib;freetype.lib;opengl32.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="ls\aabb.cpp" />
+    <ClCompile Include="ls\color3f.cpp" />
+    <ClCompile Include="ls\convexHull.cpp" />
+    <ClCompile Include="ls\emissivelight.cpp" />
+    <ClCompile Include="ls\light.cpp" />
+    <ClCompile Include="ls\lightpoint.cpp" />
+    <ClCompile Include="ls\lightsystem.cpp" />
+    <ClCompile Include="ls\point2i.cpp" />
+    <ClCompile Include="ls\quadtree.cpp" />
+    <ClCompile Include="ls\quadtreenode.cpp" />
+    <ClCompile Include="ls\quadtreeoccupant.cpp" />
+    <ClCompile Include="ls\shadowfin.cpp" />
+    <ClCompile Include="ls\staticquadtree.cpp" />
+    <ClCompile Include="ls\vec2f.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ls\aabb.h" />
+    <ClInclude Include="ls\color3f.h" />
+    <ClInclude Include="ls\constructs.h" />
+    <ClInclude Include="ls\convexHull.h" />
+    <ClInclude Include="ls\emissivelight.h" />
+    <ClInclude Include="ls\light.h" />
+    <ClInclude Include="ls\lightpoint.h" />
+    <ClInclude Include="ls\lightsystem.h" />
+    <ClInclude Include="ls\point2i.h" />
+    <ClInclude Include="ls\quadtree.h" />
+    <ClInclude Include="ls\quadtreenode.h" />
+    <ClInclude Include="ls\quadtreeoccupant.h" />
+    <ClInclude Include="ls\shadowfin.h" />
+    <ClInclude Include="ls\staticquadtree.h" />
+    <ClInclude Include="ls\utils.h" />
+    <ClInclude Include="ls\vec2f.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

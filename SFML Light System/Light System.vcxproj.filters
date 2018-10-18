@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="ls\aabb.cpp">
+      <Filter>ls</Filter>
+    </ClCompile>
+    <ClCompile Include="ls\color3f.cpp">
+      <Filter>ls</Filter>
+    </ClCompile>
+    <ClCompile Include="ls\convexHull.cpp">
+      <Filter>ls</Filter>
+    </ClCompile>
+    <ClCompile Include="ls\emissivelight.cpp">
+      <Filter>ls</Filter>
+    </ClCompile>
+    <ClCompile Include="ls\light.cpp">
+      <Filter>ls</Filter>
+    </ClCompile>
+    <ClCompile Include="ls\lightpoint.cpp">
+      <Filter>ls</Filter>
+    </ClCompile>
+    <ClCompile Include="ls\lightsystem.cpp">
+      <Filter>ls</Filter>
+    </ClCompile>
+    <ClCompile Include="ls\point2i.cpp">
+      <Filter>ls</Filter>
+    </ClCompile>
+    <ClCompile Include="ls\quadtree.cpp">
+      <Filter>ls</Filter>
+    </ClCompile>
+    <ClCompile Include="ls\quadtreenode.cpp">
+      <Filter>ls</Filter>
+    </ClCompile>
+    <ClCompile Include="ls\quadtreeoccupant.cpp">
+      <Filter>ls</Filter>
+    </ClCompile>
+    <ClCompile Include="ls\shadowfin.cpp">
+      <Filter>ls</Filter>
+    </ClCompile>
+    <ClCompile Include="ls\staticquadtree.cpp">
+      <Filter>ls</Filter>
+    </ClCompile>
+    <ClCompile Include="ls\vec2f.cpp">
+      <Filter>ls</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="ls">
+      <UniqueIdentifier>{a7252b5a-9930-47b0-8fa1-d6c1f7709e39}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ls\aabb.h">
+      <Filter>ls</Filter>
+    </ClInclude>
+    <ClInclude Include="ls\color3f.h">
+      <Filter>ls</Filter>
+    </ClInclude>
+    <ClInclude Include="ls\constructs.h">
+      <Filter>ls</Filter>
+    </ClInclude>
+    <ClInclude Include="ls\convexHull.h">
+      <Filter>ls</Filter>
+    </ClInclude>
+    <ClInclude Include="ls\emissivelight.h">
+      <Filter>ls</Filter>
+    </ClInclude>
+    <ClInclude Include="ls\light.h">
+      <Filter>ls</Filter>
+    </ClInclude>
+    <ClInclude Include="ls\lightpoint.h">
+      <Filter>ls</Filter>
+    </ClInclude>
+    <ClInclude Include="ls\lightsystem.h">
+      <Filter>ls</Filter>
+    </ClInclude>
+    <ClInclude Include="ls\point2i.h">
+      <Filter>ls</Filter>
+    </ClInclude>
+    <ClInclude Include="ls\quadtree.h">
+      <Filter>ls</Filter>
+    </ClInclude>
+    <ClInclude Include="ls\quadtreenode.h">
+      <Filter>ls</Filter>
+    </ClInclude>
+    <ClInclude Include="ls\quadtreeoccupant.h">
+      <Filter>ls</Filter>
+    </ClInclude>
+    <ClInclude Include="ls\shadowfin.h">
+      <Filter>ls</Filter>
+    </ClInclude>
+    <ClInclude Include="ls\staticquadtree.h">
+      <Filter>ls</Filter>
+    </ClInclude>
+    <ClInclude Include="ls\utils.h">
+      <Filter>ls</Filter>
+    </ClInclude>
+    <ClInclude Include="ls\vec2f.h">
+      <Filter>ls</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
