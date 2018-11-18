@@ -26,7 +26,11 @@ interface
 	procedure printAutoArray(const auto : TAutoArray);
     procedure saveToFile(const auto : TAutoArray);
 	function exists(filename : string) : boolean;
-	function readFromFile(const auto : TAutoArray; filename : string) : boolean;
+	function readFromFile(var auto : TAutoArray; filename : string; howMany : integer) : boolean;
+	procedure swap(var a1, a2 : TAuto);
+	procedure bubblesort(var showroom : TAutoArray);
+	procedure replace(var oldAuto : TAuto; newAuto : TAuto);
+	procedure sort(var showroom : TAutoArray);
 
 implementation
 	procedure fill();
@@ -50,7 +54,7 @@ implementation
 			capacities[3] := 3.0;
 			capacities[4] := 1.9;
 		end;
-		
+
 	function getAuto(const color, brand : string; const capacity : real) : TAuto;
 		var newAuto : TAuto;
 		begin
@@ -99,7 +103,7 @@ implementation
 	procedure saveToFile(const auto : TAutoArray);
 		var i : integer; ffile : File of TAuto;
 		begin
-			assign(ffile, 'car showroom.dat');
+			assign(ffile, 'carshowroom.dat');
 			rewrite(ffile);
 			for i := low(auto) to high(auto) do
 				write(ffile, auto[i]);
@@ -117,12 +121,13 @@ implementation
 			exists := (IOResult=0);
 		end;
 
-	function readFromFile(const auto : TAutoArray; filename : string) : boolean;
+	function readFromFile(var auto : TAutoArray; filename : string; howMany : integer) : boolean;
 		var ffile : file of TAuto;
 		var i : integer;
 		begin
 			if exists(filename) then
 			begin
+				SetLength(auto, howMany);
 				assign(ffile, filename);
 				reset(ffile);
 				for i := low(auto) to high(auto) do
@@ -133,5 +138,43 @@ implementation
 			begin
 			readFromFile := false;
 			end;
+		end;
+
+	procedure swap(var a1, a2 : TAuto);
+		var a : TAuto;
+		begin
+			a:=a1;
+			a1:=a2;
+			a2:=a;
+		end;
+
+	procedure bubblesort(var showroom : TAutoArray);
+		var current : TAuto;
+                var i, j : integer;
+		begin
+			for i := low(showroom) to high(showroom) do
+			  begin
+			      for j := low(showroom) to high(showroom) do
+			      begin
+			          if showroom[i].capacity < showroom[j].capacity then
+			          begin
+			             current := showroom[i];
+			             showroom[i] := showroom[j];
+			             showroom[j] := current;
+			          end;
+			      end;
+			  end;
+		end;
+
+	procedure replace(var oldAuto : TAuto; newAuto : TAuto);
+	begin
+		oldAuto.color := newAuto.color;
+		oldAuto.brand := newAuto.brand;
+		oldAuto.capacity := newAuto.capacity;
+	end;
+
+	procedure sort(var showroom : TAutoArray);
+		begin
+			bubblesort(showroom);
 		end;
 end.
