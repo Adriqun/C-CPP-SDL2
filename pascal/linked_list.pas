@@ -1,71 +1,67 @@
 program main;
 
-const MAX = 20;
-type TCar = record
-	brand : string[MAX];
-	color : string[MAX];
-	year : integer;
+type TAuto = record
+	marka : string[20];
+	kolor : string[20];
+	rok : integer;
 end;
 
-
-// every next element is at the beggining
-// [] -> [] -> [] -> list
-PPart = ^Part;
-Part = record
-	data : TCar;
-	prev : PPart;
+PElem = ^Elem;
+Elem = record
+	data : TAuto;
+	poprzedni : PElem;
 end;
 
-procedure getNewCar(var car : TCar);
-	begin
-		readln(car.brand);
-		readln(car.color);
-		readln(car.year);
-	end;
+procedure noweAuto(var auto : TAuto);
+begin
+	readln(auto.marka);
+	readln(auto.kolor);
+	readln(auto.rok);
+end;
 
-procedure push(var list : PPart);
-	var newOne : PPart;
-	begin
-		new(newOne);
-		getNewCar(newOne^.data);
-		newOne^.prev := list;
-		list := newOne;
-	end;
+procedure dodaj(var lista : PElem);
+var nowyEl : PElem;
+begin
+	new(nowyEl);
+	noweAuto(nowyEl^.data);
+	nowyEl^.poprzedni := lista;
+	lista := nowyEl;
+end;
 
-procedure pop(var list : PPart);
-	var buffer : PPart;
-	begin
-		if list = NIL then
-                   exit;
+procedure pop(var lista : PElem);
+var tymczas : PElem;
+begin
+	if lista = NIL then
+               exit;
 
-		buffer := list;			// the element we want to delete
-		list := list^.prev;		// the first one is now second one
-		dispose(buffer);		// delete element
-                buffer := NIL;	// NIL
-	end;
+	tymczas := lista;
+	lista := lista^.poprzedni;
+	dispose(tymczas);
+            tymczas := NIL;
+end;
 
-procedure print(const list : PPart);
-	var buffer : PPart;
+procedure wypisz(const lista : PElem);
+var tymczas : PElem;
+begin
+	tymczas := lista;
+	while tymczas <> NIL do
 	begin
-		buffer := list;
-		while buffer <> NIL do
-		begin
-			writeln('Brand: ', buffer^.data.brand);
-			writeln('Color: ', buffer^.data.color);
-			writeln('Year: ', buffer^.data.year);
-			buffer := buffer^.prev;
-		end;
+		writeln('marka: ', tymczas^.data.marka);
+		writeln('kolor: ', tymczas^.data.kolor);
+		writeln('rok: ', tymczas^.data.rok);
+		tymczas := tymczas^.poprzedni;
 	end;
+end;
 
 // Main.
-var head : PPart = NIL;
+var glowa : PElem = NIL;
 begin
-	push(head);
-	push(head);
-	print(head);
-        writeln('---------------');
-	pop(head);
-	print(head);
-        writeln('---------------');
+dodaj(glowa);
+dodaj(glowa);
+wypisz(glowa);
+writeln('---------------');
+pop(glowa);
+wypisz(glowa);
+writeln('---------------');
 end.
 
