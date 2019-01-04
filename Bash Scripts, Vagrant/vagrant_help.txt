@@ -1,0 +1,56 @@
+VAGRANT COMMON COMMANDS
+
+-- Add new box
+	vagrant box add user/box
+	(e. g. vagrant box add jasonc/centos7)
+
+-- Create vagrant project
+	(mkdir testbox)
+	(cd testbox)
+	vagrant init user/box
+	(vagrant init jasonc/centos7)
+
+-- Create the vm / Start the vm
+	vagrant up
+
+-- Reboot the vm / Reload settings
+	vagrant reload
+
+-- Check if vm is running
+	vagrant status
+
+-- Connect to the vm
+	vagrant ssh
+	(always connected as super user when logged as user or root)
+
+-- Disconnect the vm
+	exit
+
+-- Stop the vm
+	vagrant halt
+
+-- Destroy, start new fresh copy of the vm
+	vagrant destroy
+
+
+
+-- Config vagrant file, examples
+	-- To reload settings use
+		vagrant reload
+	-- Add new settings after this line:
+		vagrant.configure(2) do |config|
+	-- and before:
+		end
+
+	-- Troubleshooting
+		config.vm.provider "virtualbox" do |vb|
+		vb.customize ['modifyvm', :id, '--cableconnected1', 'on']
+
+	-- Change the vm's name
+		config.vm.hostname = "adriqun"
+
+	-- Add private network, e.g. two machines communicating with each other
+		config.vm.network "private_network", ip: "10.9.8.7"
+		(Check the connection by pinging the vm)
+		(Windows cmd - "ping 10.9.8.7")
+		(Linux/Mac cmd - "ping -c 3 10.9.8.7")
