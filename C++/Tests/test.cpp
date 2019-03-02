@@ -1,7 +1,12 @@
+// author: Adrian Michałek
+// email: devmichalek@gmail.com
+
 // const
 // A compile time constraint that an object can no be modified
 
 // 1.1 What is the output of the following code?
+#include <iostream>
+
 void func(int* x)
 {
 	*x = 7;
@@ -22,7 +27,7 @@ int main()
 	return 0;
 }
 
-// 1.2 Add comments next to p1, p2, p3 and p4, what is const in this line?
+// 1.2 Add comments next to p1, p2, p3 and p4, what is const in each line?
 //	   Describe "const" with pointers and objects.
 int main()
 {
@@ -35,6 +40,8 @@ int main()
 }
 
 // 1.3 What is the output (and why) of the following code?
+#include <iostream>
+
 int main()
 {
 	int i = 2;
@@ -45,5 +52,57 @@ int main()
 	const_cast<int&>(ref) = 3;
 	*const_cast<int*>(ptr) = 4;
 
-	cout << i << ' ' << ref << ' ' << *ptr;
+	std::cout << i << ' ' << ref << ' ' << *ptr;
 }
+
+// 1.4 The code below wouldn't compile. Give at least two correct implementations.
+// 	   What is the output (and why) of the following code?
+//	   You can add or delete only one word in each solution.
+#include <stdio.h>
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Dog
+{
+	string name;
+public:
+	Dog() { name = "dummy"; printDogName(); }
+	const string& getName() { return name; }
+
+	void printDogName() const { cout << getName() << " const" << endl; }
+	void printDogName() { cout << getName() << " not const" << endl; }
+};
+
+int main()
+{
+	Dog d1;
+	const Dog d2;
+	d1.printDogName();
+	d2.printDogName();
+	return 0;
+}
+
+// 1.5 Describe the function below:
+	const int* const fun(const int* const& p) const;
+
+// 1.6 Edit the class so that getItem is a const function which returns
+// 	   int, also increments the accessCounter.
+//	   The following code wouldn't compile, repair it. Give two solutions.
+#include <stdio.h>
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class BigArray
+{
+	vector <int> v;
+	int accessCounter;
+
+public:
+	int getItem(int index) const
+	{
+		accessCounter++;
+		return v[index];
+	}
+};

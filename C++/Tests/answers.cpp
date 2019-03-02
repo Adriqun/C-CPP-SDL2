@@ -35,3 +35,36 @@
 	We cannot change the ptr and ref because they are const.
 	We use const_cast to cast away constness of these objects, but
 	these objects points to not const object which can be modified.
+
+
+
+1.4
+	The code wouldn't compile because of:
+	void printDogName() const { cout << getName() << " const" << endl; }
+
+	The function above is const which means variables cannot be modified and
+	it can only invoke const functions.
+
+	1. First solution (change getName() to const function)
+	const string& getName() const { return name; }
+
+	2. Second solution (change invoking getName() function into variable)
+	void printDogName() const { cout << name << " const" << endl; }
+
+	The correct output is:
+	dummy not const
+	dummy not const
+	dummy not const
+	dummy const
+
+1.5
+	The function is const.
+	The function returns constant pointer which points to constant integer.
+	The function parameter is a reference of a constant pointer pointing to constant integer.
+
+1.6
+	First solution is a keyword "mutable"
+	mutable int accessCounter; // This variable is now allowed to be changed in const function
+
+	Second solution is to keep accessCounter as not mutable.
+	const_cast <BigArray*>(this)->accessCounter++; // Cast away
