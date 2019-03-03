@@ -86,8 +86,8 @@ int main()
 // 1.5 Describe the function below:
 	const int* const fun(const int* const& p) const;
 
-// 1.6 Edit the class so that getItem is a const function which returns
-// 	   int, also increments the accessCounter.
+// 1.6 Edit the class so that getItem is a const function that returns v[index]
+// 	   and increments the accessCounter.
 //	   The following code wouldn't compile, repair it. Give two solutions.
 #include <stdio.h>
 #include <iostream>
@@ -96,7 +96,7 @@ using namespace std;
 
 class BigArray
 {
-	vector <int> v;
+	vector<int> v;
 	int accessCounter;
 
 public:
@@ -105,4 +105,84 @@ public:
 		accessCounter++;
 		return v[index];
 	}
+};
+
+// 2.1 Disallow copy constructor in the following code.
+// 	   Give at least two solutions. Do not change/add other behaviours.
+#include <string>
+#include <iostream>
+
+struct Human
+{
+	Human(std::string name) { std::cout << "My name is " << name << std::endl; }
+};
+
+int main(int argc, char **argv)
+{
+	Human h1(std::string("John"));
+	Human h2(h1); // copy constructor shouldn't compile
+	return 0;
+}
+
+
+// 2.2 Keep ~Human() private add mechanism of freeing memory at the same time
+// 	   in the following code. Do not change/add other behaviours.
+#include <string>
+#include <iostream>
+
+class Human
+{
+	~Human() { std::cout << "Goodbye" << std::endl; }
+public:
+	Human(std::string name) { std::cout << "My name is " << name << std::endl; }
+};
+
+int main(int argc, char **argv)
+{
+	Human* of = new Human("name");
+	return 0;
+}
+
+// 2.3 What is the output of the following code?
+#include <string>
+#include <iostream>
+
+struct Cat
+{
+	Cat() { std::cout << "A"; }
+	Cat(std::string str) { std::cout << str; }
+};
+
+struct Dog
+{
+	Dog(std::string str) { std::cout << str; }
+};
+
+int main(int argc, char **argv)
+{
+	Cat c1("B");
+	Dog d1;
+	Cat c2("A");
+	Cat c3;
+	Dog d2("C");
+	return 0;
+}
+
+// 2.4 Change the DogFactory's function createYellowDog() so that there is no
+// 	   need to use virtual keyword in parent class.
+//	   Hint: use shared_ptr.
+#include <memory>
+struct Dog
+{
+	/*virtual*/ ~Dog() {}
+};
+
+struct Yellowdog : public Dog
+{
+	~Yellowdog() {}
+};
+
+struct DogFactory
+{
+	//static Dog* createYellowDog() { return new Yellowdog(); }
 };

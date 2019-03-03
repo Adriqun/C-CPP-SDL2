@@ -68,3 +68,30 @@
 
 	Second solution is to keep accessCounter as not mutable.
 	const_cast <BigArray*>(this)->accessCounter++; // Cast away
+
+2.1
+	First solution (c++11):
+	Human(Human &h) = delete;
+	Second solution (c++03), declare the function to be private, and not define it:
+	private:
+		Human(Human &h);
+
+2.2
+	Private destructors can only be stored on heap, knowing that the only possible way of using
+	class Human is via pointers. By adding public function:
+	void destroyMe() { delete this; }
+	and in the main function:
+	of->destroyMe();
+	We freed the memory correctly.
+
+2.3
+	As long as you define constructor that takes parameters (class Dog), the compiler will failed
+	in case of invoking default constructor.
+	The output of the following code is compiler error "no default constructor" or sth like this.
+
+2.5
+	Shared ptr is the only that can be considered to use in this example:
+	static std::shared_ptr<Dog> createYellowDog()
+	{
+		return std::shared_ptr<Yellowdog>(new Yellowdog());
+	}
