@@ -17,14 +17,14 @@ public:
 	
 	~Dog()
 	{
-		cout << m_name << " is distroied.\n";
+		cout << m_name << " is destroyed.\n";
 	}
 	
 	void prepareToDestr() { /*...;*/ throw m_name; }
 	void bark() { /*...*/ }
 };
 
-int main(int argc, char **argv)
+int main()
 {
 	try
 	{
@@ -37,7 +37,7 @@ int main(int argc, char **argv)
 		dog1.prepareToDestr();
 		dog2.prepareToDestr();
 	}
-	catch( string msg )
+	catch()
 	{
 		cout << msg << " is caught" << endl;
 	}

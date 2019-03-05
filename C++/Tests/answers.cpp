@@ -69,6 +69,23 @@
 	Second solution is to keep accessCounter as not mutable.
 	const_cast <BigArray*>(this)->accessCounter++; // Cast away
 
+1.7
+	Output is gh
+	The expression (p += sizeof(int))[-1] can be written as (p += 4)[-1] which can be written
+	as (p = p+4)[-] which returns address p+3 which is address of fourth element in argv[].
+
+1.8
+	Output is 2 3 5 6
+	int main()
+	{
+		int a[][3] = { 1, 2, 3, 4, 5, 6 };
+		int(*ptr)[3] = a; // ptr is now {1, 2, 3}
+		printf("%d %d ", (*ptr)[1], (*ptr)[2]);
+		++ptr; // ptr is now {4, 5, 6}
+		printf("%d %d\n", (*ptr)[1], (*ptr)[2]);
+		return 0;
+	}
+
 2.1
 	First solution (c++11):
 	Human(Human &h) = delete;
@@ -89,9 +106,51 @@
 	in case of invoking default constructor.
 	The output of the following code is compiler error "no default constructor" or sth like this.
 
-2.5
+2.4
 	Shared ptr is the only that can be considered to use in this example:
 	static std::shared_ptr<Dog> createYellowDog()
 	{
 		return std::shared_ptr<Yellowdog>(new Yellowdog());
 	}
+	All standard c++ containers have no virtual destructors.
+
+2.5
+	malloc() - allocates the memory and returns the pointer to the allocated memory.
+	calloc() - does the same job as malloc() except it fills allocated memory with zeros.
+	realloc() - changes the size of memory block on heap, frees if new size is smaller.
+
+2.6
+	Deleting c Collar before creating new Collar is not safe. The first solution:
+	Dog& operator=(const Dog &rhs) {
+		if (this == &rhs)
+			return *this;
+
+		// safe solution with buffer
+		Collar buffer = c;
+		c = new Collar(*rhs.c);
+		delete buffer;
+		return *this;
+	}
+
+	The second (runtime better and short) solution:
+	Dog& operator=(const Dog &rhs) {
+		*c = *rhs.c;
+		return *this;
+	}
+
+2.7
+	Output of the following program is:
+	80
+	sizeof(*p) is 80 but sizeof(p) is 800
+
+2.8
+	The members of a struct are on the stack, the output is:
+	5 6 256
+	char is 1 byte the array char[4] is 4 byte like integer. Reading from the left to the right
+	the value (casted to integer from char array) is 256.
+
+2.9
+	The #<variable> prints variable name.
+	The output is:
+	i is 255
+	*j is 255

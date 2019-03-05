@@ -107,6 +107,35 @@ public:
 	}
 };
 
+// 1.7 Predict the output of console for:
+#include <stdio.h>
+void fun(char **p)
+{
+	char* t;
+	t = (p += sizeof(int))[-1];
+	printf("%s\n", t);
+}
+
+int main()
+{
+	const char* argv[] = { "ab", "cd", "ef", "gh", "ij", "kl" };
+	fun((char**)argv);
+	return 0;
+}
+
+// 1.8 What is the output for the following code?
+#include <stdio.h>
+int main()
+{
+	int a[][3] = { 1, 2, 3, 4, 5, 6 };
+	int(*ptr)[3] = a;
+	printf("%d %d ", (*ptr)[1], (*ptr)[2]);
+	++ptr;
+	printf("%d %d\n", (*ptr)[1], (*ptr)[2]);
+	return 0;
+}
+
+
 // 2.1 Disallow copy constructor in the following code.
 // 	   Give at least two solutions. Do not change/add other behaviours.
 #include <string>
@@ -186,3 +215,64 @@ struct DogFactory
 {
 	//static Dog* createYellowDog() { return new Yellowdog(); }
 };
+
+// 2.5 What is the difference between malloc(), calloc() and realloc()?
+
+// 2.6 Implement safe self assignment operator. Give two solutions.
+//	   Do deleting c(Collar) before creating new Collar is safe?
+class Collar;
+class Dog {
+	Collar* c;
+	Dog& operator=(const Dog &rhs) {
+		// wouldn't work when
+		// Dog a;
+		// a = a;
+
+		delete c;
+		c = new Collar(*rhs.c);
+		return *this;
+	}
+}
+
+// 2.7 What is the output of the following program?
+#include <stdio.h>
+#define R 10
+#define C 20
+
+int main()
+{
+	int* p[R][C];
+	printf("%d", sizeof(*p));
+	return 0;
+}
+
+// 2.8 What is the output of the following executed code?
+#include <stdio.h>
+struct Block {
+	int a[3] = { 1, 2, 3 };
+	int b[3] = { 4, 5, 6 };
+	unsigned char ch[4] = {0, 1, 0, 0};
+	int c[3] = { 7, 8, 9 };
+};
+
+int main()
+{
+	Block block;
+	int* ptr = (int*)(&block.b + 1);
+	printf("%d %d %d", *(block.b + 1), *(ptr - 1), *ptr);
+	return 0;
+}
+
+// 2.9 What # prefix does in the following code?
+// 	   What is the output for the following program?
+#include <iostream>
+#define watch(x) std::cout << #x << " is " << x << "\n";
+
+int main()
+{
+	int i = 0xFF;
+	int* j = &i;
+	watch(i);
+	watch(*j);
+	return 0;
+}
