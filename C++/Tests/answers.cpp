@@ -154,3 +154,24 @@
 	The output is:
 	i is 255
 	*j is 255
+
+3.0
+	Suppose, you have a class String:
+
+	class String {
+	public:
+	    String(int n); // allocate n bytes to the String object
+	    String(const char *p); // initializes object with char *p
+	};
+	Now, if you try:
+
+	String mystring = 'x';
+	The character 'x' will be implicitly converted to int and then the String(int) constructor will be called.
+	But, this is not what the user might have intended. So, to prevent such conditions, we shall define the
+	constructor as explicit:
+
+	class String {
+	public:
+	    explicit String (int n); //allocate n bytes
+	    String(const char *p); // initialize sobject with string p
+	};
