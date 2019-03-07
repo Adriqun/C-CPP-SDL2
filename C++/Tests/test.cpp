@@ -297,3 +297,26 @@ int main()
 }
 
 // 3.0 What does the explicit keyword mean?
+
+// 3.1 Repair the code so that the code compiles without errors.
+class InputFile {
+public:
+	void read() {}
+private:
+	void open() {}
+};
+
+class OutputFile {
+public:
+	void read() {}
+	void open() {}
+};
+
+class IOFile : public InputFile, OutputFile {};
+
+int main()
+{
+	IOFile f;
+	f.open();
+	return 0;
+}

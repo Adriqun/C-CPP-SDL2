@@ -186,3 +186,10 @@
 	    explicit String (int n); //allocate n bytes
 	    String(const char *p); // initialize sobject with string p
 	};
+
+3.1 
+	Before the compiler sees the private open() function in InputFile class
+	it first check which open() function would be invoked that is why compiler
+	will still issue an error -> Ambiguous call...
+	To open the file successfully:
+	f.OutputFile::open();
