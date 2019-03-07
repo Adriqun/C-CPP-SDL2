@@ -1,3 +1,14 @@
+1.0
+	The program will crash while invoking yd->bark(2).
+	Soution:
+	struct YellowDog : public Dog {
+		using Dog::bark; // <- solution
+		virtual void bark(std::string msg = "Yellowdog") { std::cout << "I am " << msg << " dog" << std::endl; }
+	};
+	The reason is when the compiler sees bark(int) it will first search in the YellowDog class. However if the compiler
+	does not find the bark(int) function in the YellowDog regardless of the parameter and the value type it will stop there.
+	Two bark() functions are not inherited by YellowDog instead one bark(string) shadows the two bark() function inside Dog class.
+
 1.1
 	It depends...
 	Based on compilator you have answer may look like:

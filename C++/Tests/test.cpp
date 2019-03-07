@@ -1,10 +1,29 @@
 // author: Adrian Michałek
 // email: devmichalek@gmail.com
 
-// const
-// A compile time constraint that an object can no be modified
+// 1.0 What is the output for the following code?
+#include <iostream>
+#include <string>
 
-// 1.1 What is the output of the following code?
+struct Dog {
+	void bark(int age) { std::cout << "I am " << age << " years old." << std::endl; }
+	virtual void bark(std::string msg = "just a") { std::cout << "I am " << msg << " dog" << std::endl; }
+};
+
+struct YellowDog : public Dog {
+	virtual void bark(std::string msg = "Yellowdog") { std::cout << "I am " << msg << " dog" << std::endl; }
+};
+
+int main()
+{
+	YellowDog* yd = new YellowDog;
+	yd->bark();
+	yd->bark(2);
+	delete yd;
+	return 0;
+}
+
+// 1.1 What is the output for the following code?
 #include <iostream>
 
 void func(int* x)
