@@ -193,3 +193,12 @@
 	will still issue an error -> Ambiguous call...
 	To open the file successfully:
 	f.OutputFile::open();
+
+3.2
+	The output is:
+	calling A::g()
+	calling B::g()
+	First line of output is Koenig Lookup example. If the compiler have not found the g() function it starts
+	to search inside variable scope (A scope).
+	Second line of output shows the priority class towards namespace. Class and its parents are always first
+	taken into consider by compiler.

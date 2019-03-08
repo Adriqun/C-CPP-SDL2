@@ -320,3 +320,33 @@ int main()
 	f.open();
 	return 0;
 }
+
+// 3.2 What is the output for the following code?
+#include <iostream>
+namespace A
+{
+	struct X {};
+	void g(X x) { std::cout << "calling A::g()\n"; }
+}
+
+struct B
+{
+	void g(A::X x) { std::cout << "calling B::g()\n"; }
+};
+
+class C : public B {
+public:
+	void j() {
+		A::X x;
+		g(x);
+	}
+};
+
+int main()
+{
+	A::X x;
+	g(x);
+	C c;
+	c.j();
+	return 0;
+}
