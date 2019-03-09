@@ -202,3 +202,20 @@
 	to search inside variable scope (A scope).
 	Second line of output shows the priority class towards namespace. Class and its parents are always first
 	taken into consider by compiler.
+
+3.3
+	constexpr allows to compute values at compile time only for const objects.
+	The difference is that e() evaluation is calculated at runtime. Function f() is evaluated at compile time.
+
+3.4
+	Output is:
+	10
+	100
+	volatile is a hint to the implementation to avoid aggressive optimization involving the object because the
+	value of the object might be changed by means undetectable by an implementation.
+	
+	volatile tells the compiler: Hey compiler, I'm volatile and, you know, I can be changed by some XYZ that
+	you're not even aware of. That XYZ could be anything. Maybe some alien outside this planet called program.
+	Maybe some lighting, some form of interrupt, volcanoes, etc can mutate me. Maybe. You never know who is
+	going to change me! So O you ignorant, stop playing an all-knowing god, and don't dare touch the code
+	where I'm present.

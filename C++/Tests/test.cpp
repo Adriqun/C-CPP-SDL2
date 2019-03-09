@@ -350,3 +350,31 @@ int main()
 	c.j();
 	return 0;
 }
+
+// 3.3 What is the difference between function e() and f()?
+int e() { return 0; }
+constexpr int f() { return 0; }
+
+int main()
+{
+	int a = e();
+	const int b = f();
+	return 0;
+}
+
+// 3.4 What does the keyword volatile amplify?
+//	   What is the output of the following code?
+#include <stdio.h>
+
+int main(void)
+{
+	const volatile int local = 10;
+	int* ptr = (int*)&local;
+
+	printf("%d\n", local);
+
+	*ptr = 100;
+
+	printf("%d\n", local);
+	return 0;
+}
