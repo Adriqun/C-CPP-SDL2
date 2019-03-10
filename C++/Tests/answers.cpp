@@ -16,6 +16,11 @@
 
 	Class B is wrong because while calling second constructor we call another which creates again new object B.
 	Calling C second constructor is safe because we use functionality of another constructor without creating another object.
+	Calling C second constructor is even better because C() is called before C(int x).
+
+0.3
+	To force the compiler to generate default constructor we simply use this line:
+	Dog() = default;
 
 1.0
 	The program will crash while invoking yd->bark(2).
@@ -238,3 +243,8 @@
 	Maybe some lighting, some form of interrupt, volcanoes, etc can mutate me. Maybe. You never know who is
 	going to change me! So O you ignorant, stop playing an all-knowing god, and don't dare touch the code
 	where I'm present.
+
+3.4
+	Solution is:
+	Animal(float) = delete;
+	Animal operator=(const Animal &rhs) = delete;

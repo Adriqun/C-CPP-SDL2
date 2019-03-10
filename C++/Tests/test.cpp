@@ -43,6 +43,24 @@ public:
 	B(int x) { B(); }
 };
 
+// 0.3 Following code gives an error: "no appropriate default constructor available".
+// 	   Force compiler to generate default constructor for class Dog (use C++11 feature).
+class Dog
+{
+	int age;
+public:
+	Dog(int age) { this->age = age; }
+	/* implementation goes here */
+
+	/* implementation ends here*/
+};
+
+int main()
+{
+	Dog dog;
+	return 0;
+}
+
 // 1.0 What is the output for the following code?
 #include <iostream>
 #include <string>
@@ -418,5 +436,27 @@ int main(void)
 	*ptr = 100;
 
 	printf("%d\n", local);
+	return 0;
+}
+
+// 3.5 Disallow passing float as a parameter to constructor.
+//	   Disallow copying with = operator (use C++11 feature in both).
+class Animal
+{
+	int age;
+public:
+	Animal(int newAge) { age = newAge; }
+	/* implementation starts here */
+
+
+	/* implementation ends here*/
+};
+
+int main()
+{
+	Animal a(3);
+	Animal b(3.53f); // wrong age cannot be of type float
+	int number = 3;
+	a = number; // wrong Animal is not a number
 	return 0;
 }
