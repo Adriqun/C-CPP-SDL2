@@ -1,6 +1,48 @@
 // author: Adrian Michałek
 // email: devmichalek@gmail.com
 
+// 0.1 How the console would look like after executing this code?
+#include <stdio.h>
+
+int do_a() { printf("A"); return 0; }
+char do_b() { printf("B"); return 0; }
+
+class A
+{
+	int a = do_a();
+public:
+	A(int a = 0) { printf("C"); };
+private:
+	char b = do_b();
+};
+
+void do_d(int x, int y, A z) {
+	printf("D");
+}
+
+int main()
+{
+	do_d(do_a(), do_b(), A());
+	return 0;
+}
+
+// 0.2 Write class C with the solution for constructors having the same basic code without duplicating.
+//	   Explain why class B has the wrong approach.
+class A
+{	// wrong approach
+	void init() {}
+public:
+	A() { init(); }
+	A(int x) { init(); }
+};
+
+class B
+{	// wrong approach
+public:
+	B() { /*init*/ }
+	B(int x) { B(); }
+};
+
 // 1.0 What is the output for the following code?
 #include <iostream>
 #include <string>

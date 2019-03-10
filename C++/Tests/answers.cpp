@@ -1,3 +1,22 @@
+0.1
+	ABCBAD
+	The parameters of the function are read from the right to the left but members of a class are created from
+	the top to the bottom.
+
+0.2
+	While creating different constructors it is good to have one function like init(). Standard C++11 provides new kind
+	solution for that.
+
+	class C
+	{
+	public:
+		C() { /*init*/ }
+		C(int x) : C() {}
+	};
+
+	Class B is wrong because while calling second constructor we call another which creates again new object B.
+	Calling C second constructor is safe because we use functionality of another constructor without creating another object.
+
 1.0
 	The program will crash while invoking yd->bark(2).
 	Soution:
