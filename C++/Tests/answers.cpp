@@ -22,6 +22,18 @@
 	To force the compiler to generate default constructor we simply use this line:
 	Dog() = default;
 
+0.4
+	The implementation:
+	filter([](int x) {return (x > 3);}, v);
+
+0.5
+	The solution:
+	auto f1 = [&a]() { a = 1; printf("%d\n", a); };
+	auto f2 = [=]() { printf("%d\n", a + b + c + d); };
+	auto f3 = [&, b]() { a = c = d; printf("%d\n", b); };
+	& - pass all variables by reference (with variable: &variable)
+	= - pass all variables by const copy (with variable: variable)
+
 1.0
 	The program will crash while invoking yd->bark(2).
 	Soution:
@@ -244,7 +256,29 @@
 	going to change me! So O you ignorant, stop playing an all-knowing god, and don't dare touch the code
 	where I'm present.
 
-3.4
+3.5
 	Solution is:
 	Animal(float) = delete;
 	Animal operator=(const Animal &rhs) = delete;
+
+3.6
+	Solution:
+	int main()
+	{
+		auto raport = [lp = 0](const char* msg) mutable
+		{
+			std::cout << msg << ++lp << " ";
+		};
+
+		raport("A ");
+		raport("B ");
+		return 0;
+	}
+
+	Passing values to lambda function not by referece means passing by const copy!
+	Keyword mutable allows as to change the value.
+	Since it is copy the output is: "A 1 B 1" right?
+	Wrong. The output is "A 1 B 2" but why?
+	Modification of variable is not visible outside of lambda function, but inside the
+	value is remembered. It is because lambda function is not function but object function.
+	

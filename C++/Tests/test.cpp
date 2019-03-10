@@ -61,6 +61,37 @@ int main()
 	return 0;
 }
 
+// 0.4 Write lambda function that takes one integer parameter and checks if integer is greater than 3.
+#include <iostream>
+#include <vector>
+
+template<typename func>
+void filter(func f, std::vector<int> arr) {
+	for (auto i : arr) {
+		if (f(i))
+			std::cout << i << " ";
+	}
+}
+
+int main()
+{
+	std::vector<int> v = { 1, 2, 3, 4, 5, 6 };
+	filter(/*implementation*/, v);
+	return 0;
+}
+
+// 0.5 Finish following lamba functions.
+#include <stdio.h>
+
+int main()
+{
+	int a = 0, b = 1, c = 2, d = 3;
+	auto f1 = [/*pass variable a by reference*/]() { a = 1; printf("%d\n", a); };
+	auto f2 = [/*pass all variables by const copy*/]() { printf("%d\n", a + b + c + d); };
+	auto f3 = [/*pass all variables by reference except variable b*/]() { a = c = d; printf("%d\n", b); };
+	return 0;
+}
+
 // 1.0 What is the output for the following code?
 #include <iostream>
 #include <string>
@@ -441,6 +472,7 @@ int main(void)
 
 // 3.5 Disallow passing float as a parameter to constructor.
 //	   Disallow copying with = operator (use C++11 feature in both).
+//	   The following code should generate compile error.
 class Animal
 {
 	int age;
@@ -458,5 +490,23 @@ int main()
 	Animal b(3.53f); // wrong age cannot be of type float
 	int number = 3;
 	a = number; // wrong Animal is not a number
+	return 0;
+}
+
+// 3.6 The following code would not compile, repair the code.
+//	   Do the optimization and move code from C++11 to  C++14 standard.
+//	   What is the output for the repaired and optimized code?
+#include <iostream>
+
+int main()
+{
+	int lp = 0;
+	auto raport = [lp](const char* msg)
+	{
+		std::cout << msg << ++lp << " ";
+	};
+
+	raport("A ");
+	raport("B ");
 	return 0;
 }
