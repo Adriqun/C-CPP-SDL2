@@ -34,6 +34,16 @@
 	& - pass all variables by reference (with variable: &variable)
 	= - pass all variables by const copy (with variable: variable)
 
+0.6
+	Following constructor is the correct one for move semantics feature:
+	MyVector(MyVector &&rhs) {
+		size = rhs.size;
+		arr = rhs.arr;
+		rhs.arr = nullptr; // <- set rhs array as nullptr!
+	}
+	Without the last line moved MyVector would be destroyed so the array. Ascribed line above:
+	arr = rhs.arr, would be pointing to array that does not exist which causes bug while calling getFirst().
+
 1.0
 	The program will crash while invoking yd->bark(2).
 	Soution:
@@ -281,4 +291,3 @@
 	Wrong. The output is "A 1 B 2" but why?
 	Modification of variable is not visible outside of lambda function, but inside the
 	value is remembered. It is because lambda function is not function but object function.
-	
