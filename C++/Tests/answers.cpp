@@ -291,3 +291,18 @@
 	Wrong. The output is "A 1 B 2" but why?
 	Modification of variable is not visible outside of lambda function, but inside the
 	value is remembered. It is because lambda function is not function but object function.
+
+3.7
+	Literal operator may look like this:
+	int operator"" _strBin2Dec(const char* str, size_t length) {
+		int ret = 0;
+		for (int i = 0; i < length; ++i) {
+			ret = ret << 1;
+			if (str[i] == '1')
+				ret += 1;
+		}
+		return ret;
+	}
+
+	_strBin2Dec takes string and its size.
+	

@@ -563,3 +563,16 @@ int main()
 	raport("B ");
 	return 0;
 }
+
+// 3.7 Define literal operator which converts binary string into integer and returns it.
+#include <iostream>
+
+/* implementation starts here */
+
+/* implementation ends here */
+
+int main()
+{
+	std::cout << "110"_strBin2Dec;
+	return 0;
+}
