@@ -44,6 +44,12 @@
 	Without the last line moved MyVector would be destroyed so the array. Ascribed line above:
 	arr = rhs.arr, would be pointing to array that does not exist which causes bug while calling getFirst().
 
+0.7
+	While creating shared pointer (memory leaks):
+	std::shared_ptr<Dog> p3(new Dog[3]);
+	only first element of the array is set to p3, the rest is lost. To prevent this we can use lambda function:
+	std::shared_ptr<Dog> p3(new Dog[3], [](Dog* pDog) {delete[] pDog; });
+
 1.0
 	The program will crash while invoking yd->bark(2).
 	Soution:
@@ -305,4 +311,3 @@
 	}
 
 	_strBin2Dec takes string and its size.
-	

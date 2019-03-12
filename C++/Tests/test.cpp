@@ -145,6 +145,21 @@ int main()
 	return 0;
 }
 
+// 0.7 Why this piece of code is not safe?
+//	   What should be improved?
+#include <memory>
+
+struct Dog {};
+
+int main()
+{
+	std::shared_ptr<Dog> p1 = std::make_shared<Dog>();
+	std::shared_ptr<Dog> p2 = std::shared_ptr<Dog>(new Dog());
+	std::shared_ptr<Dog> p3(new Dog[3]);
+	std::shared_ptr<Dog> p4 = nullptr;
+	return 0;
+}
+
 // 1.0 What is the output for the following code?
 #include <iostream>
 #include <string>
