@@ -311,3 +311,15 @@
 	}
 
 	_strBin2Dec takes string and its size.
+
+3.8
+	Output is:
+	1.
+	Dog A is created.
+	Dog A is destroyed.
+	2.
+	Dog B is created.
+	3.
+	Dog B is destroyed.
+	It turns out that std smart pointers have build in move semantics so automatically returning
+	the std::unique_ptr we actually return std::move(std::unique_ptr<>()) which is very important.

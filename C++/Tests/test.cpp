@@ -591,3 +591,26 @@ int main()
 	std::cout << "110"_strBin2Dec;
 	return 0;
 }
+
+// 3.8 What is the output for the following code?
+#include <iostream>
+#include <memory>
+
+struct Dog
+{
+	char id;
+	Dog(char id) { std::cout << "Dog " << id << " is created.\n"; this->id = id; }
+	~Dog() { std::cout << "Dog " << id << " is destroyed.\n"; }
+};
+
+std::unique_ptr<Dog> getDog(char id) { std::unique_ptr<Dog> tmp = std::make_unique<Dog>(id); return tmp; }
+
+int main()
+{
+	std::cout << "1.\n";
+	getDog('A');
+	std::cout << "2.\n";
+	std::unique_ptr<Dog> tmp = getDog('B');
+	std::cout << "3.\n";
+	return 0;
+}
