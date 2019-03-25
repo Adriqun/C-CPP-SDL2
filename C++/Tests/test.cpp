@@ -1,6 +1,8 @@
 // author: Adrian Michałek
 // email: devmichalek@gmail.com
 
+// 
+
 // 0.1 How the console would look like after executing this code?
 #include <stdio.h>
 
@@ -157,6 +159,60 @@ int main()
 	std::shared_ptr<Dog> p2 = std::shared_ptr<Dog>(new Dog());
 	std::shared_ptr<Dog> p3(new Dog[3]);
 	std::shared_ptr<Dog> p4 = nullptr;
+	return 0;
+}
+
+// 0.8 What is the output for the following code?
+#include <iostream>
+
+int* i = new int (0);
+int& f() { return *i; }
+
+int main()
+{
+	int&(*h)() = f;
+	int& i = (*h)();
+	(*h)() = 1;
+	++i;
+	++(*h)() += i++;
+	std::cout << (*h)() << std::endl;
+	delete &i;
+	return 0;
+}
+
+// 0.9 print_u() is not safe, modify it
+#include <iostream>
+#include <stdexcept>
+#include <mutex>
+#include <thread>
+
+int unsigned_max(int a, int b)
+{
+	if (a < 0 || b < 0)
+		throw std::invalid_argument("received negative value");
+	return a > b ? a : b;
+}
+
+std::mutex mu;
+void print_u(int &i, int j)
+{	// modify this function
+	mu.lock();
+	printf("%d\n", unsigned_max(i, j));
+	mu.unlock();
+}
+
+void __()
+{
+	for (int i = 10; i >= -5; --i)
+		print_u(i, i);
+}
+
+int main()
+{
+	std::thread t(__);
+	for (int i = 25; i >= 10; --i)
+		print_u(i, i);
+	t.join();
 	return 0;
 }
 
@@ -612,5 +668,53 @@ int main()
 	std::cout << "2.\n";
 	std::unique_ptr<Dog> tmp = getDog('B');
 	std::cout << "3.\n";
+	return 0;
+}
+
+// 3.9 What is the output for the following code?
+#include <iostream>
+#include <thread>
+
+struct Int
+{
+	unsigned char data;
+	Int() { std::cout << "Int Constructor\n"; }
+	~Int() { std::cout << "Int Destructor\n"; }
+};
+
+void _(Int &i) {
+	std::cout << (int)i.data << std::endl;
+	--i.data;
+}
+
+int main()
+{
+	Int i; i.data = 0;
+	std::thread t(_, i);
+	if (t.joinable())
+		t.join();
+	std::cout << int(0) - i.data << std::endl;
+	return 0;
+}
+
+// 4.0 What is the output for the following code?
+#include <iostream>
+#include <string>
+#include <thread>
+
+struct A {
+	void operator()(std::string &&msg) {
+		std::cout << msg << std::endl;
+		msg = "A";
+	}
+};
+
+int main()
+{
+	std::string str = "B";
+	std::thread t((A()), std::move(str));
+	if (t.joinable())
+		t.join();
+	std::cout << str << std::endl;
 	return 0;
 }

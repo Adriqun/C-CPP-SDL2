@@ -50,6 +50,17 @@
 	only first element of the array is set to p3, the rest is lost. To prevent this we can use lambda function:
 	std::shared_ptr<Dog> p3(new Dog[3], [](Dog* pDog) {delete[] pDog; });
 
+0.8
+	Output is 7.
+
+0.9
+	print_u() function should look like this:
+	void print_u(int &i, int j)
+	{
+		std::lock_guard<std::mutex> locker(mu);
+		printf("%d\n", unsigned_max(i, j));
+	}
+
 1.0
 	The program will crash while invoking yd->bark(2).
 	Soution:
@@ -322,4 +333,23 @@
 	3.
 	Dog B is destroyed.
 	It turns out that std smart pointers have build in move semantics so automatically returning
-	the std::unique_ptr we actually return std::move(std::unique_ptr<>()) which is very important.
+	the std::unique_ptr actually returns std::move(std::unique_ptr<>()) which is very important.
+
+3.9
+	Obviously:
+	Int Constructor
+	0
+	-255
+	Int Desctructor
+	right?
+	Nope, not at all, most compilers would not compile this code. Because thread takes parameters by copy, compiler
+	will copy i.data value even for function that takes reference, first value will be copied then passed. Solution for
+	that is to pass i.data like:
+	std::thread t(_, std::ref(i));
+
+4.0
+	Output is:
+	B
+
+	Passing value with move semantics into the operator() function will simply not copy the value but move it. Since it is an
+	oryginal the std::string destructor is called at the end of this function. Then std::string value is empty.
