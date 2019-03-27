@@ -353,3 +353,30 @@
 
 	Passing value with move semantics into the operator() function will simply not copy the value but move it. Since it is an
 	oryginal the std::string destructor is called at the end of this function. Then std::string value is empty.
+
+4.1
+	print_I(): Say I have two thread running thread A and B, lets say thread A first checked if m_ofstream is open and it were not
+	then it locks m_mutex and opens the file "file.log" but before it opens the file thread B checks if file is open and it turns out
+	it is not, then thread B tries to lock m_mutex but it must wait because thread A was first. Thread A opens the file and leave the
+	block, now thread B locks m_mutex and opens file again... So both thread opened file. File was opened twice.
+	
+	print_II(): This solution is thread safe but the file needs to be opened once. In this solution every time if someone call print_II()
+	the another thread will be blocked which means another threads need to wait until the current leave the block. It is a waste
+	of computer cycles.
+
+	The standard library provides a solution for this kind of problem.
+	Instead of using another std::mutex:
+
+	class LogFile {
+		std::mutex m_mutex;
+		std::once_flag m_flag; // <- once flag
+		std::ofstream m_ofstream;
+		// ...
+	public:
+		// ...
+		void print_III(/* some arguments */)
+		{	// file will be opened only once and only by one std::thread
+			std::call_once(m_flag, [&](){ m_ofstream.open("file.log"); });
+			// ... now std::mutex if needed
+		}
+	}

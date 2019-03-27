@@ -718,3 +718,42 @@ int main()
 	std::cout << str << std::endl;
 	return 0;
 }
+
+// 4.1 Explain why following two functions print_I() and print_II() (used by more than one thread) are wrong.
+//	   Implement print_III() by using std::once_flag.
+
+// ...
+class LogFile {
+	std::mutex m_mutex;
+	std::ofstream m_ofstream;
+	// ...
+public:
+	LogFile() { /* ... */ }
+	~LogFile() { /* ... */ }
+	void print_I(/* some arguments */)
+	{
+		if (!m_ofstream.is_open()) {
+			std::unique_ptr<std::mutex> locker(m_mutex);
+			m_ofstream.open("file.log");
+			// some functionality
+		}
+		// some functionality
+	}
+	void print_II(/* some arguments */)
+	{
+		{
+			std::unique_ptr<std::mutex> locker(m_mutex);
+			if (!m_ofstream.is_open()) {
+				m_ofstream.open("file.log");
+				// some functionality
+			}
+		}
+		
+		// some functionality
+	}
+	void print_III(/* some arguments */)
+	{
+		// your implementation
+		// some functionality
+	}
+}
