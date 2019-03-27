@@ -1,7 +1,22 @@
 // author: Adrian Michałek
 // email: devmichalek@gmail.com
 
-// 
+// 0.0 Explain why function f2() will be compiled and linked correctly but function f1() not.
+// log.cpp:
+	#include <stdio.h>
+	//void print(int &&number) { printf("%d\n", number); } // this line is commented
+// main.cpp
+	#include <stdio.h>
+
+	void print(int &&number);
+	void f1() { print(0); }
+	static void f2() { print(0); }
+
+	int main()
+	{
+		return 0;
+	}
+
 
 // 0.1 How the console would look like after executing this code?
 #include <stdio.h>

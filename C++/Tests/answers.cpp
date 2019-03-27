@@ -1,3 +1,9 @@
+0.0
+	By static void f2() we tell the compiler that function f2() will be used only in main.cpp.
+	Since function f2() is never called the linker would not look for object.
+	Function void f1() is not declared as static so the linker assumes that this function may be used outside main.cpp which
+	means it searches for body of void print(int &&number);
+
 0.1
 	ABCBAD
 	The parameters of the function are read from the right to the left but members of a class are created from
