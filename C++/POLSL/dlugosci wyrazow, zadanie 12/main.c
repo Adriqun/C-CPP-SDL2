@@ -174,6 +174,9 @@ bool loadFile()
 	char ch;
 	while (ch = fgetc(pFile))
 	{
+		if (ch < -1 || ch > 127)
+			continue; // skip non ASCII
+
 		if (isdigit(ch) || isalpha(ch))
 		{
 			cBuffer[iLen] = ch;
