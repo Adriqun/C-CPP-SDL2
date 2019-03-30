@@ -384,6 +384,42 @@ int main()
 	return 0;
 }
 
+// 1.9 What is the value of counter?
+#include <iostream>
+#include <thread>
+#include <mutex>
+
+int counter = 0;
+std::mutex mu;
+struct A
+{
+	A()
+	{
+		this->operator()(0);
+	}
+	void operator()(int x) {
+		std::unique_lock<std::mutex> locker(mu, std::defer_lock);
+		locker.lock();
+		++counter;
+		locker.unlock();
+	}
+};
+
+int main()
+{
+	A a;
+	std::thread t1(a, 0);
+	std::thread t2(&A::operator(), a, 0);
+	std::thread t3(A(), 0);
+	std::thread t4(std::ref(a), 0);
+	t1.join();
+	t2.join();
+	t3.join();
+	t4.join();
+	std::cout << counter << std::endl;
+	return 0;
+}
+
 
 // 2.1 Disallow copy constructor in the following code.
 // 	   Give at least two solutions. Do not change/add other behaviours.

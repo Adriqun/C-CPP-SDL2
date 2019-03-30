@@ -1,17 +1,13 @@
 0.0
-	By static void f2() we tell the compiler that function f2() will be used only in main.cpp.
-	Since function f2() is never called the linker would not look for object.
-	Function void f1() is not declared as static so the linker assumes that this function may be used outside main.cpp which
-	means it searches for body of void print(int &&number);
+	By static void f2() we tell the compiler that function f2() will be used only in main.cpp. Since function f2() is never called the linker would not look for the object.
+	Function void f1() is not declared as a static so the linker assumes that this function may be used outside main.cpp which means it searches for a body of void print(int &&number);
 
 0.1
 	ABCBAD
-	The parameters of the function are read from the right to the left but members of a class are created from
-	the top to the bottom.
+	The parameters of the function are read from the right to the left but members of a class are created from the top to the bottom.
 
 0.2
-	While creating different constructors it is good to have one function like init(). Standard C++11 provides new kind
-	solution for that.
+	While creating different constructors it is good to have one function like init(). Standard C++11 provides new kind solution for that.
 
 	class C
 	{
@@ -68,19 +64,16 @@
 	}
 
 1.0
-	The program will crash while invoking yd->bark(2).
-	Soution:
+	The program will crash while invoking yd->bark(2). Solution is:
 	struct YellowDog : public Dog {
 		using Dog::bark; // <- solution
 		virtual void bark(std::string msg = "Yellowdog") { std::cout << "I am " << msg << " dog" << std::endl; }
 	};
-	The reason is when the compiler sees bark(int) it will first search in the YellowDog class. However if the compiler
-	does not find the bark(int) function in the YellowDog regardless of the parameter and the value type it will stop there.
+	The reason is when the compiler sees bark(int) it will first search in the YellowDog class. However if the compiler does not find the bark(int) function in the YellowDog regardless of the parameter and the value type it will stop there.
 	Two bark() functions are not inherited by YellowDog instead one bark(string) shadows the two bark() function inside Dog class.
 
 1.1
-	It depends...
-	Based on compilator you have answer may look like:
+	It depends... Based on compiler you have answer may look like:
 	GCC:
 		A=3
 		A=5
@@ -91,7 +84,7 @@
 		A=3
 		A=3
 		A=3
-	Most modern compilators does not allow to change value of const object via pointers.
+	Most modern compilers do not allow to change value of the const object via pointers.
 
 1.2
 	int main()
@@ -113,8 +106,7 @@
 	The ref const int is a reference to int.
 	The ptr also const int is a pointer which points to the address of int.
 	We cannot change the ptr and ref because they are const.
-	We use const_cast to cast away constness of these objects, but
-	these objects points to not const object which can be modified.
+	We use const_cast to cast away constness of these objects, but these objects points to not const object which can be modified.
 
 
 
@@ -122,8 +114,7 @@
 	The code wouldn't compile because of:
 	void printDogName() const { cout << getName() << " const" << endl; }
 
-	The function above is const which means variables cannot be modified and
-	it can only invoke const functions.
+	The function above is const which means variables cannot be modified and it can only invoke const functions.
 
 	1. First solution (change getName() to const function)
 	const string& getName() const { return name; }
@@ -151,8 +142,7 @@
 
 1.7
 	Output is gh
-	The expression (p += sizeof(int))[-1] can be written as (p += 4)[-1] which can be written
-	as (p = p+4)[-] which returns address p+3 which is address of fourth element in argv[].
+	The expression (p += sizeof(int))[-1] can be written as (p += 4)[-1] which can be written as (p = p+4)[-] which returns address p+3 which is address of fourth element in argv[].
 
 1.8
 	Output is 2 3 5 6
@@ -166,6 +156,9 @@
 		return 0;
 	}
 
+1.9
+	Counter stores number 6
+
 2.1
 	First solution (c++11):
 	Human(Human &h) = delete;
@@ -174,17 +167,14 @@
 		Human(Human &h);
 
 2.2
-	Private destructors can only be stored on heap, knowing that the only possible way of using
-	class Human is via pointers. By adding public function:
+	Private destructors can only be stored on heap, knowing that the only possible way of using class Human is via pointers. By adding public function:
 	void destroyMe() { delete this; }
 	and in the main function:
 	of->destroyMe();
 	We freed the memory correctly.
 
 2.3
-	As long as you define constructor that takes parameters (class Dog), the compiler will failed
-	in case of invoking default constructor.
-	The output of the following code is compiler error "no default constructor" or sth like this.
+	As long as you define constructor that takes parameters (class Dog), the compiler will failed in case of invoking default constructor. The output of the following code is compiler error "no default constructor" or sth like this.
 
 2.4
 	Shared ptr is the only that can be considered to use in this example:
@@ -226,8 +216,7 @@
 2.8
 	The members of a struct are on the stack, the output is:
 	5 6 256
-	char is 1 byte the array char[4] is 4 byte like integer. Reading from the left to the right
-	the value (casted to integer from char array) is 256.
+	char is 1 byte the array char[4] is 4 byte like integer. Reading from the left to the right the value (casted to integer from char array) is 256.
 
 2.9
 	The #<variable> prints variable name.
@@ -246,9 +235,7 @@
 	Now, if you try:
 
 	String mystring = 'x';
-	The character 'x' will be implicitly converted to int and then the String(int) constructor will be called.
-	But, this is not what the user might have intended. So, to prevent such conditions, we shall define the
-	constructor as explicit:
+	The character 'x' will be implicitly converted to int and then the String(int) constructor will be called but, this is not what the user might have intended. So, to prevent such conditions, we shall define the constructor as explicit:
 
 	class String {
 	public:
@@ -257,20 +244,15 @@
 	};
 
 3.1 
-	Before the compiler sees the private open() function in InputFile class
-	it first check which open() function would be invoked that is why compiler
-	will still issue an error -> Ambiguous call...
-	To open the file successfully:
+	Before the compiler sees the private open() function in InputFile class it first check which open() function would be invoked that is why compiler will still issue an error -> Ambiguous call... To open the file successfully:
 	f.OutputFile::open();
 
 3.2
 	The output is:
 	calling A::g()
 	calling B::g()
-	First line of output is Koenig Lookup example. If the compiler have not found the g() function it starts
-	to search inside variable scope (A scope).
-	Second line of output shows the priority class towards namespace. Class and its parents are always first
-	taken into consider by compiler.
+	First line of output is Koenig Lookup example. If the compiler have not found the g() function it starts to search inside variable scope (A scope).
+	Second line of output shows the priority class towards namespace. Class and its parents are always first taken into consider by compiler.
 
 3.3
 	constexpr allows to compute values at compile time only for const objects.
@@ -280,14 +262,9 @@
 	Output is:
 	10
 	100
-	volatile is a hint to the implementation to avoid aggressive optimization involving the object because the
-	value of the object might be changed by means undetectable by an implementation.
+	volatile is a hint to the implementation to avoid aggressive optimization involving the object because the value of the object might be changed by means undetectable by an implementation.
 	
-	volatile tells the compiler: Hey compiler, I'm volatile and, you know, I can be changed by some XYZ that
-	you're not even aware of. That XYZ could be anything. Maybe some alien outside this planet called program.
-	Maybe some lighting, some form of interrupt, volcanoes, etc can mutate me. Maybe. You never know who is
-	going to change me! So O you ignorant, stop playing an all-knowing god, and don't dare touch the code
-	where I'm present.
+	volatile tells the compiler: Hey compiler, I  am volatile and, you know, I can be changed by some XYZ that you are not even aware of. That XYZ could be anything. Maybe some alien outside this planet called program. Maybe some lighting, some form of interrupt, volcanoes, etc can mutate me. Maybe. You never know who is going to change me! So O you ignorant, stop playing an all-knowing god, and don not dare touch the code where I am present.
 
 3.5
 	Solution is:
@@ -308,12 +285,8 @@
 		return 0;
 	}
 
-	Passing values to lambda function not by referece means passing by const copy!
-	Keyword mutable allows as to change the value.
-	Since it is copy the output is: "A 1 B 1" right?
-	Wrong. The output is "A 1 B 2" but why?
-	Modification of variable is not visible outside of lambda function, but inside the
-	value is remembered. It is because lambda function is not function but object function.
+	Passing values to lambda function not by referece means passing by const copy! Keyword mutable allows as to change the value. Since it is copy the output is: "A 1 B 1" right? Wrong. The output is "A 1 B 2" but why?
+	Modification of variable is not visible outside of lambda function, but inside the value is remembered. It is because lambda function is not function but object function.
 
 3.7
 	Literal operator may look like this:
@@ -338,8 +311,7 @@
 	Dog B is created.
 	3.
 	Dog B is destroyed.
-	It turns out that std smart pointers have build in move semantics so automatically returning
-	the std::unique_ptr actually returns std::move(std::unique_ptr<>()) which is very important.
+	It turns out that standard smart pointers have build in move semantics so automatically returning the std::unique_ptr actually returns std::move(std::unique_ptr<>()) which is very important.
 
 3.9
 	Obviously:
@@ -348,31 +320,22 @@
 	-255
 	Int Desctructor
 	right?
-	Nope, not at all, most compilers would not compile this code. Because thread takes parameters by copy, compiler
-	will copy i.data value even for function that takes reference, first value will be copied then passed. Solution for
-	that is to pass i.data like:
+	Nope, not at all, most compilers would not compile this code. Because thread takes parameters by copy, compiler will copy i.data value even for function that takes reference, first value will be copied then passed. Solution for that is to pass i.data like:
 	std::thread t(_, std::ref(i));
 
 4.0
 	Output is:
 	B
 
-	Passing value with move semantics into the operator() function will simply not copy the value but move it. Since it is an
-	oryginal the std::string destructor is called at the end of this function. Then std::string value is empty.
+	Passing value with move semantics into the operator() function will simply not copy the value but move it. Since it is an oryginal the std::string destructor is called at the end of this function. Then std::string value is empty.
 
 4.1
-	print_I(): Say I have two thread running thread A and B, lets say thread A first checked if m_ofstream is open and it were not
-	then it locks m_mutex and opens the file "file.log" but before it opens the file thread B checks if file is open and it turns out
-	it is not, then thread B tries to lock m_mutex but it must wait because thread A was first. Thread A opens the file and leave the
-	block, now thread B locks m_mutex and opens file again... So both thread opened file. File was opened twice.
+	print_I(): Say I have two thread running thread A and B, lets say thread A first checked if m_ofstream is open and it were not then it locks m_mutex and opens the file "file.log" but before it opens the file thread B checks if file is open and it turns out it is not, then thread B tries to lock m_mutex but it must wait because thread A was first. Thread A opens the file and leave the block, now thread B locks m_mutex and opens file again... So both thread opened file. File was opened twice.
 	
-	print_II(): This solution is thread safe but the file needs to be opened once. In this solution every time if someone call print_II()
-	the another thread will be blocked which means another threads need to wait until the current leave the block. It is a waste
-	of computer cycles.
+	print_II(): This solution is thread safe but the file needs to be opened once. In this solution every time if someone call print_II() the another thread will be blocked which means another threads need to wait until the current leave the block. It is a waste of computer cycles.
 
 	The standard library provides a solution for this kind of problem.
-	Instead of using another std::mutex:
-
+	Instead of using another mutex:
 	class LogFile {
 		std::mutex m_mutex;
 		std::once_flag m_flag; // <- once flag
