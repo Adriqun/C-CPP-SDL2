@@ -1,7 +1,7 @@
 // author: Adrian Michałek
 // email: devmichalek@gmail.com
 
-// 0.0 Explain why function f2() will be compiled and linked correctly but function f1() not.
+// 0.0 Explain why function f2() will compile and link correctly but function f1() not.
 // log.cpp:
 	#include <stdio.h>
 	//void print(int &&number) { printf("%d\n", number); } // this line is commented
