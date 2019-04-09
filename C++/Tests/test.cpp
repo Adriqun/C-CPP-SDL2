@@ -808,3 +808,32 @@ public:
 		// some functionality
 	}
 }
+
+// 4.2 The following function allows user to call it many times recursively.
+//	   The following approach is wrong. Correct the code so that there is no std::mutex anymore.
+#include <thread>
+#include <mutex>
+
+std::mutex mutex;
+std::unique_lock<std::mutex> locker(mutex, std::defer_lock);
+
+void nested(int &i, bool b)
+{
+	if (!b)
+		locker.lock();
+	if (i > 10)
+		return;
+	++i;
+	nested(i, true);
+	if (!b)
+		locker.unlock();
+}
+
+
+int main()
+{
+	int i = 0;
+	std::thread t1(nested, std::ref(i), false);
+	t1.join();
+	return 0;
+}

@@ -344,8 +344,20 @@
 	public:
 		// ...
 		void print_III(/* some arguments */)
-		{	// file will be opened only once and only by one std::thread
+		{	// file will be open only once and only by one std::thread
 			std::call_once(m_flag, [&](){ m_ofstream.open("file.log"); });
 			// ... now std::mutex if needed
 		}
+	}
+
+4.2
+	The solution is std::recursive_mutex which allows to use nested recursive function for threads.
+	std::recursive_mutex mutex;
+	void nested(int &i, bool b)
+	{
+		std::lock_guard<std::recursive_mutex> locker(mutex);
+		if (i > 10)
+			return;
+		++i;
+		nested(i, true);
 	}
