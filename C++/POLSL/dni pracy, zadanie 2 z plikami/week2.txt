@@ -1,4 +1,4 @@
 18	Pon  pocz: 7:55 end:  17:12 break: 13:55- 14:20
-20  sro pocz: 12:00 end 20:17  break: 16:13   -16:32
+20  sro pocz: 12:00 end: 20:17  break: 16:13   -16:32
 21 Czw	pocz:11:37    end:  18:58 
 23	Sob	pocz: 9:40  end: 15:10  

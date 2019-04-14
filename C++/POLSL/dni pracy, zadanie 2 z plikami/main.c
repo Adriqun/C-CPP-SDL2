@@ -65,12 +65,12 @@ typedef struct DzienPracy
 
 TDzienPracy* dnipracy = NULL;
 
-void DodajDzienPracy(enum DzienTygodnia dzien, TCzas poczatek, TCzas koniec, TPrzerwa** przerwy)
+void DodajDzienPracy(enum DzienTygodnia dzien, TCzas poczatek, TCzas koniec, TPrzerwa** przerwy, int data)
 {
 	if (!dnipracy)
 	{	// Pierwszy dzien miesiaca.
 		dnipracy = (TDzienPracy*) malloc(sizeof(TDzienPracy));
-		dnipracy->data = 1;
+		dnipracy->data = data;
 		dnipracy->dzien = dzien;
 		dnipracy->poczatek = poczatek;
 		dnipracy->koniec = koniec;
@@ -85,7 +85,7 @@ void DodajDzienPracy(enum DzienTygodnia dzien, TCzas poczatek, TCzas koniec, TPr
 
 		// Jestesmy na koncu listy.
 		ptr->nastepny = (TDzienPracy*)malloc(sizeof(struct DzienPracy));
-		ptr->nastepny->data = ptr->data + 1;
+		ptr->nastepny->data = data;
 		ptr->nastepny->dzien = dzien;
 		ptr->nastepny->poczatek = poczatek;
 		ptr->nastepny->koniec = koniec;
@@ -152,27 +152,27 @@ void Uzupelnij()
 	struct Przerwa* ptrPrzerwa = NULL;
 	ptrPrzerwa = DodajPrzerwe(DodajCzas(10, 0), DodajCzas(10, 30));
 	DodajPrzerweDoPrzerw(&ptrPrzerwa, DodajPrzerwe(DodajCzas(12, 30), DodajCzas(12, 50)));
-	DodajDzienPracy(Pon, DodajCzas(8, 0), DodajCzas(16, 0), &ptrPrzerwa);
+	DodajDzienPracy(Pon, DodajCzas(8, 0), DodajCzas(16, 0), &ptrPrzerwa, 1);
 	
 	// 2 dzien miesiaca, wtorek
 	ptrPrzerwa = DodajPrzerwe(DodajCzas(12, 0), DodajCzas(12, 20));
 	DodajPrzerweDoPrzerw(&ptrPrzerwa, DodajPrzerwe(DodajCzas(14, 50), DodajCzas(15, 20)));
-	DodajDzienPracy(Wto, DodajCzas(9, 30), DodajCzas(17, 30), &ptrPrzerwa);
+	DodajDzienPracy(Wto, DodajCzas(9, 30), DodajCzas(17, 30), &ptrPrzerwa, 2);
 
 	// 3 dzien miesiaca, sroda
 	ptrPrzerwa = DodajPrzerwe(DodajCzas(10, 0), DodajCzas(10, 50));
-	DodajDzienPracy(Sro, DodajCzas(8, 30), DodajCzas(16, 30), &ptrPrzerwa);
+	DodajDzienPracy(Sro, DodajCzas(8, 30), DodajCzas(16, 30), &ptrPrzerwa, 3);
 
 	// 4 dzien miesiaca, czwartek
 	ptrPrzerwa = DodajPrzerwe(DodajCzas(10, 0), DodajCzas(10, 20));
 	DodajPrzerweDoPrzerw(&ptrPrzerwa, DodajPrzerwe(DodajCzas(12, 0), DodajCzas(12, 15)));
 	DodajPrzerweDoPrzerw(&ptrPrzerwa, DodajPrzerwe(DodajCzas(14, 0), DodajCzas(14, 15)));
-	DodajDzienPracy(Czw, DodajCzas(7, 0), DodajCzas(15, 0), &ptrPrzerwa);
+	DodajDzienPracy(Czw, DodajCzas(7, 0), DodajCzas(15, 0), &ptrPrzerwa, 4);
 
 	// 5 dzien miesiaca, piatek
 	ptrPrzerwa = DodajPrzerwe(DodajCzas(10, 0), DodajCzas(10, 30));
 	DodajPrzerweDoPrzerw(&ptrPrzerwa, DodajPrzerwe(DodajCzas(11, 30), DodajCzas(11, 50)));
-	DodajDzienPracy(Pia, DodajCzas(9, 0), DodajCzas(17, 0), &ptrPrzerwa);
+	DodajDzienPracy(Pia, DodajCzas(9, 0), DodajCzas(17, 0), &ptrPrzerwa, 5);
 }
 
 enum DzienTygodnia DostanDzienTygodnia(const char* str)
@@ -189,8 +189,8 @@ enum DzienTygodnia DostanDzienTygodnia(const char* str)
 		return Pia;
 	else if (!strcmp("Sob", str))
 		return Sob;
-	else if (!strcmp("Sob", str))
-		return Sob;
+	else if (!strcmp("Nie", str))
+		return Nie;
 	return Pon;
 }
 
@@ -205,6 +205,28 @@ bool BialyZnak(char c)
 	return false;
 }
 
+bool SlowoKluczowe(char bufor[2048], int rozmiar)
+{
+	if (!strcmp(bufor, "end:"))
+		return true;
+	else if (!strcmp(bufor, "pocz:"))
+		return true;
+	else if (!strcmp(bufor, "break:"))
+		return true;
+	return false;
+}
+
+bool PrawieSlowoKluczowe(char bufor[2048], int rozmiar)
+{
+	if (!strcmp(bufor, "end"))
+		return true;
+	else if (!strcmp(bufor, "pocz"))
+		return true;
+	else if (!strcmp(bufor, "break"))
+		return true;
+	return false;
+}
+
 TCzas WyciagnijCzasZStringa(const char* str)
 {	// Jesli zwroci godzine lub minute = -1 to jest blad.
 	TCzas czas;
@@ -215,22 +237,28 @@ TCzas WyciagnijCzasZStringa(const char* str)
 	bool bGodz = false;
 
 	int i = 0;
-	char* ptr = (char*)str;
 	char bufor[2048]; // Bufor na smieci.
-	while (ptr)
+	char strbufor[2048];
+	int j = 0;
+	for (; j < strlen(str); ++j)
+		strbufor[j] = str[j];
+	strbufor[j++] = ':';
+	strbufor[j] = '\0';
+	char* ptr = strbufor;
+	while (*ptr)
 	{
 		if (*ptr == ':')
 		{	// Separator.
-			bufor[++i] = '\0';
-			if (!bMin)
-			{
-				bMin = true;
-				czas.minuta = atoi(bufor);
-			}
-			else if (bGodz)
+			bufor[i] = '\0';
+			if (!bGodz)
 			{
 				bGodz = true;
 				czas.godzina = atoi(bufor);
+			}
+			else if (!bMin)
+			{
+				bMin = true;
+				czas.minuta = atoi(bufor);
 			}
 			else if (bMin || bGodz)
 			{
@@ -239,20 +267,50 @@ TCzas WyciagnijCzasZStringa(const char* str)
 				czas.godzina = -1;
 				break;
 			}
-			i = 0;
-		}
 
-		if (*ptr == '-')
-		{
+			i = 0;
 			++ptr;
 			continue;
 		}
 
 		bufor[i] = *ptr;
+		++i;
 		++ptr;
 	}
 
 	return czas;
+}
+
+int DostanLinie(FILE* plik, char** buf)
+{
+	int c = 0;
+	int count;
+	char* oryginal = *buf;
+	bool bialy = false;
+	for (count = 0; c != '\n' && count < 2048; ++count)
+	{
+		c = getc(plik);
+
+		if (!bialy && BialyZnak(c))
+		{	// Omijamy wszelkie biale znaki z poczatku linii,
+			// poniewaz dalsze wyluskiwanie stringa nie ma sensu...
+			--count;
+			continue;
+		}
+
+		if (c == EOF)
+		{
+			if (count == 0)
+				return -1;
+			break;
+		}
+
+		oryginal[count] = (char)c;
+		bialy = true;
+	}
+
+	oryginal[count] = '\0';
+	return count;
 }
 
 bool UzupelnijZPliku(const char* nazwapliku)
@@ -267,13 +325,11 @@ bool UzupelnijZPliku(const char* nazwapliku)
 
 	// Plik istnieje, wczytujemy.
 	int rozmiar;
-	char* linia = NULL;
-	size_t dlugosc = 0;
+	char linia[2048]; // Aktualna linia.
+	char *pLinia = linia;
 	char bufor[2048]; // Bufor na smieci.
-
-	while ((rozmiar = getline(&linia, &dlugosc, plik)) != -1)
+	while ((rozmiar = DostanLinie(plik, &pLinia)) != -1)
 	{
-
 		// Dane do dnia pracy.
 		int data = -1; // np. 1, 2, 28 itd...
 		enum DzienTygodnia dzien; // Pon, Wto, Sro, Czw, Pia, Sob, Nie
@@ -283,21 +339,22 @@ bool UzupelnijZPliku(const char* nazwapliku)
 		TCzas poczatekPrzerwy;
 		TCzas koniecPrzerwy;
 
+		if (pLinia[rozmiar - 1] == '\n')
+			rozmiar--;
+
 		// Pomocne dane.
 		bool bData = false, bDzien = false;
 		int iPoczatek = 0, iKoniec = 0, iPrzerwa = 0, iLicznikPrzerw = 0;
 
-		int j = 0;
+		int j = 0, i = 0;
 		char znak = ' ';
-		for (int i = 0; i < rozmiar; ++i, ++j)
+		for (; ; ++i)
 		{
 			znak = linia[i];
-			if (!BialyZnak(znak))
-			{	// Jesli nie jest to separator danych.
-				bufor[j] = znak;
-			}
-			else
-			{
+			if (znak == '-')
+				continue;
+			if (j > 0 && (BialyZnak(znak) || SlowoKluczowe(bufor, j) || i == rozmiar))
+			{	
 				// Jesli jest to bialy znak to sprawdzamy czy nie ma innym bialych znakow.
 				// Uzytkownik moze na sile dodac smieci w separatorze ktorych nie chcemy.
 				for (; i < rozmiar; ++i)
@@ -308,8 +365,14 @@ bool UzupelnijZPliku(const char* nazwapliku)
 						break;
 				}
 
+				for (int i = 0; i < j; ++i)
+				{	// Ta funkcja ma nie dzialac w case sensitive.
+					// W C nie ma funkcji z taka opcja...
+					tolower(bufor[i]);
+				}
+
 				// Zaznacz koniec danych.
-				bufor[++j] = '\0';
+				bufor[j] = '\0';
 
 				if (!bData)
 				{	// Pierwsze zawsze jest data...
@@ -318,30 +381,59 @@ bool UzupelnijZPliku(const char* nazwapliku)
 				}
 				else if (!bDzien)
 				{	// Drugi zawsze jest dzien...
+					bDzien = true;
 					dzien = DostanDzienTygodnia(bufor);
 				}
-				else if (iPrzerwa = 1)
+				else if (iPrzerwa == 1)
 				{	// break: wystapilo, przerwy sa ostatnie dlatego maja one wiekszy priorytet.
 					++iLicznikPrzerw;
 					if (iLicznikPrzerw % 2)
+					{
 						poczatekPrzerwy = WyciagnijCzasZStringa(bufor);
+						if (poczatekPrzerwy.godzina == -1 || poczatekPrzerwy.minuta == -1)
+						{
+							printf("Blad przy wylapaniu czasu poczatku przerwy!\n");
+							fclose(plik);
+							return false;
+						}
+					}
 					else
+					{
 						koniecPrzerwy = WyciagnijCzasZStringa(bufor);
+						if (koniecPrzerwy.godzina == -1 || koniecPrzerwy.minuta == -1)
+						{
+							printf("Blad przy wylapaniu czasu konca przerwy!\n");
+							fclose(plik);
+							return false;
+						}
 
-					if (!ptrPrzerwa)
-						ptrPrzerwa = DodajPrzerwe(poczatekPrzerwy, koniecPrzerwy);
-					else
-						DodajPrzerweDoPrzerw(&ptrPrzerwa, DodajPrzerwe(poczatekPrzerwy, koniecPrzerwy));
+						if (!ptrPrzerwa)
+							ptrPrzerwa = DodajPrzerwe(poczatekPrzerwy, koniecPrzerwy);
+						else
+							DodajPrzerweDoPrzerw(&ptrPrzerwa, DodajPrzerwe(poczatekPrzerwy, koniecPrzerwy));
+					}
 				}
 				else if (iKoniec == 1)
 				{	// end: wystapilo, teraz wczytaj koniec
 					++iKoniec;
 					koniec = WyciagnijCzasZStringa(bufor);
+					if (koniec.godzina == -1 || koniec.minuta == -1)
+					{
+						printf("Blad przy wylapaniu czasu \"end:\"");
+						fclose(plik);
+						return false;
+					}
 				}
 				else if (iPoczatek == 1)
 				{	// pocz: wystapilo, teraz wczytaj poczatek
 					poczatek = WyciagnijCzasZStringa(bufor);
 					++iPoczatek;
+					if (poczatek.godzina == -1 || poczatek.minuta == -1)
+					{
+						printf("Blad przy wylapaniu czasu \"pocz:\"");
+						fclose(plik);
+						return false;
+					}
 				}
 				else if (!strcmp(bufor, "pocz:"))
 				{	// Trzeci zawsze jest poczatek.
@@ -373,11 +465,41 @@ bool UzupelnijZPliku(const char* nazwapliku)
 					}
 					++iPrzerwa;
 				}
+				else
+				{
+					printf("Blad, slowo kluczowe \"%s\" jest zle zapisane\n", bufor);
+					if (bufor[j] != ':')
+					{
+						printf("W slowie kluczowym brakuje dwukropka!\n");
+					}
+					fclose(plik);
+					return false;
+				}
 
 				// Reset iteratora.
 				j = 0;
+				bufor[j] = '\0';
+				if (linia[i] != '-')
+					bufor[j] = linia[i];
+				else
+					--j;
 			}
+			else // Jesli nie jest to separator danych.
+				bufor[j] = znak;
+			++j;
+
+			if (i == rozmiar)
+				break;
 		}
+
+		if (data < 1 || data > 31)
+		{
+			printf("Podana data %d nie miesci sie w przedziale 1<=data<=31\n", data);
+			fclose(plik);
+			return false;
+		}
+
+		DodajDzienPracy(dzien, poczatek, koniec, &ptrPrzerwa, data);
 	}
 
 	// Zamknij plik.
