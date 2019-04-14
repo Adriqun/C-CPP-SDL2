@@ -1,0 +1,6 @@
+1  Pia pocz: 6:45 	end:15:10
+4   Pon pocz:  8:00 	end: 16:56  break: 10:15-  10:30
+5  Wto pocz: 7:45  end: 15:20  break: 10:30  -10:48
+9  Sob pocz: 11:40   end: 18:55	break: 14:25	- 14:40
+10 	Nie pocz: 10:00   end: 14:30
+    
