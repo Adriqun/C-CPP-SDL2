@@ -29,13 +29,14 @@ void wyczysc()
 				free(delWezel->pSlowo);
 				free(delWezel);
 			}
+			pGlowy[i] = NULL;
 		}
 	}
 }
 
 bool jestZerowy(char c)
-{	// zgodnie z trescia zadania
-	if (c == ' ' || c == ',' || c == ';' || c == ':' || c == '(' || c == ')')
+{	// zgodnie z trescia zadania jest bezsensu, dlatego dodalem kilka dodatkowych znakow
+	if (c == '\n' || c == ' ' || c == ',' || c == '.' || c == ';' || c == ':' || c == '(' || c == ')')
 		return true;
 	return false;
 }
@@ -52,19 +53,23 @@ int main(int argc, char** argv)
 	char c = 0;
 	bool bylPlik = false;
 	bool wyswietlRaz = false;
+	bool wyswietlInfo = true;
 	while (true)
 	{
 		// wypisz mozliwosci i pobierz znak
-		printf("Podaj opcje programu, dostepne opcje:\n");
 		if (!wyswietlRaz)
 		{
 			wyswietlRaz = true;
+			printf("Podaj opcje programu, dostepne opcje:\n");
 			printf("r <nazwa pliku> - wczytuje zadany plik\n");
 			printf("s - utworz statystyke wyrazow i wydrukuj na konsole\n");
 			printf("p <liczba> - wydrukuj na konsole <liczba> najdluzszych wyrazow\n");
 			printf("w <nazwa pliku> - zapisz raport do pliku\n");
 			printf("q - zakoncz dzialanie programu\n");
 		}
+		else if (wyswietlInfo)
+			printf("Podaj opcje programu: ");
+		wyswietlInfo = false;
 		c = getchar();
 
 		{	// Zabezpieczenie przed nowymi liniami
@@ -90,6 +95,7 @@ int main(int argc, char** argv)
 		if (bPlik)
 		{
 			bPlik = false;
+			wyswietlInfo = true;
 			if (bylPlik)
 			{	// jesli byl plik to wszystkie wczesniejsze zebrane info kasujemy
 				wyczysc();
@@ -116,7 +122,6 @@ int main(int argc, char** argv)
 			{
 				//if (ch < -1 || ch > 127)
 					//continue; // pomin nie ASCII
-
 				if (!jestZerowy(ch))
 				{
 					cBufor[iLen] = ch;
@@ -160,7 +165,7 @@ int main(int argc, char** argv)
 					}
 				}
 
-				if (ch == EOF)
+				if (/*ch == EOF*/ch == 0xFF) // koniec lini dla unsigned
 					break;
 			}
 
@@ -171,6 +176,7 @@ int main(int argc, char** argv)
 		else if (bStatystyka)
 		{
 			bStatystyka = false;
+			wyswietlInfo = true;
 			if (!bylPlik)
 				printf("Nalezy najpierw wczytac plik w celu zebrania informacji!\n");
 			else
@@ -206,6 +212,7 @@ int main(int argc, char** argv)
 		else if (bWydrukujKons)
 		{
 			bWydrukujKons = false;
+			wyswietlInfo = true;
 			if (!bylPlik)
 				printf("Nalezy najpierw wczytac plik w celu zebrania informacji!\n");
 			else
@@ -240,6 +247,7 @@ int main(int argc, char** argv)
 		else if (bZapiszDoPliku)
 		{
 			bZapiszDoPliku = false;
+			wyswietlInfo = true;
 			if (!bylPlik)
 				printf("Nalezy najpierw wczytac plik w celu zebrania informacji!\n");
 			else
@@ -283,6 +291,8 @@ int main(int argc, char** argv)
 					// zmniejsz
 					--maxSlIlosc;
 				}
+
+				fclose(pPlik);
 			}
 		}
 	}
