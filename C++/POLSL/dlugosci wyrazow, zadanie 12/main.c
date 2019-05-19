@@ -9,13 +9,7 @@
 #include <stdbool.h>
 #include <string.h>
 #include <ctype.h>
-
-typedef struct Node
-{
-	char* pWord;
-	int nTimes; // how many times word occured
-	struct Node* next;
-} Node;
+#include "node.h"
 
 // switches
 bool bInput = false; // -i <input file> = 2 (must be always specified)
@@ -183,7 +177,7 @@ bool loadFile()
 			++iLen;
 			if (iLen >= MAX_WORD_LENGTH)
 			{
-				printf("Error: max length of the word is 1024 chars\n");
+				printf("Error: max length of the word is %d chars\n", MAX_WORD_LENGTH);
 				fclose(pFile);
 				return false;
 			}
