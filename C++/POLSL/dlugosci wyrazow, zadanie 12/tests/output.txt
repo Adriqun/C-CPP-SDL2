@@ -1,0 +1,6 @@
+6 words with length 0
+2 words with length 4
+1 words with length 5
+3 words with length 8
+
+Word "żuk" has occured 2 times
