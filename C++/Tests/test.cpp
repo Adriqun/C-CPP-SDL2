@@ -837,3 +837,10 @@ int main()
 	t1.join();
 	return 0;
 }
+
+// 4.3 This structure is used while sending stuff across the wire.
+// 	   Explain why it's risky and give a better implementation.
+struct A {
+	int a;
+	short b;
+}

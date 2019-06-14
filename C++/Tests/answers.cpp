@@ -361,3 +361,15 @@
 		++i;
 		nested(i, true);
 	}
+
+4.3
+	On 32 bit computer you get a structure that is 48 bits, 32 for int, 16 for the short.
+	On the 64 bit computer you get structure that is 80 bits long, 64 for in, 16 for short.
+	The problem comes about when you tried to use this struct to read what was written by the other.
+	Better implementation:
+	struct A {
+		long a; // 4 bytes
+		short b; // 2 bytes
+	}
+
+	If you are sending stuff across the wire you must use the char, short, long, etc. If you are not then you can use int, as int and let the compiler figure it out.
