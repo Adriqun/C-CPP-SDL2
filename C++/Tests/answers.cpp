@@ -373,3 +373,8 @@
 	}
 
 	If you are sending stuff across the wire you must use the char, short, long, etc. If you are not then you can use int, as int and let the compiler figure it out.
+
+4.4 double (*ptr)[7][4]
+
+4.5
+	The reason for this is that early versions of C did not have function prototypes; parameter types were declared at the function site but were not known at the call site. But different types are represented differently, and the representation of the passed argument must match the called functions expectation. So that char and short values could be passed to functions with int parameters, or float values could be passed to functions with double parameters, the compiler promoted the smaller types to be of the larger type. This behavior is still seen when the type of the parameter is not known at the call site -- namely, for variadic functions or functions declared without a prototype.

@@ -844,3 +844,28 @@ struct A {
 	int a;
 	short b;
 }
+
+// 4.4 Implement a pointer to double array 7x4.
+
+// 4.5 Explain why the following code will compile and print character and float correctly.
+#include <stdio.h>          
+#include <stdarg.h>
+
+void foo(int n, ...)
+{   
+    va_list vl;
+    va_start(vl, n);
+
+    char c = va_arg(vl, int);
+    float f = va_arg(vl, double); 
+
+    printf("char %c, float %f\n", c, f);
+
+    va_end(vl);
+}
+
+int main()
+{
+	foo(2, 'x', 12.345f);
+	return 0;
+}
