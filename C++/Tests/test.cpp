@@ -869,3 +869,20 @@ int main()
 	foo(2, 'x', 12.345f);
 	return 0;
 }
+
+// 4.6 What values are stored in pointers a and b?
+void fun(int* a, int* b)
+{
+	static int x = 0; ++x;
+	a = &x;
+	static int y = *b; ++y;
+	b = &y;
+}
+
+int main()
+{
+	int i = 5;
+	int *a = nullptr, *b = &i;
+	fun(a, b);
+	return 0;
+}
