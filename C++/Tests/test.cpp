@@ -904,3 +904,11 @@ int main()
 	f(a, b);
 	return 0;
 }
+
+// 4.8 What value is stored in d, explain why.
+int main()
+{
+	char a = 30, b = 40, c = 10;
+	char d = (a * b) / c;
+	return 0;
+}
