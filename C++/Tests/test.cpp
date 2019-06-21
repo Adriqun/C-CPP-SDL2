@@ -886,3 +886,21 @@ int main()
 	fun(a, b);
 	return 0;
 }
+
+// 4.7 What values are stored in pointer a and b?
+void f(int& a, int& b)
+{
+	static int x;
+	++x;
+	a = x;
+	static int &y = b;
+	++b;
+	y += a;
+}
+
+int main()
+{
+	int a, b = 2;
+	f(a, b);
+	return 0;
+}
