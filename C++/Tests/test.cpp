@@ -912,3 +912,6 @@ int main()
 	char d = (a * b) / c;
 	return 0;
 }
+
+// 4.9 Explain what does the extern "C" before function declaration means.
+extern "C" int example();
