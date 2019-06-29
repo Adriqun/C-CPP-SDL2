@@ -1,0 +1,14 @@
+Get preprocessor output:
+gcc -E -P function.c function.i
+
+Get Assemmbled output:
+gcc -S function.c function.s
+
+Get Assemmbled output with AT&T format:
+gcc -S -masm=att function.c function.s
+
+Get Assemmbled output with Intel format:
+gcc -S -masm=intel function.c function.s
+
+Demo project compiling example:
+gcc -c function.c main.c
