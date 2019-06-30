@@ -799,7 +799,7 @@ public:
 				// some functionality
 			}
 		}
-		
+
 		// some functionality
 	}
 	void print_III(/* some arguments */)
@@ -848,16 +848,16 @@ struct A {
 // 4.4 Implement a pointer to double array 7x4.
 
 // 4.5 Explain why the following code will compile and print character and float correctly.
-#include <stdio.h>          
+#include <stdio.h>
 #include <stdarg.h>
 
 void foo(int n, ...)
-{   
+{
     va_list vl;
     va_start(vl, n);
 
     char c = va_arg(vl, int);
-    float f = va_arg(vl, double); 
+    float f = va_arg(vl, double);
 
     printf("char %c, float %f\n", c, f);
 
@@ -913,5 +913,8 @@ int main()
 	return 0;
 }
 
-// 4.9 Explain what does the extern "C" before function declaration means.
+// 4.9 Explain what does the extern "C" keyword means.
 extern "C" int example();
+
+// 5.0 Write function declaration.
+//	   Function takes no arguments and returns pointer to the char array with length 5.

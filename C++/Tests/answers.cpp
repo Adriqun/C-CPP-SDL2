@@ -243,7 +243,7 @@
 	    String(const char *p); // initialize sobject with string p
 	};
 
-3.1 
+3.1
 	Before the compiler sees the private open() function in InputFile class it first check which open() function would be invoked that is why compiler will still issue an error -> Ambiguous call... To open the file successfully:
 	f.OutputFile::open();
 
@@ -263,7 +263,7 @@
 	10
 	100
 	volatile is a hint to the implementation to avoid aggressive optimization involving the object because the value of the object might be changed by means undetectable by an implementation.
-	
+
 	volatile tells the compiler: Hey compiler, I  am volatile and, you know, I can be changed by some XYZ that you are not even aware of. That XYZ could be anything. Maybe some alien outside this planet called program. Maybe some lighting, some form of interrupt, volcanoes, etc can mutate me. Maybe. You never know who is going to change me! So O you ignorant, stop playing an all-knowing god, and don not dare touch the code where I am present.
 
 3.5
@@ -331,7 +331,7 @@
 
 4.1
 	print_I(): Say I have two thread running thread A and B, lets say thread A first checked if m_ofstream is open and it were not then it locks m_mutex and opens the file "file.log" but before it opens the file thread B checks if file is open and it turns out it is not, then thread B tries to lock m_mutex but it must wait because thread A was first. Thread A opens the file and leave the block, now thread B locks m_mutex and opens file again... So both thread opened file. File was opened twice.
-	
+
 	print_II(): This solution is thread safe but the file needs to be opened once. In this solution every time if someone call print_II() the another thread will be blocked which means another threads need to wait until the current leave the block. It is a waste of computer cycles.
 
 	The standard library provides a solution for this kind of problem.
@@ -397,3 +397,6 @@
 
 	int example() - function name will be evaluated into sth like: _Z1examplev
 	extern "C" int example - function name will be evaluated into: example
+
+5.0
+	char (*(f)(void))[5];
