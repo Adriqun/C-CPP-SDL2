@@ -38,3 +38,20 @@
     //    gcc main.c libtest.so -o main
 
 0.3 // The only substantial difference is that by default all Windows DLL linker symbols are hidden, whereas in Linux all the dynamic library linker symbols are by default exported.
+
+0.4 // Method I (affecting the whole body of code):
+    // -fvisibility compiler flag
+    // by passing the -fvisibility=hidden it is possible to make every dynamic library symbos invisible to whoever tries to dynamically link against the dynamic library.
+    // Method II (affecting individual symbols only)
+    // __attribute__ ((visibility("<default | hidden>")))
+    // By decorating the function signature with the attribute property, you instruct the linker to either allow (default) or not allow (hidden) exporting the symbol.
+    // Method III (affecting individual symbols or a group of symbols)
+    // #pragma GCC visibility [push | pop]
+    /* // Some header file may contain:
+      #pragma visibility push(hidden)
+      void someprivatefunction_1(void);
+      void someprivatefunction_2(void);
+      ...
+      void someprivatefunction_N(void);
+      #pragma visibility pop
+    */
