@@ -36,3 +36,5 @@
     //    export LD_LIBRARY_PATH
     // Compile and create executable:
     //    gcc main.c libtest.so -o main
+
+0.3 // The only substantial difference is that by default all Windows DLL linker symbols are hidden, whereas in Linux all the dynamic library linker symbols are by default exported.

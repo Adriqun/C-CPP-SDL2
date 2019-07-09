@@ -33,3 +33,5 @@ int main()
   return ret;
 }
 //  How would you create an exectutable main which uses dynamic library libtest.so which includes static library libpart.a? Note that shared library does not know that function add2() will be used by the library users.
+
+0.3 // Controlling Dynamic Library Symbols’ Visibility... From the high-level perspective, the mechanism of exporting/hiding the linker symbols is solved almost identically in both Windows and Linux. What is the substantial difference between them?
