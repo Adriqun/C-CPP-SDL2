@@ -37,3 +37,6 @@ int main()
 0.3 // [Controlling Dynamic Library Symbols’ Visibility] From the high-level perspective, the mechanism of exporting/hiding the linker symbols is solved almost identically in both Windows and Linux. What is the substantial difference between them?
 
 0.4 // [The Symbol Control Export at Build Time] The GCC compiler provides several mechanisms of setting up the visibility of linker symbols. Assume you have an internal and external function, both of them are external because that's how linux solves the linker symbols for dynamic library. How would you hide internal function of dynamic library?
+
+0.5 // Could you specify some Linux/Windows functions for Dynamically Loading DLL?
+    // For example, function to load dynamic library from code or finding symbols in DLL directly from code.

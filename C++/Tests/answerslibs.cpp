@@ -55,3 +55,9 @@
       void someprivatefunction_N(void);
       #pragma visibility pop
     */
+
+0.5 // Purpose, Linux Version, Windows Version
+    // Library Loading, dlopen(), LoadLibrary()
+    // Finding Symbol, dlsym(), GetProcAddress()
+    // Library Unloading, dlclose(), FreeLibrary()
+    // Error Reporting, dlerror(), GetLastError()
