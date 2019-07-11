@@ -8,7 +8,7 @@
     //    ar -cvq libtest.a test.o
     // Compile and create executable:
     //    gcc -o main main.c libtest.a # or
-    //    gcc -o main main -L/path/to/current/directory -ltest
+    //    gcc -o main main.o -L/path/to/current/directory -ltest
 
 0.1 // The proper order for the specified needs is:
     // Compile test.c with -fPIC (Platform Independent Code flag)
@@ -61,3 +61,5 @@
     // Finding Symbol, dlsym(), GetProcAddress()
     // Library Unloading, dlclose(), FreeLibrary()
     // Error Reporting, dlerror(), GetLastError()
+
+0.6 // By looking at the file size, static library will take times more bytes than import library (it's not the case but mostly).

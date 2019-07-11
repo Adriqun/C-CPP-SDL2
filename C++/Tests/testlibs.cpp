@@ -40,3 +40,5 @@ int main()
 
 0.5 // Could you specify some Linux/Windows functions for Dynamically Loading DLL?
     // For example, function to load dynamic library from code or finding symbols in DLL directly from code.
+
+0.6 // How to distinguish the import library file (.lib) from static library (also .lib) quickly and quite accurate without looking at its contents?
