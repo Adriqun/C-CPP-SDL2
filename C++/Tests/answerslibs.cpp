@@ -63,3 +63,15 @@
     // Error Reporting, dlerror(), GetLastError()
 
 0.6 // By looking at the file size, static library will take times more bytes than import library (it's not the case but mostly).
+
+0.7 // When RUNPATH field is specified (i.e. DT_RUNPATH is non-empty)
+    // 1. LD_LIBRARY_PATH
+    // 2. runpath (DT_RUNPATH field)
+    // 3. ld.so.cache
+    // 4. default library paths(/lib and /usr/lib)
+
+    // In the absence of RUNPATH (i.e. DT_RUNPATH is empty string)
+    // 1. RPATH of the loaded binary, followed by the RPATH of the binary
+    // 2. LD_LIBRARY_PATH
+    // 3. ld.so.cache
+    /// 4. default library paths(/lib and /usr/lib)
