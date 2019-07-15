@@ -52,3 +52,5 @@ int main()
     /usr/bin/ld: cannot find -lsh
     collect2: error: ld returned 1 exit status
     // Tip: dynamic library libsh.so is in the same directory where commands are executed.
+
+1.0 // [Linux] What is ELF and what distibution do we use to read them?

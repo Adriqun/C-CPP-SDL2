@@ -83,3 +83,12 @@
 
 0.9 // There is missing -L switch written as follows:
     // gcc main.o -ldl -L. -lsh -o main
+
+1.0 // The shared library and executable file format is called ELF (Executable and Linkable Format). In summary, an ELF file contains:
+    // - ELF header
+    // - File data, which may contain:
+    // -  . Program header table (a list of segment headers)
+    // -  . Section header table (a list of section headers)
+    // -  . Data pointed to by the above headers
+    // The ELF header specifies the size and number of segments in the program header table and the size and number of sections in the section header table. Each such table consists of fixed size entries. Entries are headers and they contain a “pointer” (an offset in the file) to the location of the actual body of the segment or section. That body exists in the data part of the file. To make matters more complicated - each section is a part of a segment, and a segment can contain many sections. In effect, the same data is referenced as either part of a segment or a section depending on the current context.
+    // We use readelf to read the ELF.
