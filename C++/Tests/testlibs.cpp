@@ -46,3 +46,9 @@ int main()
 0.7 // On the Linux we have the priority scheme for where the system search for Dynamic Libraries while running executable. How the priority scheme look like? Write entities from the highest priority to the lowest priority.
 
 0.8 // On the Windows we have the priority scheme for where the system search for Dynamic Libraries while running exec. What tare Windows Runtime Dynamic Library location rules? Write these entities.
+
+0.9 // How would you fix this problem:
+    adrian@adrian:~/Documents/Test$ gcc main.o -ldl -lsh -o main
+    /usr/bin/ld: cannot find -lsh
+    collect2: error: ld returned 1 exit status
+    // Tip: dynamic library libsh.so is in the same directory where commands are executed.

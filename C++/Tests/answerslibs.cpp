@@ -80,3 +80,6 @@
     // In the simplest, popular, most widespread knowledge about the topic, the following two locations are used the most as the favorite paths to deploy the DLL needed at runtime:
     // The very same path in which the application binary file resides.
     // One of the system DLL folders (such as C:\Windows\System or C:\Windows\System32)
+
+0.9 // There is missing -L switch written as follows:
+    // gcc main.o -ldl -L. -lsh -o main
