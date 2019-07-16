@@ -92,3 +92,5 @@
     // -  . Data pointed to by the above headers
     // The ELF header specifies the size and number of segments in the program header table and the size and number of sections in the section header table. Each such table consists of fixed size entries. Entries are headers and they contain a “pointer” (an offset in the file) to the location of the actual body of the segment or section. That body exists in the data part of the file. To make matters more complicated - each section is a part of a segment, and a segment can contain many sections. In effect, the same data is referenced as either part of a segment or a section depending on the current context.
     // We use readelf to read the ELF.
+
+1.1 // The only difference between rpath and runpath is the order they are searched in. Specifically, their relation to LD_LIBRARY_PATH - rpath is searched in before LD_LIBRARY_PATH while runpath is searched in after (if runpath is not set!). The meaning of this is that rpath cannot be changed dynamically with environment variables while runpath can.

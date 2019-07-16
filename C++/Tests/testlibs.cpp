@@ -54,3 +54,5 @@ int main()
     // Tip: dynamic library libsh.so is in the same directory where commands are executed.
 
 1.0 // [Linux] What is ELF and what distibution do we use to read them?
+
+1.1 // [Linux] What is the difference between RPATH (DT_RPATH) and RUNPATH (DT_RUNPATH)?
