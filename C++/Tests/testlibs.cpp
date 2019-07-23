@@ -56,3 +56,5 @@ int main()
 1.0 // [Linux] What is ELF and what distibution do we use to read them?
 
 1.1 // [Linux] What is the difference between RPATH (DT_RPATH) and RUNPATH (DT_RUNPATH)?
+
+1.2 // What are the main differences between __cdecl and __stdcall?

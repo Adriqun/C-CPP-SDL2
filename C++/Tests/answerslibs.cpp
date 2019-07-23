@@ -94,3 +94,5 @@
     // We use readelf to read the ELF.
 
 1.1 // The only difference between rpath and runpath is the order they are searched in. Specifically, their relation to LD_LIBRARY_PATH - rpath is searched in before LD_LIBRARY_PATH while runpath is searched in after (if runpath is not set!). The meaning of this is that rpath cannot be changed dynamically with environment variables while runpath can.
+
+1.2 // The same functionality between __cdecl and __stdcall is that arguments of function are pushed in reverse order (last pushed argument is first). The main difference is that functions declared with __stdcall automatically cleans up the stack, functions declared with __cdecl declaration requests calee to clean up the stack.
