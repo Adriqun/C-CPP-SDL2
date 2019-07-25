@@ -58,3 +58,7 @@ int main()
 1.1 // [Linux] What is the difference between RPATH (DT_RPATH) and RUNPATH (DT_RUNPATH)?
 
 1.2 // What are the main differences between __cdecl and __stdcall?
+
+1.3 // What is ABI (Application Binary Interface)?
+
+1.4 // What is the difference between Linker and Loader (and section vs segment)?
