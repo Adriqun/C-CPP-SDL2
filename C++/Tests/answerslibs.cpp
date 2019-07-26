@@ -96,3 +96,22 @@
 1.1 // The only difference between rpath and runpath is the order they are searched in. Specifically, their relation to LD_LIBRARY_PATH - rpath is searched in before LD_LIBRARY_PATH while runpath is searched in after (if runpath is not set!). The meaning of this is that rpath cannot be changed dynamically with environment variables while runpath can.
 
 1.2 // The same functionality between __cdecl and __stdcall is that arguments of function are pushed in reverse order (last pushed argument is first). The main difference is that functions declared with __stdcall automatically cleans up the stack, functions declared with __cdecl declaration requests calee to clean up the stack.
+
+1.3 // ABIs cover details such as:
+    // data type, size, and alignment,
+    // the calling convention, which controls how functions' arguments are passed and return values retrieved,
+    // the system call numbers and how an application should make system calls to the operating system.
+    // Other ABIs standardize details such as:
+    // the C++ name mangling,
+    // exception propagation, and
+    // calling convention between compilers on the same platform, but do not require cross-platform compatibility.
+    // Short definition:
+    // You are already familiar with the concept of an API. If you want to use the features of, say, some library or your OS, you will use an API. The API consists of data types/structures, constants, functions, etc that you can use in your code to access the functionality of that external component.
+    // An ABI is very similar. Think of it as the compiled version of an API (or as an API on the machine-language level). When you write source code, you access the library through an API. Once the code is compiled, your application accesses the binary data in the library through the ABI. The ABI defines the structures and methods that your compiled application will use to access the external library (just like the API did), only on a lower level.
+    // ABIs are important when it comes to applications that use external libraries. If a program is built to use a particular library and that library is later updated, you don't want to have to re-compile that application (and from the end-user's standpoint, you may not have the source). If the updated library uses the same ABI, then your program will not need to change. The interface to the library (which is all your program really cares about) is the same even though the internal workings may have changed. Two versions of a library that have the same ABI are sometimes called "binary-compatible" since they have the same low-level interface (you should be able to replace the old version with the new one and not have any major problems).
+    // Sometimes, ABI changes are unavoidable. When this happens, any programs that use that library will not work unless they are re-compiled to use the new version of the library. If the ABI changes but the API does not, then the old and new library versions are sometimes called "source compatible". This implies that while a program compiled for one library version will not work with the other, source code written for one will work for the other if re-compiled.
+
+1.5
+    // Number of program headers: 9 (segments)
+    // Number of section headers: 30 (sections)
+    
