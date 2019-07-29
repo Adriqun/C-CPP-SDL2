@@ -59,14 +59,16 @@ int main()
 
 1.2 // What are the main differences between __cdecl and __stdcall?
 
-1.3 // What is ABI (Application Binary Interface)?
+1.3 // What is API (Application Programming Interface)?
 
-1.4 // What is the difference between Linker and Loader (and section vs segment)?
+1.4 // What is ABI (Application Binary Interface)?
 
-1.5 // How many sections and segments have the object main?
+1.5 // What is the difference between Linker and Loader (and section vs segment, explain briefly)?
+
+1.6 // How many sections and segments have the object main?
     $ readelf -h main
       ELF Header:
-      Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 
+      Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00
       Class:                             ELF64
       Data:                              2's complement, little endian
       Version:                           1 (current)
