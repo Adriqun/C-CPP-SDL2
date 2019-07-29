@@ -39,7 +39,7 @@ int main()
 0.4 // [The Symbol Control Export at Build Time] The GCC compiler provides several mechanisms of setting up the visibility of linker symbols. Assume you have an internal and external function, both of them are external because that's how linux solves the linker symbols for dynamic library. How would you hide internal function of dynamic library?
 
 0.5 // Could you specify some Linux/Windows functions for Dynamically Loading DLL?
-    // For example, function to load dynamic library from code or finding symbols in DLL directly from code.
+	// For example, function to load dynamic library from code or finding symbols in DLL directly from code.
 
 0.6 // How to distinguish the import library file (.lib) from static library (also .lib) quickly and quite accurate without looking at its contents?
 
@@ -47,11 +47,10 @@ int main()
 
 0.8 // On the Windows we have the priority scheme for where the system search for Dynamic Libraries while running exec. What tare Windows Runtime Dynamic Library location rules? Write these entities.
 
-0.9 // How would you fix this problem:
-    adrian@adrian:~/Documents/Test$ gcc main.o -ldl -lsh -o main
-    /usr/bin/ld: cannot find -lsh
-    collect2: error: ld returned 1 exit status
-    // Tip: dynamic library libsh.so is in the same directory where commands are executed.
+0.9 // How would you fix this problem (dynamic library libsh.so is in the same directory where commands are executed):
+	adrian@adrian:~/Documents/Test$ gcc main.o -ldl -lsh -o main
+	/usr/bin/ld: cannot find -lsh
+	collect2: error: ld returned 1 exit status
 
 1.0 // [Linux] What is ELF and what distibution do we use to read them?
 
@@ -66,24 +65,26 @@ int main()
 1.5 // What is the difference between Linker and Loader (and section vs segment, explain briefly)?
 
 1.6 // How many sections and segments has the object main?
-    $ readelf -h main
-      ELF Header:
-      Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00
-      Class:                             ELF64
-      Data:                              2's complement, little endian
-      Version:                           1 (current)
-      OS/ABI:                            UNIX - System V
-      ABI Version:                       0
-      Type:                              EXEC (Executable file)
-      Machine:                           Advanced Micro Devices X86-64
-      Version:                           0x1
-      Entry point address:               0x4005e0
-      Start of program headers:          64 (bytes into file)
-      Start of section headers:          4584 (bytes into file)
-      Flags:                             0x0
-      Size of this header:               64 (bytes)
-      Size of program headers:           56 (bytes)
-      Number of program headers:         9
-      Size of section headers:           64 (bytes)
-      Number of section headers:         30
-      Section header string table index: 27
+	$ readelf -h main
+	  ELF Header:
+	  Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00
+	  Class:                             ELF64
+	  Data:                              2s complement, little endian
+	  Version:                           1 (current)
+	  OS/ABI:                            UNIX - System V
+	  ABI Version:                       0
+	  Type:                              EXEC (Executable file)
+	  Machine:                           Advanced Micro Devices X86-64
+	  Version:                           0x1
+	  Entry point address:               0x4005e0
+	  Start of program headers:          64 (bytes into file)
+	  Start of section headers:          4584 (bytes into file)
+	  Flags:                             0x0
+	  Size of this header:               64 (bytes)
+	  Size of program headers:           56 (bytes)
+	  Number of program headers:         9
+	  Size of section headers:           64 (bytes)
+	  Number of section headers:         30
+	  Section header string table index: 27
+
+1.7 // What is the difference between LTR (Load Time Relocation) and PIC (Platform Independent Code)?
