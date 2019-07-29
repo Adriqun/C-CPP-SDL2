@@ -97,6 +97,14 @@
 
 1.2 // The same functionality between __cdecl and __stdcall is that arguments of function are pushed in reverse order (last pushed argument is first). The main difference is that functions declared with __stdcall automatically cleans up the stack, functions declared with __cdecl declaration requests calee to clean up the stack.
 
+1.3 // Briefly: An API is the interface through which you access someone elses code or through which someone else's code accesses yours. In effect the public methods and properties.
+    // An application programming interface (API) is a particular set of rules ('code') and specifications that software programs can follow to communicate with each other. It serves as an interface between different software programs and facilitates their interaction, similar to the way the user interface facilitates interaction between humans and computers.
+    // Examples:
+    // 1. The x86 (IA-32) Instruction Set (very useful ;-)
+    // 2. A BIOS interrupt call
+    // 3. OpenGL which is often exposed as a C library
+    // 4. Core Windows system calls: WinAPI
+
 1.4 // ABIs cover details such as:
     // data type, size, and alignment,
     // the calling convention, which controls how functions' arguments are passed and return values retrieved,

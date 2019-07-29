@@ -65,7 +65,7 @@ int main()
 
 1.5 // What is the difference between Linker and Loader (and section vs segment, explain briefly)?
 
-1.6 // How many sections and segments have the object main?
+1.6 // How many sections and segments has the object main?
     $ readelf -h main
       ELF Header:
       Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00
