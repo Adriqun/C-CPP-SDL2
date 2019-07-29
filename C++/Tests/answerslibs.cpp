@@ -119,6 +119,12 @@
     // ABIs are important when it comes to applications that use external libraries. If a program is built to use a particular library and that library is later updated, you don't want to have to re-compile that application (and from the end-user's standpoint, you may not have the source). If the updated library uses the same ABI, then your program will not need to change. The interface to the library (which is all your program really cares about) is the same even though the internal workings may have changed. Two versions of a library that have the same ABI are sometimes called "binary-compatible" since they have the same low-level interface (you should be able to replace the old version with the new one and not have any major problems).
     // Sometimes, ABI changes are unavoidable. When this happens, any programs that use that library will not work unless they are re-compiled to use the new version of the library. If the ABI changes but the API does not, then the old and new library versions are sometimes called "source compatible". This implies that while a program compiled for one library version will not work with the other, source code written for one will work for the other if re-compiled.
 
+1.5 // Linker plays role after c and c++ are compiled into objects. Linker resolves references, duplicates symbols and more...
+    // Loader plays role while exectuting executable file, it loads previously created sections as segments, initializes data for executable, also, with dynamic build-in linker resolves references for dynamic libraries as it has to create proper scheme for memory address map, and more...
+    // Sections vs segments:
+    // The linker can be thought of as a highly sophisticated module capable of precisely distinguishing a wide variety of sections of various nature (code, uninitialized data, initialized data, constructors, debugging information, etc.). In order to resolve the references, it must intimately know the details of their internal structure.
+    // On the other hand, the loader's responsibilities are far simplier. For the most part, its task is to copy the sections created by linker into the process memory map. To complete its tasks, it oes not need to know much about the inner structure of the sections. Instead, all it worries about is whether the sections's attributes are read-only, read-write, and whether there needs to be some patching applied before the executable is ready for launching.
+
 1.6
     // Number of program headers: 9 (segments)
     // Number of section headers: 30 (sections)
