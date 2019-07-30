@@ -88,3 +88,18 @@ int main()
 	  Section header string table index: 27
 
 1.7 // What is the difference between LTR (Load Time Relocation) and PIC (Platform Independent Code)?
+
+1.8 // Let's say you have the following functions in following files:
+    // first.h -> its source will be compiled with -fPIC and evaluated as dynamic library
+    // int first_function(int x);
+    // int duplicate_function(int x);
+
+    // second.h -> its source will be compiled with -fPIC and evaluated as dynamic library
+    // int second_function(int x);
+    // int duplicate_function(int x);
+
+    // main.c calls the following functions:
+    // first_function(1);
+    // second_function(2);
+    // duplicate_function(3);
+    // Obviously while creating executable main and linking to the main static libraries libfirst.a and libsecond.a will cause a duplicate symbol error. What happens if sources libfirst and libsecond are dynamic libraries?
