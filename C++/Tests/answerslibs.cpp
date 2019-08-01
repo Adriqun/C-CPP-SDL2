@@ -144,3 +144,5 @@
 1.8 // It will cause no error, the executable is created with no errors. Function definition duplicate_function() will be replaced with the first one found -> with the function definition from libfirst.so.
 
 1.9 // Output is 111
+
+2.0 // Output is 333

@@ -140,3 +140,19 @@ int main()
     // gcc -shared -o libfirst.so first.o
     // gcc -shared -o libsecond.so second.o
     // gcc main.o -Wl,-L. -Wl,-R. -Wl,-lfirst -Wl,-lsecond -o main
+
+2.0 // Now if we change main.cpp into:
+      #include "first.h"
+      #include "second.h
+      #include <stdio.h>
+
+      void common() { printf("3"); }
+
+      int main()
+      {
+        common();
+        first();
+        second();
+        return 0;
+      }
+    // What is the output for ./main?
