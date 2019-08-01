@@ -103,3 +103,40 @@ int main()
     // second_function(2);
     // duplicate_function(3);
     // Obviously while creating executable main and linking to the main static libraries libfirst.a and libsecond.a will cause a duplicate symbol error. What happens if sources libfirst and libsecond are dynamic libraries?
+
+1.9 // According to the previous question, what is the output for ./main?
+    // first.h
+      #pragma once
+      void common();
+      void first();
+    // first.cpp
+      #include "first.h"
+      #include <stdio.h>
+      void common() { printf("1"); }
+      void first()  { common();}
+    // second.h
+      #pragma once
+      void common();
+      void second();
+    // second.cpp
+      #include "second.h"
+      #include <stdio.h>
+      void common() { printf("2"); }
+      void second() { common();}
+    // main.cpp
+      #include "first.h"
+      #include "second.h
+
+      int main()
+      {
+        common();
+        first();
+        second();
+        return 0;
+      }
+    // Files are evaluated as:
+    // gcc -c -fPIC first.cpp
+    // gcc -c -fPIC second.cpp
+    // gcc -shared -o libfirst.so first.o
+    // gcc -shared -o libsecond.so second.o
+    // gcc main.o -Wl,-L. -Wl,-R. -Wl,-lfirst -Wl,-lsecond -o main

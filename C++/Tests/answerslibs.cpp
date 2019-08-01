@@ -142,3 +142,5 @@
 	// 5. .got section is being updated every time the new function symbol is encountered, it is so called lazy binding which speead up the application load time.
 
 1.8 // It will cause no error, the executable is created with no errors. Function definition duplicate_function() will be replaced with the first one found -> with the function definition from libfirst.so.
+
+1.9 // Output is 111
