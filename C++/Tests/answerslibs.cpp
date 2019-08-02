@@ -146,3 +146,7 @@
 1.9 // Output is 111
 
 2.0 // Output is 333
+
+2.1 // 2 - major version, ABI symbols changes, big updates
+    // 7 - minor version, new ABI symbols added, smaller updates, internal functions changes
+    // 13 - patch version, small internal changes, tiny updates
