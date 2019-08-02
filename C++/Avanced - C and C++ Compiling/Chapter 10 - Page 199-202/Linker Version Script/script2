@@ -1,0 +1,6 @@
+LIBSH_2.0 {
+	global:
+		first_function; second_function;
+	local:
+		*;
+};
