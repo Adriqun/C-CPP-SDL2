@@ -1,5 +1,5 @@
 #pragma once
 
-int first(int x);
-int second(int x);
-int third(int x);
+int first_function(int x);
+int second_function(int x);
+int third_function(int x);
