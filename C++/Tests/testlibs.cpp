@@ -158,3 +158,6 @@ int main()
     // What is the output for ./main?
 
 2.1 // While creating shared library we tend to give it a number, for libxyz.2.7.13 what does these numbers mean?
+
+2.2 // What happens when linker finds two weakly declared functions with the same symbol name [C, Linux]?
+    // Example: int __attribute__((weak)) someFunction(int, float);

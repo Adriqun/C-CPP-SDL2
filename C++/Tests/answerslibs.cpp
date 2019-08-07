@@ -150,3 +150,9 @@
 2.1 // 2 - major version, ABI symbols changes, big updates
     // 7 - minor version, new ABI symbols added, smaller updates, internal functions changes
     // 13 - patch version, small internal changes, tiny updates
+
+2.2 // Rules for weakly declared functions (2nd is the answer):
+    // 1. If another identically named symbol appears during the linking, and is not declared weak, that another symbol will replace the weak symbol.
+    // 2. If another identically named symbol appears during the linking and is declared weak, the linker is free to decide which of the two will be actually implemented.
+    // 3. The presence of two non-weak (i.e., strong) symbols of the same name is considered an error (the symbol is already defined).
+    // 4. If during the linking no other identically named symbols appear, the linker may not implement such symbol. If the symbol is a function pointer, the safeguarding the code is a must (in fact, it is strongly recommended to do it always).
