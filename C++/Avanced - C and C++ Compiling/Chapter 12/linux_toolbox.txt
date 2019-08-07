@@ -1,0 +1,72 @@
+W poszukiwaniu narzędzia warto sprawdzić: https://www.gnu.org/software/binutils/
+
+Komendy:
+	file
+	https://linux.die.net/man/1/file
+	Szybko i skutecznie wypisuje detale na temat pliku. Przydatne gdy chcemy dostać informacje na temat binarek.
+
+	size
+	Przy podaniu bibliotek szybko dowiadujemy sie o wielkości (w bajtach) sekcji ELF takich jak np. .text czy .data
+
+	ldd
+	Przy podaniu biblioteki dynamicznej wypisuje jej zależności tj. np. inne biblioteki z których podana biblioteka korzysta (rekurencyjnie). Posiada ograczenia w stosunku do dlopen(). Należy być świadomym, że ldd może uruchomić plik exe, dlatego nie należy uruchamiać komendy ldd na nieznanych plikach! ldd częściowo można zastąpić następującymi bezpiecznymi komendami:
+	objdump -p path/to/program | grep NEEDED
+	readelf -d path/to/program | grep NEEDED
+	Jednak nie działają one rekurencyjnie i nie zawsze pokazują wszystkie zależności.
+	
+	nm
+	Przy podaniu pliku binarnego wypisze jego symbole wraz z typem symbolu.
+	nm path/to/binary wypisze wszystkie symbole podanego pliku, w przypadku plikow .so wypisze również te niewyexportowane symbole. Jeśli biblioteka została obcięta za pomocą komendy strip to nm nic nie znajdzie.
+	nm -D path/to/binary wypisze symbole z sekcji .dynamic czyli widoczne wyexportowane symbole.
+	nm -C path/to/binary wypisze wszystkie symbole funkcji (unmangled czyli odniekształcone)
+	nm -D --no-demangle path/to/binary z dodatkową flagą --no-demangle wypisze przekształcone symbole. Bardzo użyteczne przy podawniu biblioteki dynamicznej, łatwo znajdujemy, której funkcji brakuje extern "C".
+	nm -A library/folder/path* | grep <symbol name> przydatne w poszukiwaniu symbolu w wielu bibliotekach znajdujących się w podanym folderze, -A wypisze nazwę biblioteki w której symbol zosta znaleziony.
+	nm -u path/to/binary przydatne w poszukiwaniu niezdefiniowanych symboli (undefined symbols) czyli takich, które prawdopodobnie się pojawią po załadowaniu bibioteki dynamicznej.
+	
+	objdump
+	Jedna z bardziej uniwersalnych komend starsza niż readelf, ma porównywalnie więcej możliwości oraz wspomaga 50+ innych formatów (oprócz ELF).
+	objdump -f path/to/file parsuje nagłówek ELF wybranego pliku, podaje informacje o typie pliku biblioteka statyczna/dynamiczna/exec, podaje punkt startowy pliku (entry point) w sekcji .text
+	objdump -h path/to/file wypisuje występujące sekcje w podanym pliku oraz wiele informacji o podanej sekcji takich jak wielkość, VMA, LMA...
+	objdump -t path/to/binary wypisze wszystkie symbole podanej binarki (to samo robi nm)
+	objdump -T path/to/binary wypisze wszystkie symbole z sekcji .dynamic podanej binarki (to samo co nm -D)
+	objdump -p path/to/binary bada sekcje .dynamic, przydatne w poszukiwaniu RPATH i RUNPATH
+	objdump -R path/to/binary basa sekcje związaną z relokacją (relocation section)
+	objdump -s -j <section name> path/to/binary dumpuje wartości w hex danej sekcji
+	objdump -p path/to/binary wypisuje informacje na temat segmentów ELF danej binarki.
+	objdump -d -Mintel path/to/binary | grep -A <nazwa funkcji> szuka podanej nazwy funkcji w binarce i wypisuje kod assemblera danej funkcji. Ważne: gdy binarka nie została zbudowana z -g to nie dostaniemy informacji...
+	
+	readelf
+	Duplikat komendy objdump z tym, readelf jest w stanie przeczytac jedynie pliki ELF. Główną różnicą jest fakt, że readelf nie bazuje na BFD library (Binary File Descriptor), ta komenda posiada własną implementacje funkcji, które czytają pliki ELF.
+	readelf -h path/to/binary wypisuje informacje o binarce, punkt startowy w sekcji .text, sekcje itd.
+	readelf -S path/to/binary wypisze wszystkie widoczne sekcje danej binarki.
+	readelf --symbols path/to/binary wypisze wszystkie symbole danej binarki (to samo co robi nm).
+	readelf --dyn-syms path/to/binary wypisze wszystkie symbole z sekcji .dynamic (to samo co nm -D).
+	readelf -d path/to/binary bada sekcje .dynamic, przydatne w szukanie RPATH i RUNPATH.
+	readelf -r path/to/binary bada sekcje związaną z relokacją (relocation section).
+	readelf -x <section name> path/to/binary dumpuje wartości w danej sekcji, np.
+	readelf -x .got driver
+	readelf --segments path/to/binary wypisze występujące segmenty w danej binarce
+	readelf jest bardzo przydatny w wypisywaniu informacji o binarkach zbudowanych w trybie debug.
+	readelf --debug-dump path/to/binary wypisze debug info gdy binarka została zbudowana w trybie debug lub nic gdy została zbudowana w trybie release. Warto używać z komendą wc:
+	readelf --debug-dump path/to/binary | wc -l
+	lub prosty skrypt.sh:
+	if readelf --debug-dump=line $1 > /dev/null; then echo "$1 is built for debug"; fi
+	
+	chrpath
+	Komenda jest w stanie zmienić wartość DT_RPATH danej binarki, warto pamiętać, że nowy string jest ograniczony długością poprzedniego stringa (gdy RPATH="abc" to nowe RPATH nie może być dłuższe niż 3 znaki itd.).
+	chrpath jest w stanie usunąć pole DT_RPATH.
+	Jeśli pole DT_RPATH jest puste to nie możemy go zmieniać.
+	chrpath jest w stanie przekonwertować DT_RPATH w DT_RUNPATH.
+	chrpath -c <file> konwertuje RPATH TO RUNPATH
+	chrpath -r <new rpath> <file> zmienia wartość DT_RPATH
+	chrpath -d <file> usuwa pole DT_RPATH
+	
+	patchelf
+	Komenda jest w stanie zmieniać pole DT_RUNPATH.
+	patchelf --set-path <path 1>:<path 2>:<path n> path/to/binary jak widać można podać wiele ścieżek odpowiednio odseparowanych przez ":".
+	
+	strip
+	Służy do pozbycia się niepotrzebnie widocznych symboli w binarkach.
+	
+	ldconfig
+	https://linux.die.net/man/8/ldconfig
