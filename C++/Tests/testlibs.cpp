@@ -161,3 +161,5 @@ int main()
 
 2.2 // What happens when linker finds two weakly declared functions with the same symbol name [C, Linux]?
     // Example: int __attribute__((weak)) someFunction(int, float);
+
+2.3 // What does the .plt section contain (Procedure Linkage Table)?

@@ -156,3 +156,5 @@
     // 2. If another identically named symbol appears during the linking and is declared weak, the linker is free to decide which of the two will be actually implemented.
     // 3. The presence of two non-weak (i.e., strong) symbols of the same name is considered an error (the symbol is already defined).
     // 4. If during the linking no other identically named symbols appear, the linker may not implement such symbol. If the symbol is a function pointer, the safeguarding the code is a must (in fact, it is strongly recommended to do it always).
+
+2.3 // It is used to call external procedures/functions whose address isn't known in the time of linking, and is left to be resolved by the dynamic linker at run time. It contains unresolved addresses left for dynamic linker.
