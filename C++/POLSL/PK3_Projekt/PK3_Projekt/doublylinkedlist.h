@@ -3,18 +3,20 @@
 template<class T>
 class DoublyLinkedList
 {
-	struct Element
+	struct Node
 	{
 		T m_data;
-		Element<T>* m_prev;
-		Element<T>* m_next;
-		Element(T data, const Element* prev = nullptr, const Element* next = nullptr)
+		Node<T>* m_prev;
+		Node<T>* m_next;
+
+		Node(T data, const Node* prev = nullptr, const Node* next = nullptr)
 		{
 			m_data = data;
 			m_prev = prev;
 			m_next = next;
 		}
-		explicit Element<T> operator=(Element<T>&& x)
+
+		explicit Node<T> operator=(Node<T>&& x)
 		{
 			m_data = x.m_data;
 			m_prev = x.m_prev;
@@ -22,8 +24,8 @@ class DoublyLinkedList
 		}
 	};
 
-	Element* m_head;
-	Element* m_tail;
+	Node* m_head;
+	Node* m_tail;
 	__int64 m_size;
 
 public:
@@ -70,7 +72,7 @@ DoublyLinkedList<T>::DoublyLinkedList(const DoublyLinkedList<T>&& x)
 template <class T>
 void DoublyLinkedList<T>::add(const T& data)
 {
-	Element* newElement = new Element();
+	Node* newNode = new Node();
 }
 
 template <class T>
@@ -95,6 +97,7 @@ template <class T>
 void DoublyLinkedList<T>::clear()
 {
 	m_size = 0;
+
 }
 
 template <class T>
