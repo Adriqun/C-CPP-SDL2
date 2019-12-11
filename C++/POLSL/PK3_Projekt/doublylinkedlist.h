@@ -2,6 +2,7 @@
 	File: doublylinkedlist.h
 	Author: Adrian Michalek
 	Github: https://github.com/devmichalek
+	Github (directly): https://github.com/devmichalek/Tutorials/tree/master/C%2B%2B/POLSL/PK3_Projekt
 	Classes:
 		Node				- represents node of type T in doubly linked list
 							- keeps track of allocated memory
@@ -30,11 +31,11 @@ public:
 	Node<T>* m_prev; // Points to previous node
 	Node<T>* m_next; // Points to next node
 
-	explicit Node(T data, const Node<T>* prev = nullptr, const Node<T>* next = nullptr); // Constructor with parameters
+	explicit Node(T, Node<T>* = nullptr, Node<T>* = nullptr); // Constructor with parameters
 	~Node(); // Destructor
-	Node<T> operator=(Node<T>&& x); // Assignment operator
+	Node<T> operator=(const Node<T>&); // Assignment operator
 
-	void* operator new(size_t); // Operator new
+	void* operator new(std::size_t); // Operator new
 	void operator delete(void*); // Operator delete
 	static const __int64& allocated(); // Returns current number of allocated bytes
 };
@@ -43,7 +44,7 @@ template<class T>
 __int64 Node<T>::m_allocated = 0;
 
 template<class T>
-Node<T>::Node(T data, const Node<T>* prev, const Node<T>* next)
+Node<T>::Node(T data, Node<T>* prev, Node<T>* next)
 {
 	m_data = data;
 	m_prev = prev;
@@ -53,20 +54,20 @@ Node<T>::Node(T data, const Node<T>* prev, const Node<T>* next)
 template<class T>
 Node<T>::~Node()
 {
-	delete m_prev;
-	delete m_next;
+	// Not needed actually...
+	m_prev = nullptr;
+	m_next = nullptr;
 }
 
 template<class T>
-Node<T> Node<T>::operator=(Node<T>&& x)
+Node<T> Node<T>::operator=(const Node<T>& rhs)
 {
-	m_data = x.m_data;
-	m_prev = x.m_prev;
-	m_next = x.m_next;
+	m_data = rhs.m_data;
+	return *this;
 }
 
 template<class T>
-void* Node<T>::operator new(size_t size)
+void* Node<T>::operator new(std::size_t size)
 {
 	m_allocated += size;
 	return malloc(size);
@@ -75,8 +76,10 @@ void* Node<T>::operator new(size_t size)
 template<class T>
 void Node<T>::operator delete(void* ptr)
 {
-	m_allocated -= sizeof(T);
-	m_allocated -= (sizeof(Node<T>) * 2);
+	// Type with size less than 1 byte will be converted into 4 byte type
+	// automatically by compiler (memory alignment issue)
+	m_allocated -= sizeof(T) < sizeof(void*) ? sizeof(void*) : sizeof(T);
+	m_allocated -= (sizeof(Node<T>*) * 2);
 	free(ptr);
 }
 
@@ -87,28 +90,42 @@ const __int64& Node<T>::allocated()
 }
 
 // Helper class Guard protects from memory corruption.
+template<class T, bool throwException = true>
 class Guard
 {
 	__int64 m_allocated;
 public:
 	Guard()
 	{
-		m_allocated = Node<std::int8_t>::allocated();
+		m_allocated = Node<T>::allocated();
 	}
 	~Guard()
 	{
-		try {
-			if (Node<std::int8_t>::allocated() != m_allocated)
+		if (throwException)
+		{
+			try {
+				if (Node<T>::allocated() != m_allocated)
+				{
+					throw std::bad_alloc();
+				}
+			}
+			catch (...)
 			{
-				throw std::bad_alloc();
+				std::string message = "Fatal error: Memory corruption, lost ";
+				message += std::to_string(Node<T>::allocated() - m_allocated);
+				message += " bytes...";
+				std::cerr << message << std::endl;
 			}
 		}
-		catch (...)
+		else
 		{
-			std::string message = "Fatal error: Memory corruption, lost ";
-			message += std::to_string(m_allocated - Node<std::int8_t>::allocated());
-			message += " bytes...";
-			std::cout << message << std::endl;
+			if (Node<T>::allocated() != m_allocated)
+			{
+				std::string message = "Fatal error: Memory corruption, lost ";
+				message += std::to_string(Node<T>::allocated() - m_allocated);
+				message += " bytes...";
+				std::cout << message << std::endl;
+			}
 		}
 	}
 };
@@ -123,23 +140,30 @@ class DoublyLinkedList
 
 public:
 	explicit DoublyLinkedList(); // Default constructor
-	explicit DoublyLinkedList(const DoublyLinkedList<T>&); // Copy constructor (reference)
-	explicit DoublyLinkedList(const DoublyLinkedList<T>&&); // Copy constructor (move semantics)
+	DoublyLinkedList(const DoublyLinkedList<T>&); // Copy constructor (reference)
+	DoublyLinkedList(const DoublyLinkedList<T>&&); // Copy constructor (move semantics)
 	~DoublyLinkedList(); // Destructor
 	DoublyLinkedList<T>& operator=(const DoublyLinkedList<T>&); // Assignment operator (reference)
 	DoublyLinkedList<T>& operator=(const DoublyLinkedList<T>&&); // Assignment operator (move semantics)
-	void insert(const T&); // Creates new node, inserts new data
-	void insert(const T&&); // Creates new node, inserts new data
-	void insert(T); // Creates new node, inserts new data
+	DoublyLinkedList<T>& operator+=(const DoublyLinkedList<T>&);
+	DoublyLinkedList<T>& operator+=(const DoublyLinkedList<T>&&);
+	bool insert(const T&); // Creates new node, inserts new data
+	bool insert(const T&&); // Creates new node, inserts new data
 	bool remove(uint64_t); // Removes node specified by index from the list
-	bool remove(Node<T>*); // Removes node specified by address pointer from the list
-	const T& front();
-	bool pop_front();
-	Node<T>* search(uint64_t); // Search by index, returns nullptr if node was not found
-	uint64_t search(Node<T>*); // Search by node pointer address, returns std::numeric_limits<uint64_t>::max() in node was not found
+	bool remove(const Node<T>*); // Removes node specified by address pointer from the list
+	const T& front() const; // Returns data form the head
+	const T& back() const; // Returns data form the tail
+	bool pop_front(); // Removes first node
+	const Node<T>* head() const; // Returns head
+	const Node<T>* tail() const; // Returns tail
+	//Node<T>* search(uint64_t); // Search by index, returns nullptr if node was not found
+	//uint64_t search(const Node<T>*); // Search by node pointer address, returns std::numeric_limits<uint64_t>::max() in node was not found
 	void clear(); // Removes all the data from the list
-	uint64_t size(); // Returns number of nodes allocated for the list
-	friend std::ostream& operator<<(std::ostream&, const DoublyLinkedList<T>&);
+	uint64_t size() const; // Returns number of nodes allocated for the list
+	uint64_t max() const; // Returns max possible number of nodes allocated for the list
+
+	template<class U> // << operator
+	friend std::ostream& operator<<(std::ostream&, const DoublyLinkedList<U>&);
 };
 
 template<class T>
@@ -153,15 +177,13 @@ DoublyLinkedList<T>::DoublyLinkedList()
 template<class T>
 DoublyLinkedList<T>::DoublyLinkedList(const DoublyLinkedList<T>& rhs)
 {
-	clear();
 	*this = rhs;
 }
 
 template<class T>
 DoublyLinkedList<T>::DoublyLinkedList(const DoublyLinkedList<T>&& rhs)
 {
-	clear();
-	*this = rhs;
+	*this = std::move(rhs);
 }
 
 template<class T>
@@ -173,17 +195,59 @@ DoublyLinkedList<T>::~DoublyLinkedList()
 template<class T>
 DoublyLinkedList<T>& DoublyLinkedList<T>::operator=(const DoublyLinkedList<T>& rhs)
 {
-	// Deep copy
+	clear();
+	Node<T>* node = rhs.m_head;
+	while (node)
+	{
+		insert(node->m_data);
+		node = node->m_next;
+	}
+
+	return *this;
 }
 
 template<class T>
 DoublyLinkedList<T>& DoublyLinkedList<T>::operator=(const DoublyLinkedList<T>&& rhs)
 {
-	// Deep copy
+	clear();
+	Node<T>* node = rhs.m_head;
+	while (node)
+	{
+		insert(node->m_data);
+		node = node->m_next;
+	}
+
+	return *this;
+}
+
+template<class T>
+DoublyLinkedList<T>& DoublyLinkedList<T>::operator+=(const DoublyLinkedList<T>& rhs)
+{
+	Node<T>* node = rhs.m_head;
+	while (node)
+	{
+		insert(node->m_data);
+		node = node->m_next;
+	}
+
+	return *this;
+}
+
+template<class T>
+DoublyLinkedList<T>& DoublyLinkedList<T>::operator+=(const DoublyLinkedList<T>&& rhs)
+{
+	Node<T>* node = rhs.m_head;
+	while (node)
+	{
+		insert(node->m_data);
+		node = node->m_next;
+	}
+
+	return *this;
 }
 
 template <class T>
-void DoublyLinkedList<T>::insert(const T& data)
+bool DoublyLinkedList<T>::insert(const T& data)
 {
 	try {
 		++m_size;
@@ -194,29 +258,32 @@ void DoublyLinkedList<T>::insert(const T& data)
 	}
 	catch (const std::overflow_error& error)
 	{
-		std::cout << error.what();
+		std::cerr << error.what();
+		return false;
 	}
 
 	if (!m_head)
-	{	// insert first element.
-		m_tail = m_head = new Node(data);
+	{	// Insert first node.
+		m_tail = m_head = new Node<T>(data);
 	}
 	else
 	{
 		// Go to the end of the list.
-		Node* node = m_head;
+		Node<T>* node = m_head;
 		while (node->m_next)
 			node = node->m_next;
 
-		// insert new node.
-		Node* newNode = new Node(data, node->m_next);
+		// Insert new node.
+		Node<T>* newNode = new Node<T>(data, node);
 		node->m_next = newNode;
 		m_tail = newNode;
 	}
+
+	return true;
 }
 
 template <class T>
-void DoublyLinkedList<T>::insert(const T&& data)
+bool DoublyLinkedList<T>::insert(const T&& data)
 {
 	try {
 		++m_size;
@@ -227,58 +294,28 @@ void DoublyLinkedList<T>::insert(const T&& data)
 	}
 	catch (const std::overflow_error & error)
 	{
-		std::cout << error.what();
+		std::cerr << error.what();
+		return false;
 	}
 
 	if (!m_head)
-	{	// insert first element.
-		m_tail = m_head = new Node(data);
+	{	// Insert first element.
+		m_tail = m_head = new Node<T>(data);
 	}
 	else
 	{
 		// Go to the end of the list.
-		Node* node = m_head;
+		Node<T>* node = m_head;
 		while (node->m_next)
 			node = node->m_next;
 
-		// insert new node.
-		Node* newNode = new Node(data, node->m_next);
+		// Insert new node.
+		Node<T>* newNode = new Node<T>(data, node);
 		node->m_next = newNode;
 		m_tail = newNode;
 	}
-}
 
-template <class T>
-void DoublyLinkedList<T>::insert(T data)
-{
-	try {
-		++m_size;
-		if (m_size > m_max)
-		{
-			throw std::overflow_error("Error: Unsigned 64-bit integer overflow, extend m_max range...");
-		}
-	}
-	catch (const std::overflow_error & error)
-	{
-		std::cout << error.what();
-	}
-
-	if (!m_head)
-	{	// insert first element.
-		m_tail = m_head = new Node(data);
-	}
-	else
-	{
-		// Go to the end of the list.
-		Node* node = m_head;
-		while (node->m_next)
-			node = node->m_next;
-
-		// insert new node.
-		Node* newNode = new Node(data, node->m_next);
-		node->m_next = newNode;
-		m_tail = newNode;
-	}
+	return true;
 }
 
 template <class T>
@@ -305,9 +342,13 @@ bool DoublyLinkedList<T>::remove(uint64_t index)
 
 	--m_size;
 	if (node->m_prev)
-		node->m_prev->m_next = nullptr;
+		node->m_prev->m_next = node->m_next;
 	if (node->m_next)
-		node->m_next->m_prev = nullptr;
+		node->m_next->m_prev = node->m_prev;
+	if (node == m_head)
+		m_head = node->m_next;
+	if (node == m_tail)
+		m_tail = node->m_prev;
 
 	delete node;
 	node = nullptr;
@@ -315,7 +356,7 @@ bool DoublyLinkedList<T>::remove(uint64_t index)
 }
 
 template <class T>
-bool DoublyLinkedList<T>::remove(Node<T>* seek)
+bool DoublyLinkedList<T>::remove(const Node<T>* seek)
 {
 	if (!m_head)
 		return false;
@@ -336,9 +377,13 @@ bool DoublyLinkedList<T>::remove(Node<T>* seek)
 
 	--m_size;
 	if (node->m_prev)
-		node->m_prev->m_next = nullptr;
+		node->m_prev->m_next = node->m_next;
 	if (node->m_next)
-		node->m_next->m_prev = nullptr;
+		node->m_next->m_prev = node->m_prev;
+	if (node == m_head)
+		m_head = node->m_next;
+	if (node == m_tail)
+		m_tail = node->m_prev;
 
 	delete node;
 	node = nullptr;
@@ -346,57 +391,93 @@ bool DoublyLinkedList<T>::remove(Node<T>* seek)
 }
 
 template <class T>
-const T& DoublyLinkedList<T>::front()
+const T& DoublyLinkedList<T>::front() const
 {
+	try {
+		if (!m_head)
+			throw std::bad_alloc();
+	}
+	catch (...) {
+		std::cerr << "Fatal error: Trying to read uninitialized doubly linked list..." << std::endl;
+		return T();
+	}
+	
 	return m_head->m_data;
+}
+
+template <class T>
+const T& DoublyLinkedList<T>::back() const
+{
+	try {
+		if (!m_head)
+			throw std::bad_alloc();
+	}
+	catch (...) {
+		std::cerr << "Fatal error: Trying to read uninitialized doubly linked list..." << std::endl;
+		return T();
+	}
+
+	return m_tail->m_data;
 }
 
 template <class T>
 bool DoublyLinkedList<T>::pop_front()
 {
-	return remove(0);
+	return remove(uint64_t(0));
 }
 
 template <class T>
-Node<T>* DoublyLinkedList<T>::search(uint64_t index)
+const Node<T>* DoublyLinkedList<T>::head() const
 {
-	if (!m_head)
-		return nullptr;
-
-	if (index >= m_max)
-		return nullptr;
-
-	Node<T>* node = m_head;
-	while (index && node->m_next)
-	{
-		--index;
-		node = node->m_next;
-	}
-
-	if (index)
-		return nullptr;
-
-	return node;
+	return m_head;
 }
 
 template <class T>
-uint64_t DoublyLinkedList<T>::search(Node<T>* seek)
+const Node<T>* DoublyLinkedList<T>::tail() const
 {
-	if (!seek)
-		return static_cast<uint64_t>(-1);
-
-	uint64_t index = 0;
-	Node<T>* node = m_head;
-	while (node)
-	{
-		if (node == seek)
-			return index;
-		++index;
-		node = node->m_next;
-	}
-
-	return static_cast<uint64_t>(-1);
+	return m_tail;
 }
+
+//template <class T>
+//Node<T>* DoublyLinkedList<T>::search(uint64_t index)
+//{
+//	if (!m_head)
+//		return nullptr;
+//
+//	if (index >= m_max)
+//		return nullptr;
+//
+//	Node<T>* node = m_head;
+//	while (index && node->m_next)
+//	{
+//		--index;
+//		node = node->m_next;
+//	}
+//
+//	if (index)
+//		return nullptr;
+//
+//	return node;
+//}
+
+//template <class T>
+//uint64_t DoublyLinkedList<T>::search(const Node<T>* seek)
+//{
+//	if (!seek)
+//		return static_cast<uint64_t>(-1);
+//
+//	uint64_t index = 0;
+//	Node<T>* node = m_head;
+//	while (node)
+//	{
+//		if (node == seek)
+//			return index;
+//		++index;
+//		node = node->m_next;
+//	}
+//
+//	return static_cast<uint64_t>(-1);
+//}
 
 template <class T>
 void DoublyLinkedList<T>::clear()
@@ -417,26 +498,37 @@ void DoublyLinkedList<T>::clear()
 }
 
 template <class T>
-uint64_t DoublyLinkedList<T>::size()
+uint64_t DoublyLinkedList<T>::size() const
 {
 	return m_size;
+}
+
+template <class T>
+uint64_t DoublyLinkedList<T>::max() const
+{
+	return m_max;
 }
 
 template <class T>
 std::ostream& operator<<(std::ostream& os, const DoublyLinkedList<T>& rhs)
 {
 	if (!rhs.m_head)
-	{
-		std::cout << "empty" << std::endl;
-	}
+		os << "empty";
 	else
 	{
 		Node<T>* node = rhs.m_head;
-		while (node)
+		if (node)
 		{
-			std::cout << node->m_data << " ";
+			os << node->m_data;
 			node = node->m_next;
 		}
-		std::cout << std::endl;
+		
+		while (node)
+		{
+			os << " " << node->m_data;
+			node = node->m_next;
+		}
 	}
+
+	return os;
 }
