@@ -1,8 +1,7 @@
 /*
 	File: doublylinkedlist.h
 	Author: Adrian Michalek
-	Github: https://github.com/devmichalek
-	Github (directly): https://github.com/devmichalek/Tutorials/tree/master/C%2B%2B/POLSL/PK3_Projekt
+	Github: https://github.com/devmichalek/Tutorials/tree/master/C%2B%2B/POLSL/PK3_Projekt
 	Classes:
 		Node				- represents node of type T in doubly linked list
 							- keeps track of allocated memory
@@ -137,6 +136,7 @@ class DoublyLinkedList
 	Node<T>* m_tail;
 	uint64_t m_size;
 	static const uint64_t m_max = 10000;
+	static T m_error;
 
 public:
 	explicit DoublyLinkedList(); // Default constructor
@@ -158,13 +158,16 @@ public:
 	const Node<T>* tail() const; // Returns tail
 	//Node<T>* search(uint64_t); // Search by index, returns nullptr if node was not found
 	//uint64_t search(const Node<T>*); // Search by node pointer address, returns std::numeric_limits<uint64_t>::max() in node was not found
-	void clear(); // Removes all the data from the list
+	bool clear(); // Removes all the data from the list
 	uint64_t size() const; // Returns number of nodes allocated for the list
 	uint64_t max() const; // Returns max possible number of nodes allocated for the list
 
 	template<class U> // << operator
 	friend std::ostream& operator<<(std::ostream&, const DoublyLinkedList<U>&);
 };
+
+template<class T>
+T DoublyLinkedList<T>::m_error = T();
 
 template<class T>
 DoublyLinkedList<T>::DoublyLinkedList()
@@ -399,7 +402,7 @@ const T& DoublyLinkedList<T>::front() const
 	}
 	catch (...) {
 		std::cerr << "Fatal error: Trying to read uninitialized doubly linked list..." << std::endl;
-		return T();
+		return m_error;
 	}
 	
 	return m_head->m_data;
@@ -414,7 +417,7 @@ const T& DoublyLinkedList<T>::back() const
 	}
 	catch (...) {
 		std::cerr << "Fatal error: Trying to read uninitialized doubly linked list..." << std::endl;
-		return T();
+		return m_error;
 	}
 
 	return m_tail->m_data;
@@ -480,8 +483,9 @@ const Node<T>* DoublyLinkedList<T>::tail() const
 //}
 
 template <class T>
-void DoublyLinkedList<T>::clear()
+bool DoublyLinkedList<T>::clear()
 {
+	bool result = m_size != 0;
 	m_size = 0;
 
 	Node<T>* tmp;
@@ -495,6 +499,7 @@ void DoublyLinkedList<T>::clear()
 
 	m_head = nullptr;
 	m_tail = nullptr;
+	return result;
 }
 
 template <class T>

@@ -1,8 +1,7 @@
 /*
 	File: queue.h
 	Author: Adrian Michalek
-	Github: https://github.com/devmichalek
-	Github (directly): https://github.com/devmichalek/Tutorials/tree/master/C%2B%2B/POLSL/PK3_Projekt
+	Github: https://github.com/devmichalek/Tutorials/tree/master/C%2B%2B/POLSL/PK3_Projekt
 	Classes:
 		Queue - implementation of queue of type T
 	Example of Queue<int> (front is on the left):
@@ -18,11 +17,19 @@
 #pragma once
 #include "doublylinkedlist.h"
 
-enum QueueState : unsigned int
+enum class QueueState : unsigned int
 {
 	EMPTY = 0,	// Queue is empty (0 elements)
 	FULL,		// Queue is full (max elements)
 	FILLED		// Queue is filled (at least 1 element)
+};
+
+enum QueueOperation : unsigned int
+{
+	NO_ERROR = 0,
+	REMOVE_EMPTY,
+	INSERT_OVERFLOW,
+	CLEAR_EMPTY
 };
 
 template<class T>
@@ -30,6 +37,7 @@ class Queue
 {
 	static unsigned int m_count; // Represents number of instantiated objects
 	DoublyLinkedList<T> m_data;
+	QueueOperation m_error;
 
 public:
 	Queue(); // Default constructor
@@ -43,8 +51,9 @@ public:
 	const T& front(); // Returns first element
 	const T& back(); // Returns last element
 	QueueState state() const; // Returns current state of the queue
+	const QueueOperation& error() const; // Returns last error state of the queue
 	static const unsigned int& count(); // Returns current number of instantiated objects
-	void clear(); // Removes all the data from the queue
+	bool clear(); // Removes all the data from the queue
 
 	// Overloaded operators:
 	Queue<T>& operator=(const Queue&);
@@ -62,18 +71,21 @@ template<class T>
 Queue<T>::Queue()
 {
 	++m_count;
+	m_error = QueueOperation::NO_ERROR;
 }
 
 template<class T>
 Queue<T>::Queue(const Queue<T>& rhs)
 {
 	m_data = rhs.m_data;
+	m_error = QueueOperation::NO_ERROR;
 }
 
 template<class T>
 Queue<T>::Queue(const Queue<T>&& rhs)
 {
 	m_data = rhs.m_data;
+	m_error = QueueOperation::NO_ERROR;
 }
 
 template<class T>
@@ -85,19 +97,37 @@ Queue<T>::~Queue()
 template<class T>
 bool Queue<T>::insert(const T &element)
 {
-	return m_data.insert(element);
+	if (!m_data.insert(element))
+	{
+		m_error = QueueOperation::INSERT_OVERFLOW;
+		return false;
+	}
+
+	return true;
 }
 
 template<class T>
 bool Queue<T>::insert(const T&& element)
 {
-	return m_data.insert(std::move(element));
+	if (!m_data.insert(element))
+	{
+		m_error = QueueOperation::INSERT_OVERFLOW;
+		return false;
+	}
+
+	return true;
 }
 
 template<class T>
 bool Queue<T>::remove()
 {
-	return m_data.pop_front();
+	if (!m_data.pop_front())
+	{
+		m_error = QueueOperation::REMOVE_EMPTY;
+		return false;
+	}
+
+	return true;
 }
 
 template<class T>
@@ -129,15 +159,28 @@ QueueState Queue<T>::state() const
 }
 
 template<class T>
+const QueueOperation& Queue<T>::error() const
+{
+	return m_error;
+}
+
+template<class T>
 const unsigned int& Queue<T>::count()
 {
 	return m_count;
 }
 
 template<class T>
-void Queue<T>::clear()
+bool Queue<T>::clear()
 {
-	m_data.clear();
+	if (!m_data.clear())
+	{
+		m_error = QueueOperation::CLEAR_EMPTY;
+		return false;
+	}
+
+	m_error = QueueOperation::NO_ERROR;
+	return true;
 }
 
 template<class T>

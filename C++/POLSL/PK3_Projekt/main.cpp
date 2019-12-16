@@ -1,12 +1,3 @@
-/*
-	File: main.cpp
-	Author: Adrian Michalek
-	Github: https://github.com/devmichalek
-	Github (directly): https://github.com/devmichalek/Tutorials/tree/master/C%2B%2B/POLSL/PK3_Projekt
-	Information:
-		- File contains examples of predefined classes.
-*/
-
 #include "queue.h"
 #include <vector>
 
@@ -290,6 +281,7 @@ void TestClassQueue()
 		q1.insert(1);
 		const int tmp = 2;
 		q1.insert(tmp);
+		q1.insert(std::move(tmp));
 		std::cout << q1 << " = 1 2" << std::endl;
 		q1.insert(3);
 		std::cout << q1 << " = 1 2 3" << std::endl;
