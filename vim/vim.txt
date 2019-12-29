@@ -1,0 +1,44 @@
+Modes:
+i - insert mode
+Esc - normal mode
+V - visual mode
+
+Get out of vim:
+:q - quit
+:wq - save and quit
+:q! - quit and not save the file
+:30 - move cursor to the line 30
+
+Move cursor in normal mode:
+h - to the left
+j - to the bottom
+k - to the top
+l - to the right
+
+dd - deletes the line
+2dd - deletes two lines
+gg - go to the top of the file
+G - go to the bottom of the file
+u - undo
+ctrl+r - redo
+. - repeat last command
+yy - copies line to the clipboard
+p - pastes tekst from the clipboard below
+P - pastes tekst from the clipboard above
+o - adds new line below in normal mode and change the mode to insert mode
+O - adds new line above in normal mode and change the mode to insert mode
+w - moves the cursor to the next word (separated by e.q. "." or " ")
+b - moves the cursor to the previous word (separated by e.q. "." or " ")
+W - moves the cursor to the next word (separated by " ")
+B - moves the cursor to the previous word (separated by " ")
+0 - moves the cursor to the begginning of the line
+$ - moves the cursor to the end of the line
+f! - finds "!" in the line and places the cursor there
+t! - finds "!" in the line and places the cursor one character behind there
+% - moves cursor between blocks e. q. {} or ()
+d% - deletes block of code
+cw - change word
+dw - deletes word
+D - deletes rest of the line from the current point pointed by cursor
+C - deletes rest of the line and change mode into insert mode
+ct} - delete everything up to the curly brace and change mode into insert mode
