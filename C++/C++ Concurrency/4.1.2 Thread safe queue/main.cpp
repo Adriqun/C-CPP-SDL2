@@ -15,7 +15,7 @@ public:
 	ThreadSafeQueue() {}
 	ThreadSafeQueue(const ThreadSafeQueue &rhs)
 	{
-		std::lock_guard<std::mutex> lk(mut);
+		std::lock_guard<std::mutex> lk(rhs.mut);
 		data = rhs.data;
 	}
 
@@ -42,10 +42,10 @@ public:
 	{
 		std::lock_guard<std::mutex> lk(mut);
 		if (data.empty())
-			return false;
+			return std::shared_ptr<T>();
 		std::shared_ptr<T> res(std::make_shared<T>(data.front()));
 		data.pop();
-		return true;
+		return res;
 	}
 
 	void wait_and_pop(T &value)
