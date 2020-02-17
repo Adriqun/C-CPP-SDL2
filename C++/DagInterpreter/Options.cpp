@@ -21,6 +21,8 @@ void Options::PrintHelp()
 
 bool Options::Compare(char* argument)
 {
+	static char* lastSwitch = nullptr;
+
 	if (lastIdentifier != None)
 	{
 		switch (lastIdentifier)
@@ -31,7 +33,7 @@ bool Options::Compare(char* argument)
 			{
 				if (!*argument || !isdigit(*argument))
 				{
-					std::cout << "Error: Expected argument is <unsigned int>!" << std::endl;
+					std::cout << "Error: Specified <unsigned int> argument for switch \"" << lastSwitch << "\" is not a positive number!" << std::endl;
 					return false;
 				}
 
@@ -40,14 +42,14 @@ bool Options::Compare(char* argument)
 				{
 					if (!isdigit(*argument))
 					{
-						std::cout << "Error: Expected argument <unsigned int> is inconsistent!" << std::endl;
+						std::cout << "Error: Specified <unsigned int> argument for switch \"" << lastSwitch << "\" is inconsistent!" << std::endl;
 						return false;
 					}
 						
 					value = value * 10 + static_cast<unsigned long long>(((*argument++) - '0'));
 					if (value > static_cast<unsigned long long>(std::numeric_limits<unsigned int>::max()))
 					{
-						std::cout << "Error: Specified <unsigned int> argument exceeds its range!" << std::endl;
+						std::cout << "Error: Specified <unsigned int> argument for switch \"" << lastSwitch << "\" exceeds range!" << std::endl;
 						return false;
 					}
 				}
@@ -85,25 +87,26 @@ bool Options::Compare(char* argument)
 		return true;
 	}
 
-	if (*argument++ != '-')
+	if (*argument != '-')
 	{
 		std::cout << "Error: Missing '-' in specified switch \"" << argument << "\"" << std::endl;
 		return false;
 	}
 
-	switch (*argument)
+	lastSwitch = argument;
+	switch (*++argument)
 	{
 		case 'h':
 		{
 			if (*++argument == 'e' && *++argument == 'l' && *++argument == 'p' && !*++argument)
 			{
-				if (m_data & Identifier::Help)
+				if (m_data & 1 << Identifier::Help)
 				{
 					std::cout << "Error: Switch \"-help\" was specified more than once!" << std::endl;
 					return false;
 				}
 
-				m_data &= Identifier::Help;
+				m_data |= 1 << Identifier::Help;
 				return true;
 			}
 			break;
@@ -119,24 +122,24 @@ bool Options::Compare(char* argument)
 				{
 					if (*++argument == 'c')
 					{
-						if (m_data & Identifier::RemoveComments)
+						if (m_data & 1 << Identifier::RemoveComments)
 						{
 							std::cout << "Error: Switch \"-rmc\" was specified more than once!" << std::endl;
 							return false;
 						}
 
-						m_data &= Identifier::RemoveComments;
+						m_data |= 1 << Identifier::RemoveComments;
 						return true;
 					}
 					else if (*argument == 'a')
 					{
-						if (m_data & Identifier::RemoveArguments)
+						if (m_data & 1 << Identifier::RemoveArguments)
 						{
 							std::cout << "Error: Switch \"-rma\" was specified more than once!" << std::endl;
 							return false;
 						}
 
-						m_data &= Identifier::RemoveArguments;
+						m_data |= 1 << Identifier::RemoveArguments;
 						return true;
 					}
 					break;
@@ -145,14 +148,25 @@ bool Options::Compare(char* argument)
 				{
 					if (*++argument == 'c')
 					{
+						if (m_data & 1 << Identifier::ReduceComments)
+						{
+							std::cout << "Error: Switch \"-rdc\" was specified more than once!" << std::endl;
+							return false;
+						}
+
 						lastIdentifier = Identifier::ReduceComments;
-						m_data &= Identifier::ReduceComments;
+						m_data |= 1 << Identifier::ReduceComments;
 						return true;
 					}
 					else if (*argument == 'a')
 					{
+						if (m_data & 1 << Identifier::ReduceArguments)
+						{
+							std::cout << "Error: Switch \"-rda\" was specified more than once!" << std::endl;
+							return false;
+						}
 						lastIdentifier = Identifier::ReduceArguments;
-						m_data &= Identifier::ReduceArguments;
+						m_data |= 1 << Identifier::ReduceArguments;
 						return true;
 					}
 					break;
@@ -170,35 +184,53 @@ bool Options::Compare(char* argument)
 			{
 				case 'l':
 				{
-					if (m_data & Identifier::SetLeftAlignment)
+					if (m_data & 1 << Identifier::SetLeftAlignment)
 					{
 						std::cout << "Error: Switch \"-sla\" was specified more than once!" << std::endl;
 						return false;
 					}
 
-					m_data &= Identifier::SetLeftAlignment;
+					if (m_data & 1 << Identifier::SetRightAlignment || m_data & 1 << Identifier::SetCenterAlignment)
+					{
+						std::cout << "Error: More than one alignment specified, previous switch setting alignment was \"" << lastSwitch << "\"!\n";
+						return false;
+					}
+
+					m_data |= 1 << Identifier::SetLeftAlignment;
 					return true;
 				}
 				case 'r':
 				{
-					if (m_data & Identifier::SetRightAlignment)
+					if (m_data & 1 << Identifier::SetRightAlignment)
 					{
 						std::cout << "Error: Switch \"-sra\" was specified more than once!" << std::endl;
 						return false;
 					}
 
-					m_data &= Identifier::SetRightAlignment;
+					if (m_data & 1 << Identifier::SetLeftAlignment || m_data & 1 << Identifier::SetCenterAlignment)
+					{
+						std::cout << "Error: More than one alignment specified, previous switch setting alignment was \"" << lastSwitch << "\"!\n";
+						return false;
+					}
+
+					m_data |= 1 << Identifier::SetRightAlignment;
 					return true;
 				}
 				case 'c':
 				{
-					if (m_data & Identifier::SetCenterAlignment)
+					if (m_data & 1 << Identifier::SetCenterAlignment)
 					{
 						std::cout << "Error: Switch \"-sca\" was specified more than once!" << std::endl;
 						return false;
 					}
 
-					m_data &= Identifier::SetCenterAlignment;
+					if (m_data & 1 << Identifier::SetLeftAlignment || m_data & 1 << Identifier::SetRightAlignment)
+					{
+						std::cout << "Error: More than one alignment specified, previous switch setting alignment was \"" << lastSwitch << "\"!\n";
+						return false;
+					}
+
+					m_data |= 1 << Identifier::SetCenterAlignment;
 					return true;
 				}
 			}
@@ -208,13 +240,13 @@ bool Options::Compare(char* argument)
 		{
 			if (*++argument == 'n' && *++argument == 'n' && !*++argument)
 			{
-				if (m_data & Identifier::PrintNodeNumberInsideEdge)
+				if (m_data & 1 << Identifier::PrintNodeNumberInsideEdge)
 				{
 					std::cout << "Error: Switch \"-pnn\" was specified more than once!" << std::endl;
 					return false;
 				}
 
-				m_data &= Identifier::PrintNodeNumberInsideEdge;
+				m_data |= 1 << Identifier::PrintNodeNumberInsideEdge;
 				return true;
 			}
 			break;
@@ -223,13 +255,14 @@ bool Options::Compare(char* argument)
 		{
 			if (*++argument == 'o' && *++argument == 'p' && !*++argument)
 			{
-				if (m_data & Identifier::PrintMostUsed)
+				if (m_data & 1 << Identifier::PrintMostUsed)
 				{
 					std::cout << "Error: Switch \"-top\" was specified more than once!" << std::endl;
 					return false;
 				}
 
-				m_data &= Identifier::PrintMostUsed;
+				m_data |= 1 << Identifier::PrintMostUsed;
+				lastIdentifier = Identifier::PrintMostUsed;
 				return true;
 			}
 			break;
@@ -239,14 +272,14 @@ bool Options::Compare(char* argument)
 			if (*++argument == 'i' && *++argument == 'l' && *++argument == 'e' && !*++argument)
 			{
 				lastIdentifier = Identifier::SpecifyFile;
-				m_data &= Identifier::SpecifyFile;
+				m_data |= 1 << Identifier::SpecifyFile;
 				return true;
 			}
 			break;
 		}
 	}
 
-	std::cout << "Error: Cannot find specified switch \"" << argument << "\"!" << std::endl;
+	std::cout << "Error: Cannot find specified switch \"" << lastSwitch << "\"!" << std::endl;
 	return false;
 }
 
@@ -271,53 +304,66 @@ Options::Options(int argc, char** argv, bool& status)
 			if (!Compare(argv[i]))
 			{
 				status = false;
-				std::cout << "Error: Cannot parse command line!\n";
+				std::cout << "Error: Command line contains errors!\n";
 				break;
 			}
 		}
 
-		if (lastIdentifier != None)
+		if (status)
 		{
-			status = false;
-			std::cout << "Error: Last specified switch requires argument!\n";
-		}
-		else if (status)
-		{
-			if (m_data & Identifier::Help)
+			if (lastIdentifier != None)
 			{
 				status = false;
-				PrintHelp();
+				std::cout << "Error: Last specified switch requires argument!\n";
 			}
-			else
+			else if (status)
 			{
-				if (m_data & Identifier::RemoveArguments && m_data & Identifier::ReduceArguments)
+				if (m_data & 1 << Identifier::Help)
 				{
 					status = false;
-					std::cout << "Error: Specified switch \"-rma\" disqualify \"-rda\"!\n";
+					PrintHelp();
 				}
-				
-				if (m_data & Identifier::RemoveComments && m_data & Identifier::ReduceComments)
+				else
 				{
-					status = false;
-					std::cout << "Error: Specified switch \"-rmc\" disqualify \"-rdc\"!\n";
-				}
+					if (m_data & 1 << Identifier::ReduceArguments)
+					{
+						if (!m_maxArgumentsLength)
+						{
+							std::cout << "Warning: Specified switch \"-rda\" sets max arguments length to zero!\n";
+							m_data &= ~(1 << Identifier::ReduceArguments);
+							m_data |= 1 << Identifier::RemoveArguments;
+						}
+						else if (m_data & 1 << Identifier::RemoveArguments)
+						{
+							status = false;
+							std::cout << "Error: Specified switch \"-rma\" disqualifies \"-rda\"!\n";
+						}
+					}
+					
+					if (m_data & 1 << Identifier::ReduceComments)
+					{
+						if (!m_maxCommentLength)
+						{
+							std::cout << "Warning: Specified switch \"-rdc\" sets max comments length to zero!\n";
+							m_data &= ~(1 << Identifier::ReduceComments);
+							m_data |= 1 << Identifier::RemoveComments;
+						}
+						else if (m_data & 1 << Identifier::RemoveComments)
+						{
+							status = false;
+							std::cout << "Error: Specified switch \"-rmc\" disqualifies \"-rdc\"!\n";
+						}
+					}
 
-				if ((m_data & Identifier::SetLeftAlignment && (m_data & Identifier::SetRightAlignment || m_data & Identifier::SetCenterAlignment)) ||
-					(m_data & Identifier::SetCenterAlignment && (m_data & Identifier::SetLeftAlignment || m_data & Identifier::SetRightAlignment)) ||
-					(m_data & Identifier::SetRightAlignment && (m_data & Identifier::SetCenterAlignment || m_data & Identifier::SetLeftAlignment)))
-				{
-					status = false;
-					std::cout << "Error: More than one alignment specified!\n";
+					if (m_files.empty())
+					{
+						status = false;
+						std::cout << "Error: No file was specified!\n";
+					}
 				}
 			}
 		}
 	}
-}
-
-Options::~Options()
-{
-	std::cout << "Press enter to continue...";
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
 std::list<std::string>::iterator Options::Begin()

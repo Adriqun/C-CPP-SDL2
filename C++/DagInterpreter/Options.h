@@ -31,7 +31,6 @@ class Options final
 	bool Compare(char* argument);
 public:
 	explicit Options(int argc, char** argv, bool& status);
-	~Options();
 	std::list<std::string>::iterator Begin();
 	std::list<std::string>::iterator End();
 };

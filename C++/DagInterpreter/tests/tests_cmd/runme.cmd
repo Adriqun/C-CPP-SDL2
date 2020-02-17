@@ -1,0 +1,13 @@
+start "" test_000.cmd
+start "" test_001.cmd
+start "" test_002.cmd
+start "" test_003.cmd
+start "" test_004.cmd
+start "" test_005.cmd
+start "" test_006.cmd
+start "" test_007.cmd
+start "" test_008.cmd
+start "" test_009.cmd
+start "" test_010.cmd
+start "" test_011.cmd
+start "" test_012.cmd
