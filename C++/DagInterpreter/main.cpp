@@ -2,15 +2,13 @@
 #include "Options.h"
 #include <iostream>
 
-
 int main(int argc, char** argv)
 {
-	bool status;
-	Options options(argc, argv, status);
-	if (status)
+	if (Options::Parse(argc, argv))
 	{
-		for (auto it = options.Begin(); it != options.End(); ++it)
+		for (auto it = Options::Begin(); it != Options::End(); ++it)
 		{
+			bool status;
 			TextBlockManager tbm(*it, status);
 			if (!status)
 				break;

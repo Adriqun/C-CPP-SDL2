@@ -9,8 +9,8 @@ void Options::PrintHelp()
 	std::cout << "0. Print dag interpreter options: -help\n";
 	std::cout << "1. Remove comments: -rmc\n";
 	std::cout << "2. Remove arguments: -rma\n";
-	std::cout << "3. Reduce comments(sets max comments length): -rdc <unsigned int>\n";
-	std::cout << "4. Reduce arguments(sets max arguments length): -rda <unsigned int>\n";
+	std::cout << "3. Reduce comments (sets max comments length): -rdc <unsigned int>\n";
+	std::cout << "4. Reduce arguments (sets max arguments length): -rda <unsigned int>\n";
 	std::cout << "5. Set left alignment: -sla\n";
 	std::cout << "6. Set right alignment: -sra\n";
 	std::cout << "7. Set center alignment: -sca\n";
@@ -23,9 +23,9 @@ bool Options::Compare(char* argument)
 {
 	static char* lastSwitch = nullptr;
 
-	if (lastIdentifier != None)
+	if (m_lastIdentifier != None)
 	{
-		switch (lastIdentifier)
+		switch (m_lastIdentifier)
 		{
 			case ReduceComments:
 			case ReduceArguments:
@@ -54,7 +54,7 @@ bool Options::Compare(char* argument)
 					}
 				}
 
-				switch (lastIdentifier)
+				switch (m_lastIdentifier)
 				{
 					case ReduceComments:
 					{
@@ -83,7 +83,7 @@ bool Options::Compare(char* argument)
 				break;
 		}
 
-		lastIdentifier = None;
+		m_lastIdentifier = None;
 		return true;
 	}
 
@@ -154,7 +154,7 @@ bool Options::Compare(char* argument)
 							return false;
 						}
 
-						lastIdentifier = Identifier::ReduceComments;
+						m_lastIdentifier = Identifier::ReduceComments;
 						m_data |= 1 << Identifier::ReduceComments;
 						return true;
 					}
@@ -165,7 +165,7 @@ bool Options::Compare(char* argument)
 							std::cout << "Error: Switch \"-rda\" was specified more than once!" << std::endl;
 							return false;
 						}
-						lastIdentifier = Identifier::ReduceArguments;
+						m_lastIdentifier = Identifier::ReduceArguments;
 						m_data |= 1 << Identifier::ReduceArguments;
 						return true;
 					}
@@ -262,7 +262,7 @@ bool Options::Compare(char* argument)
 				}
 
 				m_data |= 1 << Identifier::PrintMostUsed;
-				lastIdentifier = Identifier::PrintMostUsed;
+				m_lastIdentifier = Identifier::PrintMostUsed;
 				return true;
 			}
 			break;
@@ -271,7 +271,7 @@ bool Options::Compare(char* argument)
 		{
 			if (*++argument == 'i' && *++argument == 'l' && *++argument == 'e' && !*++argument)
 			{
-				lastIdentifier = Identifier::SpecifyFile;
+				m_lastIdentifier = Identifier::SpecifyFile;
 				m_data |= 1 << Identifier::SpecifyFile;
 				return true;
 			}
@@ -283,87 +283,80 @@ bool Options::Compare(char* argument)
 	return false;
 }
 
-Options::Options(int argc, char** argv, bool& status)
+Options::Identifier Options::m_lastIdentifier = None;
+unsigned int Options::m_maxCommentLength = std::numeric_limits<unsigned int>::max();
+unsigned int Options::m_maxArgumentsLength = std::numeric_limits<unsigned int>::max();
+unsigned int Options::m_TopMostUsed = 0;
+unsigned long long Options::m_data = 0;
+std::list <std::string> Options::m_files;
+
+bool Options::Parse(int argc, char** argv)
 {
 	if (argc == 1)
 	{
 		PrintHelp();
-		status = false;
+		return false;
 	}
-	else
+
+	for (int i = 1; i < argc; ++i)
 	{
-		status = true;
-		lastIdentifier = None;
-		m_maxCommentLength = std::numeric_limits<unsigned int>::max();
-		m_maxArgumentsLength = std::numeric_limits<unsigned int>::max();
-		m_TopMostUsed = 0;
-		m_data = 0;
-
-		for (int i = 1; i < argc; ++i)
+		if (!Compare(argv[i]))
 		{
-			if (!Compare(argv[i]))
-			{
-				status = false;
-				std::cout << "Error: Command line contains errors!\n";
-				break;
-			}
-		}
-
-		if (status)
-		{
-			if (lastIdentifier != None)
-			{
-				status = false;
-				std::cout << "Error: Last specified switch requires argument!\n";
-			}
-			else if (status)
-			{
-				if (m_data & 1 << Identifier::Help)
-				{
-					status = false;
-					PrintHelp();
-				}
-				else
-				{
-					if (m_data & 1 << Identifier::ReduceArguments)
-					{
-						if (!m_maxArgumentsLength)
-						{
-							std::cout << "Warning: Specified switch \"-rda\" sets max arguments length to zero!\n";
-							m_data &= ~(1 << Identifier::ReduceArguments);
-							m_data |= 1 << Identifier::RemoveArguments;
-						}
-						else if (m_data & 1 << Identifier::RemoveArguments)
-						{
-							status = false;
-							std::cout << "Error: Specified switch \"-rma\" disqualifies \"-rda\"!\n";
-						}
-					}
-					
-					if (m_data & 1 << Identifier::ReduceComments)
-					{
-						if (!m_maxCommentLength)
-						{
-							std::cout << "Warning: Specified switch \"-rdc\" sets max comments length to zero!\n";
-							m_data &= ~(1 << Identifier::ReduceComments);
-							m_data |= 1 << Identifier::RemoveComments;
-						}
-						else if (m_data & 1 << Identifier::RemoveComments)
-						{
-							status = false;
-							std::cout << "Error: Specified switch \"-rmc\" disqualifies \"-rdc\"!\n";
-						}
-					}
-
-					if (m_files.empty())
-					{
-						status = false;
-						std::cout << "Error: No file was specified!\n";
-					}
-				}
-			}
+			std::cout << "Error: Command line contains errors!\n";
+			return false;
 		}
 	}
+
+	if (m_lastIdentifier != None)
+	{
+		std::cout << "Error: Last specified switch requires argument!\n";
+		return false;
+	}
+
+	
+	if (m_data & 1 << Identifier::Help)
+	{
+		PrintHelp();
+		return false;
+	}
+	
+	if (m_data & 1 << Identifier::ReduceArguments)
+	{
+		if (!m_maxArgumentsLength)
+		{
+			std::cout << "Warning: Specified switch \"-rda\" sets max arguments length to zero!\n";
+			m_data &= ~(1 << Identifier::ReduceArguments);
+			m_data |= 1 << Identifier::RemoveArguments;
+		}
+		else if (m_data & 1 << Identifier::RemoveArguments)
+		{
+			std::cout << "Error: Specified switch \"-rma\" disqualifies \"-rda\"!\n";
+			return false;
+		}
+	}
+					
+	if (m_data & 1 << Identifier::ReduceComments)
+	{
+		if (!m_maxCommentLength)
+		{
+			std::cout << "Warning: Specified switch \"-rdc\" sets max comments length to zero!\n";
+			m_data &= ~(1 << Identifier::ReduceComments);
+			m_data |= 1 << Identifier::RemoveComments;
+		}
+		else if (m_data & 1 << Identifier::RemoveComments)
+		{
+			std::cout << "Error: Specified switch \"-rmc\" disqualifies \"-rdc\"!\n";
+			return false;
+		}
+	}
+
+	if (m_files.empty())
+	{
+		std::cout << "Error: No file was specified!\n";
+		return false;
+	}
+
+	return true;
 }
 
 std::list<std::string>::iterator Options::Begin()

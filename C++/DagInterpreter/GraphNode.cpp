@@ -2,8 +2,14 @@
 #include "TextBlock.h"
 #include <iostream>
 
-bool GraphNode::ExtractNumber(int& number, const char*& line)
+void GraphNode::PrintError(unsigned int row, long long column, const char* message)
 {
+	std::cout << "Error:" << std::to_string(row) << ":" << std::to_string(column) << ": " << message << std::endl;
+}
+
+bool GraphNode::ExtractNumber(int& number, const char*& line, unsigned int row)
+{
+	const char* copy = line;
 	if (isdigit(*line))
 	{
 		number = *line++ - '0';
@@ -11,7 +17,7 @@ bool GraphNode::ExtractNumber(int& number, const char*& line)
 		{
 			if (number > std::numeric_limits<int>::max())
 			{
-				std::cout << "Error in graph node, cannot convert string to number, number is out of range\n";
+				PrintError(row, line - copy, "Cannot convert string to number, number is out of range!");
 				return false;
 			}
 
@@ -22,7 +28,7 @@ bool GraphNode::ExtractNumber(int& number, const char*& line)
 	{
 		if (*(line + 1) != '1' || isdigit(*(line + 2)))
 		{
-			std::cout << "Error in graph node, cannot convert string to number, negative numbers other than -1 are not allowed\n";
+			PrintError(row, line - copy, "Cannot convert string to number, negative numbers other than -1 are not allowed!");
 			return false;
 		}
 
@@ -33,61 +39,58 @@ bool GraphNode::ExtractNumber(int& number, const char*& line)
 	return true;
 }
 
-bool GraphNode::ExtractIdentity(const char*& line)
+bool GraphNode::ExtractIdentity(const char*& line, unsigned int row)
 {
 	if (*line != '#')
 	{
-		std::cout << "Error in graph node, cannot convert string to identity, missing '#' character\n";
+		PrintError(row, 0, "Cannot convert string to identity, missing '#' character!");
 		return false;
 	}
 
-	if (!ExtractNumber(m_identity, ++line))
-	{
-		std::cout << "Error in graph node, cannot convert string to identity\n";
-		return false;
-	}
-
-	return true;
+	return ExtractNumber(m_identity, ++line, row);
 }
 
-bool GraphNode::ExtractKids(const char*& line)
+bool GraphNode::ExtractKids(const char*& line, unsigned int row)
 {
-	if (!ExtractNumber(m_kids.first, line))
+	const char* copy = line;
+	if (!ExtractNumber(m_kids.first, line, row))
 	{
-		std::cout << "Error in graph node, cannot convert string to left kid\n";
+		PrintError(row, line - copy, "Cannot convert string for the left kid node!");
 		return false;
 	}
 
 	SkipBlank(line);
 
-	if (!ExtractNumber(m_kids.second, line))
+	if (!ExtractNumber(m_kids.second, line, row))
 	{
-		std::cout << "Error in graph node, cannot convert string to right kid\n";
+		PrintError(row, line - copy, "Cannot convert string for the right kid node!");
 		return false;
 	}
 
 	return true;
 }
 
-bool GraphNode::ExtractNext(const char*& line)
+bool GraphNode::ExtractNext(const char*& line, unsigned int row)
 {
-	if (!ExtractNumber(m_next, line))
+	const char* copy = line;
+	if (!ExtractNumber(m_next, line, row))
 	{
-		std::cout << "Error in graph node, cannot convert string to next\n";
+		PrintError(row, line - copy, "Cannot convert string for the next node!");
 		return false;
 	}
 
 	return true;
 }
 
-bool GraphNode::ExtractOperator(const char*& line)
+bool GraphNode::ExtractOperator(const char*& line, unsigned int row)
 {
+	const char* copy = line;
 	while (*line && (isalpha(*line) || isdigit(*line)))
 		m_operator.push_back(*line++);
 
 	if (m_operator.empty())
 	{
-		std::cout << "Error in graph node, missing operator\n";
+		PrintError(row, line - copy, "Node contains does not contain operator!");
 		return false;
 	}
 
@@ -95,10 +98,11 @@ bool GraphNode::ExtractOperator(const char*& line)
 	return true;
 }
 
-bool GraphNode::ExtractArguments(const char*& line)
+bool GraphNode::ExtractArguments(const char*& line, unsigned int row)
 {
 	if (*line && *line == '"')
 	{
+		const char* copy = line;
 		m_arguments.push_back(*line++); // "
 		while (*line && *line != '"')
 			m_arguments.push_back(*line++);
@@ -106,7 +110,7 @@ bool GraphNode::ExtractArguments(const char*& line)
 
 		if (m_arguments.back() != '"')
 		{
-			std::cout << "Error in graph node, missing quote in arguments\n";
+			PrintError(row, line - copy, "Missing quote in arguments!");
 			return false;
 		}
 
@@ -132,22 +136,22 @@ void GraphNode::SkipBlank(const char*& line)
 		++line;
 }
 
-GraphNode::GraphNode(const char* line, bool& status)
+GraphNode::GraphNode(const char* line, unsigned int row, bool& status)
 {
 	status = false;
-	if (ExtractIdentity(line))
+	if (ExtractIdentity(line, row))
 	{
 		SkipBlank(line);
-		if (ExtractKids(line))
+		if (ExtractKids(line, row))
 		{
 			SkipBlank(line);
-			if (ExtractNext(line))
+			if (ExtractNext(line, row))
 			{
 				SkipBlank(line);
-				if (ExtractOperator(line))
+				if (ExtractOperator(line, row))
 				{
 					SkipBlank(line);
-					if (ExtractArguments(line))
+					if (ExtractArguments(line, row))
 					{
 						SkipBlank(line);
 						ExtractComment(line);
@@ -187,7 +191,7 @@ bool GraphNodeChain::AddToJunk(std::string& line)
 	return true;
 }
 
-bool GraphNodeChain::AddToNodes(std::string& line, bool& status)
+bool GraphNodeChain::AddToNodes(std::string& line, unsigned int row, bool& status)
 {
 	if (line.empty() || line.front() != '#')
 	{
@@ -196,10 +200,10 @@ bool GraphNodeChain::AddToNodes(std::string& line, bool& status)
 		return false;
 	}
 
-	GraphNode newNode(line.c_str(), status);
+	GraphNode newNode(line.c_str(), row, status);
 	if (!status)
 	{
-		std::cout << "Error in graph node chain while adding new node\n";
+		std::cout << "Error: Graph node chain received stop signal while adding new node!" << std::endl;
 		return false;
 	}
 
@@ -213,7 +217,7 @@ GraphNodeManager::GraphNodeManager()
 	m_chains.push_back(GraphNodeChain());
 }
 
-bool GraphNodeManager::ReadLine(std::string& line)
+bool GraphNodeManager::ReadLine(std::string& line, unsigned int row)
 {
 	while (true)
 	{
@@ -228,14 +232,10 @@ bool GraphNodeManager::ReadLine(std::string& line)
 		else
 		{
 			bool status;
-			if (!m_chains.back().AddToNodes(line, status))
+			if (!m_chains.back().AddToNodes(line, row, status))
 			{
 				if (!status)
-				{
-					std::cout << "Error in graph node manager\n";
 					return false;
-				}
-
 				m_stream = false;
 				m_chains.push_back(GraphNodeChain());
 				continue;

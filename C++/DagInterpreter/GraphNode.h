@@ -14,17 +14,18 @@ class GraphNode final
 	std::string m_comment;
 	friend TextBlock;
 
-	bool ExtractNumber(int& number, const char*& line);
-	bool ExtractIdentity(const char*& line);
-	bool ExtractKids(const char*& line);
-	bool ExtractNext(const char*& line);
-	bool ExtractOperator(const char*& line);
-	bool ExtractArguments(const char*& line);
+	void PrintError(unsigned int row, long long column, const char* message);
+	bool ExtractNumber(int& number, const char*& line, unsigned int row);
+	bool ExtractIdentity(const char*& line, unsigned int row);
+	bool ExtractKids(const char*& line, unsigned int row);
+	bool ExtractNext(const char*& line, unsigned int row);
+	bool ExtractOperator(const char*& line, unsigned int row);
+	bool ExtractArguments(const char*& line, unsigned int row);
 	void ExtractComment(const char*& line);
 	void SkipBlank(const char*& line);
 
 public:
-	explicit GraphNode(const char* line, bool& status);
+	explicit GraphNode(const char* line, unsigned int row, bool& status);
 	const int& Identity() const;
 	const int& LeftKid() const;
 	const int& RightKid() const;
@@ -37,7 +38,7 @@ struct GraphNodeChain final
 	std::vector<GraphNode> m_nodes;
 
 	bool AddToJunk(std::string& line);
-	bool AddToNodes(std::string& line, bool& status);
+	bool AddToNodes(std::string& line, unsigned int row, bool& status);
 };
 
 class TextNodeChain;
@@ -49,6 +50,6 @@ class GraphNodeManager final
 
 public:
 	explicit GraphNodeManager();
-	bool ReadLine(std::string& line);
+	bool ReadLine(std::string& line, unsigned int row);
 	void Set(std::vector<TextNodeChain>& rhs);
 };

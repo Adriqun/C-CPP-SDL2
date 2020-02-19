@@ -45,7 +45,6 @@ class TextNodeChain final
 {
 	std::list<std::string> m_junk;
 	std::vector<TextNode*> m_nodes;
-	void AddTextBlock(char*& where, const std::vector<std::string> block);
 
 public:
 	~TextNodeChain();

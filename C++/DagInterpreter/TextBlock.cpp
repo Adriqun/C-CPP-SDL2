@@ -1,7 +1,9 @@
 #include "TextBlock.h"
 #include "GraphNode.h"
+#include "Options.h"
 #include <iostream>
 #include <fstream>
+#include <array>
 
 void TextBlock::PrintToConsole()
 {
@@ -18,11 +20,17 @@ TextBlock::TextBlock(GraphNode& rhs)
 	//                               |-------------|
 
 	std::string id = "#" + std::to_string(rhs.m_identity);
-	std::string& op = rhs.m_operator;
-	std::string& args = rhs.m_arguments;
-	std::string& comment = rhs.m_comment;
+	std::string op = rhs.m_operator;
+	std::string args = (Options::m_data & 1 << Options::ReduceArguments) ? "" : rhs.m_arguments;
+	std::string comment = (Options::m_data & 1 << Options::RemoveComments) ? "" : rhs.m_comment;
 
-	// Calculate height
+	// Reduce
+	if (Options::m_data & 1 << Options::ReduceArguments && args.size() > Options::m_maxArgumentsLength)
+		args.resize(Options::m_maxArgumentsLength);
+	if (Options::m_data & 1 << Options::ReduceComments && op.size() > Options::m_maxCommentLength)
+		op.resize(Options::m_maxCommentLength);
+
+	// Calculate max height
 	size_t height = 3;
 	if (!args.empty())
 		++height;
@@ -30,13 +38,39 @@ TextBlock::TextBlock(GraphNode& rhs)
 		++height;
 	m_rows.resize(height);
 
-	// Calculate width
-	size_t width = id.size() + op.size() + 1;
+	// Prepare identifier and operator string
+	if (!(Options::m_data & 1 << Options::PrintNodeNumberInsideEdge))
+	{
+		op = id + " " + op;
+		id.clear();
+	}
+
+	// Calculate max width
+	size_t width = id.size();
 	if (width < args.size())
 		width = args.size();
 	if (width < comment.size())
 		width = comment.size();
+	if (width < op.size())
+		width = op.size();
 	width += 4; // "| " + " |"
+
+	// Determine starting positions for all strings
+	std::array<size_t, 4> spositions = { 2, 2, 2, 2 };
+	if (Options::m_data & 1 << Options::SetRightAlignment)
+	{
+		spositions[0] = width - 2 - id.size();
+		spositions[1] = width - 2 - op.size();
+		spositions[2] = width - 2 - args.size();
+		spositions[3] = width - 2 - comment.size();
+	}
+	else if (Options::m_data & 1 << Options::SetCenterAlignment)
+	{
+		spositions[0] = (width - id.size()) / 2;
+		spositions[1] = (width - op.size()) / 2;
+		spositions[2] = (width - args.size()) / 2;
+		spositions[3] = (width - comment.size()) / 2;
+	}
 
 	// Set top and bottom
 	m_rows[0].resize(width, '-');
@@ -44,28 +78,26 @@ TextBlock::TextBlock(GraphNode& rhs)
 	m_rows[height - 1].resize(width, '-');
 	m_rows[height - 1].back() = m_rows[height - 1].front() = '|';
 
-	// Set identity
+	// Set identifier
+	if (!id.empty())
+	{
+		for (const auto &i : id)
+			m_rows[0][spositions[0]++] = i;
+	}
+	
+	// Set operator
 	m_rows[1].resize(width, ' ');
 	m_rows[1].back() = m_rows[1].front() = '|';
-	size_t position = 2;
-	for (size_t i = 0; i < id.size(); ++i)
-		m_rows[1][position++] = id[i];
-
-	// Set operator
-	position = (width - op.size()) / 2;
-	if (position <= id.size() + 2)
-		position = id.size() + 3;
-	for (size_t i = 0; i < op.size(); ++i)
-		m_rows[1][position++] = op[i];
+	for (const auto &i : op)
+		m_rows[1][spositions[1]++] = i;
 
 	// Set arguments
 	if (!args.empty())
 	{
 		m_rows[2].resize(width, ' ');
 		m_rows[2].back() = m_rows[2].front() = '|';
-		position = (width - args.size()) / 2;
-		for (size_t i = 0; i < args.size(); ++i)
-			m_rows[2][position++] = args[i];
+		for (const auto& i : args)
+			m_rows[2][spositions[2]++] = i;
 	}
 
 	// Set comment
@@ -73,10 +105,8 @@ TextBlock::TextBlock(GraphNode& rhs)
 	{
 		m_rows[height - 2].resize(width, ' ');
 		m_rows[height - 2].back() = m_rows[height - 2].front() = '|';
-
-		position = (width - comment.size()) / 2;
-		for (size_t i = 0; i < comment.size(); ++i)
-			m_rows[3][position++] = comment[i];
+		for (const auto& i : comment)
+			m_rows[height - 2][spositions[3]++] = i;
 	}
 }
 
@@ -111,15 +141,6 @@ void TextNode::SetNext(TextNode* next)
 {
 	m_next = next;
 	++next->m_referencesAsNext;
-}
-
-void TextNodeChain::AddTextBlock(char*& where, const std::vector<std::string> block)
-{
-	for (size_t i = 0; i < block.size(); ++i)
-	{
-		memcpy(*(&where + i), block[i].c_str(), block[i].size());
-		*(&where + i) += block[i].size();
-	}
 }
 
 TextNodeChain::~TextNodeChain()
@@ -188,10 +209,11 @@ TextBlockManager::TextBlockManager(std::string pathToFile, bool& status)
 	{
 		status = true;
 		std::string line;
+		unsigned int row = 0;
 		GraphNodeManager reader;
 		while (std::getline(file, line))
 		{
-			if (!reader.ReadLine(line))
+			if (!reader.ReadLine(line, ++row))
 			{
 				status = false;
 				break;
@@ -204,7 +226,7 @@ TextBlockManager::TextBlockManager(std::string pathToFile, bool& status)
 	}
 	else
 	{
-		std::cout << "Error: File does not exist!" << std::endl;
+		std::cout << "Error: File \"" << pathToFile << "\" does not exist!" << std::endl;
 		status = false;
 	}
 }
@@ -225,7 +247,7 @@ bool TextBlockManager::RedirectToFile(std::string pathToFile)
 	}
 	else
 	{
-		std::cout << "Error: Cannot write to file!" << std::endl;
+		std::cout << "Error: Cannot write to file \"" << pathToFile << "\"!" << std::endl;
 		return false;
 	}
 

@@ -2,6 +2,8 @@
 #include <string>
 #include <list>
 
+class TextBlock;
+
 class Options final
 {
 	enum Identifier
@@ -20,17 +22,19 @@ class Options final
 		None
 	};
 
-	Identifier lastIdentifier;
-	unsigned int m_maxCommentLength;
-	unsigned int m_maxArgumentsLength;
-	unsigned int m_TopMostUsed;
-	unsigned long long m_data;
-	std::list<std::string> m_files;
+	friend TextBlock;
 
-	void PrintHelp();
-	bool Compare(char* argument);
+	static Identifier m_lastIdentifier;
+	static unsigned int m_maxCommentLength;
+	static unsigned int m_maxArgumentsLength;
+	static unsigned int m_TopMostUsed;
+	static unsigned long long m_data;
+	static std::list<std::string> m_files;
+
+	static void PrintHelp();
+	static bool Compare(char* argument);
 public:
-	explicit Options(int argc, char** argv, bool& status);
-	std::list<std::string>::iterator Begin();
-	std::list<std::string>::iterator End();
+	static bool Parse(int argc, char** argv);
+	static std::list<std::string>::iterator Begin();
+	static std::list<std::string>::iterator End();
 };
