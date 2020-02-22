@@ -84,7 +84,7 @@ TextBlock::TextBlock(GraphNode& rhs)
 		for (const auto &i : id)
 			m_rows[0][spositions[0]++] = i;
 	}
-	
+
 	// Set operator
 	m_rows[1].resize(width, ' ');
 	m_rows[1].back() = m_rows[1].front() = '|';
@@ -108,6 +108,21 @@ TextBlock::TextBlock(GraphNode& rhs)
 		for (const auto& i : comment)
 			m_rows[height - 2][spositions[3]++] = i;
 	}
+
+	// Set handle
+	// |---X---|
+	// | #0 AB |
+	// | "arg" Y
+	// | ;comm |
+	// |-------|
+	m_handle.x = m_rows[0].size() / 2;
+	m_handle.y = m_rows.size() / 2;
+}
+
+TextBlock::TextBlock(TextNode* rhs)
+{
+	m_handle = rhs->m_handle;
+	m_rows = std::move(rhs->m_rows);
 }
 
 const std::vector<std::string>& TextBlock::Get() const
@@ -115,14 +130,69 @@ const std::vector<std::string>& TextBlock::Get() const
 	return m_rows;
 }
 
-size_t TextBlock::Height() const
+size_t TextBlock::Width()
+{
+	return m_rows[0].size();
+}
+
+size_t TextBlock::Height()
 {
 	return m_rows.size();
 }
 
-size_t TextBlock::Width() const
+void TextBlock::AddOrphan(TextBlock* kid)
 {
-	return m_rows[0].size();
+	// |-------|
+	// | #0 AB |
+	// | "arg" |--+
+	// | ;comm |  |
+	// |-------|  |  |-------|
+	//            |  | #0 AB |
+	//            +->| "arg" |
+	//               | ;comm |
+	//               |-------|
+
+	size_t width = m_rows[0].size();
+	size_t height = m_rows.size();
+	size_t orphanWidth = kid->m_rows[0].size();
+	size_t orphanHeight = kid->m_rows.size();
+
+	// Adjust new size
+	m_rows.resize(height + orphanHeight - 1);
+	for (auto &i : m_rows)
+		i.resize(width + orphanWidth + 5, ' ');
+
+	// Draw horizontal line
+	m_rows[m_handle.y][width] = '-';
+	m_rows[m_handle.y][width + 1] = '-';
+	m_rows[m_handle.y][width + 2] = '+';
+
+	// Draw vertical line
+	size_t verticalLastPoint = height - 1 + kid->m_handle.y;
+	for (size_t i = m_handle.y + 1; i < height - 1 + kid->m_handle.y; ++i)
+		m_rows[i][width + 2] = '|';
+
+	// Draw horizontal line
+	m_rows[verticalLastPoint][width + 2] = '+';
+	m_rows[verticalLastPoint][width + 3] = '-';
+	m_rows[verticalLastPoint][width + 4] = '-';
+
+	// Copy orphan
+	for (size_t i = height - 1, j = 0; i < m_rows.size(); ++i, ++j)
+		memcpy(&m_rows[i][width + 5], &kid->m_rows[j][0], orphanWidth);
+
+	// Clear orphan
+	kid->m_rows.clear();
+}
+
+void TextNode::SetVisited()
+{
+	m_alreadyVisited = true;
+}
+
+bool TextNode::AlreadVisited()
+{
+	return m_alreadyVisited;
 }
 
 void TextNode::SetLeftKid(TextNode* lhs)
@@ -143,10 +213,58 @@ void TextNode::SetNext(TextNode* next)
 	++next->m_referencesAsNext;
 }
 
+unsigned int TextNode::GetIndex()
+{
+	return m_index;
+}
+
+TextNode* TextNode::GetLeftKid()
+{
+	return m_kids.first;
+}
+
+TextNode* TextNode::GetRightKid()
+{
+	return m_kids.second;
+}
+
+TextNode* TextNode::GetNext()
+{
+	return m_next;
+}
+
+void LinearNode::SetNext(long long next)
+{
+	m_next = next;
+}
+
+unsigned int LinearNode::GetIndex()
+{
+	return m_index;
+}
+
+const long long LinearNode::GetNext() const
+{
+	return m_next;
+}
+
+void TextNodeChain::Linearise(TextNode* current, std::unordered_map<size_t, TextNode*>& container)
+{
+	if (current && !current->AlreadVisited())
+	{
+		current->SetVisited();
+		m_nodes.push_back(new LinearNode(current, current->GetIndex()));
+		Linearise(current->GetLeftKid(), container);
+		Linearise(current->GetRightKid(), container);
+		Linearise(current->GetNext(), container);
+	}
+}
+
 TextNodeChain::~TextNodeChain()
 {
 	for (auto& i : m_nodes)
 		delete i;
+	m_nodes.clear();
 }
 
 void TextNodeChain::SetJunk(std::list<std::string>&& junk)
@@ -158,34 +276,65 @@ void TextNodeChain::SetJunk(std::list<std::string>&& junk)
 
 void TextNodeChain::Set(std::vector<GraphNode>& nodes)
 {
-	// Resize
 	size_t length = nodes.size();
-	m_nodes.resize(length);
-
-	for (size_t i = 0; i < length; ++i)
-		m_nodes[i] = new TextNode(nodes[i]);
-
-	// The slowest part
-	for (size_t i = 0; i < length; ++i)
+	if (length)
 	{
-		for (size_t j = 0; j < length; ++j)
+		// Set
+		std::unordered_map<size_t, TextNode*> mapped;
+		for (size_t i = 0; i < length; ++i)
+			mapped[i] = new TextNode(nodes[i], i);
+
+		// The slowest part - collecting data
+		for (size_t i = 0; i < length; ++i)
 		{
-			TextNode* setter = m_nodes[i];
-			TextNode* getter = m_nodes[j];
+			for (size_t j = 0; j < length; ++j)
+			{
+				TextNode* setter = static_cast<TextNode*>(mapped[i]);
+				TextNode* getter = static_cast<TextNode*>(mapped[j]);
 
-			if (nodes[j].Identity() == nodes[i].LeftKid())
-				setter->SetLeftKid(getter);
+				if (nodes[j].Identity() == nodes[i].LeftKid())
+					setter->SetLeftKid(getter);
 
-			if (nodes[j].Identity() == nodes[i].RightKid())
-				setter->SetRightKid(getter);
+				if (nodes[j].Identity() == nodes[i].RightKid())
+					setter->SetRightKid(getter);
 
-			if (nodes[j].Identity() == nodes[i].Next())
-				setter->SetNext(getter);
+				if (nodes[j].Identity() == nodes[i].Next())
+					setter->SetNext(getter);
+			}
 		}
-	}
 
-	// Clear input
-	nodes.clear();
+		for (auto& i : mapped)
+			Linearise(i.second, mapped);
+		for (int i = 0; i < m_nodes.size() - 1; ++i)
+		{
+			TextNode* where = mapped[m_nodes[i]->GetIndex()];
+			TextNode* next = where->GetLeftKid();
+
+			if (!next)
+				where->GetNext();
+
+			if (!next)
+			{
+				m_nodes[i]->SetNext(-1);
+				continue;
+			}
+
+			for (long long j = 0; j < static_cast<long long>(m_nodes.size()); ++j)
+			{
+				if (m_nodes[j]->GetIndex() == next->GetIndex())
+					m_nodes[i]->SetNext(j);
+			}
+		}
+		m_nodes.back()->SetNext(-1);
+
+		// Clear mapped
+		for (auto& i : mapped)
+			delete i.second;
+		mapped.clear();
+
+		// Clear input
+		nodes.clear();
+	}
 }
 
 bool TextNodeChain::CreateAndRedirectChart(std::fstream& file)
@@ -196,8 +345,46 @@ bool TextNodeChain::CreateAndRedirectChart(std::fstream& file)
 	if (m_nodes.empty())
 		return true;
 
+	// Set table height
+	size_t tableHeight = 0;
+	for (auto& i : m_nodes)
+		tableHeight += i->Height();
+	tableHeight -= (m_nodes.size() - 1);
+	std::vector<std::string> table;
+	table.resize(tableHeight);
+
+	// Set table widths
+	size_t tableWidth = 0;
+	for (size_t i = 0, j = 0; i < m_nodes.size(); ++i)
+	{
+		tableWidth += m_nodes[i]->Width();
+		for (size_t k = 0; k < m_nodes[i]->Height(); ++k)
+			table[j++].resize(tableWidth, ' ');
+		--j;
+		tableWidth += 5;
+	}
+
+	// Draw nodes
+	size_t x = 0, y = 0;
+	for (auto& i : m_nodes)
+	{
+		const std::vector<std::string>& block = i->Get();
+
+		for (size_t j = 0; j < block.size(); ++j)
+		{
+			memcpy(&table[y][x], &block[j][0], block[j].size());
+			++y;
+		}
+
+		--y;
+		x += 5 + i->Width();
+	}
+
+	// Draw lines
 
 
+	for (const auto& i : table)
+		file << i << "\n";
 	return true;
 }
 
