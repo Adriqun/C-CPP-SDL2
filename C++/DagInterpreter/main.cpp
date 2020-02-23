@@ -12,7 +12,7 @@ int main(int argc, char** argv)
 			TextBlockManager tbm(*it, status);
 			if (!status)
 				break;
-			if (!tbm.RedirectToFile(*it + "i"))
+			if (!tbm.RedirectToFile(*it + "r"))
 				break;
 		}
 	}

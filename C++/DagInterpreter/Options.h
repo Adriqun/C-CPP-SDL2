@@ -18,6 +18,7 @@ class Options final
 		SetCenterAlignment,
 		PrintNodeNumberInsideEdge,
 		PrintMostUsed,
+		PrintHandleInformation,
 		SpecifyFile,
 		None
 	};

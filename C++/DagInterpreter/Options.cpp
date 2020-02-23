@@ -16,7 +16,8 @@ void Options::PrintHelp()
 	std::cout << "7. Set center alignment: -sca\n";
 	std::cout << "8. Print node number inside the edge: -pnn\n";
 	std::cout << "9. Print top most used nodes: -top <unsigned int>\n";
-	std::cout << "10. Specify directed acyclic graph file: -file <filename>\n";
+	std::cout << "10. Print handle information: -phi\n";
+	std::cout << "11. Specify directed acyclic graph file: -file <filename>\n";
 }
 
 bool Options::Compare(char* argument)
@@ -238,16 +239,40 @@ bool Options::Compare(char* argument)
 		}
 		case 'p':
 		{
-			if (*++argument == 'n' && *++argument == 'n' && !*++argument)
+			if (!*(argument + 1) || !*(argument + 2) || *(argument + 3))
+				break;
+			switch (*++argument)
 			{
-				if (m_data & 1 << Identifier::PrintNodeNumberInsideEdge)
+				case 'n':
 				{
-					std::cout << "Error: Switch \"-pnn\" was specified more than once!" << std::endl;
-					return false;
-				}
+					if (*++argument == 'n')
+					{
+						if (m_data & 1 << Identifier::PrintNodeNumberInsideEdge)
+						{
+							std::cout << "Error: Switch \"-pnn\" was specified more than once!" << std::endl;
+							return false;
+						}
 
-				m_data |= 1 << Identifier::PrintNodeNumberInsideEdge;
-				return true;
+						m_data |= 1 << Identifier::PrintNodeNumberInsideEdge;
+						return true;
+					}
+					break;
+				}
+				case 'h':
+				{
+					if (*++argument == 'i')
+					{
+						if (m_data & 1 << Identifier::PrintHandleInformation)
+						{
+							std::cout << "Error: Switch \"-phi\" was specified more than once!" << std::endl;
+							return false;
+						}
+
+						m_data |= 1 << Identifier::PrintHandleInformation;
+						return true;
+					}
+					break;
+				}
 			}
 			break;
 		}

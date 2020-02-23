@@ -10,13 +10,9 @@ class TextNode;
 
 class TextBlock
 {
-protected:
-	struct Handle {
-		size_t x, y;
-	} m_handle;
-
+	size_t m_leftKidX, m_rightKidX, m_KidY;
+	size_t m_nextX, m_nextY;
 	std::vector<std::string> m_rows;
-
 	void PrintToConsole();
 
 public:
@@ -25,15 +21,35 @@ public:
 	const std::vector<std::string>& Get() const;
 	size_t Width();
 	size_t Height();
-	void AddOrphan(TextBlock*);
+	size_t GetLeftKidX();
+	size_t GetRightKidX();
+	size_t GetKidY();
+	size_t GetNextX();
+	size_t GetNextY();
+};
+
+struct Reference
+{
+	unsigned int asLeftKid;
+	unsigned int asRightKid;
+	unsigned int asNext;
+	explicit Reference()
+	{
+		asLeftKid = asRightKid = asNext = 0;
+	}
+	explicit Reference(const Reference& rhs) noexcept
+	{
+		asLeftKid = rhs.asLeftKid;
+		asRightKid = rhs.asRightKid;
+		asNext = rhs.asNext;
+	}
 };
 
 class TextNode : public TextBlock
 {
 	bool m_alreadyVisited;
 	unsigned int m_index;
-	unsigned int m_referencesAsKid;
-	unsigned int m_referencesAsNext;
+	Reference m_reference;
 	std::pair<TextNode*, TextNode*> m_kids;
 	TextNode* m_next;
 
@@ -42,14 +58,13 @@ public:
 	{
 		m_alreadyVisited = false;
 		m_index = index;
-		m_referencesAsKid = 0;
-		m_referencesAsNext = 0;
 		m_kids.first = m_kids.second = nullptr;
 		m_next = nullptr;
 	}
 
 	void SetVisited();
-	bool AlreadVisited();
+	bool AlreadyVisited();
+	const Reference& GetReference() const;
 	void SetLeftKid(TextNode* lhs);
 	void SetRightKid(TextNode* rhs);
 	void SetNext(TextNode* next);
@@ -63,18 +78,31 @@ public:
 class LinearNode : public TextBlock
 {
 	unsigned int m_index;
+	Reference m_reference;
+	std::pair<long long, long long> m_kids;
 	long long m_next;
 
 public:
-	explicit LinearNode(TextNode* rhs, unsigned int index) : TextBlock(rhs)
+	explicit LinearNode(TextNode* rhs, unsigned int index, const Reference& reference) : TextBlock(rhs), m_reference(reference)
 	{
-		m_next = -1;
 		m_index = index;
+		m_kids.first = m_kids.second = -1;
+		m_next = -1;
 	}
 
+	void SetLeftKid(long long kid);
+	void SetRightKid(long long kid);
 	void SetNext(long long next);
 	unsigned int GetIndex();
+	unsigned int GetReferencesAsLeftKid();
+	unsigned int GetReferencesAsRightKid();
+	unsigned int GetReferencesAsNext();
+	const long long GetLeftKid() const;
+	const long long GetRightKid() const;
 	const long long GetNext() const;
+	bool HasLeftKid();
+	bool HasRightKid();
+	bool HasNext();
 };
 
 class TextNodeChain final

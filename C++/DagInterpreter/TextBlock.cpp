@@ -21,7 +21,7 @@ TextBlock::TextBlock(GraphNode& rhs)
 
 	std::string id = "#" + std::to_string(rhs.m_identity);
 	std::string op = rhs.m_operator;
-	std::string args = (Options::m_data & 1 << Options::ReduceArguments) ? "" : rhs.m_arguments;
+	std::string args = (Options::m_data & 1 << Options::RemoveArguments) ? "" : rhs.m_arguments;
 	std::string comment = (Options::m_data & 1 << Options::RemoveComments) ? "" : rhs.m_comment;
 
 	// Reduce
@@ -110,19 +110,32 @@ TextBlock::TextBlock(GraphNode& rhs)
 	}
 
 	// Set handle
-	// |---X---|
-	// | #0 AB |
-	// | "arg" Y
-	// | ;comm |
-	// |-------|
-	m_handle.x = m_rows[0].size() / 2;
-	m_handle.y = m_rows.size() / 2;
+	size_t kidXOffset = (Width() - 1) / 4;
+	m_leftKidX = kidXOffset;
+	m_rightKidX = m_rows[0].size() - (kidXOffset + 1);
+	m_KidY = m_rows.size();
+	m_nextX = m_rows[0].size();
+	m_nextY = 1;
+
+	if (Options::m_data & 1 << Options::PrintHandleInformation)
+	{
+		m_rows[m_KidY - 1][m_leftKidX] = 'l';
+		m_rows[m_KidY - 1][m_rightKidX] = 'r';
+		m_rows[m_nextY][m_nextX - 1] = 'n';
+	}
 }
 
 TextBlock::TextBlock(TextNode* rhs)
 {
-	m_handle = rhs->m_handle;
+	// Set rows
 	m_rows = std::move(rhs->m_rows);
+
+	// Set handle
+	m_leftKidX = rhs->GetLeftKidX();
+	m_rightKidX = rhs->GetRightKidX();
+	m_KidY = rhs->GetKidY();
+	m_nextX = rhs->GetNextX();
+	m_nextY = rhs->GetNextY();
 }
 
 const std::vector<std::string>& TextBlock::Get() const
@@ -140,49 +153,29 @@ size_t TextBlock::Height()
 	return m_rows.size();
 }
 
-void TextBlock::AddOrphan(TextBlock* kid)
+size_t TextBlock::GetLeftKidX()
 {
-	// |-------|
-	// | #0 AB |
-	// | "arg" |--+
-	// | ;comm |  |
-	// |-------|  |  |-------|
-	//            |  | #0 AB |
-	//            +->| "arg" |
-	//               | ;comm |
-	//               |-------|
+	return m_leftKidX;
+}
 
-	size_t width = m_rows[0].size();
-	size_t height = m_rows.size();
-	size_t orphanWidth = kid->m_rows[0].size();
-	size_t orphanHeight = kid->m_rows.size();
+size_t TextBlock::GetRightKidX()
+{
+	return m_rightKidX;
+}
 
-	// Adjust new size
-	m_rows.resize(height + orphanHeight - 1);
-	for (auto &i : m_rows)
-		i.resize(width + orphanWidth + 5, ' ');
+size_t TextBlock::GetKidY()
+{
+	return m_KidY;
+}
 
-	// Draw horizontal line
-	m_rows[m_handle.y][width] = '-';
-	m_rows[m_handle.y][width + 1] = '-';
-	m_rows[m_handle.y][width + 2] = '+';
+size_t TextBlock::GetNextX()
+{
+	return m_nextX;
+}
 
-	// Draw vertical line
-	size_t verticalLastPoint = height - 1 + kid->m_handle.y;
-	for (size_t i = m_handle.y + 1; i < height - 1 + kid->m_handle.y; ++i)
-		m_rows[i][width + 2] = '|';
-
-	// Draw horizontal line
-	m_rows[verticalLastPoint][width + 2] = '+';
-	m_rows[verticalLastPoint][width + 3] = '-';
-	m_rows[verticalLastPoint][width + 4] = '-';
-
-	// Copy orphan
-	for (size_t i = height - 1, j = 0; i < m_rows.size(); ++i, ++j)
-		memcpy(&m_rows[i][width + 5], &kid->m_rows[j][0], orphanWidth);
-
-	// Clear orphan
-	kid->m_rows.clear();
+size_t TextBlock::GetNextY()
+{
+	return m_nextY;
 }
 
 void TextNode::SetVisited()
@@ -190,27 +183,32 @@ void TextNode::SetVisited()
 	m_alreadyVisited = true;
 }
 
-bool TextNode::AlreadVisited()
+bool TextNode::AlreadyVisited()
 {
 	return m_alreadyVisited;
+}
+
+const Reference& TextNode::GetReference() const
+{
+	return m_reference;
 }
 
 void TextNode::SetLeftKid(TextNode* lhs)
 {
 	m_kids.first = lhs;
-	++lhs->m_referencesAsKid;
+	++lhs->m_reference.asLeftKid;
 }
 
 void TextNode::SetRightKid(TextNode* rhs)
 {
 	m_kids.second = rhs;
-	++rhs->m_referencesAsKid;
+	++rhs->m_reference.asRightKid;
 }
 
 void TextNode::SetNext(TextNode* next)
 {
 	m_next = next;
-	++next->m_referencesAsNext;
+	++next->m_reference.asNext;
 }
 
 unsigned int TextNode::GetIndex()
@@ -233,6 +231,16 @@ TextNode* TextNode::GetNext()
 	return m_next;
 }
 
+void LinearNode::SetLeftKid(long long leftKid)
+{
+	m_kids.first = leftKid;
+}
+
+void LinearNode::SetRightKid(long long rightKid)
+{
+	m_kids.second = rightKid;
+}
+
 void LinearNode::SetNext(long long next)
 {
 	m_next = next;
@@ -243,17 +251,57 @@ unsigned int LinearNode::GetIndex()
 	return m_index;
 }
 
+unsigned int LinearNode::GetReferencesAsLeftKid()
+{
+	return m_reference.asLeftKid;
+}
+
+unsigned int LinearNode::GetReferencesAsRightKid()
+{
+	return m_reference.asRightKid;
+}
+
+unsigned int LinearNode::GetReferencesAsNext()
+{
+	return m_reference.asNext;
+}
+
+const long long LinearNode::GetLeftKid() const
+{
+	return m_kids.first;
+}
+
+const long long LinearNode::GetRightKid() const
+{
+	return m_kids.second;
+}
+
 const long long LinearNode::GetNext() const
 {
 	return m_next;
 }
 
+bool LinearNode::HasLeftKid()
+{
+	return m_kids.first != -1;
+}
+
+bool LinearNode::HasRightKid()
+{
+	return m_kids.second != -1;
+}
+
+bool LinearNode::HasNext()
+{
+	return m_next != -1;
+}
+
 void TextNodeChain::Linearise(TextNode* current, std::unordered_map<size_t, TextNode*>& container)
 {
-	if (current && !current->AlreadVisited())
+	if (current && !current->AlreadyVisited())
 	{
 		current->SetVisited();
-		m_nodes.push_back(new LinearNode(current, current->GetIndex()));
+		m_nodes.push_back(new LinearNode(current, current->GetIndex(), current->GetReference()));
 		Linearise(current->GetLeftKid(), container);
 		Linearise(current->GetRightKid(), container);
 		Linearise(current->GetNext(), container);
@@ -308,12 +356,11 @@ void TextNodeChain::Set(std::vector<GraphNode>& nodes)
 		for (int i = 0; i < m_nodes.size() - 1; ++i)
 		{
 			TextNode* where = mapped[m_nodes[i]->GetIndex()];
-			TextNode* next = where->GetLeftKid();
+			TextNode* leftKid = where->GetLeftKid();
+			TextNode* rightKid = where->GetRightKid();
+			TextNode* next = where->GetNext();
 
-			if (!next)
-				where->GetNext();
-
-			if (!next)
+			if (!leftKid && !rightKid && !next)
 			{
 				m_nodes[i]->SetNext(-1);
 				continue;
@@ -321,11 +368,31 @@ void TextNodeChain::Set(std::vector<GraphNode>& nodes)
 
 			for (long long j = 0; j < static_cast<long long>(m_nodes.size()); ++j)
 			{
-				if (m_nodes[j]->GetIndex() == next->GetIndex())
+				if (leftKid && m_nodes[j]->GetIndex() == leftKid->GetIndex())
+				{
+					m_nodes[i]->SetLeftKid(j);
+					if ((!next || m_nodes[i]->GetNext() != -1) &&
+						(!rightKid || m_nodes[i]->GetRightKid() != -1))
+						break; // If there is no next/right kid or if next/right kid exists and it is already set
+				}
+
+				if (rightKid && m_nodes[j]->GetIndex() == rightKid->GetIndex())
+				{
+					m_nodes[i]->SetRightKid(j);
+					if ((!next || m_nodes[i]->GetNext() != -1) &&
+						(!leftKid || m_nodes[i]->GetLeftKid() != -1))
+						break; // If there is no next/left kid or if next/left kid exists and it is already set
+				}
+
+				if (next && m_nodes[j]->GetIndex() == next->GetIndex())
+				{
 					m_nodes[i]->SetNext(j);
+					if ((!leftKid || m_nodes[i]->GetLeftKid() != -1) &&
+						(!rightKid || m_nodes[i]->GetRightKid() != -1))
+						break; // If there are no kids or if kids exist they are already set
+				}
 			}
 		}
-		m_nodes.back()->SetNext(-1);
 
 		// Clear mapped
 		for (auto& i : mapped)
@@ -346,45 +413,253 @@ bool TextNodeChain::CreateAndRedirectChart(std::fstream& file)
 		return true;
 
 	// Set table height
-	size_t tableHeight = 0;
+	const size_t heightOffset = 4;
+	size_t tableHeight = heightOffset * 2;
 	for (auto& i : m_nodes)
 		tableHeight += i->Height();
-	tableHeight -= (m_nodes.size() - 1);
+	tableHeight += m_nodes.size();
 	std::vector<std::string> table;
 	table.resize(tableHeight);
 
 	// Set table widths
-	size_t tableWidth = 0;
-	for (size_t i = 0, j = 0; i < m_nodes.size(); ++i)
-	{
-		tableWidth += m_nodes[i]->Width();
-		for (size_t k = 0; k < m_nodes[i]->Height(); ++k)
-			table[j++].resize(tableWidth, ' ');
-		--j;
-		tableWidth += 5;
-	}
-
-	// Draw nodes
-	size_t x = 0, y = 0;
+	const size_t gap = 2, totalGap = 7;
+	const size_t widthOffset = 3;
+	size_t tableWidth = widthOffset;
 	for (auto& i : m_nodes)
-	{
-		const std::vector<std::string>& block = i->Get();
+		tableWidth += i->Width() + totalGap;
+	for (auto& i : table)
+		i.resize(tableWidth, ' ');
 
-		for (size_t j = 0; j < block.size(); ++j)
+	// Draw nodes, collect handles
+	std::vector<size_t> xs, ys;
+	xs.reserve(m_nodes.size());
+	ys.reserve(m_nodes.size());
+	size_t x = widthOffset, y = heightOffset;
+	for (size_t i = 0; i < m_nodes.size(); ++i)
+	{
+		xs.push_back(x);
+		ys.push_back(y);
+
+		const std::vector<std::string>& block = m_nodes[i]->Get();
+		if (i > 0 &&
+			m_nodes[i]->GetReferencesAsLeftKid() == 1 &&
+			!m_nodes[i]->GetReferencesAsNext())
 		{
-			memcpy(&table[y][x], &block[j][0], block[j].size());
+			if (m_nodes[i - 1]->HasRightKid())
+			{
+				// Previous node has right kid
+				// Current node is left kid
+				x = xs[i - 1] + m_nodes[i - 1]->GetRightKidX() + gap + 2;
+				xs.back() = x;
+				for (size_t j = 0; j < block.size(); ++j)
+					memcpy(&table[y++][x], &block[j][0], block[j].size());
+
+				if (i + 1 < m_nodes.size() &&
+					(m_nodes[i + 1]->GetReferencesAsLeftKid() ||
+						m_nodes[i + 1]->GetReferencesAsRightKid()))
+					++y;
+				else if (m_nodes[i - 1]->GetRightKid() < static_cast<long long>(i) &&
+					m_nodes[i]->GetLeftKid() < static_cast<long long>(i) &&
+					m_nodes[i]->GetRightKid() < static_cast<long long>(i) &&
+					m_nodes[i]->GetNext() < static_cast<long long>(i))
+					y = ys[i];
+				else
+					++y;
+			}
+			else
+			{
+				// Previous node has no right kid
+				// Current node is orphan left kid
+				x = xs[i - 1] + m_nodes[i - 1]->GetLeftKidX() + gap + 1;
+				xs.back() = x;
+				for (size_t j = 0; j < block.size(); ++j)
+					memcpy(&table[y++][x], &block[j][0], block[j].size());
+
+				if (i + 1 < m_nodes.size() &&
+					(m_nodes[i + 1]->GetReferencesAsLeftKid() ||
+					m_nodes[i + 1]->GetReferencesAsRightKid()))
+					++y;
+				else if (m_nodes[i]->GetLeftKid() < static_cast<long long>(i) &&
+					m_nodes[i]->GetRightKid() < static_cast<long long>(i) &&
+					m_nodes[i]->GetNext() < static_cast<long long>(i))
+					y = ys[i];
+				else
+					++y;
+			}
+		}
+		else if (i > 0 &&
+			m_nodes[i]->GetReferencesAsRightKid() == 1 &&
+			!m_nodes[i]->GetReferencesAsNext())
+		{
+			// Previous node has left kid and right kid
+			// Current node is right kid
+			x = xs[i - 1] + m_nodes[i - 1]->GetRightKidX() + gap + 1;
+			xs.back() = x;
+			for (size_t j = 0; j < block.size(); ++j)
+				memcpy(&table[y++][x], &block[j][0], block[j].size());
+
+			if (i + 1 < m_nodes.size() &&
+				(m_nodes[i + 1]->GetReferencesAsLeftKid() ||
+					m_nodes[i + 1]->GetReferencesAsRightKid()))
+				++y;
+			else if (m_nodes[i]->GetLeftKid() < static_cast<long long>(i) &&
+				m_nodes[i]->GetRightKid() < static_cast<long long>(i) &&
+				m_nodes[i]->GetNext() < static_cast<long long>(i))
+				y = ys[i];
+			else
+				++y;
+		}
+		else
+		{
+			for (size_t j = 0; j < block.size(); ++j)
+				memcpy(&table[y++][x], &block[j][0], block[j].size());
 			++y;
 		}
 
-		--y;
-		x += 5 + i->Width();
+		x += totalGap + m_nodes[i]->Width();
 	}
 
 	// Draw lines
+	std::list<std::pair<size_t, size_t>> pernamentCrosses;
+	std::list<std::pair<size_t, size_t>> pernamentRightArrows;
+	for (size_t i = 0; i < m_nodes.size(); ++i)
+	{
+		if (m_nodes[i]->GetNext() > -1)
+		{
+			if (m_nodes[i]->GetNext() > static_cast<long long>(i))
+			{
+				size_t cx = xs[i] + m_nodes[i]->GetNextX();
+				size_t cy = ys[i] + m_nodes[i]->GetNextY();
+				size_t xPoint = xs[m_nodes[i]->GetNext()];
+				size_t yPoint = ys[m_nodes[i]->GetNext()] + m_nodes[m_nodes[i]->GetNext()]->GetNextY();
+				for (size_t k = cx; k < xPoint - gap; ++k)
+					table[cy][k] = '-';
+				for (size_t k = xPoint - gap; k < xPoint - 1; ++k)
+					table[yPoint][k] = '-';
 
+				if (cy != yPoint)
+				{
+					size_t xCross = xPoint - gap - 1;
+					for (size_t k = cy; k < yPoint; ++k)
+						table[k][xCross] = '|';
+					pernamentCrosses.push_front(std::make_pair(cy, xCross));
+					pernamentCrosses.push_front(std::make_pair(yPoint, xCross));
+				}
 
-	for (const auto& i : table)
-		file << i << "\n";
+				pernamentRightArrows.push_back(std::make_pair(yPoint, xPoint - 1));
+			}
+			else
+			{
+				size_t cx = xs[i] + m_nodes[i]->GetNextX();
+				size_t cy = ys[i] + m_nodes[i]->GetNextY();
+				size_t xPoint = xs[m_nodes[i]->GetNext()];
+				size_t yPoint = ys[m_nodes[i]->GetNext()] + m_nodes[m_nodes[i]->GetNext()]->GetNextY();
+				size_t tPoint = ys[m_nodes[i]->GetNext()] - gap - 1;
+
+				for (size_t k = cx; k < cx + gap; ++k)
+					table[cy][k] = '-';
+				for (size_t k = tPoint; k < cy; ++k)
+					table[k][cx + gap] = '|';
+				for (size_t k = xPoint - gap - 1; k < cx + gap; ++k)
+					table[tPoint][k] = '-';
+				for (size_t k = tPoint; k < yPoint; ++k)
+					table[k][xPoint - gap - 1] = '|';
+				pernamentCrosses.push_front(std::make_pair(cy, cx + gap));
+				pernamentCrosses.push_front(std::make_pair(tPoint, cx + gap));
+				pernamentCrosses.push_front(std::make_pair(tPoint, xPoint - gap - 1));
+			}
+		}
+
+		if (m_nodes[i]->GetLeftKid() > -1)
+		{
+			if (m_nodes[i]->GetLeftKid() > static_cast<long long>(i))
+			{
+				size_t cx = xs[i] + m_nodes[i]->GetLeftKidX();
+				size_t cy = ys[i] + m_nodes[i]->GetKidY();
+				size_t xPoint = xs[m_nodes[i]->GetLeftKid()];
+				size_t yPoint = ys[m_nodes[i]->GetLeftKid()] + m_nodes[m_nodes[i]->GetLeftKid()]->GetNextY();
+				for (size_t k = cx; k < xPoint; ++k)
+					table[yPoint][k] = '-';
+				for (size_t k = cy; k < yPoint; ++k)
+					table[k][cx] = '|';
+				pernamentCrosses.push_front(std::make_pair(yPoint, cx));
+				pernamentRightArrows.push_back(std::make_pair(yPoint, xPoint - 1));
+			}
+			else
+			{
+				size_t cx = xs[i] + m_nodes[i]->GetLeftKidX();
+				size_t cy = ys[i] + m_nodes[i]->GetKidY();
+				size_t xPoint = xs[m_nodes[i]->GetLeftKid()];
+				size_t yPoint = ys[m_nodes[i]->GetLeftKid()] + m_nodes[m_nodes[i]->GetLeftKid()]->GetNextY();
+				for (size_t k = cy; k < cy + gap; ++k)
+					table[k][cx] = '|';
+				for (size_t k = xPoint - gap; k < cx; ++k)
+					table[cy + gap][k] = '-';
+				for (size_t k = yPoint; k < cy + gap; ++k)
+					table[k][xPoint - gap - 1] = '|';
+				pernamentCrosses.push_front(std::make_pair(cy + gap, cx));
+				pernamentCrosses.push_front(std::make_pair(cy + gap, xPoint - gap - 1));
+				pernamentCrosses.push_front(std::make_pair(yPoint, xPoint - gap - 1));
+			}
+		}
+
+		if (m_nodes[i]->GetRightKid() > -1)
+		{
+			if (m_nodes[i]->GetRightKid() > static_cast<long long>(i))
+			{
+				size_t cx = xs[i] + m_nodes[i]->GetRightKidX();
+				size_t cy = ys[i] + m_nodes[i]->GetKidY();
+				size_t xPoint = xs[m_nodes[i]->GetRightKid()];
+				size_t yPoint = ys[m_nodes[i]->GetRightKid()] + m_nodes[m_nodes[i]->GetRightKid()]->GetNextY();
+				for (size_t k = cx; k < xPoint; ++k)
+					table[yPoint][k] = '-';
+				for (size_t k = cy; k < yPoint; ++k)
+					table[k][cx] = '|';
+				pernamentCrosses.push_front(std::make_pair(yPoint, cx));
+				pernamentRightArrows.push_back(std::make_pair(yPoint, xPoint - 1));
+			}
+			else
+			{
+				size_t cx = xs[i] + m_nodes[i]->GetRightKidX();
+				size_t cy = ys[i] + m_nodes[i]->GetKidY();
+				size_t xPoint = xs[m_nodes[i]->GetRightKid()];
+				size_t yPoint = ys[m_nodes[i]->GetRightKid()] + m_nodes[m_nodes[i]->GetRightKid()]->GetNextY();
+				for (size_t k = cy; k < cy + gap + 2; ++k)
+					table[k][cx] = '|';
+				for (size_t k = xPoint - gap; k < cx; ++k)
+					table[cy + gap + 2][k] = '-';
+				for (size_t k = yPoint; k < cy + gap + 2; ++k)
+					table[k][xPoint - gap - 1] = '|';
+				pernamentCrosses.push_front(std::make_pair(cy + gap + 2, cx));
+				pernamentCrosses.push_front(std::make_pair(cy + gap + 2, xPoint - gap - 1));
+				pernamentCrosses.push_front(std::make_pair(yPoint, xPoint - gap - 1));
+			}
+		}
+	}
+
+	// Draw crosses and right arrows
+	for (const auto& i : pernamentCrosses)
+		table[i.first][i.second] = '+';
+	for (const auto& i : pernamentRightArrows)
+		table[i.first][i.second] = '>';
+
+	// Redirect table
+	for (auto& i : table)
+	{
+		long long j = static_cast<long long>(i.size()) - 1;
+		for (; j >= 0; --j)
+		{
+			if (i[j] != ' ')
+				break;
+		}
+
+		if (++j)
+		{
+			i.resize(j);
+			file << i << "\n";
+		}
+	}
+		
 	return true;
 }
 
@@ -421,13 +696,14 @@ TextBlockManager::TextBlockManager(std::string pathToFile, bool& status)
 bool TextBlockManager::RedirectToFile(std::string pathToFile)
 {
 	std::fstream file;
-	file.open(pathToFile, std::ios::out | std::ios::app);
+	file.open(pathToFile, std::ios::out);
 	if (file.is_open())
 	{
 		for (auto& i : m_chains)
 		{
 			if (!i.CreateAndRedirectChart(file))
 				return false;
+			file << "\n";
 		}
 
 		file.close();
