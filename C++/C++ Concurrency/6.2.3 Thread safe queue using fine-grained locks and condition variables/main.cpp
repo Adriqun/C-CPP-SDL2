@@ -17,7 +17,7 @@ class ThreadSafeQueue
 	Node* m_tail;
 	std::condition_variable m_condition;
 
-	Node get_tail()
+	Node* get_tail()
 	{
 		std::lock_guard<std::mutex> tailLocker(m_tailMutex);
 		return m_tail;
@@ -123,5 +123,10 @@ public:
 
 int main()
 {
+	ThreadSafeQueue<unsigned int> queue;
+	queue.try_pop();
+	queue.push(static_cast<unsigned int>(-1));
+	queue.empty();
+	queue.wait_and_pop();
 	return 0;
 }
