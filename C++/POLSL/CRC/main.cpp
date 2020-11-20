@@ -48,24 +48,23 @@ unsigned long long updcrc(unsigned long long crc, unsigned long long c, unsigned
 	return crc;
 }
 
-void GenerateInputDataFile(void* data, int bytes, const char* filename)
+void GenerateExampleDataFile()
 {
-	FILE* file = fopen(filename, "wb");
-	fwrite(data, bytes, 1, file);
+	unsigned long long data = 0xFAFAFAFAFAFAFAFA;
+	//unsigned long long data = 0xFFFFFFFFFFFFFFFF;
+	FILE* file = fopen("test.bin", "wb");
+	fwrite(&data, 8, 1, file);
 	fclose(file);
 }
 
 // Driver
 int main(int argc, char** argv)
 {
-	char* filename_out = "test.bin";
-	unsigned long long data = 0xFAFAFAFAFAFAFAFA;
-	//unsigned long long data = 0xFFFFFFFFFFFFFFFF;
-	GenerateInputDataFile(&data, 8, filename_out);
+	GenerateExampleDataFile();
 
 	if (argc > 2)
 	{
-		printf("Usage:  ccitt [filename]");
+		printf("Usage: ccitt [filename]");
 		exit(1);
 	}
 
@@ -74,7 +73,7 @@ int main(int argc, char** argv)
 		strcpy(filename, argv[1]);
 	else
 	{
-		printf("\nEnter filename:  ");
+		printf("\nEnter filename: ");
 		gets(filename);
 	}
 
