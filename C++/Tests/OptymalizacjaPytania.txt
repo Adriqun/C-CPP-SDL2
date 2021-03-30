@@ -1,0 +1,124 @@
+7.13 Pętle
+a) Efektywność pętli zależy od tego jak procesor przewidzi rozgałęzienia węwnątrz niej: Tak
+b) Pętla bez wewnętrznych rozgałęzień z małą i stałą liczbą iteracji jest wykonywana szybko: Tak
+c) Liczba pętli (zagnieżdżonych), w których rozgałęzienia są przewidywane efektywnie nie zależy od procesora : Nie
+d) Rozgałęzienia w pętlach zagnieżdżonych są efektywnie przewidywane tylko na niektórych procesorach: Tak
+e) Rozwijanie pętli nie zawsze jest korzystne ze względu na bufor sprzężenia zwrotnego, który przygotowany jest na małe pętle: Tak
+f) Rozwijanie pętli zwykle jest korzystne jeśli wewnątrz wykonywane są obliczenia na liczbach zmiennoprzecinkowych lub na wektorach (instrukcje): Nie
+g) Rozwijanie pętli powinno być wykorzystywane wszędzie tam gdzie procesor posiada małą pamięć micro-op cache: Nie
+h) Programista nigdy nie powinien samemu rozwijać pętli ponieważ zrobi to za niego kompilator: Nie (nie zawsze)
+i) Jeśli warunek pętli zależy od obliczeń wewnątrz pętli, a ilość iteracji jest znana, wtedy lepiej użyć licznika zamiast iteratora: Tak
+j) Najlepiej jeśli licznikiem pętli będzie liczba całkowita, w przypadku gdy potrzebujemy operować na liczbie zmiennoprzecinkowej warto dodać drugi licznik: Tak
+k) Porównywanie licznika do zera jako warunek pętli jest czasami mniej korzystne niż porównanie do innej liczby całkowitej: Nie
+l) Odrobinę efektywniejsza jest dekrementacja licznika do zera anijeżeli inkrementacja do pozytywnej liczby całkowitej: Tak
+m) Odrobinę efektywniejsza jest dekrementacja licznika do zera anijeżeli inkrementacja do pozytywnej liczby całkowitej nawet jeśli licznik wykorzystywany jest jako indeks w tablicy w pętli: Nie (cache przygotowane jest na uzyskanie następnego elementu tablicya nie poprzedniego)
+n) Czyszczenie lub kopiowanie elementów w pętli może być nieefektywne: Tak (czasami lepiej użyć memset/memcpy)
+
+7.14 Funkcje
+a) Zwykle wywołanie funkcji wykonywane jest szybko i bez większych strat: Nie (skok do innego adresu oraz powrót trochę zajmuje)
+b) Cache kodu działa mniej efektywnie jeśli kod jest pofragmentowany i rozproszony w pamięci: Tak
+c) Parametry funkcji przechowywane są zawsze na stosie: Nie (chociaż na systemach 32 bitowych zawsze)
+d) Przechowywanie parametrow na stosie oraz ich ponowny odczyt nie kosztuje dodatkowego czasu: Nie
+e) Jeśli parametr przechowywany jest na stosie i występuje w krytycznych łańcuchu zależności w funkcji to czas odczytu parametru wydłuża się: Tak
+f) Do wywołania funkcji wymagany jest dodatkowy czas na ustawienie ramki stosu, zapis i odzyskiwanie rejestrów oraz zapis informacji o wyjątkach: Tak
+g) Jeśli funkcji jest długa powinna zostać podzielona na mniejsze funkcje, które zostaną wywołane zamiast jednej funkcji: Nie
+h) Mała funkcja zadeklarowana jako inline zwykle przyspieszy wykonywany program: Tak
+i) Funkcja, która woła inne funkcje nazywana jest "leaf function" natomiast taka która nie woła innych funkcji nazywana jest "frame function": Nie (jest odwrotnie)
+j) Leaf function jest bardziej efektywna niż frame function: Tak
+k) Wołanie funkcji wewnątrz pętli na najgłębszym poziomie jest dobrym sposobem na przyspieszenie realizacji programu: Nie (jest bardzo złym pomysłem)
+l) Słowo kluczowe __fastcall wykorzystuje rejestry dla dwóch pierwszych liczb całkowitych zamiast stosu w systemach 64 bitowych: Nie (na systemach 32 bitowych, reszta prawda)
+m) Używając __fastcall powinniśmy umieszczać najczęściej używany parametr na pierwszym miejscu: Tak
+n) W systemach 32 bitowych __fastcall umieszcza wskaźnika na "this" w rejestrze: Tak
+o) Funkcja zadeklarowana jako statyczna może być mniej efektywna jeśli chodzi o optymalizacje: Nie (jest właśnie bardziej efektywna, kompilator może zooptymalizować funkcje, które występują tylko w danym module)
+p) Funkcja lokalna to funkcja, która została zadeklarowana jako statyczna lub została umieszczona w przestrzeni nazw "bez nazwy" i jest często lepiej zooptymalizowana: Tak (ze względu na to, że funkcja może wystąpić tylko w danym module)
+q) Wołanie funkcji z większą ilością parametrów może okazać się bardziej efektywne na Linuxie 64 bitowym niż na Windowsie 64 bitowym: Tak (Linux ma więcej przygotowanych rejestrów pod liczby całkowite i zmiennoprzecinkowe)
+
+7.15 Parametry funkcji
+a) Parametry funkcji bazowo przekazywane z użyciem stosu na systemach 32 bitowych i za pomocą rejestrów na systemach 64 itowych: Tak (chyba, że parametr jest zbyt duży)
+
+7.16 Typy zwracane z funkcji
+a) Zwracanie dużych obiektów z funkcji jest tak samo szybkie jak zwracanie typów prostych na systemach 64 bitowych: Nie (jest wolniejsze na każdym systemie)
+b) Zwracane typy proste mogą zostać umieszczone w rejestrach dla niektórych przypadków: Tak
+c) Podczas zwracania typu złożonego wynik kopiowany jest do miejsca wskazanego przez wołającego funkcje za pomocą ukrytego wskaźnika: Tak
+d) Konstruktor kopiujący może zostać użyty podczas zwracania wartości z funkcji: Tak (zazwyczaj jest wołany)
+
+7.17 Zawołanie funkcji jako ostatnie wyrażenie ("function tail call")
+a) Umieszczanie zawołania do funkcji jako ostatnie wyrażenie wewnątrz innej funkcji jest nieefektywne: Nie
+b) Jeśli zawołanie funkcji jest ostatnim wyrażeniem wewnątrz innej funkcji kompilator może skopiować wynik zagnieżdżonej funkcji bezpośrednio do miejsca z którego została zawołana pierwsza funkcja: Tak
+c) Kompilator może wykonać optymalizację "function tail call" nawet jeśli zawołanie funkcji zagnieżdżonej zwraca inny typ niż funkcja nadrzędna: Nie (typy zwracane muszą się zgadzać)
+
+7.18 Funkcje rekurencyjne
+a) Koszt użycia funkcji rekurencyjnych to przedewszystkim koszt alokacji parametrów i zmiennych lokalnych na stosie z każdym zawołaniem funkcji: Tak
+b) Im większy poziom zagnieżdżenia funkcji rekurencyjnych tym łatwiej jest przewidzieć adres do którego zostanie zapisana wartość zwrócona z funkcji: Nie
+c) Rekursywne zawołania funkcji na końcu funkcji rekurencyjnej (recursive tail calls) są bardziej efektywne od zwykłych zawołań funkcji na końcu innej funkcji (tail calls): Tak (jednak wciąż mniej efektywne od zwykłej pętli)
+
+7.19 Struktury i klasy
+a) Zmienne wewnątrz klasy, które są używane razem również przechowywane są razem przez co łapanie danych w pamięci podręcznej jest efektywniejsze: Tak
+b) Wskaźnik this zajmuje jeden rejestr: Tak
+c) Wołanie funkcji klas i struktur na systemach 32 bitowych jest zazwyczaj tak samo efektywne jak wołanie ich na systemach 64 bitowych: Nie (wymagane jest umieszczenie wskaźnika this w rejestrze, na systemach 32 bitowych rejestrów jest niezwykle mało)
+d) Używanie struktur bez funkcji ma negatywny efekt na wydajność programu: Nie
+
+7.20 Zmienne wewnątrz klas
+a) Zmienne wewnątrz klas i struktur przechowywane są w kolejności w jakiej zostały zadeklarowane w kodzie: Tak
+b) Dostęp do zmiennej wewnątrz klasy lub struktury kosztuje dodatkowym wyliczeniem adresu: Nie (dostęp do zmiennej jest taki sam jak dostęp do zwykłej zmiennej)
+c) Odpowiednie ułożenie zmiennych wewnątrz klasy lub struktury może dać dodatkową wydajność lub zmniejszyc rozmiar obiektu: Tak (dzieje się tak z powodu wyrównywania danych - data aligment)
+d) Jeśli klasa posiada funkcje wirtualną to posiada również wskaźnik do tablicy funkcji wirtualnych znajdujący się zawsze przed pierwszą zmienną zadeklarowaną w klasie: Nie (może znajdować się przed pierwszą zmienna lub za ostatnią zmienną)
+e) Tablice bądź duże obiekty należy umieszczać możliwie na samym początku klasy, ponieważ ułatwia to lepsze dopasowanie danych: Nie (duże zmienne zawsze umieszczamy na końcu klasy)
+f) Najczęściej używane zmienne wewnątrz klasy należy deklarować zawsze jako pierwsze: Tak (lepsze łapanie danych w pamięci podręcznej - nie trzeba wyliczać offsetu do danej zmiennej, działa tylko do pierwszych 128 bajtów)
+
+7.21 Funkcje wewnątrz klas
+a) Wołanie funkcji klas jest tak samo szybkie jak wołanie zwykłych funkcji: Nie (ponosimy koszt umieszczenia wskaźnika this w rejestrze lub na stosie)
+b) Funkcje statyczne klas są wolniejsze ze względu na wymagane umieszczenie ich adresu daleko od funkcji niestatycznych: Nie (są szybsze ponieważ nie potrzeba umieszczać wskaźnika this w rejestrze lub na stosie)
+
+7.22 Funkcje wirtualne klas
+a) Instacja klasy polimorficznej posiada wskaźnik do tablicy wskaźników do tablicy funkcji wirtualnych, przez co użycie funkcji wirtualnej jest tak samo efektywne jak użycie zwykłej funkcji klasy: Nie
+b) Czas jaki potrzeba aby zawołać funkcje wirtualną nie zależy od tego czy wskaźnik do funkcji wirtualnej się zmienia (obiekt się zmienia): Nie (im częściej się zmienia tym ciężej jest przewidywać rozgałęzienia)
+
+7.23 RTTI - informacja o typie w trakcie wykonywania programu
+a) RTTI dodaje dodatkowe informacje do każdego obiektu klasy/struktury: Tak
+b) Niektóre kompilatory pozwalają wyłączyć RTTI: Tak
+
+7.24 Dziedziczenie
+a) Największą efektywnością cieszyć się będzie dziedziczenie po klasie o jak najmniejszej liczbnie zmiennych: Tak (zmienne rodzica umieszczane są na początku klasy dziedziczącej, chcemy ich jak najmniej)
+b) Wołanie funkcji rodzica jest zawsze tak samo szybkie jak wołanie funkcji z obecnej klasy: Nie (funkcje rodzica moga być umieszczone w innym module co może powodować opóźnienia w code caching, można to rozwiązać umieszczając klasy blisko siebie - w tym samym module)
+
+7.25 Konstruktory i destruktory
+a) Czy wywołania tworzenie obiektów można zooptymalizować deklarując konstruktor jako inline? Tak
+b) Czy zawołanie destruktora jest wolniejsze niż zawołanie innych funkcji danej klasy? Nie
+c) Czy zawołanie destruktora wirtualnego jest wolniejsze niż zawołanie innych funkcji wirtualnych danej klasy? Nie
+d) Czy zawołanie destruktora wirtualnego jest tak samo szybkie jak zawołanie zwykłego destruktora? Nie
+
+7.26 Unie
+a) Czy Unia jest mniej wydajna od zwykłej zmiennej ze względu na nieznany typ? Nie
+
+7.27 Pola bitowe (int a : 2; int b : 2) klasy
+a) Czy dostanie się (uzyskanie wartości zmiennej) pola bitowego (jej części) może zająć więcej czasu niż dostanie się do zwykłej zmiennej? Tak (nawet zawsze zajmie więcej czasu)
+b) Czy w celu optymalizacji zapisu do pola bitowego lepiej ustawiać każdą ze zmiennych osobno anijeżeli operatorami "<<" i "|"? Nie (odwrotnie)
+
+7.28 Funkcje przeładowane
+a) Czy w przypadku funkcji przeładowanych wymagana jest dodatkowa praca ze strony procesora w przypadku zawołania takiej funkcji? Nie (funkcje przeładowane sa tak samo szybkie jak zwykłe funkcje)
+
+7.29 Operatory przeładowane
+a) Czy wołanie operatorów przeładowanych wykonuje się tak samo szybko jak wołanie funkcji przeładowanych? Tak
+
+7.30 Szablony
+a) Szablony są efektywne ze względu na podmianę parametrów szablonów podczas kompilacji: Tak
+b) Szablon z wieloma instancjami powoduje większą ilość wygenerowanego kodu oraz większą przestrzeń cache: Tak
+
+7.31 Wątki
+a) Zmienne współdzielone przez większą liczbę wątków zawsze najlepiej zdefiniować jako volatile: Nie (chociaż czasami się to opłaca ponieważ mamy pewność że zmienna nie wyląduje w rejestrze a te nie są współdzielone co przyspieszy program)
+
+7.32 Wyjątki i przechwytywanie wyjątków
+a) Czy mimo tego, że dany wyjątek nie wystąpił a kod posiada wyłapywanie wyjątków to czy taki dodatkowy kod może powodować straty wydajnościowe? Tak (niestety program musi wykonywać wiele bookkeping żeby w razie wyjątku wiedzieć jak jak się pozbierać "recover")
+b) Wyłapywanie wyjątków w obrębie zawołania funkcji która w środku nie woła innych funkcji jest bardziej wydajne niż w sytuacji gdyby funkcja posiadała w środku zawołania do innych funkcji: Tak (w przypadku wyjątku musimy odwinąć stos - stack unwinding w celu dostania się do najgłębszej funkcji)
+c) Czy wyłapywanie wyjątków dla kodu wykonującego operacje wektorowe może być znącząco wolniejsze? Tak (może istnieć potrzeba sprawdzenia każdego elementu wektora)
+
+7.33 Inne przypadki odwijania stosu (stack unwinding)
+
+7.35 Dyrektywy preprocesora
+a) Za pomocą #define np. #define ABC 123 każde miejsce ABC zostanie podmienione przez liczbę 123 i dzieję się tak dla każdego typu prostego: Nie, dla typów zmiennoprzecinkowych zawsze zostanie utworzona zmienna!
+b) Miejsca w których występują stałe zawsze zamieniane są ich wartościami: Nie, w większości stałe zostaną utworzone
+
+7.36 Przestrzeń nazw
+a) Istnieje potrzeba stworzenia dodatkowej nakładki dla namespace stąd trzymanie zmiennych w ten sposób jest niewydajne: Nie, nic takiego nie ma miejsca
+
